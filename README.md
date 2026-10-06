@@ -36,7 +36,7 @@ This portfolio highlights my core competencies and recent work:
 | **Enterprise ERP** | SuiteScript 2.1, SuiteAnalytics, SuiteFlow, Saved Searches, RESTlets, Suitelets, OAuth 2.0, Token-Based Auth |
 | **Edge AI & Mobile** | sherpa-onnx, ML Kit v2, Jetpack Compose, Kotlin, ONNX Runtime, Hugging Face, Local RAG |
 | **Robotics & IoT** | FANUC Robotics, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB Design |
-| **Languages** | Python, JavaScript, Kotlin, Java, C, Embedded C, SQL, Linux, Git, GitHub |
+| **Languages & Systems** | Python, JavaScript, Kotlin, Java, C, Embedded C, SQL, Linux, WSL2, Git, GitHub |
 
 ### Notable Projects
 
@@ -52,40 +52,6 @@ This portfolio highlights my core competencies and recent work:
 **Smart AC Telemetry** — IoT Predictive Maintenance
 - Developed ESP32-based system for calculating dust accumulation and filter life prediction
 - Implemented cloud telemetry and anomaly detection for HVAC maintenance
-
----
-
-## Technical Stack
-
-**Frontend & Styling**
-- HTML5
-- Tailwind CSS
-
-**Client-Side Scripting**
-- JavaScript (Vanilla)
-
-**3D Graphics & Animation**
-- Three.js
-
-**Typography**
-- Google Fonts (Anton, Outfit, Space Mono)
-
-**Deployment**
-- GitHub Pages
-
----
-
-## How to View
-
-### Online
-Visit the live portfolio: https://r-dilipkumar.github.io/
-
-### Local Preview
-```bash
-cd r-dilipkumar.github.io
-python -m http.server 8000
-# Then open http://localhost:8000
-```
 
 ---
 
@@ -121,4 +87,4 @@ This portfolio is optimized to showcase:
 
 ---
 
-**Built with clean, performant HTML/CSS/JS—no bloat, just results.**
+**Built with clean, performant HTML/CSS/JavaScript—developed with AI assistance for responsive design and modern aesthetics.**

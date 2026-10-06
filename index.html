@@ -1,884 +1,990 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dilipkumar Ravichandran | Systems & AI Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;400;600;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              anton: ['Anton', 'sans-serif'],
-              sans: ['Outfit', 'sans-serif'],
-              mono: ['Space Mono', 'monospace'],
-            },
-            colors: {
-              void: '#030305',
-              neonCyan: '#00f3ff',
-              neonPink: '#ff007f',
-              neonAmber: '#ffaa00',
-              glass: 'rgba(15, 15, 20, 0.45)'
-            }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dilipkumar Ravichandran | Systems & AI Engineer</title>
+  
+  <!-- Fonts: Anton for the massive impact header, Space Mono for tech details, Outfit for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;400;600;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            anton: ['Anton', 'sans-serif'],
+            sans: ['Outfit', 'sans-serif'],
+            mono: ['Space Mono', 'monospace'],
+          },
+          colors: {
+            void: '#030305', // Pitch black cosmic void
+            neonCyan: '#00f3ff',
+            neonPink: '#ff007f',
+            neonAmber: '#ffaa00',
+            glass: 'rgba(15, 15, 20, 0.45)'
           }
         }
       }
-    </script>
-    <style>
-      body {
-        background-color: #030305;
-        color: #e2e8f0;
-        overflow-x: hidden;
-        margin: 0;
-      }
+    }
+  </script>
 
-      #engine-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 0;
-        pointer-events: none;
-      }
+  <style>
+    body {
+      background-color: #030305;
+      color: #e2e8f0;
+      overflow-x: hidden;
+      margin: 0;
+    }
 
-      #content-layer {
-        position: relative;
-        z-index: 10;
-      }
+    /* 3D Engine Canvas - Fixed behind everything */
+    #engine-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-      .master-title-solid {
-        font-family: 'Anton', sans-serif;
-        color: #ffffff;
-        line-height: 0.85;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-        text-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
-      }
+    /* Ensure content is above the canvas */
+    #content-layer {
+      position: relative;
+      z-index: 10;
+    }
 
-      .master-title-outline {
-        font-family: 'Anton', sans-serif;
-        color: transparent;
-        -webkit-text-stroke: 2px #ffffff;
-        line-height: 0.85;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-      }
+    /* --- The Master Typography (From your image) --- */
+    .master-title-solid {
+      font-family: 'Anton', sans-serif;
+      color: #ffffff;
+      line-height: 0.85;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      text-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+    }
+    
+    .master-title-outline {
+      font-family: 'Anton', sans-serif;
+      color: transparent;
+      -webkit-text-stroke: 2px #ffffff;
+      line-height: 0.85;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
 
-      .typing-cursor::after {
-        content: '|';
-        animation: blink 1s step-start infinite;
-        color: #00f3ff;
-      }
+    /* --- Dynamic Typing Cursor --- */
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 1s step-start infinite;
+      color: #00f3ff;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
 
-      @keyframes blink {
-        50% {
-          opacity: 0;
-        }
-      }
+    /* --- Editorial Glass Panels --- */
+    .glass-panel {
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s, box-shadow 0.4s;
+    }
+    .glass-panel:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 243, 255, 0.4);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
 
-      .glass-panel {
-        background: var(--glass);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 20px;
-        padding: 2.5rem;
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s, box-shadow 0.4s;
-      }
+    /* --- UI Accents & Tags --- */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.3s ease;
+    }
+    .tag-cyan { color: #00f3ff; border-color: rgba(0, 243, 255, 0.3); background: rgba(0, 243, 255, 0.05); }
+    .tag-pink { color: #ff007f; border-color: rgba(255, 0, 127, 0.3); background: rgba(255, 0, 127, 0.05); }
+    .tag-amber { color: #ffaa00; border-color: rgba(255, 170, 0, 0.3); background: rgba(255, 170, 0, 0.05); }
 
-      .glass-panel:hover {
-        transform: translateY(-5px);
-        border-color: rgba(0, 243, 255, 0.4);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-      }
+    .glow-text {
+      text-shadow: 0 0 15px currentColor;
+    }
 
-      .tag {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.35rem 1rem;
-        border-radius: 999px;
-        font-family: 'Space Mono', monospace;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        transition: all 0.3s ease;
-      }
+    /* --- Scroll Reveal Animation --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px) scale(0.98);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active, .reveal-left.active, .reveal-right.active {
+      opacity: 1;
+      transform: translate(0) scale(1);
+    }
+    
+    /* --- Stagger Delays --- */
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
 
-      .tag-cyan {
-        color: #00f3ff;
-        border-color: rgba(0, 243, 255, 0.3);
-        background: rgba(0, 243, 255, 0.05);
-      }
+    /* --- Fancy Button --- */
+    .btn-cyber {
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      color: #030305;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 1rem 2.5rem;
+      border-radius: 999px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-cyber:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255,255,255,0.4);
+    }
+    
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #030305; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00f3ff; }
+  </style>
+</head>
 
-      .tag-pink {
-        color: #ff007f;
-        border-color: rgba(255, 0, 127, 0.3);
-        background: rgba(255, 0, 127, 0.05);
-      }
+<body class="antialiased selection:bg-neonCyan selection:text-void">
 
-      .tag-amber {
-        color: #ffaa00;
-        border-color: rgba(255, 170, 0, 0.3);
-        background: rgba(255, 170, 0, 0.05);
-      }
+  <!-- THE MATHEMATICAL ENGINE -->
+  <canvas id="engine-canvas"></canvas>
 
-      .glow-text {
-        text-shadow: 0 0 15px currentColor;
-      }
-
-      .reveal {
-        opacity: 0;
-        transform: translateY(30px) scale(0.98);
-        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .reveal.active {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .btn-cyber {
-        position: relative;
-        overflow: hidden;
-        background: #ffffff;
-        color: #030305;
-        font-weight: 800;
-        font-family: 'Outfit', sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        padding: 1rem 2.5rem;
-        border-radius: 999px;
-        transition: transform 0.3s, box-shadow 0.3s;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .btn-cyber:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-      }
-
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: #030305;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: #333;
-        border-radius: 10px;
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: #00f3ff;
-      }
-    </style>
-  </head>
-  <body class="antialiased selection:bg-neonCyan selection:text-void">
-    <canvas id="engine-canvas"></canvas>
-    <div id="content-layer">
-      <header class="fixed top-0 left-0 w-full z-50 pt-8 pb-12 pointer-events-none">
-        <div class="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center">
-          <nav class="pointer-events-auto hidden md:flex gap-10 font-mono text-xs tracking-[0.2em] uppercase text-gray-400 font-bold">
-            <a href="#about" class="hover:text-neonPink transition-colors">Synopsis</a>
-            <a href="#experience" class="hover:text-neonCyan transition-colors">Enterprise</a>
-            <a href="#projects" class="hover:text-neonAmber transition-colors">Hardware & AI</a>
-            <a href="#academics" class="hover:text-white transition-colors">Metrics</a>
-          </nav>
+  <div id="content-layer">
+    
+    <!-- HEADER NAV -->
+    <header class="fixed top-0 left-0 w-full z-50 pt-8 pb-12 pointer-events-none">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center">
+        <div class="pointer-events-auto flex items-center gap-2">
+          <div class="w-3 h-3 bg-neonCyan rounded-full animate-pulse glow-text"></div>
+          <span class="font-mono text-sm tracking-widest text-white font-bold uppercase">System.Online</span>
         </div>
-      </header>
+        <nav class="pointer-events-auto hidden md:flex gap-10 font-mono text-xs tracking-[0.2em] uppercase text-gray-400 font-bold">
+          <a href="#about" class="hover:text-neonPink transition-colors">Synopsis</a>
+          <a href="#experience" class="hover:text-neonCyan transition-colors">Enterprise</a>
+          <a href="#projects" class="hover:text-neonAmber transition-colors">Hardware & AI</a>
+          <a href="#academics" class="hover:text-white transition-colors">Metrics</a>
+          <a href="#taxonomy" class="hover:text-neonPink transition-colors">Taxonomy</a>
+        </nav>
+      </div>
+    </header>
 
-      <section id="about" class="min-h-screen flex flex-col justify-center px-6 md:px-12 max-w-[1400px] mx-auto pt-20 relative">
-        <div class="max-w-5xl">
-          <h1 class="flex flex-col mt-12 mb-6">
-            <span class="master-title-solid text-[14vw] md:text-[140px] lg:text-[160px]">DILIPKUMAR</span>
-            <span class="master-title-outline text-[14vw] md:text-[140px] lg:text-[160px] -mt-[4%]">RAVICHANDRAN</span>
-          </h1>
-          <div class="font-mono text-xl md:text-3xl text-gray-300 tracking-wide mb-10 h-10">
-            <span class="text-neonCyan mr-2">></span>
-            <span id="dynamic-text" class="typing-cursor text-white font-bold"></span>
-          </div>
-          <p class="max-w-2xl text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-12">Mechatronics engineering graduate (8.29 CGPA) building physical kinematics, on-device Edge AI, and high-throughput enterprise ERP pipelines. Based in Chennai, India.</p>
-          <div class="flex flex-wrap items-center gap-6">
-            <button onclick="copyEmail(this)" class="btn-cyber">
-              <span class="email-text">rdilipkumar2203@gmail.com</span>
-            </button>
-            <a href="tel:+917538879358" class="font-mono text-sm uppercase tracking-widest text-white border border-gray-700 hover:border-neonCyan hover:text-neonCyan px-6 py-3 rounded-full transition-all"> +91 75388 79358 </a>
-            <a href="https://linkedin.com/in/r-dilipkumar" target="_blank" class="font-mono text-sm uppercase tracking-widest text-gray-300 hover:text-neonPink transition-colors flex items-center gap-2"> LinkedIn <span class="text-neonPink">↗</span>
-            </a>
-            <a href="https://github.com/R-Dilipkumar" target="_blank" class="font-mono text-sm uppercase tracking-widest text-gray-300 hover:text-neonAmber transition-colors flex items-center gap-2"> GitHub <span class="text-neonAmber">↗</span>
-            </a>
-          </div>
+    <!-- HERO SECTION -->
+    <section id="about" class="min-h-screen flex flex-col justify-center px-6 md:px-12 max-w-[1400px] mx-auto pt-20 relative">
+      <div class="max-w-5xl">
+        <!-- The requested Typography -->
+        <h1 class="flex flex-col mt-12 mb-6">
+          <span class="master-title-solid text-[14vw] md:text-[140px] lg:text-[160px]">DILIPKUMAR</span>
+          <span class="master-title-outline text-[14vw] md:text-[140px] lg:text-[160px] -mt-[4%]">RAVICHANDRAN</span>
+        </h1>
+        
+        <!-- Dynamic Role Typing -->
+        <div class="font-mono text-xl md:text-3xl text-gray-300 tracking-wide mb-10 h-10">
+          <span class="text-neonCyan mr-2">></span> <span id="dynamic-text" class="typing-cursor text-white font-bold"></span>
         </div>
-      </section>
 
-      <section id="experience" class="py-32 px-6 md:px-12 max-w-[1400px] mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-20 reveal">
-          <div>
-            <h2 class="font-anton text-6xl md:text-8xl text-white uppercase tracking-wide">Enterprise <br>
-              <span class="text-transparent" style="-webkit-text-stroke: 1px #00f3ff;">Architecture.</span>
-            </h2>
-          </div>
-          <p class="font-mono text-neonCyan text-sm tracking-widest uppercase mt-6 md:mt-0">Module 01 // Data Pipelines</p>
+        <p class="max-w-2xl text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-12">
+          Mechatronics engineering graduate (8.29 CGPA) building physical kinematics, on-device Edge AI, and high-throughput enterprise ERP pipelines. Based in Chennai, India.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-6">
+          <button onclick="copyEmail(this)" class="btn-cyber">
+            <span class="email-text">rdilipkumar2203@gmail.com</span>
+          </button>
+          <a href="tel:+917538879358" class="font-mono text-sm uppercase tracking-widest text-white border border-gray-700 hover:border-neonCyan hover:text-neonCyan px-6 py-3 rounded-full transition-all">
+            +91 75388 79358
+          </a>
+          <a href="https://linkedin.com/in/r-dilipkumar" target="_blank" class="font-mono text-sm uppercase tracking-widest text-gray-300 hover:text-neonPink transition-colors flex items-center gap-2">
+            LinkedIn <span class="text-neonPink">↗</span>
+          </a>
+          <a href="https://github.com/R-Dilipkumar" target="_blank" class="font-mono text-sm uppercase tracking-widest text-gray-300 hover:text-neonAmber transition-colors flex items-center gap-2">
+            GitHub <span class="text-neonAmber">↗</span>
+          </a>
         </div>
-        <div class="grid lg:grid-cols-2 gap-10">
-          <div class="glass-panel reveal group lg:col-span-2">
-            <div class="flex justify-between items-start mb-8 border-b border-gray-800 pb-6">
-              <div>
-                <span class="font-mono text-neonCyan text-xs tracking-widest uppercase block mb-2">Sep 2025 – Jun 2026</span>
-                <h3 class="text-3xl md:text-4xl font-bold text-white font-sans">Zenardy Technologies</h3>
-                <p class="text-gray-400 mt-1 font-mono text-sm">Associate Developer / NetSuite Consultant</p>
-              </div>
-              <span class="tag tag-cyan">ID: ZenIN00125</span>
-            </div>
-            <div class="grid md:grid-cols-2 gap-10 text-gray-300 font-light text-base leading-relaxed">
-              <div>
-                <h4 class="font-mono text-neonCyan mb-4 uppercase text-sm font-bold tracking-widest border-l-2 border-neonCyan pl-3">1. Crunchyroll Procurement</h4>
-                <ul class="space-y-4">
-                  <li class="flex items-start gap-3">
-                    <span class="text-neonCyan mt-1 text-lg">▹</span>
-                    <span><strong class="text-white">PO-to-Billing Optimization:</strong> Engineered custom SuiteScript 2.1 UserEvents (afterSubmit/beforeSubmit) for 3-way matching and billing handoffs. Slashed approval latency by >90% (from 2 hours to 10 minutes).</span>
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <span class="text-neonCyan mt-1 text-lg">▹</span>
-                    <span><strong class="text-white">Change Order Lifecycle:</strong> Handled end-to-end debugging for the procurement Change Order process, managing revisions, delta validations, line-item adjustments, and approval re-routing.</span>
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <span class="text-neonCyan mt-1 text-lg">▹</span>
-                    <span><strong class="text-white">Dynamic Tax Engine:</strong> Developed complex invoice customizations and automated tax calculation routines for multi-subsidiary billing compliance.</span>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-mono text-neonPink mb-4 uppercase text-sm font-bold tracking-widest border-l-2 border-neonPink pl-3">2. Coupa Integration</h4>
-                <ul class="space-y-4">
-                  <li class="flex items-start gap-3">
-                    <span class="text-neonPink mt-1 text-lg">▹</span>
-                    <span><strong class="text-white">Reconciliation Engine:</strong> Designed specialized detection logic to identify settled/paid invoices, preventing Coupa credit memos from incorrectly attempting to apply against closed invoices.</span>
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <span class="text-neonPink mt-1 text-lg">▹</span>
-                    <span><strong class="text-white">Bidirectional Sync:</strong> Maintained and enhanced SuiteScript integration scripts syncing Coupa Vendor Invoices and Payments into NetSuite GL.</span>
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <span class="text-neonPink mt-1 text-lg">▹</span>
-                    <span><strong class="text-white">Data Triage:</strong> Conducted root-cause analysis on automation failures (malformed tax IDs, GL segments) and collaborated with AP teams via Jira.</span>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-mono text-neonAmber mb-4 uppercase text-sm font-bold tracking-widest border-l-2 border-neonAmber pl-3">3. Cross-Platform Pipelines</h4>
-                <ul class="space-y-4">
-                  <li class="flex items-start gap-3">
-                    <span class="text-neonAmber mt-1 text-lg">▹</span>
-                    <span><strong class="text-white">Filevine ↔ Zapier ↔ NetSuite:</strong> Architected sync pipelines for contacts, case matters, and disbursements. Designed hierarchical entity ingestion (Contacts → Customers, Projects → Customer Jobs).</span>
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <span class="text-neonAmber mt-1 text-lg">▹</span>
-                    <span><strong class="text-white">Check Syncing:</strong> Engineered asynchronous sync-back for physical check printing via NetSuite Scheduled Scripts and synchronous real-time sync for settled CC charges.</span>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-mono text-white mb-4 uppercase text-sm font-bold tracking-widest border-l-2 border-white pl-3">4. Financial Ledgers</h4>
-                <ul class="space-y-4">
-                  <li class="flex items-start gap-3">
-                    <span class="text-gray-400 mt-1 text-lg">▹</span>
-                    <span><strong class="text-white">Google Sheets OAuth 2.0:</strong> Engineered secure API-driven data pipelines using Google Apps Script and Token-Based Auth to extract NetSuite GL data into executive sheets.</span>
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <span class="text-gray-400 mt-1 text-lg">▹</span>
-                    <span><strong class="text-white">Legal Client Ledgers:</strong> Designed and deployed custom SuiteScript 2.1 client ledger data systems for three law firms with custom rendering, pagination, and multi-criteria filters.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+      </div>
+      
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-12 left-6 md:left-12 font-mono text-xs text-gray-500 tracking-[0.2em] uppercase flex items-center gap-4 animate-bounce">
+        <div class="w-[1px] h-12 bg-gradient-to-b from-gray-500 to-transparent"></div>
+        Scroll to initialize physics
+      </div>
+    </section>
 
-          <div class="glass-panel reveal flex flex-col justify-center border-t-4 border-t-neonAmber">
+    <!-- EXPERIENCE SECTION (ERP) -->
+    <section id="experience" class="py-48 min-h-screen px-6 md:px-12 max-w-[1400px] mx-auto flex flex-col justify-center">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-32 reveal">
+        <div>
+          <h2 class="font-anton text-6xl md:text-9xl text-white uppercase tracking-wide">Enterprise <br><span class="text-transparent" style="-webkit-text-stroke: 1px #00f3ff;">Architecture.</span></h2>
+        </div>
+        <p class="font-mono text-neonCyan text-sm tracking-widest uppercase mt-6 md:mt-0">Module 01 // Data Pipelines</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-20">
+        <!-- Zenardy -->
+        <div class="glass-panel reveal group lg:col-span-2">
+          <div class="flex justify-between items-start mb-12 border-b border-gray-800 pb-8">
             <div>
-              <span class="font-mono text-neonAmber text-xs tracking-widest uppercase block mb-2">Apr 2024 – Jun 2024</span>
-              <h3 class="text-3xl font-bold text-white mb-4">Titan Engineering & Automation Limited (TEAL)</h3>
-              <p class="text-neonCyan font-mono text-sm mb-6">Mechatronics Engineering Intern | Hosur, India</p>
-              <p class="text-gray-300 font-light leading-relaxed mb-6"> Assisted with mechanical calibration, end-effector testing, and cell operations on FANUC industrial robots. Implemented C programming and PLC ladder logic for machine diagnostics. </p>
+              <span class="font-mono text-neonCyan text-xs tracking-widest uppercase block mb-3">Sep 2025 – Jun 2026</span>
+              <h3 class="text-4xl md:text-5xl font-bold text-white font-sans">Zenardy Technologies</h3>
+              <p class="text-gray-400 mt-2 font-mono text-base">Associate Developer / NetSuite Consultant</p>
             </div>
-            <div class="mt-2 flex gap-3 flex-wrap">
-              <span class="tag tag-amber">FANUC</span>
-              <span class="tag tag-amber">PLC</span>
-            </div>
+            <span class="tag tag-cyan scale-125 origin-top-right">ID: ZenIN00125</span>
           </div>
-
-          <div class="glass-panel reveal flex flex-col justify-center">
-            <span class="font-mono text-gray-500 text-xs tracking-widest uppercase block mb-2">Aug 2022 – Mar 2024</span>
-            <h3 class="text-3xl font-bold text-white mb-4">Kongu Engineering College</h3>
-            <p class="text-neonCyan font-mono text-sm mb-6">Coding Coordinator & Campus Leader</p>
-            <p class="text-gray-300 font-light leading-relaxed mb-6"> Coordinated competitive coding challenges and infrastructure for campus symposiums Nexus (2022) and Throb (2023). Mentored 20+ peer students in foundational C programming, Python, and data structures. </p>
-            <div class="flex gap-3 flex-wrap">
-              <span class="tag">Leadership</span>
-              <span class="tag">Mentorship</span>
-              <span class="tag">C / Python</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" class="py-32 px-6 md:px-12 max-w-[1400px] mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-20 reveal">
-          <div>
-            <h2 class="font-anton text-6xl md:text-8xl text-white uppercase tracking-wide">Hardware & <br>
-              <span class="text-transparent" style="-webkit-text-stroke: 1px #ffaa00;">Edge AI.</span>
-            </h2>
-          </div>
-          <p class="font-mono text-neonAmber text-sm tracking-widest uppercase mt-6 md:mt-0">Module 02 // Kinematics & Logic</p>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="glass-panel reveal md:col-span-2 flex flex-col justify-between">
-            <div>
-              <div class="flex justify-between items-start mb-6">
-                <h3 class="text-3xl font-bold text-white">LiveSub (MyLiveTranslator)</h3>
-                <span class="tag tag-pink">100% Offline</span>
-              </div>
-              <p class="font-mono text-neonPink text-xs tracking-widest uppercase mb-6">Edge AI • sherpa-onnx • Kotlin • ML Kit v2</p>
-              <p class="text-gray-300 font-light text-lg mb-8 leading-relaxed"> Architected a privacy-first, on-device translation engine executing neural network inference directly on mobile hardware without cloud network reliance. 100% offline operation with zero network permissions. </p>
-              <div class="grid sm:grid-cols-2 gap-6 text-sm text-gray-400">
-                <div class="border-l border-gray-700 pl-4">
-                  <strong class="text-white block mb-1">Audio Capture & ASR</strong> Captured internal audio (16kHz PCM) via <code>AudioPlaybackCaptureConfiguration</code>. Integrated local sherpa-onnx supporting 33 Zipformer language packs and 5 Whisper ONNX tiers.
-                </div>
-                <div class="border-l border-gray-700 pl-4">
-                  <strong class="text-white block mb-1">Screen OCR & Streaming</strong> Google ML Kit v2 OCR across 5 scripts (Latin, Chinese, Devanagari, Japanese, Korean). Built Jetpack Compose floating UI via WindowManager.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="glass-panel reveal flex flex-col justify-between border-t-4 border-t-neonAmber">
-            <div>
-              <h3 class="text-2xl font-bold text-white mb-2">IN-THRUST Robot</h3>
-              <p class="font-mono text-gray-400 text-xs tracking-widest uppercase mb-4">Mechatronics Capstone (2022–2023)</p>
-              <p class="text-gray-300 font-light text-base leading-relaxed"> Fabricated a remote-controlled wall-climbing robot. Utilized dual high-RPM BLDC thrust fans generating a continuous low-pressure vacuum zone for vertical aerodynamic adhesion. </p>
-            </div>
-            <div class="mt-6 flex gap-2 flex-wrap">
-              <span class="tag tag-amber">SolidWorks</span>
-              <span class="tag tag-amber">SimonK 30A ESCs</span>
-              <span class="tag tag-amber">DC Motors</span>
-              <span class="tag tag-amber">NodeMCU / ESP8266</span>
-            </div>
-          </div>
-
-          <div class="glass-panel reveal flex flex-col justify-between">
-            <div>
-              <h3 class="text-2xl font-bold text-white mb-2">Local Mobile AI</h3>
-              <p class="font-mono text-gray-400 text-xs tracking-widest uppercase mb-4">Termux • Obsidian</p>
-              <p class="text-gray-300 font-light text-base leading-relaxed"> Built a continuous-learning memory architecture using an Obsidian Markdown Vault as a local vector database. Enabled autonomous context persistence on Poco X7 hardware. </p>
-            </div>
-          </div>
-
-          <div class="glass-panel reveal flex flex-col justify-between">
-            <div>
-              <h3 class="text-2xl font-bold text-white mb-2">Smart AC Telemetry</h3>
-              <p class="font-mono text-gray-400 text-xs tracking-widest uppercase mb-4">ESP32 • Python • IoT</p>
-              <p class="text-gray-300 font-light text-base leading-relaxed"> Developed an IoT predictive maintenance system calculating dust accumulation rates on air filters. Transmitted telemetry to ThingSpeak, reducing scheduled servicing overhead by 25%. </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="academics" class="py-32 px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50">
-        <div class="grid lg:grid-cols-12 gap-16">
-          <div class="lg:col-span-5 reveal">
-            <h2 class="font-anton text-5xl text-white uppercase tracking-wide mb-10">Academics.</h2>
-            <div class="space-y-6">
-              <div class="glass-panel border-l-4 border-l-neonCyan p-8">
-                <h3 class="text-2xl font-bold text-white">B.E. Mechatronics</h3>
-                <p class="text-gray-400 mt-1 font-mono text-sm">Kongu Engineering College | 2020 - 2024</p>
-                <div class="mt-8 flex items-end gap-4">
-                  <div class="font-anton text-7xl text-neonCyan leading-none">8.29</div>
-                  <div class="text-gray-400 font-mono pb-2">/ 10.0 CGPA <br>First Class with Distinction </div>
-                </div>
-                <div class="mt-8 flex flex-wrap gap-2">
-                  <span class="tag">Python: Grade O</span>
-                  <span class="tag">PLC: Grade O</span>
-                  <span class="tag">C Prog: Grade A+</span>
-                  <span class="tag">LabVIEW: Grade A+</span>
-                  <span class="tag">Microcontrollers: Grade A+</span>
-                </div>
-              </div>
-
-              <div class="glass-panel p-8">
-                <h3 class="text-xl font-bold text-white leading-snug">S.S.M. Lakshmi Ammal Matric Higher Sec School, Komarapalayam</h3>
-                <div class="mt-6 space-y-4 text-gray-300 font-mono text-sm">
-                  <div class="flex justify-between items-center border-b border-gray-800 pb-3">
-                    <span>HSC (Class XII) - 2020</span>
-                    <span class="text-white font-bold bg-white/10 px-3 py-1 rounded">70.3%</span>
-                  </div>
-                  <div class="flex justify-between items-center">
-                    <span>SSLC (Class X) - 2018</span>
-                    <span class="text-white font-bold bg-white/10 px-3 py-1 rounded">87.2% (Top 10)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="lg:col-span-7 reveal">
-            <h2 class="font-anton text-5xl text-transparent uppercase tracking-wide mb-10" style="-webkit-text-stroke: 1px #fff;">Taxonomy.</h2>
-            <div class="grid sm:grid-cols-2 gap-6 mb-12">
-              <div class="glass-panel p-6">
-                <h4 class="font-mono text-neonCyan mb-4 uppercase text-xs font-bold tracking-widest">Enterprise ERP</h4>
-                <p class="text-gray-300 leading-relaxed font-light text-sm">SuiteScript 2.1, SuiteAnalytics, SuiteFlow, Saved Searches, RESTlets, Suitelets, Coupa, Filevine, Zapier, OAuth 2.0 / TBA, Google Apps Script.</p>
-              </div>
-              <div class="glass-panel p-6">
-                <h4 class="font-mono text-neonPink mb-4 uppercase text-xs font-bold tracking-widest">Edge AI & Mobile</h4>
-                <p class="text-gray-300 leading-relaxed font-light text-sm">sherpa-onnx, ML Kit v2, Jetpack Compose, Kotlin, ONNX Runtime, Hugging Face, Obsidian RAG.</p>
-              </div>
-              <div class="glass-panel p-6">
-                <h4 class="font-mono text-neonAmber mb-4 uppercase text-xs font-bold tracking-widest">Robotics & IoT</h4>
-                <p class="text-gray-300 leading-relaxed font-light text-sm">FANUC Robotics, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB Design.</p>
-              </div>
-              <div class="glass-panel p-6">
-                <h4 class="font-mono text-white mb-4 uppercase text-xs font-bold tracking-widest">Languages & OS</h4>
-                <p class="text-gray-300 leading-relaxed font-light text-sm">Python, JavaScript, Kotlin, Java, C, Embedded C, SQL, Linux / WSL2, Git, GitHub.</p>
-              </div>
-            </div>
-
-            <h3 class="font-anton text-3xl text-white mb-6 uppercase tracking-wide">Honors & Certs</h3>
-            <div class="glass-panel p-8">
-              <ul class="space-y-5 text-gray-300 font-light">
+          
+          <div class="grid md:grid-cols-2 gap-16 text-gray-300 font-light text-lg leading-relaxed">
+            <div class="reveal-left delay-100">
+              <h4 class="font-mono text-neonCyan mb-6 uppercase text-sm font-bold tracking-widest border-l-4 border-neonCyan pl-4">1. Crunchyroll Procurement</h4>
+              <ul class="space-y-6">
                 <li class="flex items-start gap-4">
-                  <span class="text-neonPink font-bold mt-1">✦</span>
-                  <span><strong class="text-white">1st Prize (Xion-2023, SRM IST):</strong> National Paper Presentation on "Utilization of 2D Gahnite Nanosheets as Highly Conductive Front Contact for Silicon Solar Cells".</span>
+                  <span class="text-neonCyan mt-1 text-xl">▹</span>
+                  <span><strong class="text-white">PO-to-Billing Optimization:</strong> Engineered custom SuiteScript 2.1 UserEvents (afterSubmit/beforeSubmit) for 3-way matching and billing handoffs. Slashed approval latency by >90% (from 2 hours to 10 minutes).</span>
                 </li>
                 <li class="flex items-start gap-4">
-                  <span class="text-neonPink font-bold mt-1">✦</span>
-                  <span><strong class="text-white">Rajya Puraskar:</strong> Governor's Award (Bharat Scouts & Guides).</span>
+                  <span class="text-neonCyan mt-1 text-xl">▹</span>
+                  <span><strong class="text-white">Change Order Lifecycle:</strong> Handled end-to-end debugging for the procurement Change Order process, managing revisions, delta validations, line-item adjustments, and approval re-routing.</span>
                 </li>
                 <li class="flex items-start gap-4">
-                  <span class="text-neonPink font-bold mt-1">✦</span>
-                  <span><strong class="text-white">Top 5 Placement Rank:</strong> Finalist in college-wide placement assessment at Kongu Engineering College.</span>
+                  <span class="text-neonCyan mt-1 text-xl">▹</span>
+                  <span><strong class="text-white">Dynamic Tax Engine:</strong> Developed complex invoice customizations and automated tax calculation routines for multi-subsidiary billing compliance.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="reveal-right delay-200">
+              <h4 class="font-mono text-neonPink mb-6 uppercase text-sm font-bold tracking-widest border-l-4 border-neonPink pl-4">2. Coupa Integration</h4>
+              <ul class="space-y-6">
+                <li class="flex items-start gap-4">
+                  <span class="text-neonPink mt-1 text-xl">▹</span>
+                  <span><strong class="text-white">Reconciliation Engine:</strong> Designed specialized detection logic to identify settled/paid invoices, preventing Coupa credit memos from incorrectly attempting to apply against closed invoices.</span>
                 </li>
                 <li class="flex items-start gap-4">
-                  <span class="text-neonPink font-bold mt-1">✦</span>
-                  <span><strong class="text-white">GenAI & LLMs Workshop:</strong> Cuvette Tech.</span>
+                  <span class="text-neonPink mt-1 text-xl">▹</span>
+                  <span><strong class="text-white">Bidirectional Sync:</strong> Maintained and enhanced SuiteScript integration scripts syncing Coupa Vendor Invoices and Payments into NetSuite GL.</span>
                 </li>
                 <li class="flex items-start gap-4">
-                  <span class="text-neonPink font-bold mt-1">✦</span>
-                  <span><strong class="text-white">NPTEL (IIT Kharagpur):</strong> Java (Grade A), Cloud Computing (Grade A), Air Pollution (Grade A+).</span>
+                  <span class="text-neonPink mt-1 text-xl">▹</span>
+                  <span><strong class="text-white">Data Triage:</strong> Conducted root-cause analysis on automation failures (malformed tax IDs, GL segments) and collaborated with AP teams via Jira.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="reveal-left delay-300">
+              <h4 class="font-mono text-neonAmber mb-6 uppercase text-sm font-bold tracking-widest border-l-4 border-neonAmber pl-4">3. Cross-Platform Pipelines</h4>
+              <ul class="space-y-6">
+                <li class="flex items-start gap-4">
+                  <span class="text-neonAmber mt-1 text-xl">▹</span>
+                  <span><strong class="text-white">Filevine ↔ Zapier ↔ NetSuite:</strong> Architected sync pipelines for contacts, case matters, and disbursements. Designed hierarchical entity ingestion (Contacts → Customers, Projects → Customer Jobs).</span>
                 </li>
                 <li class="flex items-start gap-4">
-                  <span class="text-neonPink font-bold mt-1">✦</span>
-                  <span><strong class="text-white">Athletics:</strong> Badminton Regional Champion, Kyokushin Karate Regional Winner (Green/Black Belt).</span>
+                  <span class="text-neonAmber mt-1 text-xl">▹</span>
+                  <span><strong class="text-white">Check Syncing:</strong> Engineered asynchronous sync-back for physical check printing via NetSuite Scheduled Scripts and synchronous real-time sync for settled CC charges.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="reveal-right delay-400">
+              <h4 class="font-mono text-white mb-6 uppercase text-sm font-bold tracking-widest border-l-4 border-white pl-4">4. Financial Ledgers</h4>
+              <ul class="space-y-6">
+                <li class="flex items-start gap-4">
+                  <span class="text-gray-400 mt-1 text-xl">▹</span>
+                  <span><strong class="text-white">Google Sheets OAuth 2.0:</strong> Engineered secure API-driven data pipelines using Google Apps Script and Token-Based Auth to extract NetSuite GL data into executive sheets.</span>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="text-gray-400 mt-1 text-xl">▹</span>
+                  <span><strong class="text-white">Legal Client Ledgers:</strong> Designed and deployed custom SuiteScript 2.1 client ledger data systems for three law firms with custom rendering, pagination, and multi-criteria filters.</span>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-      </section>
 
-      <footer class="py-12 border-t border-gray-900/50 text-center font-mono text-xs text-gray-500 uppercase tracking-widest relative z-10">
-        <p class="mb-4">Dilipkumar Ravichandran - Multidisciplinary Engineer</p>
-        <p class="text-gray-600">Namakkal, Tamil Nadu, India • rdilipkumar2203@gmail.com • +91 75388 79358</p>
-      </footer>
-    </div>
+        <!-- TEAL -->
+        <div class="glass-panel reveal-left delay-100 flex flex-col justify-center border-t-4 border-t-neonAmber p-12">
+          <div>
+            <span class="font-mono text-neonAmber text-sm tracking-widest uppercase block mb-3">Apr 2024 – Jun 2024</span>
+            <h3 class="text-4xl font-bold text-white mb-4">Titan Engineering & Automation Limited (TEAL)</h3>
+            <p class="text-neonCyan font-mono text-base mb-8">Mechatronics Engineering Intern | Hosur, India</p>
+            <p class="text-gray-300 font-light text-lg leading-relaxed mb-8">
+              Assisted with mechanical calibration, end-effector testing, and cell operations on FANUC industrial robots. Implemented C programming and PLC ladder logic for machine diagnostics.
+            </p>
+          </div>
+          <div class="mt-auto flex gap-4 flex-wrap">
+            <span class="tag tag-amber">FANUC</span>
+            <span class="tag tag-amber">PLC</span>
+          </div>
+        </div>
 
-    <script>
-      function copyEmail(btn) {
-        const email = "rdilipkumar2203@gmail.com";
-        navigator.clipboard.writeText(email).then(() => {
-          const textSpan = btn.querySelector('.email-text');
-          const originalText = textSpan.innerText;
-          textSpan.innerText = "COPIED TO CLIPBOARD";
-          setTimeout(() => {
-            textSpan.innerText = originalText;
-          }, 2000);
-        });
+        <!-- Kongu Coordinator -->
+        <div class="glass-panel reveal-right delay-200 flex flex-col justify-center p-12">
+          <span class="font-mono text-gray-500 text-sm tracking-widest uppercase block mb-3">Aug 2022 – Mar 2024</span>
+          <h3 class="text-4xl font-bold text-white mb-4">Kongu Engineering College</h3>
+          <p class="text-neonCyan font-mono text-base mb-8">Coding Coordinator & Campus Leader</p>
+          <p class="text-gray-300 font-light text-lg leading-relaxed mb-8">
+            Coordinated competitive coding challenges and infrastructure for campus symposiums Nexus (2022) and Throb (2023). Mentored 20+ peer students in foundational C programming, Python, and data structures.
+          </p>
+          <div class="mt-auto flex gap-4 flex-wrap">
+            <span class="tag">Leadership</span>
+            <span class="tag">Mentorship</span>
+            <span class="tag">C / Python</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION (AI & HARDWARE) -->
+    <section id="projects" class="py-48 min-h-screen px-6 md:px-12 max-w-[1400px] mx-auto flex flex-col justify-center">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-32 reveal">
+        <div>
+          <h2 class="font-anton text-6xl md:text-9xl text-white uppercase tracking-wide">Hardware & <br><span class="text-transparent" style="-webkit-text-stroke: 1px #ffaa00;">Edge AI.</span></h2>
+        </div>
+        <p class="font-mono text-neonAmber text-sm tracking-widest uppercase mt-6 md:mt-0">Module 02 // Kinematics & Logic</p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-12">
+        
+        <!-- LiveSub -->
+        <div class="glass-panel reveal-left delay-100 lg:col-span-8 flex flex-col justify-between p-10 md:p-12">
+          <div>
+            <div class="flex flex-wrap justify-between items-start mb-6 gap-4">
+              <h3 class="text-4xl font-bold text-white">LiveSub (MyLiveTranslator)</h3>
+              <span class="tag tag-pink scale-110">100% Offline | Zero Cloud</span>
+            </div>
+            <p class="font-mono text-neonPink text-sm tracking-widest uppercase mb-8">Edge AI • sherpa-onnx • Kotlin • ML Kit v2</p>
+            <p class="text-gray-300 font-light text-xl mb-10 leading-relaxed">
+              Architected a privacy-first, on-device translation engine executing neural network inference directly on mobile hardware without cloud network reliance. 100% offline operation with zero network permissions.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-10 text-base text-gray-400">
+              <div class="border-l-2 border-gray-700 pl-6">
+                <strong class="text-white block mb-3 text-lg">Audio Capture & ASR</strong>
+                Captured internal audio (16kHz PCM) via <code>AudioPlaybackCaptureConfiguration</code>. Integrated local sherpa-onnx supporting 33 Zipformer language packs and 5 Whisper ONNX tiers.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-6">
+                <strong class="text-white block mb-3 text-lg">Screen OCR & Streaming</strong>
+                Google ML Kit v2 OCR across 5 scripts (Latin, Chinese, Devanagari, Japanese, Korean). Built Jetpack Compose floating UI via WindowManager.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile AI -->
+        <div class="glass-panel reveal-right delay-200 lg:col-span-4 flex flex-col justify-center p-10 md:p-12">
+          <div>
+            <h3 class="text-3xl font-bold text-white mb-4">Local Mobile AI</h3>
+            <p class="font-mono text-neonCyan text-sm tracking-widest uppercase mb-6">Termux • Obsidian</p>
+            <p class="text-gray-300 font-light text-lg leading-relaxed">
+              Built a continuous-learning memory architecture using an Obsidian Markdown Vault as a local vector database. Enabled autonomous context persistence on Poco X7 hardware.
+            </p>
+          </div>
+        </div>
+
+        <!-- IN-THRUST -->
+        <div class="glass-panel reveal-left delay-300 lg:col-span-6 flex flex-col justify-between border-t-4 border-t-neonAmber p-10 md:p-12">
+          <div>
+            <h3 class="text-3xl font-bold text-white mb-4">IN-THRUST Robot</h3>
+            <p class="font-mono text-gray-400 text-sm tracking-widest uppercase mb-6">Mechatronics Capstone (2022–2023)</p>
+            <p class="text-gray-300 font-light text-lg leading-relaxed">
+              Fabricated a remote-controlled wall-climbing robot. Utilized dual high-RPM BLDC thrust fans generating a continuous low-pressure vacuum zone for vertical aerodynamic adhesion.
+            </p>
+          </div>
+          <div class="mt-10 flex gap-3 flex-wrap">
+            <span class="tag tag-amber">SolidWorks</span>
+            <span class="tag tag-amber">SimonK 30A ESCs</span>
+            <span class="tag tag-amber">DC Motors</span>
+            <span class="tag tag-amber">ESP8266</span>
+          </div>
+        </div>
+
+        <!-- IoT AC -->
+        <div class="glass-panel reveal-right delay-400 lg:col-span-6 flex flex-col justify-between p-10 md:p-12">
+          <div>
+            <h3 class="text-3xl font-bold text-white mb-4">Smart AC Telemetry</h3>
+            <p class="font-mono text-gray-400 text-sm tracking-widest uppercase mb-6">ESP32 • Python • IoT</p>
+            <p class="text-gray-300 font-light text-lg leading-relaxed">
+              Developed an IoT predictive maintenance system calculating dust accumulation rates on air filters. Transmitted telemetry to ThingSpeak, reducing scheduled servicing overhead by 25%.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- METRICS & ACADEMICS -->
+    <section id="academics" class="py-48 min-h-screen px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center">
+      <div class="reveal mb-24">
+        <h2 class="font-anton text-6xl md:text-9xl text-white uppercase tracking-wide">Academics.</h2>
+        <p class="font-mono text-neonCyan text-sm tracking-widest uppercase mt-6">Module 03 // Educational Metrics</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-16">
+        <!-- University -->
+        <div class="glass-panel reveal-left border-l-4 border-l-neonCyan p-12 flex flex-col justify-center">
+          <h3 class="text-4xl font-bold text-white mb-2">B.E. Mechatronics</h3>
+          <p class="text-gray-400 font-mono text-base mb-10">Kongu Engineering College | 2020 - 2024</p>
+          
+          <div class="flex items-end gap-6 mb-12">
+            <div class="font-anton text-8xl text-neonCyan leading-none">8.29</div>
+            <div class="text-gray-400 font-mono pb-2 text-lg">/ 10.0 CGPA<br><span class="text-white font-bold">First Class with Distinction</span></div>
+          </div>
+          
+          <div class="flex flex-wrap gap-3">
+            <span class="tag">Python: Grade O</span>
+            <span class="tag">PLC: Grade O</span>
+            <span class="tag">C Prog: Grade A+</span>
+            <span class="tag">LabVIEW: Grade A+</span>
+            <span class="tag">Microcontrollers: Grade A+</span>
+          </div>
+        </div>
+
+        <!-- Schooling -->
+        <div class="flex flex-col gap-10 justify-center">
+          <div class="glass-panel reveal-right delay-100 p-10">
+            <h3 class="text-2xl font-bold text-white leading-snug mb-2">HSC (Class XII) - 2020</h3>
+            <p class="text-gray-400 font-mono text-sm mb-6">S.S.M. Lakshmi Ammal Matric Higher Sec School, Komarapalayam</p>
+            <div class="flex items-center gap-4">
+              <span class="text-2xl font-bold text-white">70.3%</span>
+              <div class="h-[1px] flex-grow bg-gray-800"></div>
+            </div>
+          </div>
+          
+          <div class="glass-panel reveal-right delay-200 p-10">
+            <h3 class="text-2xl font-bold text-white leading-snug mb-2">SSLC (Class X) - 2018</h3>
+            <p class="text-gray-400 font-mono text-sm mb-6">S.S.M. Lakshmi Ammal Matric Higher Sec School, Komarapalayam</p>
+            <div class="flex items-center gap-4">
+              <span class="text-2xl font-bold text-white">87.2%</span>
+              <span class="tag tag-pink">Top 10 in Class</span>
+              <div class="h-[1px] flex-grow bg-gray-800"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAXONOMY & HONORS -->
+    <section id="taxonomy" class="py-48 min-h-screen px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center">
+      <div class="reveal mb-24">
+        <h2 class="font-anton text-6xl md:text-9xl text-transparent uppercase tracking-wide" style="-webkit-text-stroke: 1px #fff;">Taxonomy.</h2>
+        <p class="font-mono text-neonPink text-sm tracking-widest uppercase mt-6">Module 04 // Skills & Honors</p>
+      </div>
+      
+      <div class="grid lg:grid-cols-12 gap-16">
+        
+        <div class="lg:col-span-6 flex flex-col gap-8">
+          <div class="glass-panel reveal-left delay-100 p-10">
+            <h4 class="font-mono text-neonCyan mb-6 uppercase text-sm font-bold tracking-widest">Enterprise ERP & Backend</h4>
+            <p class="text-gray-300 leading-relaxed font-light text-lg">SuiteScript 2.1, SuiteAnalytics, SuiteFlow, Saved Searches, RESTlets, Suitelets, Coupa, Filevine, Zapier, OAuth 2.0 / TBA, Google Apps Script.</p>
+          </div>
+          <div class="glass-panel reveal-left delay-200 p-10">
+            <h4 class="font-mono text-neonPink mb-6 uppercase text-sm font-bold tracking-widest">Edge AI & Mobile OS</h4>
+            <p class="text-gray-300 leading-relaxed font-light text-lg">sherpa-onnx, ML Kit v2, Jetpack Compose, Kotlin, ONNX Runtime, Hugging Face, Obsidian RAG.</p>
+          </div>
+          <div class="glass-panel reveal-left delay-300 p-10">
+            <h4 class="font-mono text-neonAmber mb-6 uppercase text-sm font-bold tracking-widest">Robotics, Kinematics & IoT</h4>
+            <p class="text-gray-300 leading-relaxed font-light text-lg">FANUC Robotics, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB Design.</p>
+          </div>
+          <div class="glass-panel reveal-left delay-400 p-10">
+            <h4 class="font-mono text-white mb-6 uppercase text-sm font-bold tracking-widest">Languages & Systems</h4>
+            <p class="text-gray-300 leading-relaxed font-light text-lg">Python, JavaScript, Kotlin, Java, C, Embedded C, SQL, Linux / WSL2, Git, GitHub.</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 reveal-right delay-200">
+          <div class="glass-panel p-10 h-full flex flex-col">
+            <h3 class="font-anton text-4xl text-white mb-10 uppercase tracking-wide border-b border-gray-800 pb-6">Honors & Certs</h3>
+            <ul class="space-y-8 text-gray-300 font-light text-lg flex-grow">
+              <li class="flex items-start gap-5">
+                <span class="text-neonPink font-bold mt-1 text-2xl">✦</span>
+                <span><strong class="text-white">1st Prize (Xion-2023, SRM IST):</strong> National Paper Presentation on "Utilization of 2D Gahnite Nanosheets as Highly Conductive Front Contact for Silicon Solar Cells".</span>
+              </li>
+              <li class="flex items-start gap-5">
+                <span class="text-neonPink font-bold mt-1 text-2xl">✦</span>
+                <span><strong class="text-white">Rajya Puraskar:</strong> Governor's Award (Bharat Scouts & Guides).</span>
+              </li>
+              <li class="flex items-start gap-5">
+                <span class="text-neonPink font-bold mt-1 text-2xl">✦</span>
+                <span><strong class="text-white">Top 5 Placement Rank:</strong> Finalist in college-wide placement assessment at Kongu Engineering College.</span>
+              </li>
+              <li class="flex items-start gap-5">
+                <span class="text-neonPink font-bold mt-1 text-2xl">✦</span>
+                <span><strong class="text-white">GenAI & LLMs Workshop:</strong> Cuvette Tech.</span>
+              </li>
+              <li class="flex items-start gap-5">
+                <span class="text-neonPink font-bold mt-1 text-2xl">✦</span>
+                <span><strong class="text-white">NPTEL (IIT Kharagpur):</strong> Java (Grade A), Cloud Computing (Grade A), Air Pollution (Grade A+).</span>
+              </li>
+              <li class="flex items-start gap-5">
+                <span class="text-neonPink font-bold mt-1 text-2xl">✦</span>
+                <span><strong class="text-white">Athletics:</strong> Badminton Regional Champion, Kyokushin Karate Regional Winner (Green/Black Belt).</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-gray-900/50 text-center font-mono text-xs text-gray-500 uppercase tracking-widest relative z-10">
+      <p class="mb-4">Dilipkumar Ravichandran // Multidisciplinary Engineer</p>
+      <p class="text-gray-600">Chennai, Tamil Nadu, India • rdilipkumar2203@gmail.com • +91 75388 79358</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // --- Copy Email Utility ---
+    function copyEmail(btn) {
+      const email = "rdilipkumar2203@gmail.com";
+      navigator.clipboard.writeText(email).then(() => {
+        const textSpan = btn.querySelector('.email-text');
+        const originalText = textSpan.innerText;
+        textSpan.innerText = "COPIED TO CLIPBOARD";
+        setTimeout(() => { textSpan.innerText = originalText; }, 2000);
+      });
+    }
+
+    // --- Dynamic Role Typing Effect ---
+    const roles = ["SOFTWARE DEVELOPER", "EDGE AI ARCHITECT", "MECHATRONICS SPECIALIST"];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const dynamicTextElement = document.getElementById('dynamic-text');
+
+    function typeEffect() {
+      const currentRole = roles[roleIndex];
+      
+      if (isDeleting) {
+        dynamicTextElement.innerText = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        dynamicTextElement.innerText = currentRole.substring(0, charIndex + 1);
+        charIndex++;
       }
 
-      const roles = ["SOFTWARE DEVELOPER", "EDGE AI ARCHITECT", "MECHATRONICS SPECIALIST"];
-      let roleIndex = 0;
-      let charIndex = 0;
-      let isDeleting = false;
-      const dynamicTextElement = document.getElementById('dynamic-text');
+      let typeSpeed = isDeleting ? 40 : 100;
 
-      function typeEffect() {
-        const currentRole = roles[roleIndex];
-        if (isDeleting) {
-          dynamicTextElement.innerText = currentRole.substring(0, charIndex - 1);
-          charIndex--;
-        } else {
-          dynamicTextElement.innerText = currentRole.substring(0, charIndex + 1);
-          charIndex++;
-        }
-        let typeSpeed = isDeleting ? 40 : 100;
-        if (!isDeleting && charIndex === currentRole.length) {
-          typeSpeed = 2000;
-          isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-          isDeleting = false;
-          roleIndex = (roleIndex + 1) % roles.length;
-          typeSpeed = 500;
-        }
-        setTimeout(typeEffect, typeSpeed);
+      if (!isDeleting && charIndex === currentRole.length) {
+        typeSpeed = 2000; // Pause at end
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        typeSpeed = 500; // Pause before new word
       }
-      setTimeout(typeEffect, 1000);
+      setTimeout(typeEffect, typeSpeed);
+    }
+    setTimeout(typeEffect, 1000);
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-          }
-        });
-      }, {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
+    // --- Scroll Reveal Observer ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
       });
-      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el) => observer.observe(el));
 
-      const canvas = document.getElementById('engine-canvas');
-      const renderer = new THREE.WebGLRenderer({
-        canvas,
-        alpha: true,
-        antialias: true,
-        powerPreference: "high-performance"
-      });
+
+    // =========================================================================
+    // THREE.JS: THE MULTI-LAYERED MATHEMATICAL & CYBERNETIC ENGINE
+    // Incorporates: Procedural Mechatronic Core (Flying Robot), Neural AI Web, 
+    // Math Ribbons, and High-Speed Electrical Pulses.
+    // =========================================================================
+    
+    const canvas = document.getElementById('engine-canvas');
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: "high-performance" });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x030305, 0.001);
+
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 3000);
+    // Start camera far away for the "fly in" effect
+    camera.position.set(0, 0, 1000); 
+
+    // Target tracking for scroll
+    let scrollY = 0;
+    let maxScroll = 1;
+    
+    window.addEventListener('scroll', () => {
+      scrollY = window.scrollY;
+      maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      const scene = new THREE.Scene();
-      scene.fog = new THREE.FogExp2(0x030305, 0.001);
-      const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 3000);
-      camera.position.set(0, 0, 1000);
+    });
 
-      let scrollY = 0;
-      let maxScroll = 1;
-      window.addEventListener('scroll', () => {
-        scrollY = window.scrollY;
-        maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      });
-      window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
+    // Main Object Groups
+    const masterGroup = new THREE.Group();
+    scene.add(masterGroup);
 
-      const masterGroup = new THREE.Group();
-      scene.add(masterGroup);
+    // --- SYSTEM 1: The Procedural "AI Robot" / Mechatronic Core ---
+    // A complex, rotating geometric assembly that flies in from space.
+    const coreGroup = new THREE.Group();
+    // Start it super far away
+    coreGroup.position.z = -1500; 
+    
+    // Core Icosahedron
+    const icoGeo = new THREE.IcosahedronGeometry(80, 1);
+    const wireMatAmber = new THREE.LineBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0.4 });
+    const coreWire = new THREE.LineSegments(new THREE.WireframeGeometry(icoGeo), wireMatAmber);
+    coreGroup.add(coreWire);
 
-      const coreGroup = new THREE.Group();
-      coreGroup.position.z = -1500;
-      const icoGeo = new THREE.IcosahedronGeometry(80, 1);
-      const wireMatAmber = new THREE.LineBasicMaterial({
-        color: 0xffaa00,
-        transparent: true,
-        opacity: 0.4
-      });
-      const coreWire = new THREE.LineSegments(new THREE.WireframeGeometry(icoGeo), wireMatAmber);
-      coreGroup.add(coreWire);
+    // Orbiting Torus Rings (Gyroscopic)
+    const ringMat = new THREE.LineBasicMaterial({ color: 0x00f3ff, transparent: true, opacity: 0.2 });
+    const rings = [];
+    for(let i=0; i<3; i++) {
+      const torusGeo = new THREE.TorusGeometry(140 + (i*25), 1, 4, 60);
+      const ring = new THREE.LineSegments(new THREE.WireframeGeometry(torusGeo), ringMat);
+      ring.rotation.x = Math.random() * Math.PI;
+      ring.rotation.y = Math.random() * Math.PI;
+      rings.push({ mesh: ring, speedX: (Math.random()-0.5)*0.02, speedY: (Math.random()-0.5)*0.02 });
+      coreGroup.add(ring);
+    }
+    masterGroup.add(coreGroup);
 
-      const ringMat = new THREE.LineBasicMaterial({
-        color: 0x00f3ff,
-        transparent: true,
-        opacity: 0.2
+    // --- SYSTEM 2: The Neural Network Web (AI) ---
+    // Floating particles that draw lines between close neighbors
+    const neuralGroup = new THREE.Group();
+    const neuralCount = 150;
+    const neuralGeo = new THREE.BufferGeometry();
+    const neuralPos = new Float32Array(neuralCount * 3);
+    const neuralVel = [];
+
+    for(let i=0; i<neuralCount; i++) {
+      neuralPos[i*3] = (Math.random() - 0.5) * 800;
+      neuralPos[i*3+1] = (Math.random() - 0.5) * 800;
+      neuralPos[i*3+2] = (Math.random() - 0.5) * 800;
+      neuralVel.push({
+        x: (Math.random() - 0.5) * 0.5,
+        y: (Math.random() - 0.5) * 0.5,
+        z: (Math.random() - 0.5) * 0.5
       });
-      const rings = [];
-      for (let i = 0; i < 3; i++) {
-        const torusGeo = new THREE.TorusGeometry(140 + (i * 25), 1, 4, 60);
-        const ring = new THREE.LineSegments(new THREE.WireframeGeometry(torusGeo), ringMat);
-        ring.rotation.x = Math.random() * Math.PI;
-        ring.rotation.y = Math.random() * Math.PI;
-        rings.push({
-          mesh: ring,
-          speedX: (Math.random() - 0.5) * 0.02,
-          speedY: (Math.random() - 0.5) * 0.02
-        });
-        coreGroup.add(ring);
+    }
+    neuralGeo.setAttribute('position', new THREE.BufferAttribute(neuralPos, 3));
+    
+    const neuralMat = new THREE.PointsMaterial({ color: 0x00f3ff, size: 2, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending });
+    const neuralPoints = new THREE.Points(neuralGeo, neuralMat);
+    neuralGroup.add(neuralPoints);
+
+    // Dynamic line segments for the neural web
+    const neuralLinesGeo = new THREE.BufferGeometry();
+    // Max lines = (N * (N-1)) / 2. We allocate a safe buffer size.
+    const maxLines = 1500; 
+    const neuralLinePos = new Float32Array(maxLines * 6); // 2 vertices per line, 3 coords per vertex
+    neuralLinesGeo.setAttribute('position', new THREE.BufferAttribute(neuralLinePos, 3));
+    const neuralLineMat = new THREE.LineBasicMaterial({ color: 0x00f3ff, transparent: true, opacity: 0.15, blending: THREE.AdditiveBlending });
+    const neuralLinesMesh = new THREE.LineSegments(neuralLinesGeo, neuralLineMat);
+    neuralGroup.add(neuralLinesMesh);
+    
+    masterGroup.add(neuralGroup);
+
+    // --- SYSTEM 3: Mathematical Harmonograph Ribbons ---
+    const ribbonGroup = new THREE.Group();
+    const numLines = 15;
+    const pointsPerLine = 200;
+    const ribbonGeometries = [];
+    const pinkMat = new THREE.LineBasicMaterial({ color: 0xff007f, transparent: true, opacity: 0.3, blending: THREE.AdditiveBlending });
+
+    for (let i = 0; i < numLines; i++) {
+      const geometry = new THREE.BufferGeometry();
+      const positions = new Float32Array(pointsPerLine * 3);
+      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const line = new THREE.Line(geometry, pinkMat);
+      ribbonGeometries.push(geometry);
+      ribbonGroup.add(line);
+    }
+    masterGroup.add(ribbonGroup);
+
+    // --- SYSTEM 4: High-Speed Electric Pulses ---
+    // Streaks of light zipping through the scene
+    const pulseGroup = new THREE.Group();
+    const numPulses = 20;
+    const pulses = [];
+    
+    for(let i=0; i<numPulses; i++) {
+      const pulseGeo = new THREE.BoxGeometry(2, 2, 80);
+      const pulseMat = new THREE.MeshBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending });
+      const pulse = new THREE.Mesh(pulseGeo, pulseMat);
+      
+      // Random start positions far outside
+      const resetPulse = (p) => {
+        p.position.set((Math.random()-0.5)*1000, (Math.random()-0.5)*1000, -1000 - Math.random()*1000);
+        p.userData.speed = 10 + Math.random() * 20;
+      };
+      resetPulse(pulse);
+      pulses.push({ mesh: pulse, reset: resetPulse });
+      pulseGroup.add(pulse);
+    }
+    masterGroup.add(pulseGroup);
+
+    // --- SYSTEM 5: Cosmic Starfield (Deep Space Depth) ---
+    const cosmicGeo = new THREE.BufferGeometry();
+    const cosmicCount = 2000;
+    const cosmicPos = new Float32Array(cosmicCount * 3);
+    for(let i=0; i<cosmicCount*3; i++) {
+      cosmicPos[i] = (Math.random() - 0.5) * 4000;
+    }
+    cosmicGeo.setAttribute('position', new THREE.BufferAttribute(cosmicPos, 3));
+    const cosmicMat = new THREE.PointsMaterial({ color: 0xffffff, size: 1.5, transparent: true, opacity: 0.3 });
+    const cosmicPoints = new THREE.Points(cosmicGeo, cosmicMat);
+    masterGroup.add(cosmicPoints);
+
+    // --- SYSTEM 6: Glowing Microchips (Data Packets) ---
+    const chipGroup = new THREE.Group();
+    const numChips = 40;
+    const chips = [];
+    const chipGeo = new THREE.BoxGeometry(20, 20, 2);
+    const chipEdges = new THREE.EdgesGeometry(chipGeo);
+    const baseChipMat = new THREE.LineBasicMaterial({ color: 0x00f3ff, transparent: true, opacity: 0 });
+    
+    for(let i=0; i<numChips; i++) {
+      const chip = new THREE.LineSegments(chipEdges, baseChipMat.clone());
+      chip.position.set((Math.random()-0.5)*1500, (Math.random()-0.5)*1500, (Math.random()-0.5)*1500);
+      chip.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, 0);
+      chip.userData = { 
+        life: Math.random(), // 0 to 1
+        speed: 0.005 + Math.random()*0.015,
+        rotSpeedX: (Math.random()-0.5)*0.05,
+        rotSpeedY: (Math.random()-0.5)*0.05
+      };
+      chips.push(chip);
+      chipGroup.add(chip);
+    }
+    masterGroup.add(chipGroup);
+
+    // --- SYSTEM 7: Stochastic Electrical Sparks ---
+    const sparkGroup = new THREE.Group();
+    const numSparks = 6;
+    const sparks = [];
+    const sparkColors = [0x00f3ff, 0xff007f, 0xffaa00]; // Cyan, Pink, Amber
+    
+    for(let i=0; i<numSparks; i++) {
+      const sparkGeo = new THREE.BufferGeometry();
+      const sparkPos = new Float32Array(8 * 3); // 8 jagged vertices per spark
+      sparkGeo.setAttribute('position', new THREE.BufferAttribute(sparkPos, 3));
+      const sparkMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, linewidth: 2 });
+      const spark = new THREE.Line(sparkGeo, sparkMat);
+      spark.userData = { life: 0, active: false };
+      sparks.push({ mesh: spark, pos: sparkPos });
+      sparkGroup.add(spark);
+    }
+    masterGroup.add(sparkGroup);
+
+    // --- Animation Loop ---
+    const clock = new THREE.Clock();
+    let introProgress = 0;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const time = clock.getElapsedTime();
+      const dt = clock.getDelta();
+
+      // 1. Intro Fly-in Animation for Camera and Core
+      if (introProgress < 1) {
+        introProgress += 0.005;
+        // Exponential ease out for camera initial load
+        camera.position.z += (800 - camera.position.z) * 0.05; 
+        // Core flies in from deep space
+        coreGroup.position.z += (0 - coreGroup.position.z) * 0.08;
       }
-      masterGroup.add(coreGroup);
 
-      const neuralGroup = new THREE.Group();
-      const neuralCount = 150;
-      const neuralGeo = new THREE.BufferGeometry();
-      const neuralPos = new Float32Array(neuralCount * 3);
-      const neuralVel = [];
-      for (let i = 0; i < neuralCount; i++) {
-        neuralPos[i * 3] = (Math.random() - 0.5) * 800;
-        neuralPos[i * 3 + 1] = (Math.random() - 0.5) * 800;
-        neuralPos[i * 3 + 2] = (Math.random() - 0.5) * 800;
-        neuralVel.push({
-          x: (Math.random() - 0.5) * 0.5,
-          y: (Math.random() - 0.5) * 0.5,
-          z: (Math.random() - 0.5) * 0.5
-        });
+      // 2. Scroll Parallax & Camera Dive (Surprise Mechanic)
+      const scrollPercent = scrollY / (maxScroll || 1);
+      
+      // As user scrolls down, the camera flies FORWARD through the space
+      // moving from z=800 down to z=-200, passing through the objects!
+      if (introProgress >= 1) {
+          const targetCamZ = 800 - (scrollPercent * 1000);
+          camera.position.z += (targetCamZ - camera.position.z) * 0.05;
       }
-      neuralGeo.setAttribute('position', new THREE.BufferAttribute(neuralPos, 3));
-      const neuralMat = new THREE.PointsMaterial({
-        color: 0x00f3ff,
-        size: 2,
-        transparent: true,
-        opacity: 0.8,
-        blending: THREE.AdditiveBlending
-      });
-      const neuralPoints = new THREE.Points(neuralGeo, neuralMat);
-      neuralGroup.add(neuralPoints);
 
-      const neuralLinesGeo = new THREE.BufferGeometry();
-      const maxLines = 1500;
-      const neuralLinePos = new Float32Array(maxLines * 6);
-      neuralLinesGeo.setAttribute('position', new THREE.BufferAttribute(neuralLinePos, 3));
-      const neuralLineMat = new THREE.LineBasicMaterial({
-        color: 0x00f3ff,
-        transparent: true,
-        opacity: 0.15,
-        blending: THREE.AdditiveBlending
-      });
-      const neuralLinesMesh = new THREE.LineSegments(neuralLinesGeo, neuralLineMat);
-      neuralGroup.add(neuralLinesMesh);
-      masterGroup.add(neuralGroup);
+      // Rotate the whole master group slightly based on scroll
+      masterGroup.rotation.y = scrollPercent * Math.PI * 0.5;
+      masterGroup.rotation.x = scrollPercent * Math.PI * 0.2;
 
-      const ribbonGroup = new THREE.Group();
-      const numLines = 15;
-      const pointsPerLine = 200;
-      const ribbonGeometries = [];
-      const pinkMat = new THREE.LineBasicMaterial({
-        color: 0xff007f,
-        transparent: true,
-        opacity: 0.3,
-        blending: THREE.AdditiveBlending
+      // 3. Animate Cybernetic Core
+      coreWire.rotation.y = time * 0.2;
+      coreWire.rotation.z = time * 0.1;
+      rings.forEach(r => {
+        r.mesh.rotation.x += r.speedX;
+        r.mesh.rotation.y += r.speedY;
       });
+
+      // 4. Animate Neural Web
+      const posAttr = neuralGeo.attributes.position;
+      let lineIndex = 0;
+      
+      for(let i=0; i<neuralCount; i++) {
+        // Move particles
+        posAttr.array[i*3] += neuralVel[i].x;
+        posAttr.array[i*3+1] += neuralVel[i].y;
+        posAttr.array[i*3+2] += neuralVel[i].z;
+
+        // Bounce off invisible boundary (cube of 800)
+        if(Math.abs(posAttr.array[i*3]) > 400) neuralVel[i].x *= -1;
+        if(Math.abs(posAttr.array[i*3+1]) > 400) neuralVel[i].y *= -1;
+        if(Math.abs(posAttr.array[i*3+2]) > 400) neuralVel[i].z *= -1;
+
+        // Check distances for line connections
+        for(let j=i+1; j<neuralCount; j++) {
+          const dx = posAttr.array[i*3] - posAttr.array[j*3];
+          const dy = posAttr.array[i*3+1] - posAttr.array[j*3+1];
+          const dz = posAttr.array[i*3+2] - posAttr.array[j*3+2];
+          const distSq = dx*dx + dy*dy + dz*dz;
+
+          // Connect if close (distance squared < 10000)
+          if(distSq < 15000 && lineIndex < maxLines) {
+            neuralLinePos[lineIndex*6] = posAttr.array[i*3];
+            neuralLinePos[lineIndex*6+1] = posAttr.array[i*3+1];
+            neuralLinePos[lineIndex*6+2] = posAttr.array[i*3+2];
+            
+            neuralLinePos[lineIndex*6+3] = posAttr.array[j*3];
+            neuralLinePos[lineIndex*6+4] = posAttr.array[j*3+1];
+            neuralLinePos[lineIndex*6+5] = posAttr.array[j*3+2];
+            lineIndex++;
+          }
+        }
+      }
+      posAttr.needsUpdate = true;
+      
+      // Hide unused lines in the buffer
+      for(let i = lineIndex*6; i < maxLines*6; i++) {
+        neuralLinePos[i] = 0;
+      }
+      neuralLinesGeo.attributes.position.needsUpdate = true;
+
+      // 5. Animate Math Ribbons (Lissajous knots)
+      ribbonGroup.rotation.z = time * 0.05;
       for (let i = 0; i < numLines; i++) {
-        const geometry = new THREE.BufferGeometry();
-        const positions = new Float32Array(pointsPerLine * 3);
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        const line = new THREE.Line(geometry, pinkMat);
-        ribbonGeometries.push(geometry);
-        ribbonGroup.add(line);
-      }
-      masterGroup.add(ribbonGroup);
+        const positions = ribbonGeometries[i].attributes.position.array;
+        const offset = i * (Math.PI * 2 / numLines); 
+        
+        for (let j = 0; j < pointsPerLine; j++) {
+          const t = (j / pointsPerLine) * Math.PI * 4; 
+          const A = 250 + Math.sin(time * 0.5 + offset) * 100;
+          
+          const x = A * Math.sin(1.01 * t + time * 0.2) * Math.cos(2.1 * t);
+          const y = A * Math.sin(1.1 * t + time * 0.3) * Math.sin(2.1 * t);
+          const z = A * Math.cos(1.2 * t + time * 0.4 + offset);
 
-      const pulseGroup = new THREE.Group();
-      const numPulses = 20;
-      const pulses = [];
-      for (let i = 0; i < numPulses; i++) {
-        const pulseGeo = new THREE.BoxGeometry(2, 2, 80);
-        const pulseMat = new THREE.MeshBasicMaterial({
-          color: 0xffaa00,
-          transparent: true,
-          opacity: 0.8,
-          blending: THREE.AdditiveBlending
-        });
-        const pulse = new THREE.Mesh(pulseGeo, pulseMat);
-        const resetPulse = (p) => {
-          p.position.set((Math.random() - 0.5) * 1000, (Math.random() - 0.5) * 1000, -1000 - Math.random() * 1000);
-          p.userData.speed = 10 + Math.random() * 20;
-        };
-        resetPulse(pulse);
-        pulses.push({ mesh: pulse, reset: resetPulse });
-        pulseGroup.add(pulse);
+          positions[j*3] = x;
+          positions[j*3+1] = y;
+          positions[j*3+2] = z;
+        }
+        ribbonGeometries[i].attributes.position.needsUpdate = true;
       }
-      masterGroup.add(pulseGroup);
 
-      const cosmicGeo = new THREE.BufferGeometry();
-      const cosmicCount = 2000;
-      const cosmicPos = new Float32Array(cosmicCount * 3);
-      for (let i = 0; i < cosmicCount * 3; i++) {
-        cosmicPos[i] = (Math.random() - 0.5) * 4000;
-      }
-      cosmicGeo.setAttribute('position', new THREE.BufferAttribute(cosmicPos, 3));
-      const cosmicMat = new THREE.PointsMaterial({
-        color: 0xffffff,
-        size: 1.5,
-        transparent: true,
-        opacity: 0.3
+      // 6. Animate Electric Pulses
+      pulses.forEach(p => {
+        p.mesh.position.z += p.mesh.userData.speed;
+        // If it flies past the camera, reset it
+        if (p.mesh.position.z > 500) {
+          p.reset(p.mesh);
+        }
       });
-      const cosmicPoints = new THREE.Points(cosmicGeo, cosmicMat);
-      masterGroup.add(cosmicPoints);
 
-      const chipGroup = new THREE.Group();
-      const numChips = 40;
-      const chips = [];
-      const chipGeo = new THREE.BoxGeometry(20, 20, 2);
-      const chipEdges = new THREE.EdgesGeometry(chipGeo);
-      const baseChipMat = new THREE.LineBasicMaterial({
-        color: 0x00f3ff,
-        transparent: true,
-        opacity: 0
+      // 7. Cosmic Starfield Rotation
+      cosmicPoints.rotation.y = time * 0.02;
+      cosmicPoints.rotation.z = time * 0.01;
+
+      // 8. Animate Procedural Data Chips
+      chips.forEach(c => {
+        c.rotation.x += c.userData.rotSpeedX;
+        c.rotation.y += c.userData.rotSpeedY;
+        c.userData.life += c.userData.speed;
+        
+        if(c.userData.life > 1) {
+          c.userData.life = 0; // Respawn
+          c.position.set((Math.random()-0.5)*1500, (Math.random()-0.5)*1500, (Math.random()-0.5)*1500 - 500);
+          // Randomize color to one of the theme neons
+          const randColor = sparkColors[Math.floor(Math.random() * sparkColors.length)];
+          c.material.color.setHex(randColor);
+        }
+        // Sine wave opacity: fades in and out smoothly
+        c.material.opacity = Math.sin(c.userData.life * Math.PI) * 0.7;
       });
-      const sparkColors = [0x00f3ff, 0xff007f, 0xffaa00];
-      for (let i = 0; i < numChips; i++) {
-        const chip = new THREE.LineSegments(chipEdges, baseChipMat.clone());
-        chip.position.set((Math.random() - 0.5) * 1500, (Math.random() - 0.5) * 1500, (Math.random() - 0.5) * 1500);
-        chip.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
-        chip.userData = {
-          life: Math.random(),
-          speed: 0.005 + Math.random() * 0.015,
-          rotSpeedX: (Math.random() - 0.5) * 0.05,
-          rotSpeedY: (Math.random() - 0.5) * 0.05
-        };
-        chips.push(chip);
-        chipGroup.add(chip);
+
+      // 9. Stochastic Electric Sparks
+      // Random chance to fire a spark every frame
+      if (Math.random() > 0.92) { 
+        const inactiveSpark = sparks.find(s => !s.mesh.userData.active);
+        if (inactiveSpark) {
+          inactiveSpark.mesh.userData.active = true;
+          inactiveSpark.mesh.userData.life = 1.0;
+          inactiveSpark.mesh.material.opacity = 1.0;
+          inactiveSpark.mesh.material.color.setHex(sparkColors[Math.floor(Math.random() * sparkColors.length)]);
+          
+          // Generate a jagged line through space
+          let px = (Math.random()-0.5)*1200;
+          let py = (Math.random()-0.5)*1200;
+          let pz = (Math.random()-0.5)*1200;
+          
+          for(let v=0; v<8; v++) {
+             inactiveSpark.pos[v*3] = px;
+             inactiveSpark.pos[v*3+1] = py;
+             inactiveSpark.pos[v*3+2] = pz;
+             // Wander randomly for the next vertex
+             px += (Math.random()-0.5)*200;
+             py += (Math.random()-0.5)*200;
+             pz += (Math.random()-0.5)*200;
+          }
+          inactiveSpark.mesh.geometry.attributes.position.needsUpdate = true;
+        }
       }
-      masterGroup.add(chipGroup);
-
-      const sparkGroup = new THREE.Group();
-      const numSparks = 6;
-      const sparks = [];
-      for (let i = 0; i < numSparks; i++) {
-        const sparkGeo = new THREE.BufferGeometry();
-        const sparkPos = new Float32Array(8 * 3);
-        sparkGeo.setAttribute('position', new THREE.BufferAttribute(sparkPos, 3));
-        const sparkMat = new THREE.LineBasicMaterial({
-          color: 0xffffff,
-          transparent: true,
-          opacity: 0,
-          blending: THREE.AdditiveBlending,
-          linewidth: 2
-        });
-        const spark = new THREE.Line(sparkGeo, sparkMat);
-        spark.userData = { life: 0, active: false };
-        sparks.push({ mesh: spark, pos: sparkPos });
-        sparkGroup.add(spark);
-      }
-      masterGroup.add(sparkGroup);
-
-      const clock = new THREE.Clock();
-      let introProgress = 0;
-
-      function animate() {
-        requestAnimationFrame(animate);
-        const time = clock.getElapsedTime();
-        if (introProgress < 1) {
-          introProgress += 0.01;
-          camera.position.z += (300 - camera.position.z) * 0.05;
-          coreGroup.position.z += (0 - coreGroup.position.z) * 0.08;
+      
+      // Decay sparks
+      sparks.forEach(s => {
+        if (s.mesh.userData.active) {
+          s.mesh.userData.life -= 0.08; // Flash fades quickly
+          s.mesh.material.opacity = s.mesh.userData.life;
+          if (s.mesh.userData.life <= 0) s.mesh.userData.active = false;
         }
+      });
 
-        const scrollPercent = scrollY / (maxScroll || 1);
-        masterGroup.rotation.y = scrollPercent * Math.PI * 1.5;
-        masterGroup.rotation.x = scrollPercent * Math.PI * 0.3;
+      renderer.render(scene, camera);
+    }
 
-        coreWire.rotation.y = time * 0.2;
-        coreWire.rotation.z = time * 0.1;
-        rings.forEach(r => {
-          r.mesh.rotation.x += r.speedX;
-          r.mesh.rotation.y += r.speedY;
-        });
-
-        const posAttr = neuralGeo.attributes.position;
-        let lineIndex = 0;
-        for (let i = 0; i < neuralCount; i++) {
-          posAttr.array[i * 3] += neuralVel[i].x;
-          posAttr.array[i * 3 + 1] += neuralVel[i].y;
-          posAttr.array[i * 3 + 2] += neuralVel[i].z;
-
-          if (Math.abs(posAttr.array[i * 3]) > 400) neuralVel[i].x *= -1;
-          if (Math.abs(posAttr.array[i * 3 + 1]) > 400) neuralVel[i].y *= -1;
-          if (Math.abs(posAttr.array[i * 3 + 2]) > 400) neuralVel[i].z *= -1;
-
-          for (let j = i + 1; j < neuralCount; j++) {
-            const dx = posAttr.array[i * 3] - posAttr.array[j * 3];
-            const dy = posAttr.array[i * 3 + 1] - posAttr.array[j * 3 + 1];
-            const dz = posAttr.array[i * 3 + 2] - posAttr.array[j * 3 + 2];
-            const distSq = dx * dx + dy * dy + dz * dz;
-            if (distSq < 15000 && lineIndex < maxLines) {
-              neuralLinePos[lineIndex * 6] = posAttr.array[i * 3];
-              neuralLinePos[lineIndex * 6 + 1] = posAttr.array[i * 3 + 1];
-              neuralLinePos[lineIndex * 6 + 2] = posAttr.array[i * 3 + 2];
-              neuralLinePos[lineIndex * 6 + 3] = posAttr.array[j * 3];
-              neuralLinePos[lineIndex * 6 + 4] = posAttr.array[j * 3 + 1];
-              neuralLinePos[lineIndex * 6 + 5] = posAttr.array[j * 3 + 2];
-              lineIndex++;
-            }
-          }
-        }
-        posAttr.needsUpdate = true;
-        for (let i = lineIndex * 6; i < maxLines * 6; i++) {
-          neuralLinePos[i] = 0;
-        }
-        neuralLinesGeo.attributes.position.needsUpdate = true;
-
-        ribbonGroup.rotation.z = time * 0.05;
-        for (let i = 0; i < numLines; i++) {
-          const positions = ribbonGeometries[i].attributes.position.array;
-          const offset = i * (Math.PI * 2 / numLines);
-          for (let j = 0; j < pointsPerLine; j++) {
-            const t = (j / pointsPerLine) * Math.PI * 4;
-            const A = 250 + Math.sin(time * 0.5 + offset) * 100;
-            const x = A * Math.sin(1.01 * t + time * 0.2) * Math.cos(2.1 * t);
-            const y = A * Math.sin(1.1 * t + time * 0.3) * Math.sin(2.1 * t);
-            const z = A * Math.cos(1.2 * t + time * 0.4 + offset);
-            positions[j * 3] = x;
-            positions[j * 3 + 1] = y;
-            positions[j * 3 + 2] = z;
-          }
-          ribbonGeometries[i].attributes.position.needsUpdate = true;
-        }
-
-        pulses.forEach(p => {
-          p.mesh.position.z += p.mesh.userData.speed;
-          if (p.mesh.position.z > 500) {
-            p.reset(p.mesh);
-          }
-        });
-
-        cosmicPoints.rotation.y = time * 0.02;
-        cosmicPoints.rotation.z = time * 0.01;
-
-        chips.forEach(c => {
-          c.rotation.x += c.userData.rotSpeedX;
-          c.rotation.y += c.userData.rotSpeedY;
-          c.userData.life += c.userData.speed;
-          if (c.userData.life > 1) {
-            c.userData.life = 0;
-            c.position.set((Math.random() - 0.5) * 1500, (Math.random() - 0.5) * 1500, (Math.random() - 0.5) * 1500 - 500);
-            const randColor = sparkColors[Math.floor(Math.random() * sparkColors.length)];
-            c.material.color.setHex(randColor);
-          }
-          c.material.opacity = Math.sin(c.userData.life * Math.PI) * 0.7;
-        });
-
-        if (Math.random() > 0.92) {
-          const inactiveSpark = sparks.find(s => !s.mesh.userData.active);
-          if (inactiveSpark) {
-            inactiveSpark.mesh.userData.active = true;
-            inactiveSpark.mesh.userData.life = 1.0;
-            inactiveSpark.mesh.material.opacity = 1.0;
-            inactiveSpark.mesh.material.color.setHex(sparkColors[Math.floor(Math.random() * sparkColors.length)]);
-            let px = (Math.random() - 0.5) * 1200;
-            let py = (Math.random() - 0.5) * 1200;
-            let pz = (Math.random() - 0.5) * 1200;
-            for (let v = 0; v < 8; v++) {
-              inactiveSpark.pos[v * 3] = px;
-              inactiveSpark.pos[v * 3 + 1] = py;
-              inactiveSpark.pos[v * 3 + 2] = pz;
-              px += (Math.random() - 0.5) * 200;
-              py += (Math.random() - 0.5) * 200;
-              pz += (Math.random() - 0.5) * 200;
-            }
-            inactiveSpark.mesh.geometry.attributes.position.needsUpdate = true;
-          }
-        }
-
-        sparks.forEach(s => {
-          if (s.mesh.userData.active) {
-            s.mesh.userData.life -= 0.08;
-            s.mesh.material.opacity = s.mesh.userData.life;
-            if (s.mesh.userData.life <= 0) s.mesh.userData.active = false;
-          }
-        });
-
-        renderer.render(scene, camera);
-      }
-      animate();
-    </script>
-  </body>
+    animate();
+  </script>
+</body>
 </html>

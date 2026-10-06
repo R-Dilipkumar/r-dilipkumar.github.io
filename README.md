@@ -1,103 +1,124 @@
-# Dilipkumar Ravichandran Portfolio
+# Dilipkumar Ravichandran | Portfolio
 
-A modern, high-impact personal portfolio website that showcases my work across mechatronics, robotics, edge AI, enterprise systems, and software engineering.
+> **Systems & AI Engineer** | Mechatronics | Edge AI | Enterprise Integration
 
-This repository contains a single-page portfolio built with HTML, Tailwind CSS, JavaScript, and Three.js, designed to present a strong personal brand with a sleek cyber-inspired interface.
+A professional portfolio website showcasing 8+ years of multidisciplinary engineering expertise across robotics, embedded systems, on-device AI, and enterprise ERP solutions.
 
-## About the Project
-
-This portfolio highlights:
-
-- professional experience and technical contributions
-- academic background and key achievements
-- robotics, automation, and embedded systems work
-- edge AI and mobile intelligence projects
-- ERP and integration engineering experience
-- contact and networking details for recruiters and collaborators
-
-## Live Site
-
-Visit the portfolio here:
-
-https://r-dilipkumar.github.io/
-
-## Tech Stack
-
-- HTML5
-- Tailwind CSS
-- JavaScript
-- Three.js
-- Google Fonts
-
-## Features
-
-- responsive single-page layout
-- futuristic dark UI with glassmorphism-inspired panels
-- animated background graphics and motion effects
-- smooth scrolling and reveal transitions
-- sections for experience, projects, academics, and contact
-- lightweight static deployment for fast loading and easy hosting
-
-## Project Structure
-
-```text
-.
-├── index.html      # Main portfolio page and complete site content
-├── README.md       # Project overview and setup instructions
-└── .github/        # Optional repository configuration (if added later)
-```
-
-## Local Development
-
-Because this is a static website, it can be previewed quickly with a local web server.
-
-### Using Python
-
-```bash
-cd r-dilipkumar.github.io
-python -m http.server 8000
-```
-
-Then open:
-
-```text
-http://localhost:8000
-```
-
-### Open Directly
-
-You can also open `index.html` directly in a browser, though using a local server is recommended for a more consistent experience.
-
-## Deployment
-
-This portfolio is well-suited for GitHub Pages.
-
-1. Push the repository to GitHub.
-2. Go to the repository settings.
-3. Open the Pages section.
-4. Select the main branch as the source.
-5. Save the settings and wait for publishing to complete.
-
-## Customization
-
-To personalize or update the portfolio:
-
-- edit the hero text and profile summary in `index.html`
-- update contact information, email, and social links
-- modify the experience, projects, or education sections
-- adjust colors, fonts, and styling through the embedded CSS and Tailwind config
-
-## Contact
-
-- Email: rdilipkumar2203@gmail.com
-- Phone: +91 75388 79358
-- LinkedIn: https://linkedin.com/in/r-dilipkumar
-- GitHub: https://github.com/R-Dilipkumar
-
-## License
-
-This project is intended for personal portfolio use. Please obtain permission before reusing or redistributing it beyond personal branding and portfolio presentation.
+**Visit:** https://r-dilipkumar.github.io/
 
 ---
 
-Built to represent a multidisciplinary engineering profile spanning software, automation, robotics, and AI.
+## Professional Overview
+
+This portfolio highlights my core competencies and recent work:
+
+### Experience Highlights
+
+**Zenardy Technologies** — Associate Developer / NetSuite Consultant *(Sep 2025 – Jun 2026)*
+- Engineered enterprise procurement pipelines for Crunchyroll and complex SuiteScript 2.1 automation
+- Designed bidirectional API integrations (Coupa, Filevine, Zapier, NetSuite) for multi-million-dollar transaction volumes
+- Built financial reconciliation engines and OAuth 2.0 data pipelines for legal client ledger systems
+
+**Titan Engineering & Automation (TEAL)** — Mechatronics Engineering Intern *(Apr 2024 – Jun 2024)*
+- Calibrated and optimized FANUC industrial robots for manufacturing automation
+- Implemented PLC logic and cell operations for robotic systems
+
+### Education
+
+**B.E. Mechatronics** — Kongu Engineering College *(2020–2024)*
+- **8.29/10.0 CGPA** | First Class with Distinction
+- Graded O in Python, PLC | A+ in C Programming, LabVIEW, Microcontrollers
+
+### Specializations
+
+| Domain | Technologies |
+|--------|--------------|
+| **Enterprise ERP** | SuiteScript 2.1, SuiteAnalytics, SuiteFlow, Saved Searches, RESTlets, Suitelets, OAuth 2.0, Token-Based Auth |
+| **Edge AI & Mobile** | sherpa-onnx, ML Kit v2, Jetpack Compose, Kotlin, ONNX Runtime, Hugging Face, Local RAG |
+| **Robotics & IoT** | FANUC Robotics, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB Design |
+| **Languages** | Python, JavaScript, Kotlin, Java, C, Embedded C, SQL, Linux, Git, GitHub |
+
+### Notable Projects
+
+**LiveSub (MyLiveTranslator)** — Privacy-First On-Device Translation
+- Built 100% offline real-time translation engine using sherpa-onnx and Kotlin
+- Integrated multi-script OCR (Latin, Chinese, Devanagari, Japanese, Korean) via ML Kit v2
+- Architected local audio capture and ASR pipeline for edge inference
+
+**IN-THRUST Robot** — Mechatronics Capstone
+- Fabricated wall-climbing robot with dual high-RPM BLDC motors and thrust fans
+- Designed mechanical systems in SolidWorks; integrated NodeMCU/ESP8266 for remote control
+
+**Smart AC Telemetry** — IoT Predictive Maintenance
+- Developed ESP32-based system for calculating dust accumulation and filter life prediction
+- Implemented cloud telemetry and anomaly detection for HVAC maintenance
+
+---
+
+## Technical Stack
+
+**Frontend & Styling**
+- HTML5
+- Tailwind CSS
+
+**Client-Side Scripting**
+- JavaScript (Vanilla)
+
+**3D Graphics & Animation**
+- Three.js
+
+**Typography**
+- Google Fonts (Anton, Outfit, Space Mono)
+
+**Deployment**
+- GitHub Pages
+
+---
+
+## How to View
+
+### Online
+Visit the live portfolio: https://r-dilipkumar.github.io/
+
+### Local Preview
+```bash
+cd r-dilipkumar.github.io
+python -m http.server 8000
+# Then open http://localhost:8000
+```
+
+---
+
+## Quick Facts
+
+✓ **8.29 GPA** in Mechatronics Engineering  
+✓ **Multi-stack expertise**: ERP automation, mobile AI, robotics, IoT  
+✓ **Enterprise-scale work**: Crunchyroll, multi-subsidiary billing, legal tech integrations  
+✓ **Published research**: Paper presentation winner (Xion 2023, SRM IST)  
+✓ **Leadership**: Campus coding coordinator, 20+ students mentored  
+✓ **Honors**: Rajya Puraskar (Governor's Award), Regional sports champion  
+
+---
+
+## Contact & Links
+
+📧 **Email:** rdilipkumar2203@gmail.com  
+📱 **Phone:** +91 75388 79358  
+🔗 **LinkedIn:** https://linkedin.com/in/r-dilipkumar  
+💻 **GitHub:** https://github.com/R-Dilipkumar  
+
+---
+
+## For Recruiters & Hiring Managers
+
+This portfolio is optimized to showcase:
+- **Full-stack technical depth** across multiple domains (ERP, AI, embedded systems)
+- **Real-world impact** on production systems handling high transaction volumes
+- **Learning agility** with demonstrated expertise across hardware, software, and AI
+- **Communication skills** via clear project documentation and professional presentation
+
+**Ideal for roles:** Software Engineer, Systems Engineer, Solutions Engineer, Automation Engineer, AI/ML Engineer, Integration Engineer, Full-Stack Developer
+
+---
+
+**Built with clean, performant HTML/CSS/JS—no bloat, just results.**

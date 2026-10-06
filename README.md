@@ -1,90 +1,188 @@
 # Dilipkumar Ravichandran | Portfolio
 
-> **Systems & AI Engineer** | Mechatronics | Edge AI | Enterprise Integration
+> Systems & AI Engineer | Mechatronics | Edge AI | Automation | Enterprise Integration
 
-A professional portfolio website showcasing 8+ years of multidisciplinary engineering expertise across robotics, embedded systems, on-device AI, and enterprise ERP solutions.
+Professional portfolio website for Dilipkumar Ravichandran, showcasing a multidisciplinary engineering profile combining mechatronics, robotics, enterprise automation, and AI-driven product thinking.
 
-**Visit:** https://r-dilipkumar.github.io/
-
----
-
-## Professional Overview
-
-This portfolio highlights my core competencies and recent work:
-
-### Experience Highlights
-
-**Zenardy Technologies** — Associate Developer / NetSuite Consultant *(Sep 2025 – Jun 2026)*
-- Engineered enterprise procurement pipelines for Crunchyroll and complex SuiteScript 2.1 automation
-- Designed bidirectional API integrations (Coupa, Filevine, Zapier, NetSuite) for multi-million-dollar transaction volumes
-- Built financial reconciliation engines and OAuth 2.0 data pipelines for legal client ledger systems
-
-**Titan Engineering & Automation (TEAL)** — Mechatronics Engineering Intern *(Apr 2024 – Jun 2024)*
-- Calibrated and optimized FANUC industrial robots for manufacturing automation
-- Implemented PLC logic and cell operations for robotic systems
-
-### Education
-
-**B.E. Mechatronics** — Kongu Engineering College *(2020–2024)*
-- **8.29/10.0 CGPA** | First Class with Distinction
-- Graded O in Python, PLC | A+ in C Programming, LabVIEW, Microcontrollers
-
-### Specializations
-
-| Domain | Technologies |
-|--------|--------------|
-| **Enterprise ERP** | SuiteScript 2.1, SuiteAnalytics, SuiteFlow, Saved Searches, RESTlets, Suitelets, OAuth 2.0, Token-Based Auth |
-| **Edge AI & Mobile** | sherpa-onnx, ML Kit v2, Jetpack Compose, Kotlin, ONNX Runtime, Hugging Face, Local RAG |
-| **Robotics & IoT** | FANUC Robotics, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB Design |
-| **Languages & Systems** | Python, JavaScript, Kotlin, Java, C, Embedded C, SQL, Linux, WSL2, Git, GitHub |
-
-### Notable Projects
-
-**LiveSub (MyLiveTranslator)** — Privacy-First On-Device Translation
-- Built 100% offline real-time translation engine using sherpa-onnx and Kotlin
-- Integrated multi-script OCR (Latin, Chinese, Devanagari, Japanese, Korean) via ML Kit v2
-- Architected local audio capture and ASR pipeline for edge inference
-
-**IN-THRUST Robot** — Mechatronics Capstone
-- Fabricated wall-climbing robot with dual high-RPM BLDC motors and thrust fans
-- Designed mechanical systems in SolidWorks; integrated NodeMCU/ESP8266 for remote control
-
-**Smart AC Telemetry** — IoT Predictive Maintenance
-- Developed ESP32-based system for calculating dust accumulation and filter life prediction
-- Implemented cloud telemetry and anomaly detection for HVAC maintenance
+Live portfolio: https://r-dilipkumar.github.io/
 
 ---
 
-## Quick Facts
+## Professional Summary
 
-✓ **8.29 GPA** in Mechatronics Engineering  
-✓ **Multi-stack expertise**: ERP automation, mobile AI, robotics, IoT  
-✓ **Enterprise-scale work**: Crunchyroll, multi-subsidiary billing, legal tech integrations  
-✓ **Published research**: Paper presentation winner (Xion 2023, SRM IST)  
-✓ **Leadership**: Campus coding coordinator, 20+ students mentored  
-✓ **Honors**: Rajya Puraskar (Governor's Award), Regional sports champion  
+I am a mechatronics engineering graduate with a strong foundation in robotics, embedded systems, automation, and intelligent edge applications. My work spans enterprise ERP implementation, AI-powered mobile solutions, industrial automation, and IoT-based problem solving.
+
+My experience reflects a balance of technical depth and practical execution, with a focus on building reliable systems that connect hardware, data, and software.
 
 ---
 
-## Contact & Links
+## Experience
 
-📧 **Email:** rdilipkumar2203@gmail.com  
-📱 **Phone:** +91 75388 79358  
-🔗 **LinkedIn:** https://linkedin.com/in/r-dilipkumar  
-💻 **GitHub:** https://github.com/R-Dilipkumar  
+### Zenardy Technologies
+Associate Developer / NetSuite Consultant | Sep 2025 – Jun 2026
+
+- Engineered custom SuiteScript 2.1 automation for procurement and billing workflows
+- Built robust 3-way matching and change order lifecycle logic for enterprise operations
+- Developed complex invoice customization and tax logic to support multi-subsidiary accounting
+- Designed and maintained Coupa integration workflows for vendor invoice reconciliation and payment sync
+- Created cross-platform automation pipelines connecting Filevine, Zapier, and NetSuite
+- Implemented OAuth 2.0 and token-based data extraction workflows for secure financial data movement
+- Delivered legal ledger dashboards and custom financial reporting logic for client-specific requirements
+
+### Titan Engineering & Automation Limited (TEAL)
+Mechatronics Engineering Intern | Apr 2024 – Jun 2024
+
+- Worked on mechanical calibration and end-effector testing for industrial robotic systems
+- Assisted in FANUC robot cell operations and manufacturing process testing
+- Supported PLC-driven automation tasks in a production environment
+
+### Kongu Engineering College
+Coding Coordinator & Campus Leader | Aug 2022 – Mar 2024
+
+- Coordinated coding events and technical infrastructure for campus symposiums
+- Mentored students in competitive programming and technical development
+- Contributed to campus-driven innovation and leadership initiatives
 
 ---
 
-## For Recruiters & Hiring Managers
+## Education
 
-This portfolio is optimized to showcase:
-- **Full-stack technical depth** across multiple domains (ERP, AI, embedded systems)
-- **Real-world impact** on production systems handling high transaction volumes
-- **Learning agility** with demonstrated expertise across hardware, software, and AI
-- **Communication skills** via clear project documentation and professional presentation
+### B.E. Mechatronics Engineering
+Kongu Engineering College | 2020 – 2024
 
-**Ideal for roles:** Software Engineer, Systems Engineer, Solutions Engineer, Automation Engineer, AI/ML Engineer, Integration Engineer, Full-Stack Developer
+- CGPA: 8.29 / 10.0
+- First Class with Distinction
+- Grade O in Python and PLC
+- Grade A+ in C Programming, LabVIEW, and Microcontrollers
+
+### Schooling
+S.S.M. Lakshmi Ammal Matric Higher Secondary School, Komarapalayam
+
+- HSC (Class XII): 70.3%
+- SSLC (Class X): 87.2% (Top 10)
 
 ---
 
-**Built with clean, performant HTML/CSS/JavaScript—developed with AI assistance for responsive design and modern aesthetics.**
+## Core Expertise
+
+### Enterprise ERP & Automation
+- SuiteScript 2.1
+- SuiteAnalytics
+- SuiteFlow
+- Saved Searches
+- RESTlets and Suitelets
+- NetSuite customization
+- Coupa integration
+- Filevine and Zapier workflows
+- OAuth 2.0 and token-based authentication
+
+### Edge AI & Mobile Intelligence
+- sherpa-onnx
+- ML Kit v2
+- Kotlin
+- Jetpack Compose
+- ONNX Runtime
+- Hugging Face
+- Local RAG and on-device intelligence
+
+### Robotics, IoT & Embedded Systems
+- FANUC Robotics
+- Allen-Bradley PLCs
+- SolidWorks
+- ESP32
+- Arduino
+- LabVIEW
+- PCB design
+- Industrial automation systems
+
+### Programming & Systems
+- Python
+- JavaScript
+- Kotlin
+- Java
+- C
+- Embedded C
+- SQL
+- Linux / WSL2
+- Git and GitHub
+
+---
+
+## Featured Projects
+
+### LiveSub (MyLiveTranslator)
+Privacy-first on-device translation engine
+
+- Built a 100% offline translation system using local inference and edge AI
+- Integrated local speech recognition and on-device translation workflow
+- Used ML Kit v2 OCR across multiple scripts including Latin, Chinese, Devanagari, Japanese, and Korean
+- Designed a real-time application flow for translation and interpretation on mobile devices
+
+### IN-THRUST Robot
+Mechatronics capstone project
+
+- Designed and fabricated a wall-climbing robot using high-RPM thrust mechanisms
+- Integrated remote-control architecture for movement and power management
+- Applied solid modeling, hardware integration, and embedded system logic in one project
+
+### Smart AC Telemetry
+IoT predictive maintenance solution
+
+- Built an ESP32-based telemetry system to monitor dust accumulation and filter health
+- Developed data-driven maintenance logic for HVAC health prediction
+- Applied sensor-driven analytics and real-time system monitoring
+
+### Local Mobile AI
+Personal learning and memory architecture using local tools
+
+- Built a continuous-learning local memory model using Obsidian-based knowledge organization
+- Explored private and offline AI workflows for personal knowledge systems
+- Designed a local-first AI approach emphasizing privacy and control
+
+---
+
+## Achievements & Recognition
+
+- 1st Prize at Xion 2023, SRM IST — National Paper Presentation
+- Rajya Puraskar — Governor’s Award from Bharat Scouts & Guides
+- Top 5 Placement Rank in college-wide placement assessment
+- Certified in GenAI and LLMs through Cuvette Tech
+- NPTEL certifications in Java, Cloud Computing, and Air Pollution
+- Regional badminton champion and Kyokushin karate regional winner
+
+---
+
+## Contact
+
+- Email: rdilipkumar2203@gmail.com
+- Phone: +91 75388 79358
+- LinkedIn: https://linkedin.com/in/r-dilipkumar
+- GitHub: https://github.com/R-Dilipkumar
+
+---
+
+## Hiring Profile
+
+This portfolio is designed for recruiters and hiring managers looking for a candidate who can work across:
+
+- AI-enabled product development
+- Industrial automation and system integration
+- ERP and business-process automation
+- Robotics and embedded systems
+- Data-driven engineering decisions
+
+Ideal for roles in:
+
+- Software Engineer
+- Systems Engineer
+- Automation Engineer
+- Solutions Engineer
+- AI/ML Engineer
+- Integration Engineer
+- Mechatronics / Embedded Engineer
+
+---
+
+Built as a personal portfolio to showcase engineering, automation, AI, and systems thinking across real-world problem solving.
+
+The portfolio website itself was developed with an AI-assisted design workflow to quickly prototype and refine the presentation while keeping the content grounded in actual engineering experience and project work.

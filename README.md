@@ -45,23 +45,6 @@ Coding Coordinator & Campus Leader | Aug 2022 – Mar 2024
 
 ---
 
-## Education
-
-### B.E. Mechatronics Engineering
-Kongu Engineering College | 2020 – 2024
-
-- CGPA: 8.29 / 10.0
-- First Class with Distinction
-- Grade O in Python and PLC
-- Grade A+ in C Programming, LabVIEW, and Microcontrollers
-
-### Schooling
-S.S.M. Lakshmi Ammal Matric Higher Secondary School, Komarapalayam
-
-- HSC (Class XII): 70.3%
-- SSLC (Class X): 87.2% (Top 10)
-
----
 
 ## Core Expertise
 
@@ -108,38 +91,6 @@ S.S.M. Lakshmi Ammal Matric Higher Secondary School, Komarapalayam
 
 ---
 
-## Featured Projects
-
-### LiveSub (MyLiveTranslator)
-Privacy-first on-device translation engine
-
-- Built a 100% offline translation system using local inference and edge AI
-- Integrated local speech recognition and on-device translation workflow
-- Used ML Kit v2 OCR across multiple scripts including Latin, Chinese, Devanagari, Japanese, and Korean
-- Designed a real-time application flow for translation and interpretation on mobile devices
-
-### IN-THRUST Robot
-Mechatronics capstone project
-
-- Designed and fabricated a wall-climbing robot using high-RPM thrust mechanisms
-- Integrated remote-control architecture for movement and power management
-- Applied solid modeling, hardware integration, and embedded system logic in one project
-
-### Smart AC Telemetry
-IoT predictive maintenance solution
-
-- Built an ESP32-based telemetry system to monitor dust accumulation and filter health
-- Developed data-driven maintenance logic for HVAC health prediction
-- Applied sensor-driven analytics and real-time system monitoring
-
-### Local Mobile AI
-Personal learning and memory architecture using local tools
-
-- Built a continuous-learning local memory model using Obsidian-based knowledge organization
-- Explored private and offline AI workflows for personal knowledge systems
-- Designed a local-first AI approach emphasizing privacy and control
-
----
 
 ## Achievements & Recognition
 
@@ -183,6 +134,3 @@ Ideal for roles in:
 
 ---
 
-Built as a personal portfolio to showcase engineering, automation, AI, and systems thinking across real-world problem solving.
-
-The portfolio website itself was developed with an AI-assisted design workflow to quickly prototype and refine the presentation while keeping the content grounded in actual engineering experience and project work.

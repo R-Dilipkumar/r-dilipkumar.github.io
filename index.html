@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dilipkumar Ravichandran | Systems & AI Engineer</title>
+  <meta name="description" content="Systems & AI Engineer portfolio showcasing kinematics, Edge AI, and enterprise data pipelines.">
+  <meta property="og:title" content="Dilipkumar Ravichandran | Systems & AI Engineer">
+  <meta property="og:description" content="Systems & AI Engineer portfolio showcasing kinematics, Edge AI, and enterprise data pipelines.">
   
   <!-- Fonts: Anton for the massive impact header, Space Mono for tech details, Outfit for body -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,11 +48,10 @@
     /* 3D Engine Canvas - Fixed behind everything */
     #engine-canvas {
       position: fixed;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 0;
+      z-index: -1;
       pointer-events: none;
     }
 
@@ -57,6 +59,17 @@
     #content-layer {
       position: relative;
       z-index: 10;
+    }
+
+    /* Card spacing to prevent clumping */
+    .glass, .glass-panel, .proj, .tl-card {
+      margin-bottom: 1.5rem;
+    }
+    .grid > .glass,
+    .grid > .glass-panel,
+    .grid > .proj,
+    .grid > .tl-card {
+      margin-bottom: 0;
     }
 
     /* --- The Master Typography (From your image) --- */
@@ -76,6 +89,14 @@
       line-height: 0.85;
       letter-spacing: 0.02em;
       text-transform: uppercase;
+    }
+
+    @media (max-width: 767px) {
+      .master-title-solid,
+      .master-title-outline {
+        font-size: 10vw !important;
+        line-height: 0.95;
+      }
     }
 
     /* --- Dynamic Typing Cursor --- */
@@ -189,43 +210,56 @@
   <div id="content-layer">
     
     <!-- HEADER NAV -->
-    <header class="fixed top-0 left-0 w-full z-50 pt-8 pb-12 pointer-events-none">
+    <header class="fixed top-0 left-0 w-full z-50 py-3.5 backdrop-blur-xl bg-[#030305]/80 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
       <div class="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center">
-        <div class="pointer-events-auto flex items-center gap-2">
-          <div class="w-3 h-3 bg-neonCyan rounded-full animate-pulse glow-text"></div>
-          <span class="font-mono text-sm tracking-widest text-white font-bold uppercase">System.Online</span>
-        </div>
-        <nav class="pointer-events-auto hidden md:flex gap-10 font-mono text-xs tracking-[0.2em] uppercase text-gray-400 font-bold">
-          <a href="#about" class="hover:text-neonPink transition-colors">Synopsis</a>
-          <a href="#experience" class="hover:text-neonCyan transition-colors">Enterprise</a>
-          <a href="#projects" class="hover:text-neonAmber transition-colors">Hardware & AI</a>
-          <a href="#academics" class="hover:text-white transition-colors">Metrics</a>
-          <a href="#taxonomy" class="hover:text-neonPink transition-colors">Taxonomy</a>
+        <a href="#about" class="pointer-events-auto flex items-center gap-2.5 group">
+          <div class="w-2.5 h-2.5 bg-neonCyan rounded-full glow-text group-hover:scale-125 transition-transform"></div>
+          <span class="font-mono text-sm tracking-widest text-white font-bold uppercase group-hover:text-neonCyan transition-colors">Dilipkumar Ravichandran</span>
+        </a>
+        <nav class="pointer-events-auto hidden md:flex items-center gap-7 font-mono text-xs tracking-[0.18em] uppercase text-gray-400 font-bold">
+          <a href="#experience" class="hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Experience</a>
+          <a href="#edge-ai" class="hover:text-neonAmber transition-all hover:drop-shadow-[0_0_8px_rgba(255,170,0,0.7)]">Hardware & AI</a>
+          <a href="#academics" class="hover:text-white transition-all hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]">Academics</a>
+          <a href="#taxonomy" class="hover:text-neonPink transition-all hover:drop-shadow-[0_0_8px_rgba(255,0,127,0.7)]">Taxonomy</a>
+          <a href="#pursuits" class="hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Pursuits</a>
+          <a href="#contact" class="hover:text-neonPink transition-all hover:drop-shadow-[0_0_8px_rgba(255,0,127,0.7)]">Contact</a>
         </nav>
+        <button onclick="toggleMobileMenu()" class="pointer-events-auto md:hidden p-2 text-gray-400 hover:text-neonCyan transition-colors" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+      <!-- Mobile Collapsible Menu -->
+      <div id="mobile-menu" class="hidden md:hidden px-6 pt-3 pb-5 flex flex-col gap-3 font-mono text-xs tracking-widest uppercase bg-[#030305]/95 border-t border-white/5 backdrop-blur-2xl mt-3">
+        <a href="#experience" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonCyan py-1">Experience</a>
+        <a href="#edge-ai" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonAmber py-1">Hardware & AI</a>
+        <a href="#academics" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white py-1">Academics</a>
+        <a href="#taxonomy" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonPink py-1">Taxonomy</a>
+        <a href="#pursuits" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonCyan py-1">Pursuits</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="text-neonPink py-1">Contact</a>
       </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section id="about" class="min-h-screen flex flex-col justify-center px-6 md:px-12 max-w-[1400px] mx-auto pt-20 relative">
+    <section id="about" class="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-[1400px] mx-auto pt-24 pb-8 relative">
       <div class="max-w-5xl">
         <!-- The requested Typography -->
-        <h1 class="flex flex-col mt-12 mb-6">
+        <h1 class="flex flex-col mt-8 mb-6">
           <span class="master-title-solid text-[14vw] md:text-[140px] lg:text-[160px]">DILIPKUMAR</span>
           <span class="master-title-outline text-[14vw] md:text-[140px] lg:text-[160px] -mt-[4%]">RAVICHANDRAN</span>
         </h1>
         
         <!-- Dynamic Role Typing -->
-        <div class="font-mono text-xl md:text-3xl text-gray-300 tracking-wide mb-10 h-10">
+        <div class="font-mono text-xl md:text-3xl text-gray-300 tracking-wide mb-8 h-10">
           <span class="text-neonCyan mr-2">></span> <span id="dynamic-text" class="typing-cursor text-white font-bold"></span>
         </div>
 
-        <p class="max-w-2xl text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-12">
+        <p class="max-w-2xl text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-10">
           Mechatronics engineering graduate (8.29 CGPA) building physical kinematics, on-device Edge AI, and high-throughput enterprise ERP pipelines. Based in Chennai, India.
         </p>
 
-        <div class="flex flex-wrap items-center gap-6">
+        <div class="flex flex-wrap items-center gap-5">
           <button onclick="copyEmail(this)" class="btn-cyber">
-            <span class="email-text">rdilipkumar2203@gmail.com</span>
+            <span class="email-text">Get in Touch</span>
           </button>
           <a href="tel:+917538879358" class="font-mono text-sm uppercase tracking-widest text-white border border-gray-700 hover:border-neonCyan hover:text-neonCyan px-6 py-3 rounded-full transition-all">
             +91 75388 79358
@@ -238,24 +272,34 @@
           </a>
         </div>
       </div>
-      
-      <!-- Scroll Indicator -->
-      <div class="absolute bottom-12 left-6 md:left-12 font-mono text-xs text-gray-500 tracking-[0.2em] uppercase flex items-center gap-4 animate-bounce">
-        <div class="w-[1px] h-12 bg-gradient-to-b from-gray-500 to-transparent"></div>
-        Scroll to initialize physics
+    </section>
+
+    <!-- EXECUTIVE SUMMARY -->
+    <section class="px-6 md:px-12 max-w-[1400px] mx-auto py-8 relative z-20">
+      <div class="glass-panel border border-white/10 bg-[#030305]/75 backdrop-blur-2xl p-8 md:p-10 reveal rounded-2xl relative overflow-hidden">
+        <div class="absolute -right-24 -top-24 w-72 h-72 bg-neonCyan/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div>
+          <div class="flex items-center gap-2.5 mb-3">
+            <span class="w-2 h-2 rounded-full bg-neonCyan animate-ping"></span>
+            <span class="font-mono text-xs uppercase tracking-widest text-neonCyan font-bold">Executive Synopsis</span>
+          </div>
+          <p class="text-gray-200 text-lg md:text-xl font-light leading-relaxed max-w-4xl">
+            Enterprise ERP Consultant & Mechatronics Engineer specializing in high-throughput SuiteScript 2.1 automations, custom integration middleware (Coupa, Litify, Filevine), and local privacy-first Edge AI architectures.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- EXPERIENCE SECTION (ERP) -->
-    <section id="experience" class="py-48 min-h-screen px-6 md:px-12 max-w-[1400px] mx-auto flex flex-col justify-center">
-      <div class="flex flex-col md:flex-row justify-between items-end mb-32 reveal">
+    <section id="experience" class="py-20 md:py-28 px-6 md:px-12 max-w-[1400px] mx-auto flex flex-col justify-center">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
         <div>
           <h2 class="font-anton text-6xl md:text-9xl text-white uppercase tracking-wide">Enterprise <br><span class="text-transparent" style="-webkit-text-stroke: 1px #00f3ff;">Architecture.</span></h2>
         </div>
-        <p class="font-mono text-neonCyan text-sm tracking-widest uppercase mt-6 md:mt-0">Module 01 // Data Pipelines</p>
+        <p class="font-mono text-neonCyan text-sm tracking-widest uppercase mt-6 md:mt-0">Module 01 — Data Pipelines</p>
       </div>
 
-      <div class="grid lg:grid-cols-2 gap-20">
+      <div class="grid lg:grid-cols-2 gap-8 md:gap-10">
         <!-- Zenardy -->
         <div class="glass-panel reveal group lg:col-span-2">
           <div class="flex justify-between items-start mb-12 border-b border-gray-800 pb-8">
@@ -273,11 +317,11 @@
               <ul class="space-y-6">
                 <li class="flex items-start gap-4">
                   <span class="text-neonCyan mt-1 text-xl">▹</span>
-                  <span><strong class="text-white">PO-to-Billing Optimization:</strong> Engineered custom SuiteScript 2.1 UserEvents (afterSubmit/beforeSubmit) for 3-way matching and billing handoffs. Slashed approval latency by >90% (from 2 hours to 10 minutes).</span>
+                  <span><strong class="text-white">PO-to-Billing UserEvent automation (latency 2h → 10m):</strong> Engineered custom SuiteScript 2.1 UserEvents (afterSubmit/beforeSubmit) for automated 3-way matching and billing handoffs, slashing approval latency by >90%.</span>
                 </li>
                 <li class="flex items-start gap-4">
                   <span class="text-neonCyan mt-1 text-xl">▹</span>
-                  <span><strong class="text-white">Change Order Lifecycle:</strong> Handled end-to-end debugging for the procurement Change Order process, managing revisions, delta validations, line-item adjustments, and approval re-routing.</span>
+                  <span><strong class="text-white">SuiteFlow access control debugging & Change Orders:</strong> Handled end-to-end debugging for procurement SuiteFlow workflows and Change Order lifecycles, managing permissions, delta validations, line-item adjustments, and approval re-routing.</span>
                 </li>
                 <li class="flex items-start gap-4">
                   <span class="text-neonCyan mt-1 text-xl">▹</span>
@@ -291,7 +335,7 @@
               <ul class="space-y-6">
                 <li class="flex items-start gap-4">
                   <span class="text-neonPink mt-1 text-xl">▹</span>
-                  <span><strong class="text-white">Reconciliation Engine:</strong> Designed specialized detection logic to identify settled/paid invoices, preventing Coupa credit memos from incorrectly attempting to apply against closed invoices.</span>
+                  <span><strong class="text-white">Coupa Paid Invoice detection:</strong> Designed specialized detection logic to identify settled/paid invoices, preventing Coupa credit memos from incorrectly attempting to apply against closed invoices.</span>
                 </li>
                 <li class="flex items-start gap-4">
                   <span class="text-neonPink mt-1 text-xl">▹</span>
@@ -309,7 +353,11 @@
               <ul class="space-y-6">
                 <li class="flex items-start gap-4">
                   <span class="text-neonAmber mt-1 text-xl">▹</span>
-                  <span><strong class="text-white">Filevine ↔ Zapier ↔ NetSuite:</strong> Architected sync pipelines for contacts, case matters, and disbursements. Designed hierarchical entity ingestion (Contacts → Customers, Projects → Customer Jobs).</span>
+                  <span><strong class="text-white">Litify-to-NetSuite Data Dictionaries:</strong> Designed and maintained structured data dictionaries for entity ingestion, mapping case matters, trust accounting entities, and disbursements across systems.</span>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="text-neonAmber mt-1 text-xl">▹</span>
+                  <span><strong class="text-white">Filevine ↔ Zapier ↔ NetSuite:</strong> Architected sync pipelines for contacts, case matters, and disbursements with hierarchical entity ingestion.</span>
                 </li>
                 <li class="flex items-start gap-4">
                   <span class="text-neonAmber mt-1 text-xl">▹</span>
@@ -368,18 +416,18 @@
     </section>
 
     <!-- PROJECTS SECTION (AI & HARDWARE) -->
-    <section id="projects" class="py-48 min-h-screen px-6 md:px-12 max-w-[1400px] mx-auto flex flex-col justify-center">
-      <div class="flex flex-col md:flex-row justify-between items-end mb-32 reveal">
+    <section id="edge-ai" class="py-20 md:py-28 px-6 md:px-12 max-w-[1400px] mx-auto flex flex-col justify-center">
+      <div id="projects" class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
         <div>
           <h2 class="font-anton text-6xl md:text-9xl text-white uppercase tracking-wide">Hardware & <br><span class="text-transparent" style="-webkit-text-stroke: 1px #ffaa00;">Edge AI.</span></h2>
         </div>
-        <p class="font-mono text-neonAmber text-sm tracking-widest uppercase mt-6 md:mt-0">Module 02 // Kinematics & Logic</p>
+        <p class="font-mono text-neonAmber text-sm tracking-widest uppercase mt-6 md:mt-0">Module 02 — Kinematics & Logic</p>
       </div>
 
-      <div class="grid lg:grid-cols-12 gap-12">
+      <div class="grid lg:grid-cols-12 gap-8">
         
         <!-- LiveSub -->
-        <div class="glass-panel reveal-left delay-100 lg:col-span-8 flex flex-col justify-between p-10 md:p-12">
+        <div class="glass-panel reveal-left delay-100 lg:col-span-8 flex flex-col justify-between p-8 md:p-10 border-t-2 border-t-neonPink/40">
           <div>
             <div class="flex flex-wrap justify-between items-start mb-6 gap-4">
               <h3 class="text-4xl font-bold text-white">LiveSub (MyLiveTranslator)</h3>
@@ -389,7 +437,7 @@
             <p class="text-gray-300 font-light text-xl mb-10 leading-relaxed">
               Architected a privacy-first, on-device translation engine executing neural network inference directly on mobile hardware without cloud network reliance. 100% offline operation with zero network permissions.
             </p>
-            <div class="grid sm:grid-cols-2 gap-10 text-base text-gray-400">
+            <div class="grid sm:grid-cols-2 gap-10 text-base text-gray-400 mb-8">
               <div class="border-l-2 border-gray-700 pl-6">
                 <strong class="text-white block mb-3 text-lg">Audio Capture & ASR</strong>
                 Captured internal audio (16kHz PCM) via <code>AudioPlaybackCaptureConfiguration</code>. Integrated local sherpa-onnx supporting 33 Zipformer language packs and 5 Whisper ONNX tiers.
@@ -400,44 +448,68 @@
               </div>
             </div>
           </div>
+          <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4">
+            <span class="font-mono text-xs text-gray-400">Stack: ONNX Runtime • Kotlin • sherpa</span>
+            <a href="https://github.com/R-Dilipkumar" target="_blank" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonPink border border-neonPink/40 bg-neonPink/5 hover:bg-neonPink hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,0,127,0.5)]">
+              VIEW ARCHITECTURE / CODE ↗
+            </a>
+          </div>
         </div>
 
         <!-- Mobile AI -->
-        <div class="glass-panel reveal-right delay-200 lg:col-span-4 flex flex-col justify-center p-10 md:p-12">
+        <div class="glass-panel reveal-right delay-200 lg:col-span-4 flex flex-col justify-between p-8 md:p-10 border-t-2 border-t-neonCyan/40">
           <div>
             <h3 class="text-3xl font-bold text-white mb-4">Local Mobile AI</h3>
             <p class="font-mono text-neonCyan text-sm tracking-widest uppercase mb-6">Termux • Obsidian</p>
-            <p class="text-gray-300 font-light text-lg leading-relaxed">
+            <p class="text-gray-300 font-light text-lg leading-relaxed mb-6">
               Built a continuous-learning memory architecture using an Obsidian Markdown Vault as a local vector database. Enabled autonomous context persistence on Poco X7 hardware.
             </p>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80">
+            <a href="https://github.com/R-Dilipkumar" target="_blank" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
+              VIEW ARCHITECTURE / CODE ↗
+            </a>
           </div>
         </div>
 
         <!-- IN-THRUST -->
-        <div class="glass-panel reveal-left delay-300 lg:col-span-6 flex flex-col justify-between border-t-4 border-t-neonAmber p-10 md:p-12">
+        <div class="glass-panel reveal-left delay-300 lg:col-span-6 flex flex-col justify-between border-t-4 border-t-neonAmber p-8 md:p-10">
           <div>
             <h3 class="text-3xl font-bold text-white mb-4">IN-THRUST Robot</h3>
             <p class="font-mono text-gray-400 text-sm tracking-widest uppercase mb-6">Mechatronics Capstone (2022–2023)</p>
-            <p class="text-gray-300 font-light text-lg leading-relaxed">
+            <p class="text-gray-300 font-light text-lg leading-relaxed mb-8">
               Fabricated a remote-controlled wall-climbing robot. Utilized dual high-RPM BLDC thrust fans generating a continuous low-pressure vacuum zone for vertical aerodynamic adhesion.
             </p>
           </div>
-          <div class="mt-10 flex gap-3 flex-wrap">
-            <span class="tag tag-amber">SolidWorks</span>
-            <span class="tag tag-amber">SimonK 30A ESCs</span>
-            <span class="tag tag-amber">DC Motors</span>
-            <span class="tag tag-amber">ESP8266</span>
+          <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4">
+            <div class="flex gap-2.5 flex-wrap">
+              <span class="tag tag-amber">SolidWorks</span>
+              <span class="tag tag-amber">SimonK 30A</span>
+              <span class="tag tag-amber">ESP8266</span>
+            </div>
+            <a href="https://github.com/R-Dilipkumar" target="_blank" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonAmber border border-neonAmber/40 bg-neonAmber/5 hover:bg-neonAmber hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,170,0,0.5)]">
+              VIEW ARCHITECTURE / CODE ↗
+            </a>
           </div>
         </div>
 
         <!-- IoT AC -->
-        <div class="glass-panel reveal-right delay-400 lg:col-span-6 flex flex-col justify-between p-10 md:p-12">
+        <div class="glass-panel reveal-right delay-400 lg:col-span-6 flex flex-col justify-between p-8 md:p-10 border-t-2 border-t-white/20">
           <div>
             <h3 class="text-3xl font-bold text-white mb-4">Smart AC Telemetry</h3>
             <p class="font-mono text-gray-400 text-sm tracking-widest uppercase mb-6">ESP32 • Python • IoT</p>
-            <p class="text-gray-300 font-light text-lg leading-relaxed">
+            <p class="text-gray-300 font-light text-lg leading-relaxed mb-8">
               Developed an IoT predictive maintenance system calculating dust accumulation rates on air filters. Transmitted telemetry to ThingSpeak, reducing scheduled servicing overhead by 25%.
             </p>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4">
+            <div class="flex gap-2.5 flex-wrap">
+              <span class="tag">ESP32</span>
+              <span class="tag">ThingSpeak</span>
+            </div>
+            <a href="https://github.com/R-Dilipkumar" target="_blank" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-white border border-white/30 bg-white/5 hover:bg-white hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.4)]">
+              VIEW ARCHITECTURE / CODE ↗
+            </a>
           </div>
         </div>
 
@@ -445,15 +517,15 @@
     </section>
 
     <!-- METRICS & ACADEMICS -->
-    <section id="academics" class="py-48 min-h-screen px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center">
-      <div class="reveal mb-24">
+    <section id="academics" class="py-20 md:py-28 px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center">
+      <div class="reveal mb-16">
         <h2 class="font-anton text-6xl md:text-9xl text-white uppercase tracking-wide">Academics.</h2>
-        <p class="font-mono text-neonCyan text-sm tracking-widest uppercase mt-6">Module 03 // Educational Metrics</p>
+        <p class="font-mono text-neonCyan text-sm tracking-widest uppercase mt-6">Module 03 — Educational Metrics</p>
       </div>
 
-      <div class="grid lg:grid-cols-2 gap-16">
+      <div class="grid lg:grid-cols-2 gap-8 md:gap-10">
         <!-- University -->
-        <div class="glass-panel reveal-left border-l-4 border-l-neonCyan p-12 flex flex-col justify-center">
+        <div class="glass-panel reveal-left border-l-4 border-l-neonCyan p-8 md:p-12 flex flex-col justify-center">
           <h3 class="text-4xl font-bold text-white mb-2">B.E. Mechatronics</h3>
           <p class="text-gray-400 font-mono text-base mb-10">Kongu Engineering College | 2020 - 2024</p>
           
@@ -472,8 +544,8 @@
         </div>
 
         <!-- Schooling -->
-        <div class="flex flex-col gap-10 justify-center">
-          <div class="glass-panel reveal-right delay-100 p-10">
+        <div class="flex flex-col gap-6 justify-center">
+          <div class="glass-panel reveal-right delay-100 p-8">
             <h3 class="text-2xl font-bold text-white leading-snug mb-2">HSC (Class XII) - 2020</h3>
             <p class="text-gray-400 font-mono text-sm mb-6">S.S.M. Lakshmi Ammal Matric Higher Sec School, Komarapalayam</p>
             <div class="flex items-center gap-4">
@@ -482,7 +554,7 @@
             </div>
           </div>
           
-          <div class="glass-panel reveal-right delay-200 p-10">
+          <div class="glass-panel reveal-right delay-200 p-8">
             <h3 class="text-2xl font-bold text-white leading-snug mb-2">SSLC (Class X) - 2018</h3>
             <p class="text-gray-400 font-mono text-sm mb-6">S.S.M. Lakshmi Ammal Matric Higher Sec School, Komarapalayam</p>
             <div class="flex items-center gap-4">
@@ -496,13 +568,13 @@
     </section>
 
     <!-- TAXONOMY & HONORS -->
-    <section id="taxonomy" class="py-48 min-h-screen px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center">
-      <div class="reveal mb-24">
+    <section id="taxonomy" class="py-20 md:py-28 px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center">
+      <div class="reveal mb-16">
         <h2 class="font-anton text-6xl md:text-9xl text-transparent uppercase tracking-wide" style="-webkit-text-stroke: 1px #fff;">Taxonomy.</h2>
-        <p class="font-mono text-neonPink text-sm tracking-widest uppercase mt-6">Module 04 // Skills & Honors</p>
+        <p class="font-mono text-neonPink text-sm tracking-widest uppercase mt-6">Module 04 — Skills & Honors</p>
       </div>
       
-      <div class="grid lg:grid-cols-12 gap-16">
+      <div class="grid lg:grid-cols-12 gap-8 md:gap-10">
         
         <div class="lg:col-span-6 flex flex-col gap-8">
           <div class="glass-panel reveal-left delay-100 p-10">
@@ -510,8 +582,8 @@
             <p class="text-gray-300 leading-relaxed font-light text-lg">SuiteScript 2.1, SuiteAnalytics, SuiteFlow, Saved Searches, RESTlets, Suitelets, Coupa, Filevine, Zapier, OAuth 2.0 / TBA, Google Apps Script.</p>
           </div>
           <div class="glass-panel reveal-left delay-200 p-10">
-            <h4 class="font-mono text-neonPink mb-6 uppercase text-sm font-bold tracking-widest">Edge AI & Mobile OS</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-lg">sherpa-onnx, ML Kit v2, Jetpack Compose, Kotlin, ONNX Runtime, Hugging Face, Obsidian RAG.</p>
+            <h4 class="font-mono text-neonPink mb-6 uppercase text-sm font-bold tracking-widest">AI & Machine Intelligence</h4>
+            <p class="text-gray-300 leading-relaxed font-light text-lg">Generative & Agentic AI, RAG Architectures, Local LLM Inference, and Hugging Face, alongside sherpa-onnx, ML Kit v2, Jetpack Compose, Kotlin, ONNX Runtime, and Obsidian RAG.</p>
           </div>
           <div class="glass-panel reveal-left delay-300 p-10">
             <h4 class="font-mono text-neonAmber mb-6 uppercase text-sm font-bold tracking-widest">Robotics, Kinematics & IoT</h4>
@@ -557,24 +629,148 @@
       </div>
     </section>
 
+    <!-- OFF-SCREEN PURSUITS -->
+    <section id="pursuits" class="py-20 md:py-28 px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center">
+      <div class="reveal mb-16">
+        <h2 class="font-anton text-6xl md:text-9xl text-white uppercase tracking-wide">Off-Screen <br><span class="text-transparent" style="-webkit-text-stroke: 1px #00f3ff;">Pursuits.</span></h2>
+        <p class="font-mono text-neonCyan text-sm tracking-widest uppercase mt-6">Module 05 — Disciplines & Creative Craft</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 md:gap-10">
+        <!-- Precision Gaming -->
+        <div class="glass-panel reveal-left delay-100 flex flex-col justify-between border-t-4 border-t-neonPink p-8 md:p-10">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-neonPink text-xs tracking-widest uppercase">Reflex & Pattern Recognition</span>
+              <span class="tag tag-pink">Precision Gaming</span>
+            </div>
+            <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Precision Gaming</h3>
+            <p class="text-gray-300 font-light text-lg leading-relaxed mb-6">
+              Developing hyper-focused spatial awareness, sub-frame reactions, and discipline through punishing mechanical combat designs:
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <span class="text-neonPink text-xl mt-1">▹</span>
+                <span class="text-gray-300"><strong class="text-white">Hollow Knight:</strong> Hallownest exploration, Steel Soul discipline, and mastering strict pattern-recognition boss encounters.</span>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="text-neonPink text-xl mt-1">▹</span>
+                <span class="text-gray-300"><strong class="text-white">Nine Sols:</strong> High-cadence Taoist deflection combat, strict parry timing, and frame-perfect decision cycles.</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 flex gap-3 flex-wrap">
+            <span class="tag tag-pink">Hollow Knight</span>
+            <span class="tag tag-pink">Nine Sols</span>
+            <span class="tag">Parry Timing</span>
+          </div>
+        </div>
+
+        <!-- Digital Content Creation -->
+        <div class="glass-panel reveal-right delay-200 flex flex-col justify-between border-t-4 border-t-neonCyan p-8 md:p-10">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-neonCyan text-xs tracking-widest uppercase">Narrative & Motion Aesthetics</span>
+              <span class="tag tag-cyan">Content Creation</span>
+            </div>
+            <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Digital Content Creation</h3>
+            <p class="text-gray-300 font-light text-lg leading-relaxed mb-6">
+              Cinematic visual storytelling, sound design, and color grading that transform complex engineering narratives into engaging media:
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <span class="text-neonCyan text-xl mt-1">▹</span>
+                <span class="text-gray-300"><strong class="text-white">DaVinci Resolve video editing:</strong> Non-linear timelines, multi-cam synchronization, rhythm cutting, and dynamic audio leveling in Fairlight.</span>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="text-neonCyan text-xl mt-1">▹</span>
+                <span class="text-gray-300"><strong class="text-white">Color Grading & Visual Rhythm:</strong> Color space transforms, curve adjustments, and pacing that elevates technical demonstrations into memorable visual experiences.</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 flex gap-3 flex-wrap">
+            <span class="tag tag-cyan">DaVinci Resolve</span>
+            <span class="tag tag-cyan">Video Editing</span>
+            <span class="tag">Color Grading</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 md:py-28 px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center">
+      <div class="glass-panel reveal text-center max-w-4xl mx-auto p-8 md:p-12 border-t-4 border-t-neonCyan">
+        <span class="font-mono text-neonCyan text-xs tracking-widest uppercase mb-4 block">Signal Terminal</span>
+        <h2 class="font-anton text-5xl md:text-8xl text-white uppercase tracking-wide mb-6">Let's Connect.</h2>
+        <p class="text-gray-300 font-light text-lg md:text-xl leading-relaxed mb-8 max-w-2xl mx-auto">
+          Open for technical discussions across enterprise SuiteScript architectures, Edge AI inference pipelines, and physical robotics kinematics.
+        </p>
+        <div class="flex flex-wrap justify-center items-center gap-5">
+          <button onclick="copyEmail(this)" class="btn-cyber">
+            <span class="email-text">rdilipkumar2203@gmail.com</span>
+          </button>
+          <a href="tel:+917538879358" class="font-mono text-sm uppercase tracking-widest text-white border border-gray-700 hover:border-neonCyan hover:text-neonCyan px-6 py-3 rounded-full transition-all">
+            +91 75388 79358
+          </a>
+          <a href="https://linkedin.com/in/r-dilipkumar" target="_blank" class="font-mono text-sm uppercase tracking-widest text-gray-300 hover:text-neonPink transition-colors flex items-center gap-2">
+            LinkedIn <span class="text-neonPink">↗</span>
+          </a>
+          <a href="https://github.com/R-Dilipkumar" target="_blank" class="font-mono text-sm uppercase tracking-widest text-gray-300 hover:text-neonAmber transition-colors flex items-center gap-2">
+            GitHub <span class="text-neonAmber">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLOATING TOAST NOTIFICATION -->
+    <div id="toast-notification" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 flex items-center gap-3 bg-[#0a0a0f]/95 border border-neonCyan/60 text-white font-mono text-xs px-5 py-3.5 rounded-full shadow-[0_10px_35px_rgba(0,243,255,0.35)] backdrop-blur-2xl opacity-0 pointer-events-none translate-y-6 transition-all duration-300 ease-out">
+      <div class="w-2.5 h-2.5 rounded-full bg-neonCyan animate-ping"></div>
+      <span class="toast-msg font-bold tracking-wider text-white">COPIED TO CLIPBOARD (rdilipkumar2203@gmail.com)</span>
+    </div>
+
     <!-- FOOTER -->
-    <footer class="py-12 border-t border-gray-900/50 text-center font-mono text-xs text-gray-500 uppercase tracking-widest relative z-10">
-      <p class="mb-4">Dilipkumar Ravichandran // Multidisciplinary Engineer</p>
-      <p class="text-gray-600">Chennai, Tamil Nadu, India • rdilipkumar2203@gmail.com • +91 75388 79358</p>
+    <footer class="py-8 border-t border-gray-900/50 text-center font-mono text-xs text-gray-500 uppercase tracking-widest relative z-10">
+      <p class="mb-3">Dilipkumar Ravichandran — Multidisciplinary Engineer</p>
+      <p class="text-gray-600">Chennai, Tamil Nadu, India • +91 75388 79358</p>
     </footer>
 
   </div>
 
   <script>
-    // --- Copy Email Utility ---
+    // --- Copy Email Utility with Smooth Toast Feedback ---
+    let toastTimer;
     function copyEmail(btn) {
       const email = "rdilipkumar2203@gmail.com";
       navigator.clipboard.writeText(email).then(() => {
         const textSpan = btn.querySelector('.email-text');
-        const originalText = textSpan.innerText;
-        textSpan.innerText = "COPIED TO CLIPBOARD";
-        setTimeout(() => { textSpan.innerText = originalText; }, 2000);
+        if (textSpan) {
+          const originalText = textSpan.innerText;
+          textSpan.innerText = "COPIED TO CLIPBOARD";
+          setTimeout(() => { textSpan.innerText = originalText; }, 2000);
+        }
+        showToast("✓ Copied: rdilipkumar2203@gmail.com");
       });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast-notification');
+      if (!toast) return;
+      const msgElem = toast.querySelector('.toast-msg');
+      if (msgElem) msgElem.innerText = message;
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-6');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-6');
+      }, 2500);
+    }
+
+    // --- Mobile Menu Toggle ---
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu) menu.classList.toggle('hidden');
     }
 
     // --- Dynamic Role Typing Effect ---
@@ -616,7 +812,7 @@
           entry.target.classList.add('active');
         }
       });
-    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+    }, { threshold: 0, rootMargin: '100px 0px 100px 0px' });
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el) => observer.observe(el));
 
 
@@ -769,26 +965,44 @@
     const cosmicPoints = new THREE.Points(cosmicGeo, cosmicMat);
     masterGroup.add(cosmicPoints);
 
-    // --- SYSTEM 6: Glowing Microchips (Data Packets) ---
+    // --- SYSTEM 6: Sparse Translucent Holographic Microchips ---
     const chipGroup = new THREE.Group();
-    const numChips = 40;
+    const numChips = 28; // Sparse procedural chips
     const chips = [];
-    const chipGeo = new THREE.BoxGeometry(20, 20, 2);
-    const chipEdges = new THREE.EdgesGeometry(chipGeo);
-    const baseChipMat = new THREE.LineBasicMaterial({ color: 0x00f3ff, transparent: true, opacity: 0 });
+    const chipGeo = new THREE.BoxGeometry(26, 26, 3);
+    const chipEdgesGeo = new THREE.EdgesGeometry(chipGeo);
     
     for(let i=0; i<numChips; i++) {
-      const chip = new THREE.LineSegments(chipEdges, baseChipMat.clone());
-      chip.position.set((Math.random()-0.5)*1500, (Math.random()-0.5)*1500, (Math.random()-0.5)*1500);
-      chip.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, 0);
-      chip.userData = { 
+      const chipContainer = new THREE.Group();
+      const faceMat = new THREE.MeshBasicMaterial({ 
+        color: 0x00f3ff, 
+        transparent: true, 
+        opacity: 0, 
+        depthWrite: false 
+      });
+      const edgeMat = new THREE.LineBasicMaterial({ 
+        color: 0x00f3ff, 
+        transparent: true, 
+        opacity: 0 
+      });
+      
+      const faceMesh = new THREE.Mesh(chipGeo, faceMat);
+      const edgeMesh = new THREE.LineSegments(chipEdgesGeo, edgeMat);
+      chipContainer.add(faceMesh);
+      chipContainer.add(edgeMesh);
+
+      chipContainer.position.set((Math.random()-0.5)*1600, (Math.random()-0.5)*1600, (Math.random()-0.5)*1600);
+      chipContainer.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, 0);
+      chipContainer.userData = { 
         life: Math.random(), // 0 to 1
-        speed: 0.005 + Math.random()*0.015,
-        rotSpeedX: (Math.random()-0.5)*0.05,
-        rotSpeedY: (Math.random()-0.5)*0.05
+        speed: 0.003 + Math.random()*0.007,
+        rotSpeedX: (Math.random()-0.5)*0.015,
+        rotSpeedY: (Math.random()-0.5)*0.015,
+        faceMat,
+        edgeMat
       };
-      chips.push(chip);
-      chipGroup.add(chip);
+      chips.push(chipContainer);
+      chipGroup.add(chipContainer);
     }
     masterGroup.add(chipGroup);
 
@@ -927,7 +1141,7 @@
       cosmicPoints.rotation.y = time * 0.02;
       cosmicPoints.rotation.z = time * 0.01;
 
-      // 8. Animate Procedural Data Chips
+      // 8. Animate Sparse Holographic Microchips (Slow rotate and fade)
       chips.forEach(c => {
         c.rotation.x += c.userData.rotSpeedX;
         c.rotation.y += c.userData.rotSpeedY;
@@ -935,13 +1149,15 @@
         
         if(c.userData.life > 1) {
           c.userData.life = 0; // Respawn
-          c.position.set((Math.random()-0.5)*1500, (Math.random()-0.5)*1500, (Math.random()-0.5)*1500 - 500);
-          // Randomize color to one of the theme neons
+          c.position.set((Math.random()-0.5)*1600, (Math.random()-0.5)*1600, (Math.random()-0.5)*1600 - 400);
           const randColor = sparkColors[Math.floor(Math.random() * sparkColors.length)];
-          c.material.color.setHex(randColor);
+          c.userData.faceMat.color.setHex(randColor);
+          c.userData.edgeMat.color.setHex(randColor);
         }
         // Sine wave opacity: fades in and out smoothly
-        c.material.opacity = Math.sin(c.userData.life * Math.PI) * 0.7;
+        const alpha = Math.sin(c.userData.life * Math.PI);
+        c.userData.faceMat.opacity = alpha * 0.18;
+        c.userData.edgeMat.opacity = alpha * 0.55;
       });
 
       // 9. Stochastic Electric Sparks

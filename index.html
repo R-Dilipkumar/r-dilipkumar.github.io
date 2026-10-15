@@ -1179,6 +1179,7 @@
       video.removeAttribute('src');
       video.load();
       document.documentElement.style.overflow = '';
+      if (location.hash === '#inthrust-video') history.replaceState(null, '', location.pathname + location.search);
       if (lastFocus) lastFocus.focus();
     }
 
@@ -1230,6 +1231,9 @@
     document.querySelectorAll('[data-video-open]').forEach((b) =>
       b.addEventListener('click', () => openVideo(Number(b.dataset.videoOpen), b)));
     vm.querySelectorAll('[data-video-close]').forEach((b) => b.addEventListener('click', closeVideo));
+
+    // The link shared on LinkedIn lands on #inthrust-video and starts the player straight away (clips are muted, so autoplay is allowed)
+    if (location.hash === '#inthrust-video') openVideo(0, document.querySelector('[data-video-open]'));
 
     document.addEventListener('keydown', (e) => {
       if (vm.hidden) return;

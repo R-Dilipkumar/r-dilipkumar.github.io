@@ -1,8 +1,9 @@
-# Only the site, its README, its link-preview image and its media folder belong in this repo; keep everything else local.
+# Only the site, its README, its share pages, preview image and media folder belong in this repo; keep everything else local.
 *
 !index.html
 !README.md
 !preview.png
+!inthrust.html
 !media/
 !media/*
 !.gitignore

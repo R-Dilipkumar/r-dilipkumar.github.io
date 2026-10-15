@@ -999,7 +999,7 @@
           </button>
         </div>
         <div class="vm-stage" id="vm-stage">
-          <video id="vm-video" playsinline preload="metadata"></video>
+          <video id="vm-video" playsinline muted preload="metadata"></video>
           <button type="button" class="vm-bigplay" id="vm-bigplay" aria-label="Play">
             <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
           </button>
@@ -1009,9 +1009,6 @@
             </button>
             <input type="range" class="vm-seek" id="vm-seek" min="0" max="1000" step="1" value="0" aria-label="Seek">
             <span class="vm-time" id="vm-time">0:00 / 0:00</span>
-            <button type="button" class="vm-btn" id="vm-mute" aria-label="Mute">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z" fill="currentColor"/><path class="vm-icon-sound" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/><path class="vm-icon-muted" d="M16 9.5l5 5M21 9.5l-5 5" style="display:none"/></svg>
-            </button>
             <button type="button" class="vm-btn" id="vm-fs" aria-label="Full screen">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
             </button>
@@ -1132,6 +1129,7 @@
 
     // --- Video Lightbox ---
     // Custom player for the IN-THRUST clips; the video files only load once the lightbox opens.
+    // The clips are silent: their soundtrack was only thrust-fan roar, so it was removed.
     const clips = [
       { src: 'media/inthrust-outdoor.mp4', poster: 'media/inthrust-outdoor.jpg', title: 'Outdoor overhang test', ar: '848 / 480', dur: '0:18' },
       { src: 'media/inthrust-indoor.mp4', poster: 'media/inthrust-indoor.jpg', title: 'Indoor ceiling test', ar: '636 / 848', dur: '0:12' },
@@ -1142,7 +1140,6 @@
     const playBtn = document.getElementById('vm-play');
     const seek = document.getElementById('vm-seek');
     const timeEl = document.getElementById('vm-time');
-    const muteBtn = document.getElementById('vm-mute');
     const clipsEl = document.getElementById('vm-clips');
     let currentClip = 0, lastFocus = null, idleTimer = null;
 
@@ -1212,15 +1209,9 @@
       timeEl.textContent = `${fmtTime(video.currentTime)} / ${fmtTime(video.duration)}`;
     });
     video.addEventListener('ended', () => { if (currentClip < clips.length - 1) loadClip(currentClip + 1, true); });
-    video.addEventListener('volumechange', () => {
-      muteBtn.setAttribute('aria-label', video.muted ? 'Unmute' : 'Mute');
-      muteBtn.querySelector('.vm-icon-sound').style.display = video.muted ? 'none' : '';
-      muteBtn.querySelector('.vm-icon-muted').style.display = video.muted ? '' : 'none';
-    });
     video.addEventListener('click', togglePlay);
     document.getElementById('vm-bigplay').addEventListener('click', togglePlay);
     playBtn.addEventListener('click', togglePlay);
-    muteBtn.addEventListener('click', () => { video.muted = !video.muted; });
     seek.addEventListener('input', () => {
       if (video.duration) video.currentTime = (seek.value / 1000) * video.duration;
       seek.style.setProperty('--p', `${seek.value / 10}%`);
@@ -1254,7 +1245,6 @@
       }
       const onControl = ['BUTTON', 'INPUT'].includes(e.target.tagName);
       if ((e.key === ' ' && !onControl) || e.key === 'k') { e.preventDefault(); togglePlay(); }
-      else if (e.key === 'm') video.muted = !video.muted;
       else if (e.key === 'f') document.getElementById('vm-fs').click();
       else if (e.target !== seek && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
         video.currentTime = Math.max(0, Math.min(video.duration || 0, video.currentTime + (e.key === 'ArrowRight' ? 5 : -5)));

@@ -232,6 +232,38 @@
       box-shadow: 0 0 20px rgba(255,255,255,0.4);
     }
     
+    /* --- Contact Sheet --- */
+    .cs { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 16px; }
+    .cs[hidden] { display: none; }
+    .cs-backdrop { position: absolute; inset: 0; background: rgba(3,3,5,0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .cs-panel {
+      position: relative; width: min(460px, 100%); padding: 28px; border-radius: 24px;
+      background: rgba(10,10,15,0.96); border: 1px solid rgba(0,243,255,0.35);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 40px rgba(0,243,255,0.12);
+      animation: cs-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes cs-in { from { opacity: 0; transform: translateY(20px) scale(0.97); } to { opacity: 1; transform: none; } }
+    .cs-row {
+      display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 16px; border-radius: 16px; text-align: left;
+      border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); transition: all 0.25s;
+    }
+    .cs-row:hover, .cs-row:focus-visible, .cs-row:has(a:focus-visible) { border-color: var(--c); background: color-mix(in srgb, var(--c) 8%, transparent); transform: translateX(4px); outline: none; }
+    .cs-icon {
+      flex-shrink: 0; width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      color: var(--c); background: color-mix(in srgb, var(--c) 12%, transparent); border: 1px solid color-mix(in srgb, var(--c) 35%, transparent);
+    }
+    .cs-copy {
+      flex-shrink: 0; padding: 8px 12px; border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: #00f3ff; border: 1px solid rgba(0,243,255,0.4); transition: all 0.25s;
+    }
+    .cs-copy:hover, .cs-copy:focus-visible { background: #00f3ff; color: #030305; outline: none; }
+    @media (max-width: 640px) {
+      .cs { align-items: flex-end; padding: 0; }
+      .cs-panel { width: 100%; border-radius: 24px 24px 0 0; padding: 24px 16px calc(24px + env(safe-area-inset-bottom)); animation-name: cs-up; }
+      @keyframes cs-up { from { transform: translateY(100%); } to { transform: none; } }
+    }
+    @media (prefers-reduced-motion: reduce) { .cs-panel { animation: none; } .cs-row:hover { transform: none; } }
+
     /* --- Video Thumbnail --- */
     .vthumb { box-shadow: 0 10px 30px rgba(0,0,0,0.45); transition: border-color 0.3s, box-shadow 0.3s; }
     .vthumb:hover, .vthumb:focus-visible { border-color: rgba(255,170,0,0.8); box-shadow: 0 0 30px rgba(255,170,0,0.25); outline: none; }
@@ -397,8 +429,8 @@
         </p>
 
         <div class="flex flex-wrap items-center gap-4 sm:gap-5">
-          <button onclick="copyEmail(this)" class="btn-cyber">
-            <span class="email-text">Get in Touch</span>
+          <button type="button" data-contact-open aria-haspopup="dialog" class="btn-cyber">
+            <span>Get in Touch</span>
           </button>
           <a href="tel:+917538879358" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-white border border-gray-700 hover:border-neonCyan hover:text-neonCyan px-5 sm:px-6 py-3 rounded-full transition-all">
             +91 75388 79358
@@ -969,8 +1001,8 @@
           Currently open to new roles, while building new projects. Happy to talk about AI engineering, on-device AI, Android apps, agent workflows, and enterprise automation.
         </p>
         <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-5 min-w-0">
-          <button onclick="copyEmail(this)" class="btn-cyber max-w-full">
-            <span class="email-text break-all">rdilipkumar2203@gmail.com</span>
+          <button type="button" data-contact-open aria-haspopup="dialog" class="btn-cyber max-w-full">
+            <span class="break-all">rdilipkumar2203@gmail.com</span>
           </button>
           <a href="tel:+917538879358" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-white border border-gray-700 hover:border-neonCyan hover:text-neonCyan px-5 sm:px-6 py-3 rounded-full transition-all">
             +91 75388 79358
@@ -984,6 +1016,44 @@
         </div>
       </div>
     </section>
+
+    <!-- CONTACT SHEET -->
+    <div id="contact-sheet" class="cs" role="dialog" aria-modal="true" aria-labelledby="cs-title" hidden>
+      <div class="cs-backdrop" data-contact-close></div>
+      <div class="cs-panel">
+        <div class="flex items-start justify-between gap-4 mb-6">
+          <div>
+            <p class="font-mono text-neonCyan text-[11px] tracking-widest uppercase mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-neonCyan animate-pulse"></span>Open to new roles</p>
+            <h3 id="cs-title" class="font-anton text-4xl text-white uppercase tracking-wide leading-none">Let's talk.</h3>
+            <p class="text-gray-400 font-light mt-2">Pick whatever is easiest for you.</p>
+          </div>
+          <button type="button" class="vm-close" data-contact-close aria-label="Close">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="cs-row" style="--c:#00f3ff">
+            <a href="mailto:rdilipkumar2203@gmail.com?subject=Hi%20Dilipkumar" class="flex items-center gap-3.5 flex-1 min-w-0 outline-none">
+              <span class="cs-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+              <span class="min-w-0"><span class="block text-white font-semibold">Email</span><span class="block text-gray-400 text-sm truncate">rdilipkumar2203@gmail.com</span></span>
+            </a>
+            <button type="button" class="cs-copy" data-copy-email>Copy</button>
+          </div>
+          <a href="https://linkedin.com/in/r-dilipkumar" target="_blank" rel="noopener" class="cs-row" style="--c:#ff007f">
+            <span class="cs-icon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zM9.5 9.75h3.8v1.5h.05c.53-1 1.83-1.75 3.4-1.75 3.6 0 4.25 2.2 4.25 5.1v6.15h-4v-5.4c0-1.3-.02-2.95-1.8-2.95s-2.07 1.4-2.07 2.85v5.5H9.5z"/></svg></span>
+            <span class="min-w-0"><span class="block text-white font-semibold">LinkedIn</span><span class="block text-gray-400 text-sm truncate">Message me on LinkedIn</span></span>
+          </a>
+          <a href="https://wa.me/917538879358?text=Hi%20Dilipkumar%2C%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener" class="cs-row" style="--c:#25d366">
+            <span class="cs-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.5-4A8 8 0 1 1 20 11.5z"/><path d="M9 9.5c.3 1.6 1.9 3.6 4.5 4.6l1-1.1 1.6.8-.5 1.6c-3.6.2-7-3.2-7.3-6.6l1.4-.6.8 1.6z" fill="currentColor" stroke="none"/></svg></span>
+            <span class="min-w-0"><span class="block text-white font-semibold">WhatsApp</span><span class="block text-gray-400 text-sm truncate">Chat on WhatsApp</span></span>
+          </a>
+          <a href="tel:+917538879358" class="cs-row" style="--c:#ffaa00">
+            <span class="cs-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+            <span class="min-w-0"><span class="block text-white font-semibold">Call</span><span class="block text-gray-400 text-sm truncate">+91 75388 79358</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
 
     <!-- VIDEO LIGHTBOX -->
     <div id="video-modal" class="vm" role="dialog" aria-modal="true" aria-labelledby="vm-title" hidden>
@@ -1019,7 +1089,7 @@
     </div>
 
     <!-- FLOATING TOAST NOTIFICATION -->
-    <div id="toast-notification" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 flex items-center gap-3 bg-[#0a0a0f]/95 border border-neonCyan/60 text-white font-mono text-xs px-5 py-3.5 rounded-full shadow-[0_10px_35px_rgba(0,243,255,0.35)] backdrop-blur-2xl opacity-0 pointer-events-none translate-y-6 transition-all duration-300 ease-out max-w-[calc(100vw-3rem)]">
+    <div id="toast-notification" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[110] flex items-center gap-3 bg-[#0a0a0f]/95 border border-neonCyan/60 text-white font-mono text-xs px-5 py-3.5 rounded-full shadow-[0_10px_35px_rgba(0,243,255,0.35)] backdrop-blur-2xl opacity-0 pointer-events-none translate-y-6 transition-all duration-300 ease-out max-w-[calc(100vw-3rem)]">
       <div class="w-2.5 h-2.5 rounded-full bg-neonCyan animate-ping"></div>
       <span class="toast-msg font-bold tracking-wider text-white">COPIED TO CLIPBOARD (rdilipkumar2203@gmail.com)</span>
     </div>
@@ -1038,14 +1108,11 @@
     function copyEmail(btn) {
       const email = "rdilipkumar2203@gmail.com";
       navigator.clipboard.writeText(email).then(() => {
-        const textSpan = btn.querySelector('.email-text');
-        if (textSpan) {
-          const originalText = textSpan.innerText;
-          textSpan.innerText = "COPIED TO CLIPBOARD";
-          setTimeout(() => { textSpan.innerText = originalText; }, 2000);
-        }
+        const original = btn.innerText;
+        btn.innerText = "Copied ✓";
+        setTimeout(() => { btn.innerText = original; }, 2000);
         showToast("✓ Copied: rdilipkumar2203@gmail.com");
-      });
+      }).catch(() => showToast("Couldn't copy. Email: rdilipkumar2203@gmail.com"));
     }
 
     function showToast(message) {
@@ -1062,6 +1129,39 @@
         toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-6');
       }, 2500);
     }
+
+    // --- Contact Sheet ---
+    // "Get in Touch" opens a small panel of ways to reach out instead of silently copying the email
+    const contactSheet = document.getElementById('contact-sheet');
+    let contactTrigger = null;
+
+    function openContact(trigger) {
+      contactTrigger = trigger;
+      contactSheet.hidden = false;
+      document.documentElement.style.overflow = 'hidden';
+      contactSheet.querySelector('.cs-row a, a.cs-row').focus();
+    }
+
+    function closeContact() {
+      contactSheet.hidden = true;
+      document.documentElement.style.overflow = '';
+      if (contactTrigger) contactTrigger.focus();
+    }
+
+    document.querySelectorAll('[data-contact-open]').forEach((b) => b.addEventListener('click', () => openContact(b)));
+    contactSheet.querySelectorAll('[data-contact-close]').forEach((b) => b.addEventListener('click', closeContact));
+    contactSheet.querySelector('[data-copy-email]').addEventListener('click', (e) => copyEmail(e.currentTarget));
+    document.addEventListener('keydown', (e) => {
+      if (contactSheet.hidden) return;
+      if (e.key === 'Escape') closeContact();
+      if (e.key === 'Tab') {
+        // Keep keyboard focus inside the panel
+        const items = [...contactSheet.querySelectorAll('a, button')];
+        const first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
 
     // --- Mobile Menu Toggle ---
     function toggleMobileMenu() {

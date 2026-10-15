@@ -8,7 +8,7 @@ Source of my portfolio website: **https://r-dilipkumar.github.io/**
 
 ## About Me
 
-I'm an engineer who builds with AI. I ship on-device AI apps for Android, design LLM and agent workflows, and automate enterprise systems. My background is mechatronics (B.E., 8.29 CGPA), so I'm comfortable anywhere from robot cells and microcontrollers to ERP pipelines and phone apps.
+I'm a self-driven engineer who learns by building. I research a problem first, then ship the fix: on-device AI apps for Android, LLM and agent workflows, and enterprise automation. My degree is mechatronics (B.E., 8.29 CGPA); Android, on-device AI and LLM tooling I taught myself from documentation, open-source code and research papers.
 
 ---
 
@@ -19,13 +19,13 @@ I'm an engineer who builds with AI. I ship on-device AI apps for Android, design
 | **LiveSub** | Private, offline live subtitles and translation over any Android app. Speech recognition (Sherpa-ONNX) and translation (Google ML Kit) run fully on the phone. | [GitHub](https://github.com/R-Dilipkumar/LiveSub-Offline-Translator) · [Download APK](https://github.com/R-Dilipkumar/LiveSub-Offline-Translator/releases/latest) |
 | **Net One Tap** | Fixes stuck mobile internet in one tap by restarting only the mobile radio, with no airplane mode. Also shows a per-SIM 5G status notification. | [GitHub](https://github.com/R-Dilipkumar/one-tap-network-reset) · [Research page](https://r-dilipkumar.github.io/one-tap-network-reset/) · [Download APK](https://github.com/R-Dilipkumar/one-tap-network-reset/releases/latest) |
 
-Both are open source (MIT) and run on Android 10+.
+Both are open source (MIT) and run on Android 10+. Net One Tap started as a [research write-up](https://r-dilipkumar.github.io/one-tap-network-reset/) on how Android controls the mobile radio, and the app came after the answers.
 
 ---
 
 ## Experience
 
-- **Zenardy Technologies**, Associate Developer / NetSuite Consultant (Sep 2025 – Jun 2026): SuiteScript 2.1 automation for procurement and billing, Coupa invoice and payment sync, Filevine / Litify / Zapier to NetSuite pipelines, OAuth 2.0 data extraction, and client ledger systems for law firms.
+- **Zenardy Technologies**, Associate Developer / NetSuite Consultant (Jan 2026 – Jun 2026), promoted from Technical Intern (Sep 2025 – Jan 2026): SuiteScript 2.1 automation for procurement and billing, Coupa invoice and payment sync, Filevine / Litify / Zapier to NetSuite pipelines, OAuth 2.0 data extraction, and client ledger systems for law firms.
 - **Titan Engineering & Automation Limited (TEAL)**, Mechatronics Engineering Intern (Apr 2024 – Jun 2024): FANUC robot calibration, end-effector testing and PLC-driven automation.
 - **Kongu Engineering College**, Coding Coordinator & Campus Leader (Aug 2022 – Mar 2024): ran coding events and mentored 20+ students.
 

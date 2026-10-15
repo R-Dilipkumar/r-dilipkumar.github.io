@@ -245,21 +245,23 @@
           <div class="w-2.5 h-2.5 bg-neonCyan rounded-full glow-text group-hover:scale-125 transition-transform flex-shrink-0"></div>
           <span class="font-mono text-xs sm:text-sm tracking-normal sm:tracking-widest text-white font-bold uppercase group-hover:text-neonCyan transition-colors truncate">Dilipkumar Ravichandran</span>
         </a>
-        <nav class="pointer-events-auto hidden md:flex items-center gap-7 font-mono text-xs tracking-[0.18em] uppercase text-gray-400 font-bold">
+        <nav class="pointer-events-auto hidden lg:flex items-center gap-5 xl:gap-7 font-mono text-xs tracking-[0.12em] xl:tracking-[0.18em] uppercase text-gray-400 font-bold">
           <a href="#projects" class="hover:text-neonAmber transition-all hover:drop-shadow-[0_0_8px_rgba(255,170,0,0.7)]">Projects</a>
+          <a href="#research" class="hover:text-neonPink transition-all hover:drop-shadow-[0_0_8px_rgba(255,0,127,0.7)]">Research</a>
           <a href="#experience" class="hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Experience</a>
           <a href="#academics" class="hover:text-white transition-all hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]">Academics</a>
           <a href="#taxonomy" class="hover:text-neonPink transition-all hover:drop-shadow-[0_0_8px_rgba(255,0,127,0.7)]">Taxonomy</a>
           <a href="#pursuits" class="hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Pursuits</a>
           <a href="#contact" class="hover:text-neonPink transition-all hover:drop-shadow-[0_0_8px_rgba(255,0,127,0.7)]">Contact</a>
         </nav>
-        <button onclick="toggleMobileMenu()" class="pointer-events-auto md:hidden p-2 text-gray-400 hover:text-neonCyan transition-colors flex-shrink-0" aria-label="Toggle Menu">
+        <button onclick="toggleMobileMenu()" class="pointer-events-auto lg:hidden p-2 text-gray-400 hover:text-neonCyan transition-colors flex-shrink-0" aria-label="Toggle Menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
       </div>
       <!-- Mobile Collapsible Menu -->
-      <div id="mobile-menu" class="hidden md:hidden px-6 pt-3 pb-5 flex flex-col gap-3 font-mono text-xs tracking-widest uppercase bg-[#030305]/95 border-t border-white/5 backdrop-blur-2xl mt-3">
+      <div id="mobile-menu" class="hidden lg:hidden px-6 pt-3 pb-5 flex flex-col gap-3 font-mono text-xs tracking-widest uppercase bg-[#030305]/95 border-t border-white/5 backdrop-blur-2xl mt-3">
         <a href="#projects" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonAmber py-1">Projects</a>
+        <a href="#research" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonPink py-1">Research</a>
         <a href="#experience" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonCyan py-1">Experience</a>
         <a href="#academics" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white py-1">Academics</a>
         <a href="#taxonomy" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonPink py-1">Taxonomy</a>
@@ -283,7 +285,7 @@
         </div>
 
         <p class="max-w-2xl text-base sm:text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-10">
-          Engineer who builds with AI. I ship on-device AI apps for Android, design LLM and agent workflows, and automate enterprise systems, on a mechatronics foundation (8.29 CGPA). Based in Chennai, India.
+          Self-driven engineer who learns by building. I research a problem, then ship the fix: on-device AI apps for Android, LLM and agent workflows, and enterprise automation, on a mechatronics foundation (8.29 CGPA). Based in Chennai, India.
         </p>
 
         <div class="flex flex-wrap items-center gap-4 sm:gap-5">
@@ -313,7 +315,7 @@
             <span class="font-mono text-xs uppercase tracking-widest text-neonCyan font-bold">Executive Synopsis</span>
           </div>
           <p class="text-gray-200 text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-4xl">
-            AI-focused engineer with released apps: <strong class="text-white font-semibold">LiveSub</strong> runs speech recognition and translation fully on an Android phone, and <strong class="text-white font-semibold">Net One Tap</strong> resets the mobile network in one tap. I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded systems background.
+            AI-focused engineer with released apps: <strong class="text-white font-semibold">LiveSub</strong> runs speech recognition and translation fully on an Android phone, and <strong class="text-white font-semibold">Net One Tap</strong> resets the mobile network in one tap. I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded systems background. Most of what I use today I taught myself, from docs, source code and research papers.
           </p>
         </div>
       </div>
@@ -443,10 +445,13 @@
         <div class="glass-panel reveal delay-200 lg:col-span-4 flex flex-col justify-between border-t-4 border-t-neonAmber p-6 sm:p-8 md:p-10 min-w-0 w-full">
           <div>
             <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">IN-THRUST Robot</h3>
-            <p class="font-mono text-gray-400 text-xs sm:text-sm tracking-widest uppercase mb-6">Mechatronics Capstone (2022–2023)</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-8">
-              Fabricated a remote-controlled wall-climbing robot. Utilized dual high-RPM BLDC thrust fans generating a continuous low-pressure vacuum zone for vertical aerodynamic adhesion.
+            <p class="font-mono text-gray-400 text-xs sm:text-sm tracking-widest uppercase mb-6">Mechatronics Capstone • 2023</p>
+            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-6">
+              A remote-controlled wall-climbing robot that cleans cobwebs off high walls. Dual high-RPM BLDC thrust fans create a low-pressure zone that holds it to vertical surfaces.
             </p>
+            <a href="https://drive.google.com/drive/folders/1GUNqa3tzlqb6KV98T-xlVmodLpIJa-O2" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonAmber border border-neonAmber/40 bg-neonAmber/5 hover:bg-neonAmber hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,170,0,0.5)] mb-8">
+              Watch Prototype ▶
+            </a>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex gap-2 sm:gap-2.5 flex-wrap min-w-0">
             <span class="tag tag-amber">SolidWorks</span>
@@ -473,13 +478,67 @@
       </div>
     </section>
 
+    <!-- RESEARCH & SELF-LEARNING -->
+    <section id="research" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center min-w-0 w-full">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 reveal min-w-0">
+        <div>
+          <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase tracking-wide leading-none break-words">Learn by <br><span class="text-transparent" style="-webkit-text-stroke: 1px #ff007f;">Building.</span></h2>
+        </div>
+        <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mt-4 md:mt-0">Module 02 — Research & Self-Learning</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 min-w-0 w-full">
+        <div class="glass-panel reveal-left delay-100 p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 flex flex-col justify-between min-w-0 w-full">
+          <div>
+            <span class="font-mono text-neonCyan text-xs tracking-widest uppercase block mb-3">01 — Research before code</span>
+            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Why does airplane mode fix slow data?</h3>
+            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-6">
+              Net One Tap started as a research write-up: what the toggle really resets, what Android allows an app to do, which hidden APIs work on which versions, and where the phone's 5G status values come from. The app came after the answers.
+            </p>
+          </div>
+          <a href="https://r-dilipkumar.github.io/one-tap-network-reset/" target="_blank" rel="noopener" class="self-start inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
+            Read the Research ↗
+          </a>
+        </div>
+
+        <div class="glass-panel reveal-right delay-200 p-6 sm:p-8 md:p-10 border-t-2 border-t-neonPink/40 min-w-0 w-full">
+          <span class="font-mono text-neonPink text-xs tracking-widest uppercase block mb-3">02 — Compare, then choose</span>
+          <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Picking the right model, not the famous one</h3>
+          <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed">
+            For LiveSub I compared speech models (SenseVoice, Moonshine, Parakeet, GigaAM, Whisper and streaming models) by language, speed, size and license, then matched each one to the job: streaming for instant text, whole-phrase models for accuracy.
+          </p>
+        </div>
+
+        <div class="glass-panel reveal-left delay-300 p-6 sm:p-8 md:p-10 border-t-2 border-t-neonAmber/40 flex flex-col justify-between min-w-0 w-full">
+          <div>
+            <span class="font-mono text-neonAmber text-xs tracking-widest uppercase block mb-3">03 — Methods from papers</span>
+            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Agent workflows as folders</h3>
+            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-6">
+              I run my AI-agent work with ICM (Interpretable Context Methodology): numbered folders and Markdown files act as the pipeline, so every step's context is visible, editable and reusable, instead of hidden inside framework code.
+            </p>
+          </div>
+          <a href="https://arxiv.org/abs/2603.16021" target="_blank" rel="noopener" class="self-start inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonAmber border border-neonAmber/40 bg-neonAmber/5 hover:bg-neonAmber hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,170,0,0.5)]">
+            The ICM Paper ↗
+          </a>
+        </div>
+
+        <div class="glass-panel reveal-right delay-400 p-6 sm:p-8 md:p-10 border-t-2 border-t-white/20 min-w-0 w-full">
+          <span class="font-mono text-gray-400 text-xs tracking-widest uppercase block mb-3">04 — Self-taught beyond the degree</span>
+          <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Mechatronics by degree, software by choice</h3>
+          <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed">
+            Android, Kotlin, on-device AI and LLM tooling were not in my syllabus. I learned them from documentation, open-source code and papers, and proved it the only way that counts: released apps people can download.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- EXPERIENCE SECTION (ERP) -->
     <section id="experience" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto flex flex-col justify-center min-w-0 w-full">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 reveal min-w-0">
         <div>
           <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase tracking-wide leading-none break-words">Enterprise <br><span class="text-transparent" style="-webkit-text-stroke: 1px #00f3ff;">Architecture.</span></h2>
         </div>
-        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 md:mt-0">Module 02 — Data Pipelines</p>
+        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 md:mt-0">Module 03 — Data Pipelines</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 min-w-0 w-full">
@@ -487,9 +546,10 @@
         <div class="glass-panel reveal group lg:col-span-2 min-w-0 w-full">
           <div class="flex flex-col sm:flex-row justify-between items-start gap-4 mb-8 sm:mb-12 border-b border-gray-800 pb-6 sm:pb-8 min-w-0">
             <div>
-              <span class="font-mono text-neonCyan text-xs tracking-widest uppercase block mb-3">Sep 2025 – Jun 2026</span>
+              <span class="font-mono text-neonCyan text-xs tracking-widest uppercase block mb-3">Sep 2025 – Jun 2026 • Chennai (Hybrid)</span>
               <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-sans break-words">Zenardy Technologies</h3>
-              <p class="text-gray-400 mt-2 font-mono text-sm sm:text-base">Associate Developer / NetSuite Consultant</p>
+              <p class="text-gray-300 mt-2 font-mono text-sm sm:text-base">Associate Developer / NetSuite Consultant <span class="text-gray-500">• Jan 2026 – Jun 2026</span></p>
+              <p class="text-gray-500 mt-1 font-mono text-xs sm:text-sm">Promoted from Technical Intern • Sep 2025 – Jan 2026</p>
             </div>
             <span class="tag tag-cyan self-start">ID: ZenIN00125</span>
           </div>
@@ -602,7 +662,7 @@
     <section id="academics" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center min-w-0 w-full">
       <div class="reveal mb-12 sm:mb-16 min-w-0">
         <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase tracking-wide leading-none break-words">Academics.</h2>
-        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 sm:mt-6">Module 03 — Educational Metrics</p>
+        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 sm:mt-6">Module 04 — Educational Metrics</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 min-w-0 w-full">
@@ -622,6 +682,8 @@
             <span class="tag">C Prog: Grade A+</span>
             <span class="tag">LabVIEW: Grade A+</span>
             <span class="tag">Microcontrollers: Grade A+</span>
+            <span class="tag tag-cyan">Robotics Club</span>
+            <span class="tag tag-cyan">ISTE</span>
           </div>
         </div>
 
@@ -653,7 +715,7 @@
     <section id="taxonomy" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center min-w-0 w-full">
       <div class="reveal mb-12 sm:mb-16 min-w-0">
         <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-transparent uppercase tracking-wide leading-none break-words" style="-webkit-text-stroke: 1px #fff;">Taxonomy.</h2>
-        <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mt-4 sm:mt-6">Module 04 — Skills & Honors</p>
+        <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mt-4 sm:mt-6">Module 05 — Skills & Honors</p>
       </div>
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 min-w-0 w-full">
@@ -699,7 +761,7 @@
               </li>
               <li class="flex items-start gap-4 sm:gap-5">
                 <span class="text-neonPink font-bold mt-1 text-xl sm:text-2xl flex-shrink-0">✦</span>
-                <span><strong class="text-white">GenAI & LLMs Workshop:</strong> Cuvette Tech.</span>
+                <span><strong class="text-white">GenAI, LLMs & Hugging Face Workshop:</strong> Cuvette (May 2025). <strong class="text-white">Artificial Intelligence Course:</strong> SkillVertex (Dec 2023).</span>
               </li>
               <li class="flex items-start gap-4 sm:gap-5">
                 <span class="text-neonPink font-bold mt-1 text-xl sm:text-2xl flex-shrink-0">✦</span>
@@ -719,7 +781,7 @@
     <section id="pursuits" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center min-w-0 w-full">
       <div class="reveal mb-12 sm:mb-16 min-w-0">
         <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase tracking-wide leading-none break-words">Off-Screen <br><span class="text-transparent" style="-webkit-text-stroke: 1px #00f3ff;">Pursuits.</span></h2>
-        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 sm:mt-6">Module 05 — Disciplines & Creative Craft</p>
+        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 sm:mt-6">Module 06 — Disciplines & Creative Craft</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 min-w-0 w-full">
@@ -860,7 +922,7 @@
     }
 
     // --- Dynamic Role Typing Effect ---
-    const roles = ["AI ENGINEER", "ON-DEVICE AI BUILDER", "ANDROID DEVELOPER", "MECHATRONICS ENGINEER"];
+    const roles = ["AI ENGINEER", "ON-DEVICE AI BUILDER", "ANDROID DEVELOPER", "SELF-DRIVEN LEARNER", "MECHATRONICS ENGINEER"];
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;

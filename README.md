@@ -43,6 +43,8 @@ Both are open source (MIT) and run on Android 10+. Net One Tap started as a [res
 
 ## Contact
 
+Currently open to new roles (on-site, hybrid or remote), while building new projects. Based in Komarapalayam, Tamil Nadu, India.
+
 - Email: rdilipkumar2203@gmail.com
 - Phone: +91 75388 79358
 - LinkedIn: https://linkedin.com/in/r-dilipkumar

@@ -1,0 +1,5 @@
+# Only the site and its README belong in this repo; keep everything else local.
+*
+!index.html
+!README.md
+!.gitignore

@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dilipkumar Ravichandran | Systems & AI Engineer</title>
-  <meta name="description" content="Systems & AI Engineer portfolio showcasing kinematics, Edge AI, and enterprise data pipelines.">
-  <meta property="og:title" content="Dilipkumar Ravichandran | Systems & AI Engineer">
-  <meta property="og:description" content="Systems & AI Engineer portfolio showcasing kinematics, Edge AI, and enterprise data pipelines.">
+  <title>Dilipkumar Ravichandran | AI & Systems Engineer</title>
+  <meta name="description" content="AI & Systems Engineer portfolio: on-device AI apps for Android, LLM and agentic workflows, enterprise automation, and mechatronics.">
+  <meta property="og:title" content="Dilipkumar Ravichandran | AI & Systems Engineer">
+  <meta property="og:description" content="AI & Systems Engineer portfolio: on-device AI apps for Android, LLM and agentic workflows, enterprise automation, and mechatronics.">
   
   <!-- Fonts: Anton for the massive impact header, Space Mono for tech details, Outfit for body -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -246,8 +246,8 @@
           <span class="font-mono text-xs sm:text-sm tracking-normal sm:tracking-widest text-white font-bold uppercase group-hover:text-neonCyan transition-colors truncate">Dilipkumar Ravichandran</span>
         </a>
         <nav class="pointer-events-auto hidden md:flex items-center gap-7 font-mono text-xs tracking-[0.18em] uppercase text-gray-400 font-bold">
+          <a href="#projects" class="hover:text-neonAmber transition-all hover:drop-shadow-[0_0_8px_rgba(255,170,0,0.7)]">Projects</a>
           <a href="#experience" class="hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Experience</a>
-          <a href="#edge-ai" class="hover:text-neonAmber transition-all hover:drop-shadow-[0_0_8px_rgba(255,170,0,0.7)]">Hardware & AI</a>
           <a href="#academics" class="hover:text-white transition-all hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]">Academics</a>
           <a href="#taxonomy" class="hover:text-neonPink transition-all hover:drop-shadow-[0_0_8px_rgba(255,0,127,0.7)]">Taxonomy</a>
           <a href="#pursuits" class="hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Pursuits</a>
@@ -259,8 +259,8 @@
       </div>
       <!-- Mobile Collapsible Menu -->
       <div id="mobile-menu" class="hidden md:hidden px-6 pt-3 pb-5 flex flex-col gap-3 font-mono text-xs tracking-widest uppercase bg-[#030305]/95 border-t border-white/5 backdrop-blur-2xl mt-3">
+        <a href="#projects" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonAmber py-1">Projects</a>
         <a href="#experience" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonCyan py-1">Experience</a>
-        <a href="#edge-ai" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonAmber py-1">Hardware & AI</a>
         <a href="#academics" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white py-1">Academics</a>
         <a href="#taxonomy" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonPink py-1">Taxonomy</a>
         <a href="#pursuits" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonCyan py-1">Pursuits</a>
@@ -283,7 +283,7 @@
         </div>
 
         <p class="max-w-2xl text-base sm:text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-10">
-          Mechatronics engineering graduate (8.29 CGPA) building physical kinematics, on-device Edge AI, and high-throughput enterprise ERP pipelines. Based in Chennai, India.
+          Engineer who builds with AI. I ship on-device AI apps for Android, design LLM and agent workflows, and automate enterprise systems, on a mechatronics foundation (8.29 CGPA). Based in Chennai, India.
         </p>
 
         <div class="flex flex-wrap items-center gap-4 sm:gap-5">
@@ -313,9 +313,163 @@
             <span class="font-mono text-xs uppercase tracking-widest text-neonCyan font-bold">Executive Synopsis</span>
           </div>
           <p class="text-gray-200 text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-4xl">
-            Enterprise ERP Consultant & Mechatronics Engineer specializing in high-throughput SuiteScript 2.1 automations, custom integration middleware (Coupa, Litify, Filevine), and local privacy-first Edge AI architectures.
+            AI-focused engineer with released apps: <strong class="text-white font-semibold">LiveSub</strong> runs speech recognition and translation fully on an Android phone, and <strong class="text-white font-semibold">Net One Tap</strong> resets the mobile network in one tap. I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded systems background.
           </p>
         </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto flex flex-col justify-center min-w-0 w-full">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 reveal min-w-0">
+        <div>
+          <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase tracking-wide leading-none break-words">Selected <br><span class="text-transparent" style="-webkit-text-stroke: 1px #ffaa00;">Projects.</span></h2>
+        </div>
+        <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mt-4 md:mt-0">Module 01 — Apps, AI & Hardware</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 min-w-0 w-full">
+        
+        <!-- LiveSub -->
+        <div data-release-repo="R-Dilipkumar/LiveSub-Offline-Translator" class="glass-panel reveal-left delay-100 lg:col-span-7 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonPink/40 min-w-0 w-full">
+          <div>
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+              <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">LiveSub</h3>
+              <span class="tag tag-pink">On-Device • No Cloud</span>
+            </div>
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Live subtitles for anything your phone plays.</p>
+            <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Edge AI • Sherpa-ONNX • ML Kit • Jetpack Compose</p>
+            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed">
+              A private, offline speech-to-subtitle translator for Android. It listens to a video, stream, game or call, turns speech into text, translates it, and shows the result in a floating subtitle window over any app. Speech recognition and translation both run on the phone: no account, no API key, no audio uploaded.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Two-Speed Speech Recognition</strong>
+                <em>Instant</em> mode streams words as they are spoken. <em>About 1 second</em> mode uses a Silero voice detector to cut phrases and decodes each one whole with SenseVoice, Moonshine, Parakeet, GigaAM or Whisper, with punctuation.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Phone Audio Capture</strong>
+                Records any app's audio via <code>AudioPlaybackCapture</code> (or the mic), resampled to 16 kHz with an anti-aliasing filter and a voice clean-up stage tuned for speech.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Sentence-Aware Translation</strong>
+                Joins pause-split fragments into whole sentences, filters music and noise text, then translates through an ordered ML Kit queue with automatic language detection.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Floating Overlay</strong>
+                Compose UI in a system overlay with Roll-up, Movie and Live subtitle styles, a Quick Settings tile, and on-phone history in Room.
+              </div>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+              <span class="tag tag-pink">99 Languages</span>
+              <span class="tag">Android 10+</span>
+              <span class="tag">Open Source • MIT</span>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
+            <span data-release-info class="font-mono text-xs text-gray-400">Latest release on GitHub</span>
+            <div class="flex items-center gap-3 flex-wrap">
+              <a href="https://github.com/R-Dilipkumar/LiveSub-Offline-Translator" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonPink border border-neonPink/40 bg-neonPink/5 hover:bg-neonPink hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,0,127,0.5)]">
+                GitHub ↗
+              </a>
+              <a data-release-download href="https://github.com/R-Dilipkumar/LiveSub-Offline-Translator/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonPink border border-neonPink px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,127,0.6)]">
+                Download APK ↓
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Net One Tap -->
+        <div data-release-repo="R-Dilipkumar/one-tap-network-reset" class="glass-panel reveal-right delay-200 lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
+          <div>
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+              <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Net One Tap</h3>
+              <span class="tag tag-cyan">No Airplane Mode</span>
+            </div>
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Mobile internet stuck? Fix it in one tap.</p>
+            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Android • Kotlin • Shizuku / Root • Telephony</p>
+            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed">
+              Restarts only the mobile radio, the same fix as toggling airplane mode, while Wi-Fi, Bluetooth and mobile data stay untouched. Also shows a per-SIM 5G status notification.
+            </p>
+            <div class="flex flex-col gap-6 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Privileged Radio Control</strong>
+                Calls the hidden <code>ITelephony.setRadioForSubscriber</code> through Shizuku or root, with a soft-refresh fallback. Skips the reset during calls and always brings the radio back.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">5G Status Detection</strong>
+                Reads hidden NR state and frequency from <code>ServiceState</code> (the same values as the <code>*#*#4636#*#*</code> screen) with dual-SIM support and no location permission.
+              </div>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+              <span class="tag tag-cyan">Quick Settings Tile</span>
+              <span class="tag">Dual SIM</span>
+              <span class="tag">MIT</span>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80 flex flex-col gap-4 min-w-0">
+            <span data-release-info class="font-mono text-xs text-gray-400">Latest release on GitHub</span>
+            <div class="flex items-center gap-3 flex-wrap">
+              <a href="https://r-dilipkumar.github.io/one-tap-network-reset/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
+                Research Page ↗
+              </a>
+              <a href="https://github.com/R-Dilipkumar/one-tap-network-reset" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
+                GitHub ↗
+              </a>
+              <a data-release-download href="https://github.com/R-Dilipkumar/one-tap-network-reset/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonCyan border border-neonCyan px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
+                Download APK ↓
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile AI -->
+        <div class="glass-panel reveal-left delay-100 lg:col-span-4 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-white/20 min-w-0 w-full">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Local Mobile AI</h3>
+            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6">Personal Project • Termux • Obsidian</p>
+            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-8">
+              A personal AI assistant running on my phone in Termux, with long-term memory kept in an Obsidian Markdown vault. Notes and their links form a knowledge graph the assistant retrieves from (graph-based RAG), so context carries across sessions.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80 flex gap-2 sm:gap-2.5 flex-wrap min-w-0">
+            <span class="tag tag-cyan">Graph RAG</span>
+            <span class="tag">Termux</span>
+            <span class="tag">Obsidian</span>
+          </div>
+        </div>
+
+        <!-- IN-THRUST -->
+        <div class="glass-panel reveal delay-200 lg:col-span-4 flex flex-col justify-between border-t-4 border-t-neonAmber p-6 sm:p-8 md:p-10 min-w-0 w-full">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">IN-THRUST Robot</h3>
+            <p class="font-mono text-gray-400 text-xs sm:text-sm tracking-widest uppercase mb-6">Mechatronics Capstone (2022–2023)</p>
+            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-8">
+              Fabricated a remote-controlled wall-climbing robot. Utilized dual high-RPM BLDC thrust fans generating a continuous low-pressure vacuum zone for vertical aerodynamic adhesion.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80 flex gap-2 sm:gap-2.5 flex-wrap min-w-0">
+            <span class="tag tag-amber">SolidWorks</span>
+            <span class="tag tag-amber">SimonK 30A</span>
+            <span class="tag tag-amber">ESP8266</span>
+          </div>
+        </div>
+
+        <!-- IoT AC -->
+        <div class="glass-panel reveal-right delay-300 lg:col-span-4 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-white/20 min-w-0 w-full">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Smart AC Telemetry</h3>
+            <p class="font-mono text-gray-400 text-xs sm:text-sm tracking-widest uppercase mb-6">ESP32 • Python • IoT</p>
+            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-8">
+              Developed an IoT predictive maintenance system calculating dust accumulation rates on air filters. Transmitted telemetry to ThingSpeak, reducing scheduled servicing overhead by 25%.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80 flex gap-2 sm:gap-2.5 flex-wrap min-w-0">
+            <span class="tag">ESP32</span>
+            <span class="tag">ThingSpeak</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -325,7 +479,7 @@
         <div>
           <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase tracking-wide leading-none break-words">Enterprise <br><span class="text-transparent" style="-webkit-text-stroke: 1px #00f3ff;">Architecture.</span></h2>
         </div>
-        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 md:mt-0">Module 01 — Data Pipelines</p>
+        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 md:mt-0">Module 02 — Data Pipelines</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 min-w-0 w-full">
@@ -444,107 +598,6 @@
       </div>
     </section>
 
-    <!-- PROJECTS SECTION (AI & HARDWARE) -->
-    <section id="edge-ai" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto flex flex-col justify-center min-w-0 w-full">
-      <div id="projects" class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 reveal min-w-0">
-        <div>
-          <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase tracking-wide leading-none break-words">Hardware & <br><span class="text-transparent" style="-webkit-text-stroke: 1px #ffaa00;">Edge AI.</span></h2>
-        </div>
-        <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mt-4 md:mt-0">Module 02 — Kinematics & Logic</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 min-w-0 w-full">
-        
-        <!-- LiveSub -->
-        <div class="glass-panel reveal-left delay-100 lg:col-span-8 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonPink/40 min-w-0 w-full">
-          <div>
-            <div class="flex flex-wrap justify-between items-start mb-6 gap-3 sm:gap-4 min-w-0">
-              <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">LiveSub (MyLiveTranslator)</h3>
-              <span class="tag tag-pink">100% Offline | Zero Cloud</span>
-            </div>
-            <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Edge AI • sherpa-onnx • Kotlin • ML Kit v2</p>
-            <p class="text-gray-300 font-light text-lg sm:text-xl mb-8 sm:mb-10 leading-relaxed">
-              Architected a privacy-first, on-device translation engine executing neural network inference directly on mobile hardware without cloud network reliance. 100% offline operation with zero network permissions.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
-              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
-                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Audio Capture & ASR</strong>
-                Captured internal audio (16kHz PCM) via <code>AudioPlaybackCaptureConfiguration</code>. Integrated local sherpa-onnx supporting 33 Zipformer language packs and 5 Whisper ONNX tiers.
-              </div>
-              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
-                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Screen OCR & Streaming</strong>
-                Google ML Kit v2 OCR across 5 scripts (Latin, Chinese, Devanagari, Japanese, Korean). Built Jetpack Compose floating UI via WindowManager.
-              </div>
-            </div>
-          </div>
-          <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
-            <span class="font-mono text-xs text-gray-400">Stack: ONNX Runtime • Kotlin • sherpa</span>
-            <a href="https://github.com/R-Dilipkumar" target="_blank" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonPink border border-neonPink/40 bg-neonPink/5 hover:bg-neonPink hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,0,127,0.5)]">
-              VIEW ARCHITECTURE / CODE ↗
-            </a>
-          </div>
-        </div>
-
-        <!-- Mobile AI -->
-        <div class="glass-panel reveal-right delay-200 lg:col-span-4 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
-          <div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Local Mobile AI</h3>
-            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6">Termux • Obsidian</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-6">
-              Built a continuous-learning memory architecture using an Obsidian Markdown Vault as a local vector database. Enabled autonomous context persistence on Poco X7 hardware.
-            </p>
-          </div>
-          <div class="pt-6 border-t border-gray-800/80 min-w-0">
-            <a href="https://github.com/R-Dilipkumar" target="_blank" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
-              VIEW ARCHITECTURE / CODE ↗
-            </a>
-          </div>
-        </div>
-
-        <!-- IN-THRUST -->
-        <div class="glass-panel reveal-left delay-300 lg:col-span-6 flex flex-col justify-between border-t-4 border-t-neonAmber p-6 sm:p-8 md:p-10 min-w-0 w-full">
-          <div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">IN-THRUST Robot</h3>
-            <p class="font-mono text-gray-400 text-xs sm:text-sm tracking-widest uppercase mb-6">Mechatronics Capstone (2022–2023)</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-8">
-              Fabricated a remote-controlled wall-climbing robot. Utilized dual high-RPM BLDC thrust fans generating a continuous low-pressure vacuum zone for vertical aerodynamic adhesion.
-            </p>
-          </div>
-          <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
-              <span class="tag tag-amber">SolidWorks</span>
-              <span class="tag tag-amber">SimonK 30A</span>
-              <span class="tag tag-amber">ESP8266</span>
-            </div>
-            <a href="https://github.com/R-Dilipkumar" target="_blank" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonAmber border border-neonAmber/40 bg-neonAmber/5 hover:bg-neonAmber hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,170,0,0.5)]">
-              VIEW ARCHITECTURE / CODE ↗
-            </a>
-          </div>
-        </div>
-
-        <!-- IoT AC -->
-        <div class="glass-panel reveal-right delay-400 lg:col-span-6 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-white/20 min-w-0 w-full">
-          <div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Smart AC Telemetry</h3>
-            <p class="font-mono text-gray-400 text-xs sm:text-sm tracking-widest uppercase mb-6">ESP32 • Python • IoT</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-8">
-              Developed an IoT predictive maintenance system calculating dust accumulation rates on air filters. Transmitted telemetry to ThingSpeak, reducing scheduled servicing overhead by 25%.
-            </p>
-          </div>
-          <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
-              <span class="tag">ESP32</span>
-              <span class="tag">ThingSpeak</span>
-            </div>
-            <a href="https://github.com/R-Dilipkumar" target="_blank" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-white border border-white/30 bg-white/5 hover:bg-white hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.4)]">
-              VIEW ARCHITECTURE / CODE ↗
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
     <!-- METRICS & ACADEMICS -->
     <section id="academics" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center min-w-0 w-full">
       <div class="reveal mb-12 sm:mb-16 min-w-0">
@@ -607,20 +660,24 @@
         
         <div class="lg:col-span-6 flex flex-col gap-6 sm:gap-8 min-w-0 w-full">
           <div class="glass-panel reveal-left delay-100 p-6 sm:p-8 md:p-10 min-w-0 w-full">
+            <h4 class="font-mono text-neonPink mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">AI & LLM Engineering</h4>
+            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">LLM APIs with structured prompts and outputs (Python), agentic workflows with ICM (Interpretable Context Methodology: folders and Markdown files as the agent pipeline), AI-assisted development with coding agents (Claude Code), graph-based RAG over Markdown knowledge bases, Generative AI, Hugging Face.</p>
+          </div>
+          <div class="glass-panel reveal-left delay-200 p-6 sm:p-8 md:p-10 min-w-0 w-full">
+            <h4 class="font-mono text-neonAmber mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">On-Device AI & Android</h4>
+            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Sherpa-ONNX speech recognition (streaming and whole-phrase), Silero VAD, ONNX Runtime, Google ML Kit translation and language ID, Kotlin, Jetpack Compose, Coroutines, Room, DataStore, foreground services, overlays, Shizuku and hidden Android APIs.</p>
+          </div>
+          <div class="glass-panel reveal-left delay-300 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonCyan mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Enterprise ERP & Backend</h4>
             <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">SuiteScript 2.1, SuiteAnalytics, SuiteFlow, Saved Searches, RESTlets, Suitelets, Coupa, Filevine, Zapier, OAuth 2.0 / TBA, Google Apps Script.</p>
           </div>
-          <div class="glass-panel reveal-left delay-200 p-6 sm:p-8 md:p-10 min-w-0 w-full">
-            <h4 class="font-mono text-neonPink mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">AI & Machine Intelligence</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Generative & Agentic AI, RAG Architectures, Local LLM Inference, and Hugging Face, alongside sherpa-onnx, ML Kit v2, Jetpack Compose, Kotlin, ONNX Runtime, and Obsidian RAG.</p>
-          </div>
-          <div class="glass-panel reveal-left delay-300 p-6 sm:p-8 md:p-10 min-w-0 w-full">
-            <h4 class="font-mono text-neonAmber mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Robotics, Kinematics & IoT</h4>
+          <div class="glass-panel reveal-left delay-400 p-6 sm:p-8 md:p-10 min-w-0 w-full">
+            <h4 class="font-mono text-white mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Robotics, IoT & Embedded</h4>
             <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">FANUC Robotics, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB Design.</p>
           </div>
           <div class="glass-panel reveal-left delay-400 p-6 sm:p-8 md:p-10 min-w-0 w-full">
-            <h4 class="font-mono text-white mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Languages & Systems</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Python, JavaScript, Kotlin, Java, C, Embedded C, SQL, Linux / WSL2, Git, GitHub.</p>
+            <h4 class="font-mono text-gray-400 mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Languages & Tools</h4>
+            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Python, Kotlin, JavaScript, Java, C, Embedded C, SQL, Gradle, ADB, Linux / WSL2, Git, GitHub.</p>
           </div>
         </div>
 
@@ -732,7 +789,7 @@
         <span class="font-mono text-neonCyan text-xs tracking-widest uppercase mb-4 block">Signal Terminal</span>
         <h2 class="font-anton text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white uppercase tracking-wide mb-6 break-words">Let's Connect.</h2>
         <p class="text-gray-300 font-light text-base sm:text-lg md:text-xl leading-relaxed mb-8 max-w-2xl mx-auto">
-          Open for technical discussions across enterprise SuiteScript architectures, Edge AI inference pipelines, and physical robotics kinematics.
+          Open to roles and conversations in AI engineering, on-device AI, Android apps, agent workflows, and enterprise automation.
         </p>
         <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-5 min-w-0">
           <button onclick="copyEmail(this)" class="btn-cyber max-w-full">
@@ -759,7 +816,7 @@
 
     <!-- FOOTER -->
     <footer class="py-8 border-t border-gray-900/50 text-center font-mono text-xs text-gray-500 uppercase tracking-widest relative z-10">
-      <p class="mb-3">Dilipkumar Ravichandran — Multidisciplinary Engineer</p>
+      <p class="mb-3">Dilipkumar Ravichandran — AI & Systems Engineer</p>
       <p class="text-gray-600">Chennai, Tamil Nadu, India • +91 75388 79358</p>
     </footer>
 
@@ -803,7 +860,7 @@
     }
 
     // --- Dynamic Role Typing Effect ---
-    const roles = ["SOFTWARE DEVELOPER", "EDGE AI ARCHITECT", "MECHATRONICS SPECIALIST"];
+    const roles = ["AI ENGINEER", "ON-DEVICE AI BUILDER", "ANDROID DEVELOPER", "MECHATRONICS ENGINEER"];
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -843,6 +900,22 @@
       });
     }, { threshold: 0, rootMargin: '100px 0px 100px 0px' });
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el) => observer.observe(el));
+
+    // --- Latest Release Downloads ---
+    // Points each Download button at the newest APK; keeps the releases page link if GitHub can't be reached.
+    document.querySelectorAll('[data-release-repo]').forEach(async (card) => {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${card.dataset.releaseRepo}/releases/latest`);
+        if (!res.ok) return;
+        const release = await res.json();
+        const apk = (release.assets || []).find(a => a.name.endsWith('.apk'));
+        if (!apk) return;
+        const mb = apk.size / 1048576;
+        card.querySelector('[data-release-download]').href = apk.browser_download_url;
+        card.querySelector('[data-release-info]').textContent =
+          `Latest: ${release.tag_name} • APK ${mb < 10 ? mb.toFixed(1) : Math.round(mb)} MB`;
+      } catch (e) { /* offline or rate-limited: leave the fallback link */ }
+    });
 
 
     // =========================================================================

@@ -1,5 +1,9 @@
 # Only the site, its README, its share pages, preview image and media folder belong in this repo; keep everything else local.
 *
+
+# Private notes about me, never pushed (also covered by * above)
+Me.md
+
 !index.html
 !README.md
 !preview.png

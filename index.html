@@ -458,7 +458,7 @@
             <span class="font-mono text-xs uppercase tracking-widest text-neonCyan font-bold">Executive Synopsis</span>
           </div>
           <p class="text-gray-200 text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-4xl">
-            AI-focused engineer with released apps: <strong class="text-white font-semibold">LiveSub</strong> runs speech recognition and translation fully on an Android phone, and <strong class="text-white font-semibold">Net One Tap</strong> resets the mobile network in one tap. I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded systems background. Most of what I use today I taught myself, from docs, source code and research papers.
+            AI-focused engineer with four released Android apps: <strong class="text-white font-semibold">LiveSub</strong> runs speech recognition and translation fully on the phone, <strong class="text-white font-semibold">Subtitle Studio</strong> makes offline subtitles for Tamil, Tanglish and other Indian languages, <strong class="text-white font-semibold">Artisan NPR Studio</strong> turns photos into art with 134 GPU styles, and <strong class="text-white font-semibold">Net One Tap</strong> resets the mobile network in one tap. I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded systems background. Most of what I use today I taught myself, from docs, source code and research papers.
           </p>
         </div>
       </div>
@@ -562,6 +562,96 @@
                 GitHub ↗
               </a>
               <a data-release-download href="https://github.com/R-Dilipkumar/one-tap-network-reset/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonCyan border border-neonCyan px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
+                Download APK ↓
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subtitle Studio -->
+        <div data-release-repo="R-Dilipkumar/indic-subtitle-studio" class="glass-panel reveal-left delay-100 lg:col-span-7 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonAmber/40 min-w-0 w-full">
+          <div>
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+              <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Subtitle Studio</h3>
+              <span class="tag tag-amber">Offline • Indian Languages</span>
+            </div>
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Auto subtitles for Tamil, Tanglish and more, made on the phone.</p>
+            <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Whisper • IndicTrans2 • ONNX Runtime • Media3</p>
+            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed">
+              Pick a video and a language, and the app writes the captions: in the original script, in English letters by sound ("vanakkam nanbargale"), or translated. Fix and style every caption, then export an MP4 with the captions burned in, or an <code>.srt</code> file. Built for South Indian creators. The video never leaves the phone.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Speech Models per Language</strong>
+                Whisper fine-tunes for Tamil, Telugu, Kannada, Malayalam, Hindi and English via Sherpa-ONNX, plus a Tanglish model that keeps English words in English. Silero VAD cuts the audio at pauses.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">English Letters by Sound</strong>
+                A rule engine for each script writes the words as they sound, including changes the letters don't show (Tamil க is "k" in <em>kaadhal</em> but "g" in <em>magan</em>).
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">On-Phone Translation</strong>
+                IndicTrans2 on ONNX Runtime translates sentence by sentence, then spreads each meaning over the captions by speaking time, so the English keeps pace with the talk.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Caption Editor &amp; Export</strong>
+                Karaoke-style word timing, motion, 16 fonts with matching Tamil looks, a full edit history, and MP4 export on the phone's video hardware (Media3 Transformer).
+              </div>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+              <span class="tag tag-amber">7 Languages + Tanglish</span>
+              <span class="tag">Android 10+</span>
+              <span class="tag">Open Source • MIT</span>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
+            <span data-release-info class="font-mono text-xs text-gray-400">Latest release on GitHub</span>
+            <div class="flex items-center gap-3 flex-wrap">
+              <a href="https://github.com/R-Dilipkumar/indic-subtitle-studio" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonAmber border border-neonAmber/40 bg-neonAmber/5 hover:bg-neonAmber hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,170,0,0.5)]">
+                GitHub ↗
+              </a>
+              <a data-release-download href="https://github.com/R-Dilipkumar/indic-subtitle-studio/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonAmber border border-neonAmber px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,170,0,0.6)]">
+                Download APK ↓
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Artisan NPR Studio -->
+        <div data-release-repo="R-Dilipkumar/photo-art-filters-android" class="glass-panel reveal-right delay-200 lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonPink/40 min-w-0 w-full">
+          <div>
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+              <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Artisan NPR Studio</h3>
+              <span class="tag tag-pink">No AI • No Internet</span>
+            </div>
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Turn any photo into a sketch, painting or comic.</p>
+            <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Kotlin • Compose • OpenGL ES 3.0 • GLSL</p>
+            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed">
+              134 art styles in 12 groups: pencil sketch, oil paint, watercolour, halftone, pixel art, film and glitch looks. Each style has its own controls, and a high-resolution export looks just like the preview. The APK is about 2 MB and asks for no permissions.
+            </p>
+            <div class="flex flex-col gap-6 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">One Shader per Style</strong>
+                Each style is a GPU fragment shader built on known image-art methods: XDoG ink, Kuwahara painting, line integral convolution brush strokes, CMYK halftone screens, dithering and Voronoi mosaics.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Fast on a Mid-Range Phone</strong>
+                A 1280 px preview renders in 13 ms on average. Wide effects read from pre-blurred copies of the photo, so a 3200 px export matches the preview.
+              </div>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+              <span class="tag tag-pink">134 Styles</span>
+              <span class="tag">~2 MB APK</span>
+              <span class="tag">MIT</span>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80 flex flex-col gap-4 min-w-0">
+            <span data-release-info class="font-mono text-xs text-gray-400">Latest release on GitHub</span>
+            <div class="flex items-center gap-3 flex-wrap">
+              <a href="https://github.com/R-Dilipkumar/photo-art-filters-android" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonPink border border-neonPink/40 bg-neonPink/5 hover:bg-neonPink hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,0,127,0.5)]">
+                GitHub ↗
+              </a>
+              <a data-release-download href="https://github.com/R-Dilipkumar/photo-art-filters-android/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonPink border border-neonPink px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,127,0.6)]">
                 Download APK ↓
               </a>
             </div>
@@ -877,7 +967,7 @@
           </div>
           <div class="glass-panel reveal-left delay-200 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonAmber mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">On-Device AI & Android</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Sherpa-ONNX speech recognition (streaming and whole-phrase), Silero VAD, ONNX Runtime, Google ML Kit translation and language ID, Kotlin, Jetpack Compose, Coroutines, Room, DataStore, foreground services, overlays, Shizuku and hidden Android APIs.</p>
+            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Sherpa-ONNX speech recognition (streaming and whole-phrase), Whisper, Silero VAD, ONNX Runtime, IndicTrans2 and Google ML Kit translation, Kotlin, Jetpack Compose, Coroutines, Room, DataStore, Media3, OpenGL ES 3.0 / GLSL shaders, foreground services, overlays, Shizuku and hidden Android APIs.</p>
           </div>
           <div class="glass-panel reveal-left delay-300 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonCyan mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Enterprise ERP & Backend</h4>
@@ -1192,7 +1282,9 @@
         const res = await fetch(`https://api.github.com/repos/${card.dataset.releaseRepo}/releases/latest`);
         if (!res.ok) return;
         const release = await res.json();
-        const apk = (release.assets || []).find(a => a.name.endsWith('.apk'));
+        // Releases with one APK per CPU type: prefer arm64 (most phones), then universal
+        const apks = (release.assets || []).filter(a => a.name.endsWith('.apk'));
+        const apk = apks.find(a => a.name.includes('arm64')) || apks.find(a => a.name.includes('universal')) || apks[0];
         if (!apk) return;
         const mb = apk.size / 1048576;
         card.querySelector('[data-release-download]').href = apk.browser_download_url;

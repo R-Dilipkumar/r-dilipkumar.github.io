@@ -227,6 +227,9 @@
       align-items: center;
       gap: 0.5rem;
     }
+    @media (max-width: 480px) {
+      .btn-cyber { padding: 1rem 1.25rem; letter-spacing: 0.02em; }
+    }
     .btn-cyber:hover {
       transform: scale(1.05);
       box-shadow: 0 0 20px rgba(255,255,255,0.4);
@@ -432,9 +435,9 @@
           <button type="button" data-contact-open aria-haspopup="dialog" class="btn-cyber">
             <span>Get in Touch</span>
           </button>
-          <a href="tel:+917538879358" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-white border border-gray-700 hover:border-neonCyan hover:text-neonCyan px-5 sm:px-6 py-3 rounded-full transition-all">
+          <button type="button" data-contact-open aria-haspopup="dialog" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-white border border-gray-700 hover:border-neonCyan hover:text-neonCyan px-5 sm:px-6 py-3 rounded-full transition-all">
             +91 75388 79358
-          </a>
+          </button>
           <a href="https://linkedin.com/in/r-dilipkumar" target="_blank" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-gray-300 hover:text-neonPink transition-colors flex items-center gap-2">
             LinkedIn <span class="text-neonPink">↗</span>
           </a>
@@ -1002,11 +1005,11 @@
         </p>
         <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-5 min-w-0">
           <button type="button" data-contact-open aria-haspopup="dialog" class="btn-cyber max-w-full">
-            <span class="break-all">rdilipkumar2203@gmail.com</span>
+            <span class="whitespace-nowrap text-[clamp(0.7rem,4vw,1rem)]">rdilipkumar2203@gmail.com</span>
           </button>
-          <a href="tel:+917538879358" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-white border border-gray-700 hover:border-neonCyan hover:text-neonCyan px-5 sm:px-6 py-3 rounded-full transition-all">
+          <button type="button" data-contact-open aria-haspopup="dialog" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-white border border-gray-700 hover:border-neonCyan hover:text-neonCyan px-5 sm:px-6 py-3 rounded-full transition-all">
             +91 75388 79358
-          </a>
+          </button>
           <a href="https://linkedin.com/in/r-dilipkumar" target="_blank" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-gray-300 hover:text-neonPink transition-colors flex items-center gap-2">
             LinkedIn <span class="text-neonPink">↗</span>
           </a>

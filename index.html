@@ -931,10 +931,10 @@
     <section id="pursuits" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center min-w-0 w-full">
       <div class="reveal mb-12 sm:mb-16 min-w-0">
         <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase tracking-wide leading-none break-words">Off-Screen <br><span class="text-transparent" style="-webkit-text-stroke: 1px #00f3ff;">Pursuits.</span></h2>
-        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 sm:mt-6">Module 06 — Disciplines & Creative Craft</p>
+        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 sm:mt-6">Module 06 — Focus & Discipline</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 min-w-0 w-full">
+      <div class="grid grid-cols-1 gap-8 md:gap-10 min-w-0 w-full max-w-3xl">
         <!-- Precision Gaming -->
         <div class="glass-panel reveal-left delay-100 flex flex-col justify-between border-t-4 border-t-neonPink p-6 sm:p-8 md:p-10 min-w-0 w-full">
           <div>
@@ -961,35 +961,6 @@
             <span class="tag tag-pink">Hollow Knight</span>
             <span class="tag tag-pink">Nine Sols</span>
             <span class="tag">Parry Timing</span>
-          </div>
-        </div>
-
-        <!-- Digital Content Creation -->
-        <div class="glass-panel reveal-right delay-200 flex flex-col justify-between border-t-4 border-t-neonCyan p-6 sm:p-8 md:p-10 min-w-0 w-full">
-          <div>
-            <div class="flex items-center justify-between mb-6 flex-wrap gap-2 min-w-0">
-              <span class="font-mono text-neonCyan text-xs tracking-widest uppercase">Narrative & Motion Aesthetics</span>
-              <span class="tag tag-cyan">Content Creation</span>
-            </div>
-            <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 break-words">Digital Content Creation</h3>
-            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-6">
-              Cinematic visual storytelling, sound design, and color grading that transform complex engineering narratives into engaging media:
-            </p>
-            <div class="space-y-4">
-              <div class="flex items-start gap-4">
-                <span class="text-neonCyan text-xl mt-1 flex-shrink-0">▹</span>
-                <span class="text-gray-300"><strong class="text-white">DaVinci Resolve video editing:</strong> Non-linear timelines, multi-cam synchronization, rhythm cutting, and dynamic audio leveling in Fairlight.</span>
-              </div>
-              <div class="flex items-start gap-4">
-                <span class="text-neonCyan text-xl mt-1 flex-shrink-0">▹</span>
-                <span class="text-gray-300"><strong class="text-white">Color Grading & Visual Rhythm:</strong> Color space transforms, curve adjustments, and pacing that elevates technical demonstrations into memorable visual experiences.</span>
-              </div>
-            </div>
-          </div>
-          <div class="mt-8 flex gap-3 flex-wrap">
-            <span class="tag tag-cyan">DaVinci Resolve</span>
-            <span class="tag tag-cyan">Video Editing</span>
-            <span class="tag">Color Grading</span>
           </div>
         </div>
       </div>
@@ -1609,6 +1580,11 @@
       // Rotate the whole master group slightly based on scroll
       masterGroup.rotation.y = scrollPercent * Math.PI * 0.5;
       masterGroup.rotation.x = scrollPercent * Math.PI * 0.2;
+
+      // Dim the background once the reader scrolls past the hero
+      const heroFade = Math.min(1, scrollY / window.innerHeight);
+      const canvasOpacity = (1 - heroFade * 0.65).toFixed(2);
+      if (canvas.style.opacity !== canvasOpacity) canvas.style.opacity = canvasOpacity;
 
       // 3. Animate Cybernetic Core
       coreWire.rotation.y = time * 0.2;

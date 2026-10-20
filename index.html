@@ -264,6 +264,8 @@
       .cs { align-items: flex-end; padding: 0; }
       .cs-panel { width: 100%; border-radius: 24px 24px 0 0; padding: 24px 16px calc(24px + env(safe-area-inset-bottom)); animation-name: cs-up; }
       @keyframes cs-up { from { transform: translateY(100%); } to { transform: none; } }
+      /* The sheet fills the bottom of the screen, so show the "Copied" toast at the top instead */
+      html:has(.cs:not([hidden])) #toast-notification { top: calc(16px + env(safe-area-inset-top)); bottom: auto; }
     }
     @media (prefers-reduced-motion: reduce) { .cs-panel { animation: none; } .cs-row:hover { transform: none; } }
 

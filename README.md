@@ -8,7 +8,7 @@ Source of my portfolio website: **https://r-dilipkumar.github.io/**
 
 ## About Me
 
-I'm a self-driven engineer who learns by building. I research a problem first, then ship the fix: on-device AI apps for Android, LLM and agent workflows, and enterprise automation. My degree is mechatronics (B.E., 8.29 CGPA); Android, on-device AI and LLM tooling I taught myself from documentation, open-source code and research papers.
+I'm a self-driven engineer who learns by building. I research a problem first, then ship the fix: on-device AI apps for Android, web apps on Firebase, LLM and agent workflows, and enterprise automation. My degree is mechatronics (B.E., 8.29 CGPA); Android, on-device AI and LLM tooling I taught myself from documentation, open-source code and research papers.
 
 ---
 
@@ -23,6 +23,12 @@ I'm a self-driven engineer who learns by building. I research a problem first, t
 
 All four are open source (MIT) and run on Android 10+. Net One Tap started as a [research write-up](https://r-dilipkumar.github.io/one-tap-network-reset/) on how Android controls the mobile radio, and the app came after the answers.
 
+## Web App
+
+| App | What it does | Links |
+|---|---|---|
+| **SEA MOBA 5v5 Tournament** | Sign-ups, team forming and brackets for a Mobile Legends (MLBB) 5v5 tournament, in one phone-friendly web app. Players upload stats screenshots that Gemini 2.5 Flash (Vertex AI) reads and checks, pay by UPI, form teams with a 6-digit code, and report results with screenshots. Admins run payments, reviews, refunds, seeded brackets and disputes. Built with React, TypeScript and Firebase (Auth, Firestore, Storage, Cloud Functions). | [Open app](https://sea-moba-tournament.web.app) |
+
 ---
 
 ## Experience
@@ -35,11 +41,12 @@ All four are open source (MIT) and run on Android 10+. Net One Tap started as a 
 
 ## Skills
 
-- **AI & LLMs:** LLM APIs with structured prompts (Python), agentic workflows with ICM (Interpretable Context Methodology), AI-assisted development with coding agents, graph-based RAG over Markdown knowledge bases, Hugging Face.
+- **AI & LLMs:** LLM APIs with structured prompts (Python), agentic workflows with ICM (Interpretable Context Methodology), AI-assisted development with coding agents, Gemini vision for reading screenshots into structured data, graph-based RAG over Markdown knowledge bases, Hugging Face.
 - **On-device AI & Android:** Sherpa-ONNX, Whisper, Silero VAD, ONNX Runtime, IndicTrans2, Google ML Kit, Kotlin, Jetpack Compose, Room, Media3, OpenGL ES / GLSL, Shizuku.
+- **Web & cloud:** React, TypeScript, Vite, Tailwind CSS, Firebase (Hosting, Auth, Firestore, Cloud Storage, Cloud Functions), security rules, Cloud Scheduler, Vertex AI (Gemini vision), Firebase Emulator Suite, Zod, Vitest.
 - **Enterprise ERP:** SuiteScript 2.1, SuiteFlow, SuiteAnalytics, RESTlets, Suitelets, Coupa, Filevine, Zapier, OAuth 2.0.
 - **Robotics & embedded:** FANUC, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB design.
-- **Languages:** Python, Kotlin, JavaScript, Java, C, Embedded C, SQL.
+- **Languages:** Python, Kotlin, TypeScript, JavaScript, Java, C, Embedded C, SQL.
 
 ---
 

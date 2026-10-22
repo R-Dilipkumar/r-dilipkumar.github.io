@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dilipkumar Ravichandran | AI & Systems Engineer</title>
-  <meta name="description" content="AI & Systems Engineer portfolio: on-device AI apps for Android, LLM and agentic workflows, enterprise automation, and mechatronics.">
+  <meta name="description" content="AI & Systems Engineer portfolio: on-device AI apps for Android, a Firebase web app with Gemini vision, LLM and agentic workflows, enterprise automation, and mechatronics.">
   <meta property="og:title" content="Dilipkumar Ravichandran | AI & Systems Engineer">
-  <meta property="og:description" content="AI & Systems Engineer portfolio: on-device AI apps for Android, LLM and agentic workflows, enterprise automation, and mechatronics.">
+  <meta property="og:description" content="AI & Systems Engineer portfolio: on-device AI apps for Android, a Firebase web app with Gemini vision, LLM and agentic workflows, enterprise automation, and mechatronics.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://r-dilipkumar.github.io/">
   <meta property="og:image" content="https://r-dilipkumar.github.io/preview.png">
@@ -460,7 +460,7 @@
             <span class="font-mono text-xs uppercase tracking-widest text-neonCyan font-bold">Executive Synopsis</span>
           </div>
           <p class="text-gray-200 text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-4xl">
-            AI-focused engineer with four released Android apps: <strong class="text-white font-semibold">LiveSub</strong> runs speech recognition and translation fully on the phone, <strong class="text-white font-semibold">Offline Reel Captions</strong> makes offline subtitles for Tamil, Tanglish and other Indian languages, <strong class="text-white font-semibold">Artisan NPR Studio</strong> turns photos into art with 134 GPU styles, and <strong class="text-white font-semibold">Net One Tap</strong> resets the mobile network in one tap. I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded systems background. Most of what I use today I taught myself, from docs, source code and research papers.
+            AI-focused engineer with four released Android apps and a live web app: <strong class="text-white font-semibold">LiveSub</strong> runs speech recognition and translation fully on the phone, <strong class="text-white font-semibold">Offline Reel Captions</strong> makes offline subtitles for Tamil, Tanglish and other Indian languages, <strong class="text-white font-semibold">Artisan NPR Studio</strong> turns photos into art with 134 GPU styles, <strong class="text-white font-semibold">Net One Tap</strong> resets the mobile network in one tap, and <strong class="text-white font-semibold">SEA MOBA 5v5 Tournament</strong> runs sign-ups, teams and brackets for a Mobile Legends tournament on Firebase, with Gemini reading players' stats screenshots. I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded systems background. Most of what I use today I taught myself, from docs, source code and research papers.
           </p>
         </div>
       </div>
@@ -655,6 +655,52 @@
               </a>
               <a data-release-download href="https://github.com/R-Dilipkumar/photo-art-filters-android/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonPink border border-neonPink px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,127,0.6)]">
                 Download APK ↓
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEA MOBA 5v5 Tournament -->
+        <div class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
+          <div>
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+              <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">SEA MOBA 5v5 Tournament</h3>
+              <span class="tag tag-cyan">Web App • Live</span>
+            </div>
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Sign-ups, teams and brackets for a Mobile Legends tournament, in one phone-friendly web app.</p>
+            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">React • TypeScript • Firebase • Gemini Vision</p>
+            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed max-w-5xl">
+              Players sign in with an email link, confirm their game ID, upload three stats screenshots and pay the entry fee by UPI. They form 5-player teams with a 6-digit code, then play through a seeded bracket and report each result with screenshots. Admins handle payments, reviews, refunds, brackets and disputes from one dashboard, and every admin change is logged.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Screenshots Read by Gemini</strong>
+                Gemini 2.5 Flash on Vertex AI reads each stats screenshot right after upload. The app checks the numbers against the player's profile and either says how to fix it ("set the mode to Ranked") or flags it for an admin.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Fair Seeding</strong>
+                Every player gets a 0–100 score from stars and stats compared with the whole field. Team power seeds single elimination, double elimination or balanced groups, so the strongest teams meet late.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Results &amp; Disputes</strong>
+                One captain reports the score with a screenshot per game; the other confirms or disputes. If nobody answers in time, a scheduled job accepts it, moves the winner on and crowns the champion.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Rules on the Server</strong>
+                Team, payment, result and admin changes go through Cloud Functions in Firestore transactions, behind Firestore and Storage security rules. 207 tests run against the Firebase emulators.
+              </div>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+              <span class="tag tag-cyan">Up to 50 Teams</span>
+              <span class="tag">Mobile-First</span>
+              <span class="tag">Firebase + Vertex AI</span>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
+            <span class="font-mono text-xs text-gray-400">Live on Firebase Hosting</span>
+            <div class="flex items-center gap-3 flex-wrap">
+              <a href="https://sea-moba-tournament.web.app" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonCyan border border-neonCyan px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
+                Open App ↗
               </a>
             </div>
           </div>
@@ -965,14 +1011,18 @@
         <div class="lg:col-span-6 flex flex-col gap-6 sm:gap-8 min-w-0 w-full">
           <div class="glass-panel reveal-left delay-100 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonPink mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">AI & LLM Engineering</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">LLM APIs with structured prompts and outputs (Python), agentic workflows with ICM (Interpretable Context Methodology: folders and Markdown files as the agent pipeline), AI-assisted development with coding agents (Claude Code), graph-based RAG over Markdown knowledge bases, Generative AI, Hugging Face.</p>
+            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">LLM APIs with structured prompts and outputs (Python), agentic workflows with ICM (Interpretable Context Methodology: folders and Markdown files as the agent pipeline), AI-assisted development with coding agents (Claude Code), Gemini vision on Vertex AI (reading screenshots into structured data), graph-based RAG over Markdown knowledge bases, Generative AI, Hugging Face.</p>
           </div>
           <div class="glass-panel reveal-left delay-200 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonAmber mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">On-Device AI & Android</h4>
             <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Sherpa-ONNX speech recognition (streaming and whole-phrase), Whisper, Silero VAD, ONNX Runtime, IndicTrans2 and Google ML Kit translation, Kotlin, Jetpack Compose, Coroutines, Room, DataStore, Media3, OpenGL ES 3.0 / GLSL shaders, foreground services, overlays, Shizuku and hidden Android APIs.</p>
           </div>
           <div class="glass-panel reveal-left delay-300 p-6 sm:p-8 md:p-10 min-w-0 w-full">
-            <h4 class="font-mono text-neonCyan mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Enterprise ERP & Backend</h4>
+            <h4 class="font-mono text-neonCyan mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Web & Cloud</h4>
+            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">React, TypeScript, Vite, Tailwind CSS, Firebase (Hosting, email-link Auth, Firestore, Cloud Storage, Cloud Functions), Firestore and Storage security rules, Cloud Scheduler, Google Cloud / Vertex AI, Firebase Emulator Suite, Zod, Vitest.</p>
+          </div>
+          <div class="glass-panel reveal-left delay-300 p-6 sm:p-8 md:p-10 min-w-0 w-full">
+            <h4 class="font-mono text-neonPink mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Enterprise ERP & Backend</h4>
             <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">SuiteScript 2.1, SuiteAnalytics, SuiteFlow, Saved Searches, RESTlets, Suitelets, Coupa, Filevine, Zapier, OAuth 2.0 / TBA, Google Apps Script.</p>
           </div>
           <div class="glass-panel reveal-left delay-400 p-6 sm:p-8 md:p-10 min-w-0 w-full">
@@ -981,7 +1031,7 @@
           </div>
           <div class="glass-panel reveal-left delay-400 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-gray-400 mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Languages & Tools</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Python, Kotlin, JavaScript, Java, C, Embedded C, SQL, Gradle, ADB, Linux / WSL2, Git, GitHub.</p>
+            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Python, Kotlin, TypeScript, JavaScript, Java, C, Embedded C, SQL, Gradle, ADB, Linux / WSL2, Git, GitHub.</p>
           </div>
         </div>
 

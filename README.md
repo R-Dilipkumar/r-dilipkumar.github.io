@@ -4,6 +4,8 @@
 
 Source of my portfolio website: **https://r-dilipkumar.github.io/**
 
+📄 **[Download my resume (PDF)](https://r-dilipkumar.github.io/media/Dilipkumar_Ravichandran_Resume.pdf)**
+
 ---
 
 ## About Me
@@ -63,7 +65,7 @@ Currently open to new roles (on-site, hybrid or remote), while building new proj
 
 ## About This Site
 
-A single `index.html` built with Tailwind CSS (CDN) and a Three.js animated background. No build step.
+A single `index.html` built with Tailwind CSS (CDN) and a Three.js animated background. No build step. The resume PDF lives at `media/Dilipkumar_Ravichandran_Resume.pdf`; replace that file to update every "Download Curated Resume" button.
 
 To run it locally:
 

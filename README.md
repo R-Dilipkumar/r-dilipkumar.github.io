@@ -29,7 +29,7 @@ All four are open source (MIT) and run on Android 10+. Net One Tap started as a 
 
 | App | What it does | Links |
 |---|---|---|
-| **SEA MOBA 5v5 Tournament** | Sign-ups, team forming and brackets for a Mobile Legends (MLBB) 5v5 tournament, in one phone-friendly web app. Players upload stats screenshots that Gemini 2.5 Flash (Vertex AI) reads and checks, pay by UPI, form teams with a 6-digit code, and report results with screenshots. Admins run payments, reviews, refunds, seeded brackets and disputes. Built with React, TypeScript and Firebase (Auth, Firestore, Storage, Cloud Functions). | [Open app](https://sea-moba-tournament.web.app) |
+| **SEA MOBA 5v5 Tournament** | Sign-ups, team forming and brackets for a Mobile Legends (MLBB) 5v5 tournament, in one phone-friendly web app. Players upload stats screenshots that Gemini 3 Flash (Vertex AI) reads and checks, pay by UPI, form teams with a 6-digit code, check in for matches and report results with screenshots. Admins run payments, reviews, refunds, seeded brackets (shown as a tree), disputes, match-day alerts and emergency substitutes. Built with React, TypeScript and Firebase (Auth, Firestore, Storage, Cloud Functions). | [Open app](https://sea-moba-tournament.web.app) |
 
 ---
 

@@ -675,12 +675,12 @@
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Sign-ups, teams and brackets for a Mobile Legends tournament, in one phone-friendly web app.</p>
             <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">React • TypeScript • Firebase • Gemini Vision</p>
             <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed max-w-5xl">
-              Players sign in with an email link, confirm their game ID, upload three stats screenshots and pay the entry fee by UPI. They form 5-player teams with a 6-digit code, then play through a seeded bracket and report each result with screenshots. Admins handle payments, reviews, refunds, brackets and disputes from one dashboard, and every admin change is logged.
+              Players sign in with an email link, confirm their game ID, upload three stats screenshots and pay the entry fee by UPI. They form 5-player teams with a 6-digit code, then play through a seeded bracket, shown as a tree with colour-coded best-of rounds, and report each result with screenshots. On match day each team's page shows the next opponent and start time, and players check in. Admins handle payments, reviews, refunds, brackets, disputes and emergency substitutes from one dashboard, and every admin change is logged.
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Screenshots Read by Gemini</strong>
-                Gemini 2.5 Flash on Vertex AI reads each stats screenshot right after upload. The app checks the numbers against the player's profile and either says how to fix it ("set the mode to Ranked") or flags it for an admin.
+                Gemini 3 Flash on Vertex AI reads each stats screenshot right after upload. The app checks the numbers against the player's profile and either says how to fix it ("set the mode to Ranked") or flags it for an admin.
               </div>
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Fair Seeding</strong>
@@ -688,11 +688,11 @@
               </div>
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Results &amp; Disputes</strong>
-                One captain reports the score with a screenshot per game; the other confirms or disputes. If nobody answers in time, a scheduled job accepts it, moves the winner on and crowns the champion.
+                One captain reports the score with a screenshot per game; the other confirms or disputes. If nobody answers in time, a scheduled job accepts it, moves the winner on and crowns the champion. The same job raises admin alerts for disputes and teams that haven't checked in.
               </div>
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Rules on the Server</strong>
-                Team, payment, result and admin changes go through Cloud Functions in Firestore transactions, behind Firestore and Storage security rules. 207 tests run against the Firebase emulators.
+                Team, payment, result and admin changes go through Cloud Functions in Firestore transactions, behind Firestore and Storage security rules. 249 tests run against the Firebase emulators.
               </div>
             </div>
             <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">

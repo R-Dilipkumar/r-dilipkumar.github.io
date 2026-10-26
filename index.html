@@ -465,7 +465,7 @@
             <span class="font-mono text-xs uppercase tracking-widest text-neonCyan font-bold">Executive Synopsis</span>
           </div>
           <p class="text-gray-200 text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-4xl">
-            AI-focused engineer with four released Android apps and a live web app: <strong class="text-white font-semibold">LiveSub</strong> runs speech recognition and translation fully on the phone, <strong class="text-white font-semibold">Offline Reel Captions</strong> makes offline subtitles for Tamil, Tanglish and other Indian languages, <strong class="text-white font-semibold">Artisan NPR Studio</strong> turns photos into art with 134 GPU styles, <strong class="text-white font-semibold">Net One Tap</strong> resets the mobile network in one tap, and <strong class="text-white font-semibold">SEA MOBA 5v5 Tournament</strong> runs sign-ups, teams and brackets for a Mobile Legends tournament on Firebase, with Gemini reading players' stats screenshots. I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded systems background. Most of what I use today I taught myself, from docs, source code and research papers.
+            AI-focused engineer with five released Android apps and a live web app: <strong class="text-white font-semibold">LiveSub</strong> runs speech recognition and translation fully on the phone, <strong class="text-white font-semibold">Offline Reel Captions</strong> makes offline subtitles for Tamil, Tanglish and other Indian languages, <strong class="text-white font-semibold">Artisan NPR Studio</strong> turns photos into art with 134 GPU styles, <strong class="text-white font-semibold">Live Wallpaper Maker</strong> lets anyone design layered live wallpapers with tilt parallax and 3D transitions, <strong class="text-white font-semibold">Net One Tap</strong> resets the mobile network in one tap, and <strong class="text-white font-semibold">SEA MOBA 5v5 Tournament</strong> runs sign-ups, teams and brackets for a Mobile Legends tournament on Firebase, with Gemini reading players' stats screenshots. I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded systems background. Most of what I use today I taught myself, from docs, source code and research papers.
           </p>
         </div>
       </div>
@@ -659,6 +659,48 @@
                 GitHub ↗
               </a>
               <a data-release-download href="https://github.com/R-Dilipkumar/photo-art-filters-android/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonPink border border-neonPink px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,127,0.6)]">
+                Download APK ↓
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Wallpaper Maker -->
+        <div data-release-repo="R-Dilipkumar/live-wallpaper-maker-android" class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonAmber/40 min-w-0 w-full">
+          <div>
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+              <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Live Wallpaper Maker</h3>
+              <span class="tag tag-amber">Light on Battery</span>
+            </div>
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Design your own live wallpaper: layers, tilt parallax and 3D scene transitions.</p>
+            <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Kotlin • Compose • OpenGL ES 3.0 • MediaCodec</p>
+            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed max-w-5xl">
+              Stack videos, GIFs, photos, gradients, particles and a live clock, give each layer its own tilt and swipe depth, add looks and keyframe animation, and switch between scenes on a timer, on unlock, on double-tap or by time of day, with crossfade, 3D flip and cube transitions. Creations can be shared as a file.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Heavy Work Once, at Import</strong>
+                Videos and GIFs are trimmed and baked into seamless-loop MP4s on the GPU and the phone's encoder (decoder → OpenGL → encoder surface), with the crossfade or ping-pong built in. HDR clips are tone-mapped and rotated phone videos come out upright.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">A Wallpaper That Sleeps</strong>
+                The engine draws only while visible and only when something moves, plays loops gaplessly with the hardware decoder, and uses 0% CPU when hidden. It runs in its own process at about 70 MB with two videos.
+              </div>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+              <span class="tag tag-amber">13 Transitions</span>
+              <span class="tag">~3 MB APK</span>
+              <span class="tag">Android 10+</span>
+              <span class="tag">MIT</span>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
+            <span data-release-info class="font-mono text-xs text-gray-400">Latest release on GitHub</span>
+            <div class="flex items-center gap-3 flex-wrap">
+              <a href="https://github.com/R-Dilipkumar/live-wallpaper-maker-android" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonAmber border border-neonAmber/40 bg-neonAmber/5 hover:bg-neonAmber hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,170,0,0.5)]">
+                GitHub ↗
+              </a>
+              <a data-release-download href="https://github.com/R-Dilipkumar/live-wallpaper-maker-android/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonAmber border border-neonAmber px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,170,0,0.6)]">
                 Download APK ↓
               </a>
             </div>
@@ -1020,7 +1062,7 @@
           </div>
           <div class="glass-panel reveal-left delay-200 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonAmber mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">On-Device AI & Android</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Sherpa-ONNX speech recognition (streaming and whole-phrase), Whisper, Silero VAD, ONNX Runtime, IndicTrans2 and Google ML Kit translation, Kotlin, Jetpack Compose, Coroutines, Room, DataStore, Media3, OpenGL ES 3.0 / GLSL shaders, foreground services, overlays, Shizuku and hidden Android APIs.</p>
+            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Sherpa-ONNX speech recognition (streaming and whole-phrase), Whisper, Silero VAD, ONNX Runtime, IndicTrans2 and Google ML Kit translation, Kotlin, Jetpack Compose, Coroutines, Room, DataStore, Media3, MediaCodec / MediaMuxer video pipelines, OpenGL ES 3.0 / GLSL shaders, live wallpapers (WallpaperService), motion sensors, foreground services, overlays, Shizuku and hidden Android APIs.</p>
           </div>
           <div class="glass-panel reveal-left delay-300 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonCyan mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Web & Cloud</h4>

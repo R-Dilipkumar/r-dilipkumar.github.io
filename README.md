@@ -21,9 +21,10 @@ I'm a self-driven engineer who learns by building. I research a problem first, t
 | **LiveSub** | Private, offline live subtitles and translation over any Android app. Speech recognition (Sherpa-ONNX) and translation (Google ML Kit) run fully on the phone. | [GitHub](https://github.com/R-Dilipkumar/LiveSub-Offline-Translator) · [Download APK](https://github.com/R-Dilipkumar/LiveSub-Offline-Translator/releases/latest) |
 | **Offline Reel Captions** | Offline auto subtitles for Tamil, Tanglish, Telugu, Kannada, Malayalam, Hindi and English videos. Captions in the original script, in English letters by sound, or translated (Whisper + IndicTrans2), then exported as MP4 or `.srt`. | [GitHub](https://github.com/R-Dilipkumar/offline-reel-captions) · [Download APK](https://github.com/R-Dilipkumar/offline-reel-captions/releases/latest) |
 | **Artisan NPR Studio** | 134 offline photo art filters: pencil sketch, oil paint, watercolour, comic, halftone, pixel art, film and glitch looks. One OpenGL ES shader per style, no AI and no internet. | [GitHub](https://github.com/R-Dilipkumar/photo-art-filters-android) · [Download APK](https://github.com/R-Dilipkumar/photo-art-filters-android/releases/latest) |
+| **Live Wallpaper Maker** | Design your own live wallpaper: layer videos, GIFs, photos, gradients, particles and a live clock, add tilt and swipe parallax, looks and keyframes, and switch scenes with 3D transitions. Videos are baked into seamless loops with MediaCodec and OpenGL ES; the wallpaper uses no CPU when hidden. | [GitHub](https://github.com/R-Dilipkumar/live-wallpaper-maker-android) · [Download APK](https://github.com/R-Dilipkumar/live-wallpaper-maker-android/releases/latest) |
 | **Net One Tap** | Fixes stuck mobile internet in one tap by restarting only the mobile radio, with no airplane mode. Also shows a per-SIM 5G status notification. | [GitHub](https://github.com/R-Dilipkumar/one-tap-network-reset) · [Research page](https://r-dilipkumar.github.io/one-tap-network-reset/) · [Download APK](https://github.com/R-Dilipkumar/one-tap-network-reset/releases/latest) |
 
-All four are open source (MIT) and run on Android 10+. Net One Tap started as a [research write-up](https://r-dilipkumar.github.io/one-tap-network-reset/) on how Android controls the mobile radio, and the app came after the answers.
+All five are open source (MIT) and run on Android 10+. Net One Tap started as a [research write-up](https://r-dilipkumar.github.io/one-tap-network-reset/) on how Android controls the mobile radio, and the app came after the answers.
 
 ## Web App
 
@@ -44,7 +45,7 @@ All four are open source (MIT) and run on Android 10+. Net One Tap started as a 
 ## Skills
 
 - **AI & LLMs:** LLM APIs with structured prompts (Python), agentic workflows with ICM (Interpretable Context Methodology), AI-assisted development with coding agents, Gemini vision for reading screenshots into structured data, graph-based RAG over Markdown knowledge bases, Hugging Face.
-- **On-device AI & Android:** Sherpa-ONNX, Whisper, Silero VAD, ONNX Runtime, IndicTrans2, Google ML Kit, Kotlin, Jetpack Compose, Room, Media3, OpenGL ES / GLSL, Shizuku.
+- **On-device AI & Android:** Sherpa-ONNX, Whisper, Silero VAD, ONNX Runtime, IndicTrans2, Google ML Kit, Kotlin, Jetpack Compose, Room, Media3, MediaCodec, OpenGL ES / GLSL, WallpaperService, Shizuku.
 - **Web & cloud:** React, TypeScript, Vite, Tailwind CSS, Firebase (Hosting, Auth, Firestore, Cloud Storage, Cloud Functions), security rules, Cloud Scheduler, Vertex AI (Gemini vision), Firebase Emulator Suite, Zod, Vitest.
 - **Enterprise ERP:** SuiteScript 2.1, SuiteFlow, SuiteAnalytics, RESTlets, Suitelets, Coupa, Filevine, Zapier, OAuth 2.0.
 - **Robotics & embedded:** FANUC, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB design.

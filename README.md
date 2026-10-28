@@ -32,6 +32,12 @@ All five are open source (MIT) and run on Android 10+. Net One Tap started as a 
 |---|---|---|
 | **ASIAN MOBA 5v5 Tournament** | Sign-ups, team forming and brackets for a Mobile Legends (MLBB) 5v5 tournament, in one phone-friendly web app. Players upload stats screenshots that Gemini 3 Flash (Vertex AI) reads and checks, pay by UPI, form teams with a 6-digit code, check in for matches and report results with screenshots. Admins run payments, reviews, refunds, seeded brackets (shown as a tree), disputes, match-day alerts and emergency substitutes. Built with React, TypeScript and Firebase (Auth, Firestore, Storage, Cloud Functions). | [Open app](https://sea-moba-tournament.web.app) |
 
+## AI Agent Skill
+
+| Skill | What it does | Links |
+|---|---|---|
+| **Preflight Agent Skill** | Makes AI coding agents (Claude Code, Codex, Gemini CLI, GitHub Copilot, Cursor) research before they build: official docs, deprecation, device support and licence. After every bug it saves one short "before doing X, check Y" lesson for the next project, and keeps a `session.md` per project. Plain Markdown in the open Agent Skills (SKILL.md) format. | [GitHub](https://github.com/R-Dilipkumar/preflight-agent-skill) · [Download skill](https://github.com/R-Dilipkumar/preflight-agent-skill/releases/latest/download/preflight.skill) |
+
 ---
 
 ## Experience
@@ -44,7 +50,7 @@ All five are open source (MIT) and run on Android 10+. Net One Tap started as a 
 
 ## Skills
 
-- **AI & LLMs:** LLM APIs with structured prompts (Python), agentic workflows with ICM (Interpretable Context Methodology), AI-assisted development with coding agents, Gemini vision for reading screenshots into structured data, graph-based RAG over Markdown knowledge bases, Hugging Face.
+- **AI & LLMs:** LLM APIs with structured prompts (Python), agentic workflows with ICM (Interpretable Context Methodology), AI-assisted development with coding agents, reusable agent skills (SKILL.md), Gemini vision for reading screenshots into structured data, graph-based RAG over Markdown knowledge bases, Hugging Face.
 - **On-device AI & Android:** Sherpa-ONNX, Whisper, Silero VAD, ONNX Runtime, IndicTrans2, Google ML Kit, Kotlin, Jetpack Compose, Room, Media3, MediaCodec, OpenGL ES / GLSL, WallpaperService, Shizuku.
 - **Web & cloud:** React, TypeScript, Vite, Tailwind CSS, Firebase (Hosting, Auth, Firestore, Cloud Storage, Cloud Functions), security rules, Cloud Scheduler, Vertex AI (Gemini vision), Firebase Emulator Suite, Zod, Vitest.
 - **Enterprise ERP:** SuiteScript 2.1, SuiteFlow, SuiteAnalytics, RESTlets, Suitelets, Coupa, Filevine, Zapier, OAuth 2.0.

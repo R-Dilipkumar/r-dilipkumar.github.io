@@ -465,7 +465,7 @@
             <span class="font-mono text-xs uppercase tracking-widest text-neonCyan font-bold">Executive Synopsis</span>
           </div>
           <p class="text-gray-200 text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-4xl">
-            AI-focused engineer with five released Android apps and a live web app: <strong class="text-white font-semibold">LiveSub</strong> runs speech recognition and translation fully on the phone, <strong class="text-white font-semibold">Offline Reel Captions</strong> makes offline subtitles for Tamil, Tanglish and other Indian languages, <strong class="text-white font-semibold">Artisan NPR Studio</strong> turns photos into art with 134 GPU styles, <strong class="text-white font-semibold">Live Wallpaper Maker</strong> lets anyone design layered live wallpapers with tilt parallax and 3D transitions, <strong class="text-white font-semibold">Net One Tap</strong> resets the mobile network in one tap, and <strong class="text-white font-semibold">ASIAN MOBA 5v5 Tournament</strong> runs sign-ups, teams and brackets for a Mobile Legends tournament on Firebase, with Gemini reading players' stats screenshots. I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded systems background. Most of what I use today I taught myself, from docs, source code and research papers.
+            AI-focused engineer with five released Android apps, a live web app and an open-source AI agent skill:<strong class="text-white font-semibold">LiveSub</strong> runs speech recognition and translation fully on the phone, <strong class="text-white font-semibold">Offline Reel Captions</strong> makes offline subtitles for Tamil, Tanglish and other Indian languages, <strong class="text-white font-semibold">Artisan NPR Studio</strong> turns photos into art with 134 GPU styles, <strong class="text-white font-semibold">Live Wallpaper Maker</strong> lets anyone design layered live wallpapers with tilt parallax and 3D transitions, <strong class="text-white font-semibold">Net One Tap</strong> resets the mobile network in one tap, <strong class="text-white font-semibold">ASIAN MOBA 5v5 Tournament</strong> runs sign-ups, teams and brackets for a Mobile Legends tournament on Firebase, with Gemini reading players' stats screenshots, and <strong class="text-white font-semibold">Preflight Agent Skill</strong> makes AI coding agents research before they build and learn a lesson from every bug. I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded systems background. Most of what I use today I taught myself, from docs, source code and research papers.
           </p>
         </div>
       </div>
@@ -748,6 +748,47 @@
             <div class="flex items-center gap-3 flex-wrap">
               <a href="https://sea-moba-tournament.web.app" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonCyan border border-neonCyan px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
                 Open App ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preflight Agent Skill -->
+        <div class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonPink/40 min-w-0 w-full">
+          <div>
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+              <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Preflight Agent Skill</h3>
+              <span class="tag tag-pink">AI Coding Agents</span>
+            </div>
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Makes AI coding agents research before they build, and learn from every bug.</p>
+            <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Agent Skills (SKILL.md) • Claude Code • Codex • Gemini CLI</p>
+            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed max-w-5xl">
+              A reusable skill for AI coding tools. Before the agent picks a library, API, SDK version or AI model, it checks the official docs for deprecation, device support and licence. After every snag, it saves one short "before doing X, check Y" lesson that it reads on the next project, so the same mistake doesn't happen twice. My own copy started with lessons from the snags in all my apps above.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Lessons, Not a Bug Log</strong>
+                Each lesson is a general rule or a dated fact. Repeats merge into one rule, files stay short, and facts older than six months get checked again before the agent trusts them.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Works Across Tools</strong>
+                Plain Markdown in the open Agent Skills format, so the same folder works in Claude Code, Codex, Gemini CLI, GitHub Copilot and Cursor. Also keeps a <code>session.md</code> per project so any new session can pick up the work.
+              </div>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+              <span class="tag tag-pink">Self-Updating</span>
+              <span class="tag">Markdown Only</span>
+              <span class="tag">Open Source • MIT</span>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
+            <span class="font-mono text-xs text-gray-400">Latest release on GitHub</span>
+            <div class="flex items-center gap-3 flex-wrap">
+              <a href="https://github.com/R-Dilipkumar/preflight-agent-skill" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonPink border border-neonPink/40 bg-neonPink/5 hover:bg-neonPink hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,0,127,0.5)]">
+                GitHub ↗
+              </a>
+              <a href="https://github.com/R-Dilipkumar/preflight-agent-skill/releases/latest/download/preflight.skill" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonPink border border-neonPink px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,127,0.6)]">
+                Download Skill ↓
               </a>
             </div>
           </div>
@@ -1058,7 +1099,7 @@
         <div class="lg:col-span-6 flex flex-col gap-6 sm:gap-8 min-w-0 w-full">
           <div class="glass-panel reveal-left delay-100 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonPink mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">AI & LLM Engineering</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">LLM APIs with structured prompts and outputs (Python), agentic workflows with ICM (Interpretable Context Methodology: folders and Markdown files as the agent pipeline), AI-assisted development with coding agents (Claude Code), Gemini vision on Vertex AI (reading screenshots into structured data), graph-based RAG over Markdown knowledge bases, Generative AI, Hugging Face.</p>
+            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">LLM APIs with structured prompts and outputs (Python), agentic workflows with ICM (Interpretable Context Methodology: folders and Markdown files as the agent pipeline), AI-assisted development with coding agents (Claude Code), reusable agent skills in the open SKILL.md format, Gemini vision on Vertex AI (reading screenshots into structured data), graph-based RAG over Markdown knowledge bases, Generative AI, Hugging Face.</p>
           </div>
           <div class="glass-panel reveal-left delay-200 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonAmber mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">On-Device AI & Android</h4>

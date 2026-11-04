@@ -465,7 +465,7 @@
             <span class="font-mono text-xs uppercase tracking-widest text-neonCyan font-bold">Executive Synopsis</span>
           </div>
           <p class="text-gray-200 text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-4xl">
-            AI-focused engineer with five released Android apps, a live web app and an open-source AI agent skill:<strong class="text-white font-semibold">LiveSub</strong> runs speech recognition and translation fully on the phone, <strong class="text-white font-semibold">Offline Reel Captions</strong> makes offline subtitles for Tamil, Tanglish and other Indian languages, <strong class="text-white font-semibold">Artisan NPR Studio</strong> turns photos into art with 134 GPU styles, <strong class="text-white font-semibold">Live Wallpaper Maker</strong> lets anyone design layered live wallpapers with tilt parallax and 3D transitions, <strong class="text-white font-semibold">Net One Tap</strong> resets the mobile network in one tap, <strong class="text-white font-semibold">ASIAN MOBA 5v5 Tournament</strong> runs sign-ups, teams and brackets for a Mobile Legends tournament on Firebase, with Gemini reading players' stats screenshots, and <strong class="text-white font-semibold">Preflight Agent Skill</strong> makes AI coding agents research before they build and learn a lesson from every bug. I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded systems background. Most of what I use today I taught myself, from docs, source code and research papers.
+            AI-focused engineer with five released Android apps, a live web app, a Windows desktop tool and an open-source AI agent skill:<strong class="text-white font-semibold">LiveSub</strong> runs speech recognition and translation fully on the phone, <strong class="text-white font-semibold">Offline Reel Captions</strong> makes offline subtitles for Tamil, Tanglish and other Indian languages, <strong class="text-white font-semibold">Artisan NPR Studio</strong> turns photos into art with 134 GPU styles, <strong class="text-white font-semibold">Live Wallpaper Maker</strong> lets anyone design layered live wallpapers with tilt parallax and 3D transitions, <strong class="text-white font-semibold">Net One Tap</strong> resets the mobile network in one tap, <strong class="text-white font-semibold">ASIAN MOBA 5v5 Tournament</strong> runs sign-ups, teams and brackets for a Mobile Legends tournament on Firebase, with Gemini reading players' stats screenshots, and <strong class="text-white font-semibold">Preflight Agent Skill</strong> makes AI coding agents research before they build and learn a lesson from every bug. <strong class="text-white font-semibold">DriveMate</strong> is a personal project: a plugin-based Windows tool tested on simulated devices over Modbus TCP, with an offline helper that answers from a manual and shows the page. I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded systems background. Most of what I use today I taught myself, from docs, source code and research papers.
           </p>
         </div>
       </div>
@@ -794,6 +794,50 @@
           </div>
         </div>
 
+        <!-- DriveMate -->
+        <div class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
+          <div>
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+              <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">DriveMate</h3>
+              <span class="tag tag-cyan">Personal Project</span>
+            </div>
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">A Windows tool for setting up simulated factory devices, with device plugins and an offline manual helper.</p>
+            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">C# • WPF • .NET 10 • Modbus TCP</p>
+            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed max-w-5xl">
+              A personal learning project with no real hardware: I built a simulated servo drive and remote I/O module, and the app talks to them over real Modbus TCP. Each device type is a plugin loaded at runtime, so adding the second one needed no change to the main app. It checks and reads back every setting it writes, draws a live graph, saves setups, and keeps a fault log in SQLite.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Offline Helper That Can Refuse</strong>
+                Answers from a device's PDF manual with the page number, using a small AI model on the PC. Code decides whether the manual covers a question before the model runs. On 43 questions held back for a fair test, it got 23 of 27 answerable ones right and refused all 16 the manual didn't cover. I wrote the manuals and questions myself.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Tested, and Honest About It</strong>
+                265 automated tests run on every push with GitHub Actions, including checks against the Modbus standard and a second Modbus library. It has never been tested on real hardware, and the README says so first.
+              </div>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+              <span class="tag tag-cyan">Plugin Architecture</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">Open Source • MIT</span>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
+            <span class="font-mono text-xs text-gray-400">Windows download on GitHub</span>
+            <div class="flex items-center gap-3 flex-wrap">
+              <a href="https://github.com/R-Dilipkumar/drivemate-modbus" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
+                GitHub ↗
+              </a>
+              <a href="https://r-dilipkumar.github.io/drivemate-modbus/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
+                Watch Demo ↗
+              </a>
+              <a href="https://github.com/R-Dilipkumar/drivemate-modbus/releases/latest/download/DriveMate-win-x64.zip" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonCyan border border-neonCyan px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
+                Download Zip ↓
+              </a>
+            </div>
+          </div>
+        </div>
+
         <!-- Mobile AI -->
         <div class="glass-panel reveal-left delay-100 lg:col-span-4 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-white/20 min-w-0 w-full">
           <div>
@@ -1099,7 +1143,7 @@
         <div class="lg:col-span-6 flex flex-col gap-6 sm:gap-8 min-w-0 w-full">
           <div class="glass-panel reveal-left delay-100 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonPink mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">AI & LLM Engineering</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">LLM APIs with structured prompts and outputs (Python), agentic workflows with ICM (Interpretable Context Methodology: folders and Markdown files as the agent pipeline), AI-assisted development with coding agents (Claude Code), reusable agent skills in the open SKILL.md format, Gemini vision on Vertex AI (reading screenshots into structured data), graph-based RAG over Markdown knowledge bases, Generative AI, Hugging Face.</p>
+            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">LLM APIs with structured prompts and outputs (Python), agentic workflows with ICM (Interpretable Context Methodology: folders and Markdown files as the agent pipeline), AI-assisted development with coding agents (Claude Code), reusable agent skills in the open SKILL.md format, Gemini vision on Vertex AI (reading screenshots into structured data), graph-based RAG over Markdown knowledge bases, local LLMs with LLamaSharp and llama.cpp, retrieval with SQLite FTS5, PDF text extraction with PdfPig, Generative AI, Hugging Face.</p>
           </div>
           <div class="glass-panel reveal-left delay-200 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonAmber mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">On-Device AI & Android</h4>
@@ -1118,8 +1162,12 @@
             <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">FANUC Robotics, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB Design.</p>
           </div>
           <div class="glass-panel reveal-left delay-400 p-6 sm:p-8 md:p-10 min-w-0 w-full">
+            <h4 class="font-mono text-neonCyan mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Desktop & Industrial Software</h4>
+            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">C#, .NET 10, WPF, MVVM, plugin loading (AssemblyLoadContext), Modbus TCP (NModbus), SQLite, ASP.NET Core minimal APIs, xUnit, GitHub Actions.</p>
+          </div>
+          <div class="glass-panel reveal-left delay-400 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-gray-400 mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Languages & Tools</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Python, Kotlin, TypeScript, JavaScript, Java, C, Embedded C, SQL, Gradle, ADB, Linux / WSL2, Git, GitHub.</p>
+            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Python, Kotlin, TypeScript, JavaScript, Java, C#, C, Embedded C, SQL, Gradle, ADB, Linux / WSL2, Git, GitHub.</p>
           </div>
         </div>
 

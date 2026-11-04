@@ -32,6 +32,12 @@ All five are open source (MIT) and run on Android 10+. Net One Tap started as a 
 |---|---|---|
 | **ASIAN MOBA 5v5 Tournament** | Sign-ups, team forming and brackets for a Mobile Legends (MLBB) 5v5 tournament, in one phone-friendly web app. Players upload stats screenshots that Gemini 3 Flash (Vertex AI) reads and checks, pay by UPI, form teams with a 6-digit code, check in for matches and report results with screenshots. Admins run payments, reviews, refunds, seeded brackets (shown as a tree), disputes, match-day alerts and emergency substitutes. Built with React, TypeScript and Firebase (Auth, Firestore, Storage, Cloud Functions). | [Open app](https://sea-moba-tournament.web.app) |
 
+## Desktop App
+
+| App | What it does | Links |
+|---|---|---|
+| **DriveMate** | Personal learning project: a Windows tool for setting up simulated factory devices over Modbus TCP. Each device type is a plugin loaded at runtime. It has an offline helper that answers from a device's PDF manual with the page number, and refuses what the manual doesn't cover. Built with C#, WPF and .NET 10, with 265 automated tests. It has never been tested on real hardware. | [GitHub](https://github.com/R-Dilipkumar/drivemate-modbus) · [Watch demo](https://r-dilipkumar.github.io/drivemate-modbus/) · [Download zip](https://github.com/R-Dilipkumar/drivemate-modbus/releases/latest/download/DriveMate-win-x64.zip) |
+
 ## AI Agent Skill
 
 | Skill | What it does | Links |
@@ -50,12 +56,13 @@ All five are open source (MIT) and run on Android 10+. Net One Tap started as a 
 
 ## Skills
 
-- **AI & LLMs:** LLM APIs with structured prompts (Python), agentic workflows with ICM (Interpretable Context Methodology), AI-assisted development with coding agents, reusable agent skills (SKILL.md), Gemini vision for reading screenshots into structured data, graph-based RAG over Markdown knowledge bases, Hugging Face.
+- **AI & LLMs:** LLM APIs with structured prompts (Python), agentic workflows with ICM (Interpretable Context Methodology), AI-assisted development with coding agents, reusable agent skills (SKILL.md), Gemini vision for reading screenshots into structured data, graph-based RAG over Markdown knowledge bases, local LLMs with LLamaSharp and llama.cpp, retrieval with SQLite FTS5, PDF text extraction with PdfPig, Hugging Face.
 - **On-device AI & Android:** Sherpa-ONNX, Whisper, Silero VAD, ONNX Runtime, IndicTrans2, Google ML Kit, Kotlin, Jetpack Compose, Room, Media3, MediaCodec, OpenGL ES / GLSL, WallpaperService, Shizuku.
 - **Web & cloud:** React, TypeScript, Vite, Tailwind CSS, Firebase (Hosting, Auth, Firestore, Cloud Storage, Cloud Functions), security rules, Cloud Scheduler, Vertex AI (Gemini vision), Firebase Emulator Suite, Zod, Vitest.
 - **Enterprise ERP:** SuiteScript 2.1, SuiteFlow, SuiteAnalytics, RESTlets, Suitelets, Coupa, Filevine, Zapier, OAuth 2.0.
 - **Robotics & embedded:** FANUC, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB design.
-- **Languages:** Python, Kotlin, TypeScript, JavaScript, Java, C, Embedded C, SQL.
+- **Desktop & industrial software:** C#, .NET 10, WPF, MVVM, plugin loading (AssemblyLoadContext), Modbus TCP (NModbus), SQLite, ASP.NET Core minimal APIs, xUnit, GitHub Actions.
+- **Languages:** Python, Kotlin, TypeScript, JavaScript, Java, C#, C, Embedded C, SQL.
 
 ---
 

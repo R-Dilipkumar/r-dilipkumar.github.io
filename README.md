@@ -1,6 +1,6 @@
 # Dilipkumar Ravichandran | Portfolio
 
-> AI & Systems Engineer · On-Device AI · Android · LLM & Agent Workflows · Enterprise Automation · Mechatronics
+> AI & Software Developer · LLM & Agent Workflows · Enterprise Automation · On-Device AI · Mechatronics
 
 Source of my portfolio website: **https://r-dilipkumar.github.io/**
 
@@ -10,7 +10,7 @@ Source of my portfolio website: **https://r-dilipkumar.github.io/**
 
 ## About Me
 
-I'm a self-driven engineer who learns by building. I research a problem first, then ship the fix: on-device AI apps for Android, web apps on Firebase, LLM and agent workflows, and enterprise automation. My degree is mechatronics (B.E., 8.29 CGPA); Android, on-device AI and LLM tooling I taught myself from documentation, open-source code and research papers.
+I'm a software developer who builds with AI. I research a problem first, then ship the fix: LLM and agent workflows, enterprise automation, and apps for phone, web and desktop. My degree is mechatronics (B.E., 8.29 CGPA); Android, on-device AI and LLM tooling I taught myself from documentation, open-source code and research papers.
 
 ---
 

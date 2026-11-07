@@ -179,17 +179,61 @@
       #about::before { background: rgba(3, 3, 5, 0.55); }
     }
 
-    /* --- App Screenshots --- */
-    .shot {
-      display: block;
-      flex-shrink: 0;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
-      background: #0a0a0f;
+    /* --- Project card body: text beside a screenshot gallery on wide screens, gallery under the text on phones --- */
+    .proj-body { display: grid; gap: 1.75rem; grid-template-areas: "desc" "gallery" "more"; margin-bottom: 2rem; }
+    .proj-desc { grid-area: desc; min-width: 0; }
+    .proj-gallery { grid-area: gallery; min-width: 0; }
+    .proj-more { grid-area: more; min-width: 0; }
+    @media (min-width: 1024px) {
+      .proj-body { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-areas: "desc gallery" "more gallery"; column-gap: 2.75rem; align-items: start; }
     }
-    .shot-phone { width: 9.5rem; height: auto; }
-    .shot-wide { width: 100%; height: auto; }
+
+    /* --- Screenshot galleries: swipe, drag or use the arrows; they also move on their own --- */
+    .gal-track {
+      position: relative; display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+      overscroll-behavior-x: contain; padding: 2px 2px 12px; scrollbar-width: thin; scrollbar-color: #3a3a44 transparent; cursor: grab;
+    }
+    .gal-track::-webkit-scrollbar { height: 6px; }
+    .gal-track::-webkit-scrollbar-thumb { background: #3a3a44; border-radius: 6px; }
+    .gal-track.dragging { scroll-snap-type: none; scroll-behavior: auto; cursor: grabbing; }
+    .gal-track:focus-visible { outline: 2px solid var(--acc, #00f3ff); outline-offset: 4px; border-radius: 14px; }
+    .gal-slide { flex: 0 0 auto; scroll-snap-align: start; margin: 0; }
+    .gal-slide.phone { width: clamp(168px, 60%, 228px); }
+    .gal-slide.wide { width: min(92%, 600px); }
+    .gal-zoom { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 14px; }
+    .gal-zoom:focus-visible { outline: 2px solid var(--acc, #00f3ff); outline-offset: 3px; }
+    .gal-slide img {
+      display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5); background: #0a0a0f; -webkit-user-drag: none; user-select: none;
+    }
+    .gal-slide figcaption { margin-top: 0.75rem; font-size: 0.92rem; line-height: 1.45; color: #d1d5db; }
+    .gal-slide figcaption b {
+      display: inline-flex; align-items: center; justify-content: center; width: 1.35rem; height: 1.35rem; margin-right: 0.4rem;
+      border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 0.7rem; color: #030305; background: var(--acc, #00f3ff); vertical-align: 0.05em;
+    }
+    .gal-ctrl { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.6rem; }
+    .gal-btn {
+      width: 44px; height: 44px; flex-shrink: 0; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center;
+      color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.18); background: rgba(255, 255, 255, 0.04); transition: border-color 0.2s, color 0.2s;
+    }
+    .gal-btn:hover, .gal-btn:focus-visible { border-color: var(--acc, #00f3ff); color: var(--acc, #00f3ff); outline: none; }
+    .gal-dots { display: flex; flex: 1; flex-wrap: wrap; justify-content: center; }
+    .gal-dot { width: 26px; height: 32px; padding: 0; border: 0; background: none; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+    .gal-dot::before { content: ''; width: 8px; height: 8px; border-radius: 999px; background: rgba(255, 255, 255, 0.3); transition: width 0.25s, background 0.25s; }
+    .gal-dot[aria-current="true"]::before { width: 20px; background: var(--acc, #00f3ff); }
+    .gal-dot:focus-visible { outline: 2px solid var(--acc, #00f3ff); outline-offset: -4px; border-radius: 8px; }
+    @media (max-width: 480px) { .gal-dot { width: 17px; } .gal-dot[aria-current="true"]::before { width: 14px; } }
+    .gal-hint { margin-top: 0.35rem; text-align: center; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: #9ca3af; }
+
+    /* --- Full-size screenshot viewer --- */
+    .sv { padding: 0; border: 0; background: transparent; width: 100vw; height: 100dvh; max-width: 100vw; max-height: 100dvh; color: #e2e8f0; }
+    .sv::backdrop { background: rgba(3, 3, 5, 0.92); }
+    .sv-inner { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 16px; }
+    .sv-top { width: min(100%, 1100px); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .sv-count { font-family: 'Space Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9ca3af; }
+    .sv-img { display: block; max-width: min(100%, 1100px); max-height: calc(100dvh - 190px); width: auto; height: auto; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.15); }
+    .sv-cap { max-width: 720px; text-align: center; font-size: 1rem; line-height: 1.5; }
+    .sv-nav { display: flex; gap: 12px; }
 
     /* --- "How it works" toggle on project cards --- */
     .how > summary {
@@ -555,7 +599,7 @@
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">Net One Tap</strong> fixes stuck mobile internet in one tap</span></li>
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonAmber flex-shrink-0"></span><span><strong class="text-white font-semibold">ASIAN MOBA 5v5 Tournament</strong> sign-ups, teams and brackets on Firebase; Gemini reads players' stats screenshots</span></li>
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonPink flex-shrink-0"></span><span><strong class="text-white font-semibold">Preflight Agent Skill</strong> makes AI coding agents research before they build and learn from every bug</span></li>
-            <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonAmber flex-shrink-0"></span><span><strong class="text-white font-semibold">DriveMate</strong> (personal project): Windows tool for simulated devices over Modbus TCP, with an offline helper that answers from the manual</span></li>
+            <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonAmber flex-shrink-0"></span><span><strong class="text-white font-semibold">DriveMate</strong> (personal project): Windows tool for simulated devices over Modbus TCP, with an offline AI helper (Phi-4-mini) that answers from the PDF manual</span></li>
           </ul>
           <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-4xl">
             I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded background. Most of what I use today I taught myself, from docs, source code and research papers.
@@ -582,7 +626,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 min-w-0 w-full">
         
         <!-- LiveSub -->
-        <div data-release-repo="R-Dilipkumar/LiveSub-Offline-Translator" class="glass-panel reveal-left delay-100 lg:col-span-7 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
+        <div data-release-repo="R-Dilipkumar/LiveSub-Offline-Translator" class="glass-panel reveal-left delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
           <div>
             <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">LiveSub</h3>
@@ -590,11 +634,50 @@
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Live subtitles for anything your phone plays.</p>
             <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Edge AI • Sherpa-ONNX • ML Kit • Jetpack Compose</p>
-            <p class="text-gray-300 font-normal text-base sm:text-lg mb-8 leading-relaxed">
+            <div class="proj-body">
+            <div class="proj-desc">
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
               A private, offline speech-to-subtitle translator for Android. It listens to a video, stream, game or call, turns speech into text, translates it, and shows the result in a floating subtitle window over any app. Speech recognition and translation both run on the phone: no account, no API key, no audio uploaded.
             </p>
-            <details class="how mb-8">
-              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+            </div>
+            <div class="proj-gallery gal" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="Run on the Android emulator: an English cooking video, Tamil subtitles">
+              <div class="gal-track" tabindex="0">
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: LiveSub set to English speech and Tamil subtitles"><img src="media/shots/livesub/01.webp" width="405" height="900" alt="LiveSub set to English speech and Tamil subtitles" loading="lazy" decoding="async"></button>
+                  <figcaption><b>1</b>Pick what you will hear and the subtitle language. Here: English speech, Tamil subtitles.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: LiveSub model list with the English model installed"><img src="media/shots/livesub/02.webp" width="405" height="900" alt="LiveSub model list with the English model installed" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b>Download a speech model once (54 MB here). It runs on the phone, so no audio is uploaded.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Android screen-share prompt for LiveSub"><img src="media/shots/livesub/03.webp" width="405" height="900" alt="Android screen-share prompt for LiveSub" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b>Android asks to share the screen. That is how the app can hear the sound of other apps.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: LiveSub floating window showing a Tamil subtitle over a cooking video"><img src="media/shots/livesub/04.webp" width="405" height="900" alt="LiveSub floating window showing a Tamil subtitle over a cooking video" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b>A cooking video plays. The floating window shows what was heard (small) and the Tamil subtitle (big).</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: LiveSub floating window with another translated sentence"><img src="media/shots/livesub/05.webp" width="405" height="900" alt="LiveSub floating window with another translated sentence" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b>Each sentence is translated as soon as it ends, while the video keeps playing.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: LiveSub app listing English lines with Tamil translations"><img src="media/shots/livesub/06.webp" width="405" height="900" alt="LiveSub app listing English lines with Tamil translations" loading="lazy" decoding="async"></button>
+                  <figcaption><b>6</b>Back in the app, every line is kept with its translation, ready to copy.</figcaption>
+                </figure>
+              </div>
+              <div class="gal-ctrl">
+                <button type="button" class="gal-btn gal-prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                <div class="gal-dots"></div>
+                <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
+                <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+              </div>
+              <p class="gal-hint">Run on the Android emulator: an English cooking video, Tamil subtitles · tap a picture to enlarge</p>
+            </div>
+            <div class="proj-more">
+            <details class="how mb-6">
+              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Two-Speed Speech Recognition</strong>
@@ -614,10 +697,12 @@
               </div>
             </div>
             </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
               <span class="tag tag-cyan">99 Languages</span>
               <span class="tag">Android 10+</span>
               <span class="tag">Open Source • MIT</span>
+            </div>
+            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
@@ -634,24 +719,54 @@
         </div>
 
         <!-- Net One Tap -->
-        <div data-release-repo="R-Dilipkumar/one-tap-network-reset" class="glass-panel reveal-right delay-200 lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
+        <div data-release-repo="R-Dilipkumar/one-tap-network-reset" class="glass-panel reveal-right delay-200 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
           <div>
-            <div class="flex flex-col gap-6 mb-8">
-              <div class="min-w-0 flex-1">
-              <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Net One Tap</h3>
               <span class="tag tag-cyan">No Airplane Mode</span>
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Mobile internet stuck? Fix it in one tap.</p>
             <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Android • Kotlin • Shizuku / Root • Telephony</p>
+            <div class="proj-body">
+            <div class="proj-desc">
             <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
               Restarts only the mobile radio, the same fix as toggling airplane mode, while Wi-Fi, Bluetooth and mobile data stay untouched. Also shows a per-SIM 5G status notification.
             </p>
-              </div>
-              <img src="media/shots/net-one-tap.webp" width="960" height="504" alt="Net One Tap research page banner: one tap restarts the mobile radio, with a 5G status card" loading="lazy" decoding="async" class="shot w-full">
             </div>
-            <details class="how mb-8">
-              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+            <div class="proj-gallery gal" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="Run on the Android emulator with Shizuku">
+              <div class="gal-track" tabindex="0">
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Shizuku permission prompt for Net One Tap"><img src="media/shots/net-one-tap/01.webp" width="405" height="900" alt="Shizuku permission prompt for Net One Tap" loading="lazy" decoding="async"></button>
+                  <figcaption><b>1</b>First tap: the app asks Shizuku for access. That is what lets it restart the radio without root.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Quick Settings before the reset, mobile data on 5G"><img src="media/shots/net-one-tap/02.webp" width="405" height="900" alt="Quick Settings before the reset, mobile data on 5G" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b>Before: mobile data is on 5G, Wi-Fi is on.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Quick Settings during the reset showing No service and the resetting message"><img src="media/shots/net-one-tap/03.webp" width="405" height="900" alt="Quick Settings during the reset showing No service and the resetting message" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b>Tap the Net Reset tile: the mobile radio turns off (No service). Wi-Fi and Bluetooth stay on.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Quick Settings after the reset, back on 5G, with the reset done message"><img src="media/shots/net-one-tap/04.webp" width="405" height="900" alt="Quick Settings after the reset, back on 5G, with the reset done message" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b>A few seconds later the radio is back on 5G: “Mobile network reset ✓”.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Net One Tap research page banner"><img src="media/shots/net-one-tap/05.webp" width="1200" height="630" alt="Net One Tap research page banner" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b>It started as a research write-up on what the airplane-mode toggle really resets.</figcaption>
+                </figure>
+              </div>
+              <div class="gal-ctrl">
+                <button type="button" class="gal-btn gal-prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                <div class="gal-dots"></div>
+                <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
+                <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+              </div>
+              <p class="gal-hint">Run on the Android emulator with Shizuku · tap a picture to enlarge</p>
+            </div>
+            <div class="proj-more">
+            <details class="how mb-6">
+              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
               <div class="flex flex-col gap-6 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Privileged Radio Control</strong>
@@ -663,10 +778,12 @@
               </div>
             </div>
             </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
               <span class="tag tag-cyan">Quick Settings Tile</span>
               <span class="tag">Dual SIM</span>
               <span class="tag">MIT</span>
+            </div>
+            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex flex-col gap-4 min-w-0">
@@ -686,24 +803,54 @@
         </div>
 
         <!-- Offline Reel Captions -->
-        <div data-release-repo="R-Dilipkumar/offline-reel-captions" class="glass-panel reveal-left delay-100 lg:col-span-7 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
+        <div data-release-repo="R-Dilipkumar/offline-reel-captions" class="glass-panel reveal-left delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
           <div>
-            <div class="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-6 sm:gap-8 mb-8">
-              <div class="min-w-0 flex-1">
-              <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Offline Reel Captions</h3>
               <span class="tag tag-cyan">Offline • Indian Languages</span>
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Auto subtitles for Tamil, Tanglish and more, made on the phone.</p>
             <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Whisper • IndicTrans2 • ONNX Runtime • Media3</p>
+            <div class="proj-body">
+            <div class="proj-desc">
             <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
               Pick a video and a language, and the app writes the captions: in the original script, in English letters by sound ("vanakkam nanbargale"), or translated. Fix and style every caption, then export an MP4 with the captions burned in, or an <code>.srt</code> file. Built for South Indian creators. The video never leaves the phone.
             </p>
-              </div>
-              <img src="media/shots/reel-captions.webp" width="320" height="711" alt="Offline Reel Captions caption editor with English and Tamil captions on a video" loading="lazy" decoding="async" class="shot shot-phone self-center sm:self-start lg:self-center xl:self-start">
             </div>
-            <details class="how mb-8">
-              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+            <div class="proj-gallery gal" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="Screenshots from the app">
+              <div class="gal-track" tabindex="0">
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Caption type choices"><img src="media/shots/reel-captions/01.webp" width="405" height="900" alt="Caption type choices" loading="lazy" decoding="async"></button>
+                  <figcaption><b>1</b>Choose how the captions read: as it sounds in English letters, translated, or in Tamil script.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Caption size choices"><img src="media/shots/reel-captions/02.webp" width="405" height="900" alt="Caption size choices" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b>Pick the caption size: one word at a time, short bites, a line or full sentences.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Caption editor with captions on a video"><img src="media/shots/reel-captions/03.webp" width="405" height="900" alt="Caption editor with captions on a video" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b>The captions play on the video with word timing. Tap any caption to fix it.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Font choices with Tamil looks"><img src="media/shots/reel-captions/04.webp" width="405" height="900" alt="Font choices with Tamil looks" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b>16 fonts, each with a matching Tamil look, plus bold and capitals.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Edit history list"><img src="media/shots/reel-captions/05.webp" width="405" height="900" alt="Edit history list" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b>Every change is saved as a step, so you can go back to any earlier version.</figcaption>
+                </figure>
+              </div>
+              <div class="gal-ctrl">
+                <button type="button" class="gal-btn gal-prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                <div class="gal-dots"></div>
+                <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
+                <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+              </div>
+              <p class="gal-hint">Screenshots from the app · tap a picture to enlarge</p>
+            </div>
+            <div class="proj-more">
+            <details class="how mb-6">
+              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Speech Models per Language</strong>
@@ -723,10 +870,12 @@
               </div>
             </div>
             </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
               <span class="tag tag-cyan">7 Languages + Tanglish</span>
               <span class="tag">Android 10+</span>
               <span class="tag">Open Source • MIT</span>
+            </div>
+            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
@@ -743,24 +892,58 @@
         </div>
 
         <!-- Artisan NPR Studio -->
-        <div data-release-repo="R-Dilipkumar/photo-art-filters-android" class="glass-panel reveal-right delay-200 lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
+        <div data-release-repo="R-Dilipkumar/photo-art-filters-android" class="glass-panel reveal-right delay-200 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
           <div>
-            <div class="flex flex-col sm:flex-row lg:flex-col gap-6 sm:gap-8 mb-8">
-              <div class="min-w-0 flex-1">
-              <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Artisan NPR Studio</h3>
               <span class="tag tag-cyan">No AI • No Internet</span>
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Turn any photo into a sketch, painting or comic.</p>
             <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Kotlin • Compose • OpenGL ES 3.0 • GLSL</p>
+            <div class="proj-body">
+            <div class="proj-desc">
             <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
               134 art styles in 12 groups: pencil sketch, oil paint, watercolour, halftone, pixel art, film and glitch looks. Each style has its own controls, and a high-resolution export looks just like the preview. The APK is about 2 MB and asks for no permissions.
             </p>
-              </div>
-              <img src="media/shots/artisan-npr.webp" width="320" height="656" alt="Artisan NPR Studio turning a photo into a ballpoint pen sketch, with style controls" loading="lazy" decoding="async" class="shot shot-phone self-center sm:self-start lg:self-center">
             </div>
-            <details class="how mb-8">
-              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+            <div class="proj-gallery gal" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="Run on the Android emulator: one photo, five style groups">
+              <div class="gal-track" tabindex="0">
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Ballpoint pen sketch style"><img src="media/shots/artisan/01.webp" width="405" height="900" alt="Ballpoint pen sketch style" loading="lazy" decoding="async"></button>
+                  <figcaption><b>1</b>Sketch › Ballpoint Pen: biro hatching that builds up in the shadows. The sliders change it live.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Acrylic paint style"><img src="media/shots/artisan/02.webp" width="405" height="900" alt="Acrylic paint style" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b>Paint › Acrylic: the same photo as bright, crisp brush strokes.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Dry brush watercolour style"><img src="media/shots/artisan/03.webp" width="405" height="900" alt="Dry brush watercolour style" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b>Watercolour › Dry Brush: streaky strokes that skip across the paper.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Anime scenery style"><img src="media/shots/artisan/04.webp" width="405" height="900" alt="Anime scenery style" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b>Comic &amp; Pop › Anime Scenery: soft cel shading and glowing light.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: 1-bit dither style"><img src="media/shots/artisan/05.webp" width="405" height="900" alt="1-bit dither style" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b>Retro › 1-Bit Dither: just two colours and a dot pattern, like an early Mac.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Grid of sketch styles"><img src="media/shots/artisan/06.webp" width="866" height="900" alt="Grid of sketch styles" loading="lazy" decoding="async"></button>
+                  <figcaption><b>6</b>One sheet of the 134 styles. Each one is its own GPU shader.</figcaption>
+                </figure>
+              </div>
+              <div class="gal-ctrl">
+                <button type="button" class="gal-btn gal-prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                <div class="gal-dots"></div>
+                <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
+                <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+              </div>
+              <p class="gal-hint">Run on the Android emulator: one photo, five style groups · tap a picture to enlarge</p>
+            </div>
+            <div class="proj-more">
+            <details class="how mb-6">
+              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
               <div class="flex flex-col gap-6 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">One Shader per Style</strong>
@@ -772,10 +955,12 @@
               </div>
             </div>
             </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
               <span class="tag tag-cyan">134 Styles</span>
               <span class="tag">~2 MB APK</span>
               <span class="tag">MIT</span>
+            </div>
+            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex flex-col gap-4 min-w-0">
@@ -794,22 +979,60 @@
         <!-- Live Wallpaper Maker -->
         <div data-release-repo="R-Dilipkumar/live-wallpaper-maker-android" class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
           <div>
-            <div class="flex flex-col sm:flex-row gap-6 sm:gap-10 mb-8">
-              <div class="min-w-0 flex-1">
-              <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Live Wallpaper Maker</h3>
               <span class="tag tag-cyan">Light on Battery</span>
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Design your own live wallpaper: layers, tilt parallax and 3D scene transitions.</p>
             <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Kotlin • Compose • OpenGL ES 3.0 • MediaCodec</p>
-            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
+            <div class="proj-body">
+            <div class="proj-desc">
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
               Stack videos, GIFs, photos, gradients, particles and a live clock, give each layer its own tilt and swipe depth, add looks and keyframe animation, and switch between scenes on a timer, on unlock, on double-tap or by time of day, with crossfade, 3D flip and cube transitions. Version 1.1 adds one-tap 3D photos (on-phone subject cut-out with ML Kit, the clock tucked behind the subject), water-ripple tap effects, separate lock-screen scenes, motion photos, animated stickers, and sharing as video or GIF.
             </p>
-              </div>
-              <img src="media/shots/live-wallpaper.webp" width="320" height="711" alt="Live Wallpaper Maker editor with a gradient wallpaper and a clock layer" loading="lazy" decoding="async" class="shot shot-phone self-center sm:self-start">
             </div>
-            <details class="how mb-8">
-              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+            <div class="proj-gallery gal" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="Screenshots from the app">
+              <div class="gal-track" tabindex="0">
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Wallpaper list and templates"><img src="media/shots/live-wallpaper/01.webp" width="405" height="900" alt="Wallpaper list and templates" loading="lazy" decoding="async"></button>
+                  <figcaption><b>1</b>Start from a template or one of your wallpapers. Each can hold several scenes.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Wallpaper editor with a clock layer"><img src="media/shots/live-wallpaper/02.webp" width="405" height="900" alt="Wallpaper editor with a clock layer" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b>The editor: layers such as a gradient and a live clock, previewed as you change them.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Colour and look controls"><img src="media/shots/live-wallpaper/03.webp" width="405" height="900" alt="Colour and look controls" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b>Looks and colour controls for each layer: brightness, contrast, saturation and hue.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Add video sheet with trim and loop options"><img src="media/shots/live-wallpaper/04.webp" width="405" height="900" alt="Add video sheet with trim and loop options" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b>Add a video or GIF: trim it and choose how it loops, for example with a crossfade.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: 3D cube transition between scenes"><img src="media/shots/live-wallpaper/05.webp" width="828" height="900" alt="3D cube transition between scenes" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b>Scenes switch with 3D transitions, like this cube turn.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Water ripple after a tap"><img src="media/shots/live-wallpaper/06.webp" width="414" height="900" alt="Water ripple after a tap" loading="lazy" decoding="async"></button>
+                  <figcaption><b>6</b>Tap the home screen and the wallpaper ripples like water.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Share as video or GIF sheet"><img src="media/shots/live-wallpaper/07.webp" width="405" height="900" alt="Share as video or GIF sheet" loading="lazy" decoding="async"></button>
+                  <figcaption><b>7</b>Share any wallpaper as a video or a GIF.</figcaption>
+                </figure>
+              </div>
+              <div class="gal-ctrl">
+                <button type="button" class="gal-btn gal-prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                <div class="gal-dots"></div>
+                <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
+                <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+              </div>
+              <p class="gal-hint">Screenshots from the app · tap a picture to enlarge</p>
+            </div>
+            <div class="proj-more">
+            <details class="how mb-6">
+              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Heavy Work Once, at Import</strong>
@@ -821,11 +1044,13 @@
               </div>
             </div>
             </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
               <span class="tag tag-cyan">13 Transitions</span>
               <span class="tag">~4 MB APK</span>
               <span class="tag">Android 10+</span>
               <span class="tag">MIT</span>
+            </div>
+            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
@@ -844,22 +1069,56 @@
         <!-- ASIAN MOBA 5v5 Tournament -->
         <div class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonAmber/40 min-w-0 w-full">
           <div>
-            <div class="flex flex-col lg:flex-row gap-6 lg:gap-10 mb-8">
-              <div class="min-w-0 flex-1">
-              <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">ASIAN MOBA 5v5 Tournament</h3>
               <span class="tag tag-amber">Web App • Live</span>
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Sign-ups, teams and brackets for a Mobile Legends tournament, in one phone-friendly web app.</p>
             <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">React • TypeScript • Firebase • Gemini Vision</p>
-            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
+            <div class="proj-body">
+            <div class="proj-desc">
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
               Players sign in with an email link, confirm their game ID, upload three stats screenshots and pay the entry fee by UPI. They form 5-player teams with a 6-digit code, then play through a seeded bracket, shown as a tree with colour-coded best-of rounds, and report each result with screenshots. On match day each team's page shows the next opponent and start time, players check in, and winners get confetti until their next match. Admins handle payments, reviews, refunds, brackets, disputes and emergency substitutes from one dashboard, and every admin change is logged. The look is red, matte black and gold, with a shimmering gold lion logo.
             </p>
-              </div>
-              <img src="media/shots/asian-moba.webp" width="960" height="504" alt="ASIAN MOBA 5v5 Tournament banner with its gold lion logo" loading="lazy" decoding="async" class="shot w-full lg:w-[42%] lg:max-w-[34rem] self-start">
             </div>
-            <details class="how mb-8">
-              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+            <div class="proj-gallery gal" data-gallery style="--acc:#ffaa00" role="region" aria-roledescription="carousel" aria-label="Run locally on the Firebase emulators with test players and teams">
+              <div class="gal-track" tabindex="0">
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Tournament home page with registration open"><img src="media/shots/asian-moba/01.webp" width="416" height="900" alt="Tournament home page with registration open" loading="lazy" decoding="async"></button>
+                  <figcaption><b>1</b>Players see the open tournament, the entry fee and the Register button.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Screenshot upload step with a numbered sample"><img src="media/shots/asian-moba/02.webp" width="416" height="900" alt="Screenshot upload step with a numbered sample" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b>Sign-up step 3: upload three stats screenshots. Numbered samples show which screen to take.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Admin stats review comparing typed and read values"><img src="media/shots/asian-moba/03.webp" width="416" height="900" alt="Admin stats review comparing typed and read values" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b>Admin review: what was read from each screenshot next to what the player typed. Differences are flagged.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Admin payment check with transaction ID"><img src="media/shots/asian-moba/04.webp" width="416" height="900" alt="Admin payment check with transaction ID" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b>Payments: match each UPI transaction ID with the money received, then approve or send it back.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Bracket picture with quarterfinal scores"><img src="media/shots/asian-moba/05.webp" width="416" height="900" alt="Bracket picture with quarterfinal scores" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b>The bracket picture: seeded so the strongest teams meet late. Played matches show their scores.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Team page with You won banner and next match"><img src="media/shots/asian-moba/06.webp" width="416" height="900" alt="Team page with You won banner and next match" loading="lazy" decoding="async"></button>
+                  <figcaption><b>6</b>A team’s page on match day: their result, the next opponent and the start time, with confetti for the win.</figcaption>
+                </figure>
+              </div>
+              <div class="gal-ctrl">
+                <button type="button" class="gal-btn gal-prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                <div class="gal-dots"></div>
+                <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
+                <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+              </div>
+              <p class="gal-hint">Run locally on the Firebase emulators with test players and teams · tap a picture to enlarge</p>
+            </div>
+            <div class="proj-more">
+            <details class="how mb-6">
+              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Screenshots Read by Gemini</strong>
@@ -879,10 +1138,12 @@
               </div>
             </div>
             </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
               <span class="tag tag-amber">Up to 50 Teams</span>
               <span class="tag">Mobile-First</span>
               <span class="tag">Firebase + Vertex AI</span>
+            </div>
+            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
@@ -904,11 +1165,50 @@
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Makes AI coding agents research before they build, and learn from every bug.</p>
             <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Agent Skills (SKILL.md) • Claude Code • Codex • Gemini CLI</p>
-            <p class="text-gray-300 font-normal text-base sm:text-lg mb-8 leading-relaxed max-w-5xl">
+            <div class="proj-body">
+            <div class="proj-desc">
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
               A reusable skill for AI coding tools. Before the agent picks a library, API, SDK version or AI model, it checks the official docs for deprecation, device support and licence. After every snag, it saves one short "before doing X, check Y" lesson that it reads on the next project, so the same mistake doesn't happen twice. My own copy started with lessons from the snags in all my apps above.
             </p>
-            <details class="how mb-8">
-              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+            </div>
+            <div class="proj-gallery gal" data-gallery style="--acc:#ff007f" role="region" aria-roledescription="carousel" aria-label="The skill’s real files and lessons">
+              <div class="gal-track" tabindex="0">
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Preflight skill folder"><img src="media/shots/preflight/01.webp" width="1280" height="800" alt="Preflight skill folder" loading="lazy" decoding="async"></button>
+                  <figcaption><b>1</b>The whole skill is a folder of Markdown files, so any coding agent can read it.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: SKILL.md before-building steps"><img src="media/shots/preflight/02.webp" width="1280" height="800" alt="SKILL.md before-building steps" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b>Before building: read the lessons, list the risky choices, research them, and note what was checked.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Research checklist"><img src="media/shots/preflight/03.webp" width="1280" height="800" alt="Research checklist" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b>The research checklist: version, deprecation, device support, licence and known issues.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Saved lessons"><img src="media/shots/preflight/04.webp" width="1280" height="800" alt="Saved lessons" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b>Real lessons saved after real bugs, each one written as “before doing X, check Y”.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: session.md template"><img src="media/shots/preflight/05.webp" width="1280" height="800" alt="session.md template" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b>Each project keeps a session.md, so a new session can pick up where the last one stopped.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: End-of-work reminder hook"><img src="media/shots/preflight/06.webp" width="1280" height="800" alt="End-of-work reminder hook" loading="lazy" decoding="async"></button>
+                  <figcaption><b>6</b>An optional reminder at the end of the work makes sure the lesson and session.md get saved.</figcaption>
+                </figure>
+              </div>
+              <div class="gal-ctrl">
+                <button type="button" class="gal-btn gal-prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                <div class="gal-dots"></div>
+                <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
+                <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+              </div>
+              <p class="gal-hint">The skill’s real files and lessons · tap a picture to enlarge</p>
+            </div>
+            <div class="proj-more">
+            <details class="how mb-6">
+              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Lessons, Not a Bug Log</strong>
@@ -920,10 +1220,12 @@
               </div>
             </div>
             </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
               <span class="tag tag-pink">Self-Updating</span>
               <span class="tag">Markdown Only</span>
               <span class="tag">Open Source • MIT</span>
+            </div>
+            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
@@ -942,26 +1244,61 @@
         <!-- DriveMate -->
         <div class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonAmber/40 min-w-0 w-full">
           <div>
-            <div class="flex flex-col lg:flex-row gap-6 lg:gap-10 mb-8">
-              <div class="min-w-0 flex-1">
-              <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">DriveMate</h3>
               <span class="tag tag-amber">Personal Project</span>
             </div>
-            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">A Windows tool for setting up simulated factory devices, with device plugins and an offline manual helper.</p>
-            <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">C# • WPF • .NET 10 • Modbus TCP</p>
-            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">A Windows tool for setting up simulated factory devices, with device plugins and an offline AI helper that answers from the manual.</p>
+            <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">C# • WPF • .NET 10 • Modbus TCP • Local AI (Phi-4-mini)</p>
+            <div class="proj-body">
+            <div class="proj-desc">
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
               A personal learning project with no real hardware: I built a simulated servo drive and remote I/O module, and the app talks to them over real Modbus TCP. Each device type is a plugin loaded at runtime, so adding the second one needed no change to the main app. It checks and reads back every setting it writes, draws a live graph, saves setups, and keeps a fault log in SQLite.
+              <span class="block mt-4">It also has an <strong class="text-white font-semibold">offline AI helper</strong>: ask a question and it answers from the device's PDF manual, with the page it came from. A search finds the matching parts of the manual, plain code refuses questions the manual doesn't cover, and only then does a small AI model (Phi-4-mini, run on the PC through LLamaSharp) write the answer. Nothing goes to the internet.</span>
             </p>
-              </div>
-              <img src="media/shots/drivemate.webp" width="1240" height="700" alt="DriveMate showing a live graph of motor current from a simulated servo drive" loading="lazy" decoding="async" class="shot w-full lg:w-[42%] lg:max-w-[34rem] self-start">
             </div>
-            <details class="how mb-8">
-              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+            <div class="proj-gallery gal" data-gallery style="--acc:#ffaa00" role="region" aria-roledescription="carousel" aria-label="Screenshots from the app, talking to its simulated devices">
+              <div class="gal-track" tabindex="0">
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: DriveMate settings tab"><img src="media/shots/drivemate/01.webp" width="1240" height="700" alt="DriveMate settings tab" loading="lazy" decoding="async"></button>
+                  <figcaption><b>1</b>Settings: every value with its allowed range. Each write is read back and confirmed.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Live motor current graph"><img src="media/shots/drivemate/02.webp" width="1240" height="700" alt="Live motor current graph" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b>A live graph of motor current from the simulated servo drive.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Servo drive plugin screen"><img src="media/shots/drivemate/03.webp" width="1240" height="700" alt="Servo drive plugin screen" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b>Each device type is a plugin with its own screen. Here, the servo drive’s overview.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Fault F004 shown on the drive"><img src="media/shots/drivemate/04.webp" width="1240" height="700" alt="Fault F004 shown on the drive" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b>Too short an acceleration time trips fault F004 (overcurrent), like a real drive would.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: AI helper answer citing page 7"><img src="media/shots/drivemate/05.webp" width="1240" height="700" alt="AI helper answer citing page 7" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b>The offline AI helper: asked how to fix F004, it answers from the PDF manual and shows page 7.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Helper refusing a question about F099"><img src="media/shots/drivemate/06.webp" width="1240" height="700" alt="Helper refusing a question about F099" loading="lazy" decoding="async"></button>
+                  <figcaption><b>6</b>Asked about F099, which the manual never mentions: plain code refuses before the AI even runs.</figcaption>
+                </figure>
+              </div>
+              <div class="gal-ctrl">
+                <button type="button" class="gal-btn gal-prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                <div class="gal-dots"></div>
+                <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
+                <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+              </div>
+              <p class="gal-hint">Screenshots from the app, talking to its simulated devices · tap a picture to enlarge</p>
+            </div>
+            <div class="proj-more">
+            <details class="how mb-6">
+              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Offline Helper That Can Refuse</strong>
-                Answers from a device's PDF manual with the page number, using a small AI model on the PC. Code decides whether the manual covers a question before the model runs. On 43 questions held back for a fair test, it got 23 of 27 answerable ones right and refused all 16 the manual didn't cover. I wrote the manuals and questions myself.
+                Answers from a device's PDF manual with the page number, using Phi-4-mini on the PC through LLamaSharp, after a SQLite full-text search finds the matching sections. Code decides whether the manual covers a question before the model runs. On 43 questions held back for a fair test, it got 23 of 27 answerable ones right and refused all 16 the manual didn't cover. I wrote the manuals and questions myself.
               </div>
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Tested, and Honest About It</strong>
@@ -969,10 +1306,13 @@
               </div>
             </div>
             </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
-              <span class="tag tag-amber">Plugin Architecture</span>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
+              <span class="tag tag-amber">Offline AI</span>
+              <span class="tag">Plugin Architecture</span>
               <span class="tag">SQLite</span>
               <span class="tag">Open Source • MIT</span>
+            </div>
+            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
@@ -995,9 +1335,9 @@
         <div class="glass-panel reveal-left delay-100 lg:col-span-4 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonPink/40 min-w-0 w-full">
           <div>
             <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Local Mobile AI</h3>
-            <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mb-6">Personal Project • Termux • Obsidian</p>
+            <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mb-6">Personal Project • Jun 2026 – Now • Termux • Obsidian</p>
             <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed mb-8">
-              A personal AI assistant running on my phone in Termux, with long-term memory kept in an Obsidian Markdown vault. Notes and their links form a knowledge graph the assistant retrieves from (graph-based RAG), so context carries across sessions.
+              A personal AI assistant that runs on my phone in Termux, with no cloud. Its long-term memory is an Obsidian vault of Markdown notes. When I ask something, it follows the links between notes to pull in related context (graph-based RAG), so it remembers what we discussed in earlier sessions.
             </p>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex gap-2 sm:gap-2.5 flex-wrap min-w-0">
@@ -1037,9 +1377,9 @@
         <div class="glass-panel reveal-right delay-300 lg:col-span-4 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonAmber/40 min-w-0 w-full">
           <div>
             <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Smart AC Telemetry</h3>
-            <p class="font-mono text-gray-400 text-xs sm:text-sm tracking-widest uppercase mb-6">ESP32 • Python • IoT</p>
+            <p class="font-mono text-gray-400 text-xs sm:text-sm tracking-widest uppercase mb-6">May – Jul 2022 • ESP32 • Python • IoT</p>
             <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed mb-8">
-              Developed an IoT predictive maintenance system calculating dust accumulation rates on air filters. Transmitted telemetry to ThingSpeak, reducing scheduled servicing overhead by 25%.
+              A sensor module inside an air conditioner measures dust building up on the filter with a light sensor and sends the readings over Wi-Fi to ThingSpeak. It warns when the dust level reaches 80, so the filter is cleaned when it needs it instead of on a fixed schedule, cutting scheduled servicing by about 25%.
             </p>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex gap-2 sm:gap-2.5 flex-wrap min-w-0">
@@ -1492,6 +1832,24 @@
       </div>
     </div>
 
+    <!-- SCREENSHOT VIEWER -->
+    <dialog id="shot-viewer" class="sv" aria-label="Screenshot">
+      <div class="sv-inner">
+        <div class="sv-top">
+          <p class="sv-count"></p>
+          <button type="button" class="vm-close sv-close" aria-label="Close">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+        <img class="sv-img" alt="">
+        <p class="sv-cap"></p>
+        <div class="sv-nav">
+          <button type="button" class="gal-btn sv-prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button type="button" class="gal-btn sv-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+    </dialog>
+
     <!-- FLOATING TOAST NOTIFICATION -->
     <div id="toast-notification" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[110] flex items-center gap-3 bg-[#0a0a0f]/95 border border-neonCyan/60 text-white font-mono text-xs px-5 py-3.5 rounded-full shadow-[0_10px_35px_rgba(0,243,255,0.35)] backdrop-blur-2xl opacity-0 pointer-events-none translate-y-6 transition-all duration-300 ease-out max-w-[calc(100vw-3rem)]">
       <div class="w-2.5 h-2.5 rounded-full bg-neonCyan animate-ping"></div>
@@ -1772,6 +2130,121 @@
     });
 
 
+    // --- Screenshot galleries ---
+    // Each gallery moves on by itself while it's on screen. Swiping, dragging, the arrows or the dots
+    // take over for a while; hovering or focusing pauses it; the pause button stops it.
+    const shotViewer = document.getElementById('shot-viewer');
+    let viewerSlides = [], viewerIndex = 0;
+
+    function showInViewer(i) {
+      viewerIndex = (i + viewerSlides.length) % viewerSlides.length;
+      const fig = viewerSlides[viewerIndex];
+      const img = fig.querySelector('img');
+      shotViewer.querySelector('.sv-img').src = img.currentSrc || img.src;
+      shotViewer.querySelector('.sv-img').alt = img.alt;
+      shotViewer.querySelector('.sv-cap').textContent = fig.querySelector('figcaption').textContent.replace(/^\d+/, '').trim();
+      shotViewer.querySelector('.sv-count').textContent = `${viewerIndex + 1} / ${viewerSlides.length}`;
+    }
+    shotViewer.querySelector('.sv-close').addEventListener('click', () => shotViewer.close());
+    shotViewer.querySelector('.sv-prev').addEventListener('click', () => showInViewer(viewerIndex - 1));
+    shotViewer.querySelector('.sv-next').addEventListener('click', () => showInViewer(viewerIndex + 1));
+    shotViewer.addEventListener('click', (e) => { if (e.target === shotViewer || e.target.classList.contains('sv-inner')) shotViewer.close(); });
+    shotViewer.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') showInViewer(viewerIndex + 1);
+      else if (e.key === 'ArrowLeft') showInViewer(viewerIndex - 1);
+    });
+    shotViewer.addEventListener('close', () => { document.documentElement.style.overflow = ''; });
+
+    document.querySelectorAll('[data-gallery]').forEach((gal) => {
+      const track = gal.querySelector('.gal-track');
+      const slides = [...track.querySelectorAll('.gal-slide')];
+      const playBtn = gal.querySelector('.gal-play');
+      let current = 0, visible = false, hovering = false, focused = false, userPaused = false, holdUntil = 0;
+
+      const dots = slides.map((_, i) => {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.className = 'gal-dot';
+        d.setAttribute('aria-label', `Screenshot ${i + 1} of ${slides.length}`);
+        d.addEventListener('click', () => { hold(); go(i); });
+        gal.querySelector('.gal-dots').appendChild(d);
+        return d;
+      });
+
+      const atEnd = () => track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+      const nearest = () => {
+        if (atEnd()) return slides.length - 1;
+        let best = 0;
+        slides.forEach((s, i) => { if (Math.abs(s.offsetLeft - track.scrollLeft) < Math.abs(slides[best].offsetLeft - track.scrollLeft)) best = i; });
+        return best;
+      };
+      const mark = () => {
+        current = nearest();
+        dots.forEach((d, i) => d.setAttribute('aria-current', i === current ? 'true' : 'false'));
+      };
+      function go(i) {
+        const target = slides[Math.max(0, Math.min(slides.length - 1, i))];
+        track.scrollTo({ left: target.offsetLeft - slides[0].offsetLeft, behavior: 'smooth' });
+      }
+      const hold = () => { holdUntil = Date.now() + 8000; };
+
+      gal.querySelector('.gal-prev').addEventListener('click', () => { hold(); go(atEnd() && current === slides.length - 1 ? nearest() - 1 : current - 1); });
+      gal.querySelector('.gal-next').addEventListener('click', () => { hold(); atEnd() ? go(0) : go(current + 1); });
+      playBtn.addEventListener('click', () => {
+        userPaused = !userPaused;
+        playBtn.setAttribute('aria-label', userPaused ? 'Play slideshow' : 'Pause slideshow');
+        playBtn.querySelector('.gal-icon-pause').style.display = userPaused ? 'none' : '';
+        playBtn.querySelector('.gal-icon-play').style.display = userPaused ? '' : 'none';
+      });
+
+      let scrollRaf = 0;
+      track.addEventListener('scroll', () => { cancelAnimationFrame(scrollRaf); scrollRaf = requestAnimationFrame(mark); }, { passive: true });
+      track.addEventListener('wheel', hold, { passive: true });
+      track.addEventListener('touchstart', hold, { passive: true });
+      track.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); hold(); go(current + 1); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); hold(); go(current - 1); }
+      });
+      gal.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') hovering = true; });
+      gal.addEventListener('pointerleave', () => { hovering = false; });
+      gal.addEventListener('focusin', () => { focused = true; });
+      gal.addEventListener('focusout', () => { focused = false; });
+
+      // Drag with the mouse (touch screens already swipe natively)
+      let dragX = 0, dragLeft = 0, dragging = false, moved = false;
+      track.addEventListener('pointerdown', (e) => {
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
+        dragging = true; moved = false; dragX = e.clientX; dragLeft = track.scrollLeft; hold();
+      });
+      window.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - dragX;
+        if (!moved && Math.abs(dx) > 5) { moved = true; track.classList.add('dragging'); }
+        if (moved) track.scrollLeft = dragLeft - dx;
+      });
+      window.addEventListener('pointerup', () => {
+        if (!dragging) return;
+        dragging = false;
+        if (moved) { track.classList.remove('dragging'); go(nearest()); }
+      });
+
+      // Tap a picture to see it full size
+      slides.forEach((s, i) => s.querySelector('.gal-zoom').addEventListener('click', (e) => {
+        if (moved) { e.preventDefault(); moved = false; return; }
+        viewerSlides = slides;
+        showInViewer(i);
+        document.documentElement.style.overflow = 'hidden';
+        shotViewer.showModal();
+      }));
+
+      new IntersectionObserver(([en]) => { visible = en.isIntersecting; }, { threshold: 0.4 }).observe(gal);
+      setInterval(() => {
+        if (!visible || hovering || focused || userPaused || dragging || shotViewer.open || document.hidden || Date.now() < holdUntil) return;
+        atEnd() ? go(0) : go(current + 1);
+      }, 3800);
+      mark();
+    });
+
     // =========================================================================
     // THREE.JS: THE MULTI-LAYERED MATHEMATICAL & CYBERNETIC ENGINE
     // Incorporates: Procedural Mechatronic Core (Flying Robot), Neural AI Web, 
@@ -2000,7 +2473,7 @@
     function animate() {
       requestAnimationFrame(animate);
       // Skip drawing while the contact panel or video covers the page
-      if (!contactSheet.hidden || !vm.hidden) return;
+      if (!contactSheet.hidden || !vm.hidden || shotViewer.open) return;
       step();
     }
 

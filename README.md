@@ -36,7 +36,7 @@ All five are open source (MIT) and run on Android 10+. Net One Tap started as a 
 
 | App | What it does | Links |
 |---|---|---|
-| **DriveMate** | Personal learning project: a Windows tool for setting up simulated factory devices over Modbus TCP. Each device type is a plugin loaded at runtime. It has an offline helper that answers from a device's PDF manual with the page number, and refuses what the manual doesn't cover. Built with C#, WPF and .NET 10, with 265 automated tests. It has never been tested on real hardware. | [GitHub](https://github.com/R-Dilipkumar/drivemate-modbus) · [Watch demo](https://r-dilipkumar.github.io/drivemate-modbus/) · [Download zip](https://github.com/R-Dilipkumar/drivemate-modbus/releases/latest/download/DriveMate-win-x64.zip) |
+| **DriveMate** | Personal learning project: a Windows tool for setting up simulated factory devices over Modbus TCP. Each device type is a plugin loaded at runtime. It has an offline AI helper (Phi-4-mini through LLamaSharp) that answers from a device's PDF manual with the page number, and refuses what the manual doesn't cover. Built with C#, WPF and .NET 10, with 265 automated tests. It has never been tested on real hardware. | [GitHub](https://github.com/R-Dilipkumar/drivemate-modbus) · [Watch demo](https://r-dilipkumar.github.io/drivemate-modbus/) · [Download zip](https://github.com/R-Dilipkumar/drivemate-modbus/releases/latest/download/DriveMate-win-x64.zip) |
 
 ## AI Agent Skill
 
@@ -81,8 +81,8 @@ Currently open to new roles (on-site, hybrid or remote), while building new proj
 
 A single `index.html` built with Tailwind CSS (CDN) and a Three.js animated background. No build step. The resume PDF lives at `media/Dilipkumar_Ravichandran_Resume.pdf`; replace that file to update every "Download Curated Resume" button.
 
-- **Project cards:** card colour shows the kind of project (cyan: Android apps, pink: AI tools, amber: web, desktop and hardware). Each card shows its pitch and a screenshot, with the technical details behind a "How it works" button.
-- **Screenshots:** small WebP copies in `media/shots/`, made from each app repo's own `docs` images. LiveSub has no screenshot yet.
+- **Project cards:** card colour shows the kind of project (cyan: Android apps, pink: AI tools, amber: web, desktop and hardware). Each card shows its pitch, a short description and a gallery of screenshots with a numbered caption under each step. The gallery moves on by itself while it's on screen; visitors can swipe, drag, use the arrows or dots, pause it, or tap a picture to see it full size. Deeper notes sit behind a "Technical details" button.
+- **Screenshots:** small WebP files in `media/shots/<project>/`, all from the projects actually running: LiveSub, Net One Tap (with Shizuku) and Artisan NPR on the Android emulator, ASIAN MOBA on the local Firebase emulators with test data, Preflight rendered from the skill's own files and saved lessons, and the app repos' own screenshots for Offline Reel Captions, Live Wallpaper Maker and DriveMate.
 - **Motion:** visitors whose system asks for reduced motion (on Windows: Settings › Accessibility › Visual effects › Animation effects off) get no scroll-in or typing animations; the 3D background keeps moving for everyone. On phones the background draws at a lower resolution to save battery, and it pauses while the contact panel or video player is open.
 
 To run it locally:

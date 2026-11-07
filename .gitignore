@@ -12,4 +12,5 @@ Me.md
 !media/*
 !media/shots/
 !media/shots/*
+!media/shots/*/*
 !.gitignore

@@ -46,7 +46,7 @@
   </script>
 
   <style>
-    :root { --glass: rgba(15, 15, 20, 0.45); }
+    :root { --glass: rgba(6, 6, 10, 0.6); }
 
     html, body {
       background-color: #030305;
@@ -133,8 +133,6 @@
     /* --- Editorial Glass Panels --- */
     .glass-panel {
       background: var(--glass);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 20px;
       padding: 2.5rem;
@@ -151,6 +149,34 @@
     /* Cards aren't links, so they don't lift on hover; only the border brightens a little */
     .glass-panel:hover {
       border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    /* Text that sits straight on the bright background gets a soft dark halo so it stays readable */
+    #about p {
+      text-shadow: 0 0 6px #030305, 0 0 14px #030305, 0 0 24px #030305;
+    }
+    /* Section labels and the colour key sit on a small dark chip */
+    .reveal > p.font-mono, ul.reveal {
+      width: fit-content;
+      background: rgba(3, 3, 5, 0.78);
+      padding: 0.4rem 0.75rem;
+      border-radius: 8px;
+    }
+    /* A soft shade behind the hero text: dark on the left where the text is, clear on the right */
+    #about::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      left: calc(50% - 50vw);
+      width: 100vw;
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(3, 3, 5, 0.7) 0%, rgba(3, 3, 5, 0.4) 45%, transparent 75%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+      mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+    }
+    @media (max-width: 767px) {
+      #about::before { background: rgba(3, 3, 5, 0.55); }
     }
 
     /* --- App Screenshots --- */
@@ -429,7 +455,7 @@
   <div id="content-layer">
     
     <!-- HEADER NAV -->
-    <header class="fixed top-0 left-0 w-full z-50 py-3.5 backdrop-blur-xl bg-[#030305]/80 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
+    <header class="fixed top-0 left-0 w-full z-50 py-3.5 backdrop-blur-md bg-[#030305]/80 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
       <div class="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center">
         <a href="#about" class="pointer-events-auto flex items-center gap-2.5 group min-w-0">
           <div class="w-2.5 h-2.5 bg-neonCyan rounded-full glow-text group-hover:scale-125 transition-transform flex-shrink-0"></div>
@@ -483,7 +509,7 @@
           <span class="text-neonCyan mr-2">></span> <span id="dynamic-text" class="typing-cursor text-white font-bold"></span>
         </div>
 
-        <p class="max-w-2xl text-base sm:text-lg md:text-xl text-gray-400 font-normal leading-relaxed mb-10">
+        <p class="max-w-2xl text-base sm:text-lg md:text-xl text-gray-300 font-normal leading-relaxed mb-10">
           Software developer who builds with AI. I research a problem, then ship the fix: LLM and agent workflows, enterprise automation, and apps for phone, web and desktop, on a mechatronics foundation (8.29 CGPA). Based in Komarapalayam, Tamil Nadu, India.
         </p>
 
@@ -511,7 +537,7 @@
 
     <!-- EXECUTIVE SUMMARY -->
     <section class="px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto py-8 relative z-20 min-w-0 w-full">
-      <div class="glass-panel border border-white/10 bg-[#030305]/75 backdrop-blur-2xl p-6 sm:p-8 md:p-10 reveal rounded-2xl relative overflow-hidden min-w-0 w-full">
+      <div class="glass-panel border border-white/10 bg-[#030305]/60 p-6 sm:p-8 md:p-10 reveal rounded-2xl relative overflow-hidden min-w-0 w-full">
         <div class="absolute -right-24 -top-24 w-72 h-72 bg-neonCyan/10 rounded-full blur-3xl pointer-events-none"></div>
         <div class="min-w-0">
           <div class="flex items-center gap-2.5 mb-3">
@@ -1760,7 +1786,7 @@
     renderer.setPixelRatio(pixelRatio());
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x030305, 0.001);
+    scene.fog = new THREE.FogExp2(0x030305, 0.0006);
 
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 3000);
     // Start camera far away for the "fly in" effect
@@ -1804,12 +1830,12 @@
     
     // Core Icosahedron
     const icoGeo = new THREE.IcosahedronGeometry(80, 1);
-    const wireMatAmber = new THREE.LineBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0.4 });
+    const wireMatAmber = new THREE.LineBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0.85 });
     const coreWire = new THREE.LineSegments(new THREE.WireframeGeometry(icoGeo), wireMatAmber);
     coreGroup.add(coreWire);
 
     // Orbiting Torus Rings (Gyroscopic)
-    const ringMat = new THREE.LineBasicMaterial({ color: 0x00f3ff, transparent: true, opacity: 0.2 });
+    const ringMat = new THREE.LineBasicMaterial({ color: 0x00f3ff, transparent: true, opacity: 0.5 });
     const rings = [];
     for(let i=0; i<3; i++) {
       const torusGeo = new THREE.TorusGeometry(140 + (i*25), 1, 4, 60);
@@ -1841,7 +1867,7 @@
     }
     neuralGeo.setAttribute('position', new THREE.BufferAttribute(neuralPos, 3));
     
-    const neuralMat = new THREE.PointsMaterial({ color: 0x00f3ff, size: 2, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending });
+    const neuralMat = new THREE.PointsMaterial({ color: 0x00f3ff, size: 3, transparent: true, opacity: 1, blending: THREE.AdditiveBlending });
     const neuralPoints = new THREE.Points(neuralGeo, neuralMat);
     neuralGroup.add(neuralPoints);
 
@@ -1851,7 +1877,7 @@
     const maxLines = 1500; 
     const neuralLinePos = new Float32Array(maxLines * 6); // 2 vertices per line, 3 coords per vertex
     neuralLinesGeo.setAttribute('position', new THREE.BufferAttribute(neuralLinePos, 3));
-    const neuralLineMat = new THREE.LineBasicMaterial({ color: 0x00f3ff, transparent: true, opacity: 0.15, blending: THREE.AdditiveBlending });
+    const neuralLineMat = new THREE.LineBasicMaterial({ color: 0x00f3ff, transparent: true, opacity: 0.35, blending: THREE.AdditiveBlending });
     const neuralLinesMesh = new THREE.LineSegments(neuralLinesGeo, neuralLineMat);
     neuralGroup.add(neuralLinesMesh);
     
@@ -1862,7 +1888,7 @@
     const numLines = 15;
     const pointsPerLine = 200;
     const ribbonGeometries = [];
-    const pinkMat = new THREE.LineBasicMaterial({ color: 0xff007f, transparent: true, opacity: 0.3, blending: THREE.AdditiveBlending });
+    const pinkMat = new THREE.LineBasicMaterial({ color: 0xff007f, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending });
 
     for (let i = 0; i < numLines; i++) {
       const geometry = new THREE.BufferGeometry();
@@ -1882,7 +1908,7 @@
     
     for(let i=0; i<numPulses; i++) {
       const pulseGeo = new THREE.BoxGeometry(2, 2, 80);
-      const pulseMat = new THREE.MeshBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending });
+      const pulseMat = new THREE.MeshBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 1, blending: THREE.AdditiveBlending });
       const pulse = new THREE.Mesh(pulseGeo, pulseMat);
       
       // Random start positions far outside
@@ -1904,7 +1930,7 @@
       cosmicPos[i] = (Math.random() - 0.5) * 4000;
     }
     cosmicGeo.setAttribute('position', new THREE.BufferAttribute(cosmicPos, 3));
-    const cosmicMat = new THREE.PointsMaterial({ color: 0xffffff, size: 1.5, transparent: true, opacity: 0.3 });
+    const cosmicMat = new THREE.PointsMaterial({ color: 0xffffff, size: 2, transparent: true, opacity: 0.6 });
     const cosmicPoints = new THREE.Points(cosmicGeo, cosmicMat);
     masterGroup.add(cosmicPoints);
 
@@ -1978,44 +2004,56 @@
       step();
     }
 
+    // Motion is scaled by real time between frames (k = 1 at 60 fps), so it stays even
+    // when a frame is late and runs at the same speed on 120 Hz screens
+    let lastFrame = performance.now();
+    // The scene follows an eased copy of the scroll position, so wheel steps glide instead of jumping
+    let smoothScrollY = window.scrollY || 0;
+
     function step() {
+      const now = performance.now();
+      const k = Math.min(3, (now - lastFrame) / (1000 / 60));
+      lastFrame = now;
+      const ease = (f) => 1 - Math.pow(1 - f, k);
       const time = clock.getElapsedTime();
-      const dt = clock.getDelta();
+
+      smoothScrollY += (scrollY - smoothScrollY) * ease(0.09);
+      if (Math.abs(scrollY - smoothScrollY) < 0.1) smoothScrollY = scrollY;
 
       // 1. Intro Fly-in Animation for Camera and Core
       if (introProgress < 1) {
-        introProgress += 0.005;
+        introProgress += 0.005 * k;
         // Exponential ease out for camera initial load
-        camera.position.z += (800 - camera.position.z) * 0.05; 
+        camera.position.z += (800 - camera.position.z) * ease(0.05);
         // Core flies in from deep space
-        coreGroup.position.z += (0 - coreGroup.position.z) * 0.08;
+        coreGroup.position.z += (0 - coreGroup.position.z) * ease(0.08);
       }
 
       // 2. Scroll Parallax & Camera Dive (Surprise Mechanic)
-      const scrollPercent = scrollY / (maxScroll || 1);
-      
+      const scrollPercent = smoothScrollY / (maxScroll || 1);
+
       // As user scrolls down, the camera flies FORWARD through the space
       // moving from z=800 down to z=-200, passing through the objects!
       if (introProgress >= 1) {
           const targetCamZ = 800 - (scrollPercent * 1000);
-          camera.position.z += (targetCamZ - camera.position.z) * 0.05;
+          camera.position.z += (targetCamZ - camera.position.z) * ease(0.12);
       }
 
       // Rotate the whole master group slightly based on scroll
       masterGroup.rotation.y = scrollPercent * Math.PI * 0.5;
       masterGroup.rotation.x = scrollPercent * Math.PI * 0.2;
 
-      // Dim the background once the reader scrolls past the hero
-      const heroFade = Math.min(1, scrollY / window.innerHeight);
-      const canvasOpacity = (1 - heroFade * 0.65).toFixed(2);
+      // Dim the background only a little past the hero, so it stays bright behind the cards
+      const heroFade = Math.min(1, smoothScrollY / window.innerHeight);
+      const canvasOpacity = (1 - heroFade * 0.15).toFixed(2);
       if (canvas.style.opacity !== canvasOpacity) canvas.style.opacity = canvasOpacity;
 
       // 3. Animate Cybernetic Core
       coreWire.rotation.y = time * 0.2;
       coreWire.rotation.z = time * 0.1;
       rings.forEach(r => {
-        r.mesh.rotation.x += r.speedX;
-        r.mesh.rotation.y += r.speedY;
+        r.mesh.rotation.x += r.speedX * k;
+        r.mesh.rotation.y += r.speedY * k;
       });
 
       // 4. Animate Neural Web
@@ -2024,9 +2062,9 @@
       
       for(let i=0; i<neuralCount; i++) {
         // Move particles
-        posAttr.array[i*3] += neuralVel[i].x;
-        posAttr.array[i*3+1] += neuralVel[i].y;
-        posAttr.array[i*3+2] += neuralVel[i].z;
+        posAttr.array[i*3] += neuralVel[i].x * k;
+        posAttr.array[i*3+1] += neuralVel[i].y * k;
+        posAttr.array[i*3+2] += neuralVel[i].z * k;
 
         // Bounce off invisible boundary (cube of 800)
         if(Math.abs(posAttr.array[i*3]) > 400) neuralVel[i].x *= -1;
@@ -2055,11 +2093,12 @@
       }
       posAttr.needsUpdate = true;
       
-      // Hide unused lines in the buffer
-      for(let i = lineIndex*6; i < maxLines*6; i++) {
-        neuralLinePos[i] = 0;
-      }
-      neuralLinesGeo.attributes.position.needsUpdate = true;
+      // Draw and upload only the lines in use this frame
+      neuralLinesGeo.setDrawRange(0, lineIndex * 2);
+      const lineAttr = neuralLinesGeo.attributes.position;
+      lineAttr.updateRange.offset = 0;
+      lineAttr.updateRange.count = lineIndex * 6;
+      lineAttr.needsUpdate = true;
 
       // 5. Animate Math Ribbons (Lissajous knots)
       ribbonGroup.rotation.z = time * 0.05;
@@ -2084,7 +2123,7 @@
 
       // 6. Animate Electric Pulses
       pulses.forEach(p => {
-        p.mesh.position.z += p.mesh.userData.speed;
+        p.mesh.position.z += p.mesh.userData.speed * k;
         // If it flies past the camera, reset it
         if (p.mesh.position.z > 500) {
           p.reset(p.mesh);
@@ -2097,9 +2136,9 @@
 
       // 8. Animate Sparse Holographic Microchips (Slow rotate and fade)
       chips.forEach(c => {
-        c.rotation.x += c.userData.rotSpeedX;
-        c.rotation.y += c.userData.rotSpeedY;
-        c.userData.life += c.userData.speed;
+        c.rotation.x += c.userData.rotSpeedX * k;
+        c.rotation.y += c.userData.rotSpeedY * k;
+        c.userData.life += c.userData.speed * k;
         
         if(c.userData.life > 1) {
           c.userData.life = 0; // Respawn
@@ -2110,13 +2149,13 @@
         }
         // Sine wave opacity: fades in and out smoothly
         const alpha = Math.sin(c.userData.life * Math.PI);
-        c.userData.faceMat.opacity = alpha * 0.18;
-        c.userData.edgeMat.opacity = alpha * 0.55;
+        c.userData.faceMat.opacity = alpha * 0.3;
+        c.userData.edgeMat.opacity = alpha * 0.9;
       });
 
       // 9. Stochastic Electric Sparks
       // Random chance to fire a spark every frame
-      if (Math.random() > 0.92) { 
+      if (Math.random() < 1 - Math.pow(0.92, k)) { 
         const inactiveSpark = sparks.find(s => !s.mesh.userData.active);
         if (inactiveSpark) {
           inactiveSpark.mesh.userData.active = true;
@@ -2145,7 +2184,7 @@
       // Decay sparks
       sparks.forEach(s => {
         if (s.mesh.userData.active) {
-          s.mesh.userData.life -= 0.08; // Flash fades quickly
+          s.mesh.userData.life -= 0.08 * k; // Flash fades quickly
           s.mesh.material.opacity = s.mesh.userData.life;
           if (s.mesh.userData.life <= 0) s.mesh.userData.active = false;
         }

@@ -83,7 +83,7 @@ A single `index.html` built with Tailwind CSS (CDN) and a Three.js animated back
 
 - **Project cards:** card colour shows the kind of project (cyan: Android apps, pink: AI tools, amber: web, desktop and hardware). Each card shows its pitch and a screenshot, with the technical details behind a "How it works" button.
 - **Screenshots:** small WebP copies in `media/shots/`, made from each app repo's own `docs` images. LiveSub has no screenshot yet.
-- **Motion:** visitors whose system asks for reduced motion (on Windows: Settings › Accessibility › Visual effects › Animation effects off) get a still background and no scroll-in or typing animations. On phones the background draws at a lower resolution to save battery, and it pauses while the contact panel or video player is open.
+- **Motion:** visitors whose system asks for reduced motion (on Windows: Settings › Accessibility › Visual effects › Animation effects off) get no scroll-in or typing animations; the 3D background keeps moving for everyone. On phones the background draws at a lower resolution to save battery, and it pauses while the contact panel or video player is open.
 
 To run it locally:
 

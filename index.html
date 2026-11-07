@@ -404,7 +404,7 @@
       .vm-stage, .vm-controls, .vm-bigplay { transition: none; }
     }
 
-    /* --- Reduce Motion: no scroll-in, typing or pulsing animations (the 3D scene is handled in the script) --- */
+    /* --- Reduce Motion: no scroll-in, typing or pulsing animations (the 3D background keeps moving on purpose) --- */
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
@@ -1549,7 +1549,7 @@
       document.getElementById('menu-button').setAttribute('aria-expanded', String(open));
     }
 
-    // Visitors who turn on "reduce motion" get a still background and no typing effect
+    // Visitors who turn on "reduce motion" get no typing effect (the 3D background still moves)
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // --- Dynamic Role Typing Effect ---
@@ -1785,7 +1785,6 @@
       renderer.setSize(width, height);
       renderer.setPixelRatio(pixelRatio());
       maxScroll = Math.max(1, document.documentElement.scrollHeight - height);
-      if (reduceMotion) step();
     }
 
     window.addEventListener('resize', () => {
@@ -2155,15 +2154,8 @@
       renderer.render(scene, camera);
     }
 
-    if (reduceMotion) {
-      // One still frame with everything already in place
-      introProgress = 1;
-      camera.position.z = 800;
-      coreGroup.position.z = 0;
-      step();
-    } else {
-      animate();
-    }
+    // The background keeps moving even when the visitor asks for reduced motion (Dilipkumar's choice, 2026-11-08)
+    animate();
   </script>
 </body>
 </html>

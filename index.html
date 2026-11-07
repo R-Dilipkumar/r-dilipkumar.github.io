@@ -46,6 +46,8 @@
   </script>
 
   <style>
+    :root { --glass: rgba(15, 15, 20, 0.45); }
+
     html, body {
       background-color: #030305;
       color: #e2e8f0;
@@ -138,7 +140,7 @@
       padding: 2.5rem;
       max-width: 100%;
       box-sizing: border-box;
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s, box-shadow 0.4s;
+      transition: border-color 0.4s;
     }
     @media (max-width: 640px) {
       .glass-panel {
@@ -146,11 +148,50 @@
         border-radius: 16px;
       }
     }
+    /* Cards aren't links, so they don't lift on hover; only the border brightens a little */
     .glass-panel:hover {
-      transform: translateY(-5px);
-      border-color: rgba(0, 243, 255, 0.4);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+      border-color: rgba(255, 255, 255, 0.18);
     }
+
+    /* --- App Screenshots --- */
+    .shot {
+      display: block;
+      flex-shrink: 0;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+      background: #0a0a0f;
+    }
+    .shot-phone { width: 9.5rem; height: auto; }
+    .shot-wide { width: 100%; height: auto; }
+
+    /* --- "How it works" toggle on project cards --- */
+    .how > summary {
+      list-style: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      min-height: 44px;
+      padding: 0 1.1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #e2e8f0;
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .how > summary::-webkit-details-marker { display: none; }
+    .how > summary::after { content: '+'; font-size: 1rem; line-height: 1; }
+    .how[open] > summary::after { content: '−'; }
+    .how > summary:hover, .how > summary:focus-visible { border-color: #00f3ff; color: #00f3ff; outline: none; }
+    .how .how-closed { display: inline; }
+    .how .how-open { display: none; }
+    .how[open] .how-closed { display: none; }
+    .how[open] .how-open { display: inline; }
 
     /* --- UI Accents & Tags --- */
     .tag {
@@ -256,7 +297,7 @@
       color: var(--c); background: color-mix(in srgb, var(--c) 12%, transparent); border: 1px solid color-mix(in srgb, var(--c) 35%, transparent);
     }
     .cs-copy {
-      flex-shrink: 0; padding: 8px 12px; border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700;
+      flex-shrink: 0; display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.08em; color: #00f3ff; border: 1px solid rgba(0,243,255,0.4); transition: all 0.25s;
     }
     .cs-copy:hover, .cs-copy:focus-visible { background: #00f3ff; color: #030305; outline: none; }
@@ -322,7 +363,7 @@
     .vm-stage.is-idle .vm-controls { opacity: 0; transform: translateY(8px); pointer-events: none; }
     .vm-stage.is-idle { cursor: none; }
     .vm-btn {
-      flex-shrink: 0; width: 36px; height: 36px; border-radius: 999px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; width: 44px; height: 44px; border-radius: 999px; display: flex; align-items: center; justify-content: center;
       color: #fff; transition: background 0.2s, color 0.2s;
     }
     .vm-btn:hover, .vm-btn:focus-visible { background: rgba(255,170,0,0.2); color: #ffaa00; outline: none; }
@@ -363,6 +404,16 @@
       .vm-stage, .vm-controls, .vm-bigplay { transition: none; }
     }
 
+    /* --- Reduce Motion: no scroll-in, typing or pulsing animations (the 3D scene is handled in the script) --- */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
+      .animate-ping, .animate-pulse { animation: none; }
+      .typing-cursor::after { animation: none; }
+      .btn-cyber, .btn-cyber:hover, .vthumb-orb, .vthumb:hover .vthumb-orb { transition: none; transform: none; }
+      [class*="hover:scale-105"]:hover, [class*="group-hover:scale-105"] { transform: none !important; }
+    }
+
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #030305; }
     ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
@@ -382,32 +433,32 @@
       <div class="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center">
         <a href="#about" class="pointer-events-auto flex items-center gap-2.5 group min-w-0">
           <div class="w-2.5 h-2.5 bg-neonCyan rounded-full glow-text group-hover:scale-125 transition-transform flex-shrink-0"></div>
-          <span class="font-mono text-xs sm:text-sm tracking-normal sm:tracking-widest text-white font-bold uppercase group-hover:text-neonCyan transition-colors truncate">Dilipkumar Ravichandran</span>
+          <span class="font-mono text-xs sm:text-sm tracking-normal sm:tracking-widest text-white font-bold uppercase group-hover:text-neonCyan transition-colors truncate"><span class="lg:hidden xl:inline">Dilipkumar Ravichandran</span><span class="hidden lg:inline xl:hidden">Dilipkumar R.</span></span>
         </a>
         <nav class="pointer-events-auto hidden lg:flex items-center gap-5 xl:gap-7 font-mono text-xs tracking-[0.12em] xl:tracking-[0.18em] uppercase text-gray-400 font-bold">
-          <a href="#projects" class="hover:text-neonAmber transition-all hover:drop-shadow-[0_0_8px_rgba(255,170,0,0.7)]">Projects</a>
-          <a href="#research" class="hover:text-neonPink transition-all hover:drop-shadow-[0_0_8px_rgba(255,0,127,0.7)]">Research</a>
-          <a href="#experience" class="hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Experience</a>
-          <a href="#academics" class="hover:text-white transition-all hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]">Academics</a>
-          <a href="#taxonomy" class="hover:text-neonPink transition-all hover:drop-shadow-[0_0_8px_rgba(255,0,127,0.7)]">Taxonomy</a>
-          <a href="#pursuits" class="hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Pursuits</a>
-          <a href="#contact" class="hover:text-neonPink transition-all hover:drop-shadow-[0_0_8px_rgba(255,0,127,0.7)]">Contact</a>
+          <a href="#projects" class="py-2 hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Projects</a>
+          <a href="#research" class="py-2 hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Research</a>
+          <a href="#experience" class="py-2 hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Experience</a>
+          <a href="#academics" class="py-2 hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Academics</a>
+          <a href="#skills" class="py-2 hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Skills</a>
+          <a href="#pursuits" class="py-2 hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Pursuits</a>
+          <a href="#contact" class="py-2 hover:text-neonCyan transition-all hover:drop-shadow-[0_0_8px_rgba(0,243,255,0.7)]">Contact</a>
           <a href="media/Dilipkumar_Ravichandran_Resume.pdf" download class="whitespace-nowrap text-void bg-neonCyan border border-neonCyan px-4 py-2 rounded-full tracking-wider transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(0,243,255,0.6)]"><span class="hidden 2xl:inline">Download Curated </span>Resume ↓</a>
         </nav>
-        <button onclick="toggleMobileMenu()" class="pointer-events-auto lg:hidden p-2 text-gray-400 hover:text-neonCyan transition-colors flex-shrink-0" aria-label="Toggle Menu">
+        <button id="menu-button" onclick="toggleMobileMenu()" class="pointer-events-auto lg:hidden p-2.5 -mr-2.5 text-gray-300 hover:text-neonCyan transition-colors flex-shrink-0" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
       </div>
       <!-- Mobile Collapsible Menu -->
-      <div id="mobile-menu" class="hidden lg:hidden px-6 pt-3 pb-5 flex flex-col gap-3 font-mono text-xs tracking-widest uppercase bg-[#030305]/95 border-t border-white/5 backdrop-blur-2xl mt-3">
-        <a href="#projects" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonAmber py-1">Projects</a>
-        <a href="#research" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonPink py-1">Research</a>
-        <a href="#experience" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonCyan py-1">Experience</a>
-        <a href="#academics" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white py-1">Academics</a>
-        <a href="#taxonomy" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonPink py-1">Taxonomy</a>
-        <a href="#pursuits" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonCyan py-1">Pursuits</a>
-        <a href="#contact" onclick="toggleMobileMenu()" class="text-neonPink py-1">Contact</a>
-        <a href="media/Dilipkumar_Ravichandran_Resume.pdf" download class="text-neonCyan py-1">Download Curated Resume ↓</a>
+      <div id="mobile-menu" class="hidden lg:hidden px-6 pt-1 pb-3 flex flex-col font-mono text-xs tracking-widest uppercase bg-[#030305]/95 border-t border-white/5 backdrop-blur-2xl mt-3">
+        <a href="#projects" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonCyan py-3.5">Projects</a>
+        <a href="#research" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonCyan py-3.5">Research</a>
+        <a href="#experience" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonCyan py-3.5">Experience</a>
+        <a href="#academics" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonCyan py-3.5">Academics</a>
+        <a href="#skills" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonCyan py-3.5">Skills</a>
+        <a href="#pursuits" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-neonCyan py-3.5">Pursuits</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="text-white hover:text-neonCyan py-3.5">Contact</a>
+        <a href="media/Dilipkumar_Ravichandran_Resume.pdf" download class="text-neonCyan py-3.5">Download Curated Resume ↓</a>
       </div>
     </header>
 
@@ -427,11 +478,12 @@
         </h1>
         
         <!-- Dynamic Role Typing -->
-        <div class="font-mono text-lg sm:text-xl md:text-3xl text-gray-300 tracking-wide mb-8 min-h-10">
+        <p class="sr-only">AI & Software Developer</p>
+        <div class="font-mono text-lg sm:text-xl md:text-3xl text-gray-300 tracking-wide mb-8 min-h-10" aria-hidden="true">
           <span class="text-neonCyan mr-2">></span> <span id="dynamic-text" class="typing-cursor text-white font-bold"></span>
         </div>
 
-        <p class="max-w-2xl text-base sm:text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-10">
+        <p class="max-w-2xl text-base sm:text-lg md:text-xl text-gray-400 font-normal leading-relaxed mb-10">
           Software developer who builds with AI. I research a problem, then ship the fix: LLM and agent workflows, enterprise automation, and apps for phone, web and desktop, on a mechatronics foundation (8.29 CGPA). Based in Komarapalayam, Tamil Nadu, India.
         </p>
 
@@ -439,17 +491,19 @@
           <button type="button" data-contact-open aria-haspopup="dialog" class="btn-cyber">
             <span>Get in Touch</span>
           </button>
-          <a href="media/Dilipkumar_Ravichandran_Resume.pdf" download class="inline-flex items-center gap-2 font-mono text-xs sm:text-sm uppercase tracking-widest font-bold text-void bg-neonCyan border border-neonCyan px-5 sm:px-6 py-3 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
+          <a href="media/Dilipkumar_Ravichandran_Resume.pdf" download class="inline-flex items-center gap-2 min-h-[52px] font-mono text-xs sm:text-sm uppercase tracking-widest font-bold text-neonCyan border border-neonCyan/60 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 sm:px-6 rounded-full transition-all hover:shadow-[0_0_25px_rgba(0,243,255,0.5)]">
             Download Curated Resume ↓
           </a>
-          <button type="button" data-contact-open aria-haspopup="dialog" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-white border border-gray-700 hover:border-neonCyan hover:text-neonCyan px-5 sm:px-6 py-3 rounded-full transition-all">
+        </div>
+        <div class="flex flex-wrap items-center gap-x-5 sm:gap-x-8 mt-3 font-mono text-xs sm:text-sm uppercase tracking-wider sm:tracking-widest">
+          <button type="button" data-contact-open aria-haspopup="dialog" class="text-gray-300 hover:text-neonCyan transition-colors py-3">
             +91 75388 79358
           </button>
-          <a href="https://linkedin.com/in/r-dilipkumar" target="_blank" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-gray-300 hover:text-neonPink transition-colors flex items-center gap-2">
-            LinkedIn <span class="text-neonPink">↗</span>
+          <a href="https://linkedin.com/in/r-dilipkumar" target="_blank" rel="noopener" class="text-gray-300 hover:text-neonCyan transition-colors flex items-center gap-2 py-3">
+            LinkedIn <span class="text-neonCyan">↗</span>
           </a>
-          <a href="https://github.com/R-Dilipkumar" target="_blank" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-gray-300 hover:text-neonAmber transition-colors flex items-center gap-2">
-            GitHub <span class="text-neonAmber">↗</span>
+          <a href="https://github.com/R-Dilipkumar" target="_blank" rel="noopener" class="text-gray-300 hover:text-neonCyan transition-colors flex items-center gap-2 py-3">
+            GitHub <span class="text-neonCyan">↗</span>
           </a>
         </div>
       </div>
@@ -462,10 +516,23 @@
         <div class="min-w-0">
           <div class="flex items-center gap-2.5 mb-3">
             <span class="w-2 h-2 rounded-full bg-neonCyan animate-ping"></span>
-            <span class="font-mono text-xs uppercase tracking-widest text-neonCyan font-bold">Executive Synopsis</span>
+            <span class="font-mono text-xs uppercase tracking-widest text-neonCyan font-bold">Summary</span>
           </div>
-          <p class="text-gray-200 text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-4xl">
-            Software developer who builds with AI. I've released five Android apps, a live web app, a Windows desktop tool and an open-source AI agent skill: <strong class="text-white font-semibold">LiveSub</strong> runs speech recognition and translation fully on the phone, <strong class="text-white font-semibold">Offline Reel Captions</strong> makes offline subtitles for Tamil, Tanglish and other Indian languages, <strong class="text-white font-semibold">Artisan NPR Studio</strong> turns photos into art with 134 GPU styles, <strong class="text-white font-semibold">Live Wallpaper Maker</strong> lets anyone design layered live wallpapers with tilt parallax and 3D transitions, <strong class="text-white font-semibold">Net One Tap</strong> resets the mobile network in one tap, <strong class="text-white font-semibold">ASIAN MOBA 5v5 Tournament</strong> runs sign-ups, teams and brackets for a Mobile Legends tournament on Firebase, with Gemini reading players' stats screenshots, and <strong class="text-white font-semibold">Preflight Agent Skill</strong> makes AI coding agents research before they build and learn a lesson from every bug. <strong class="text-white font-semibold">DriveMate</strong> is a personal project: a plugin-based Windows tool tested on simulated devices over Modbus TCP, with an offline helper that answers from a manual and shows the page. I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded systems background. Most of what I use today I taught myself, from docs, source code and research papers.
+          <p class="text-gray-200 text-base sm:text-lg md:text-xl leading-relaxed max-w-4xl mb-5">
+            Software developer who builds with AI. I've released five Android apps, a live web app, a Windows desktop tool and an open-source AI agent skill:
+          </p>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3 text-gray-300 text-base sm:text-lg leading-snug mb-6 max-w-5xl">
+            <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">LiveSub</strong> live subtitles and translation over any app, fully on the phone</span></li>
+            <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">Offline Reel Captions</strong> offline captions for Tamil, Tanglish and other Indian languages</span></li>
+            <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">Artisan NPR Studio</strong> turns photos into art with 134 GPU styles</span></li>
+            <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">Live Wallpaper Maker</strong> layered live wallpapers with tilt parallax and 3D transitions</span></li>
+            <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">Net One Tap</strong> fixes stuck mobile internet in one tap</span></li>
+            <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonAmber flex-shrink-0"></span><span><strong class="text-white font-semibold">ASIAN MOBA 5v5 Tournament</strong> sign-ups, teams and brackets on Firebase; Gemini reads players' stats screenshots</span></li>
+            <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonPink flex-shrink-0"></span><span><strong class="text-white font-semibold">Preflight Agent Skill</strong> makes AI coding agents research before they build and learn from every bug</span></li>
+            <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonAmber flex-shrink-0"></span><span><strong class="text-white font-semibold">DriveMate</strong> (personal project): Windows tool for simulated devices over Modbus TCP, with an offline helper that answers from the manual</span></li>
+          </ul>
+          <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-4xl">
+            I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded background. Most of what I use today I taught myself, from docs, source code and research papers.
           </p>
         </div>
       </div>
@@ -473,28 +540,36 @@
 
     <!-- PROJECTS SECTION -->
     <section id="projects" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto flex flex-col justify-center min-w-0 w-full">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 reveal min-w-0">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 sm:mb-8 reveal min-w-0">
         <div>
           <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase tracking-wide leading-none break-words">Selected <br><span class="text-transparent" style="-webkit-text-stroke: 1px #ffaa00;">Projects.</span></h2>
         </div>
-        <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mt-4 md:mt-0">Module 01 — Apps, AI & Hardware</p>
+        <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mt-4 md:mt-0">Apps, AI & Hardware</p>
       </div>
+
+      <ul class="reveal flex flex-wrap gap-x-6 gap-y-2 mb-10 sm:mb-12 font-mono text-xs uppercase tracking-widest text-gray-300" aria-label="What the card colours mean">
+        <li class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-neonCyan"></span>Android apps</li>
+        <li class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-neonPink"></span>AI tools</li>
+        <li class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-neonAmber"></span>Web, desktop &amp; hardware</li>
+      </ul>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 min-w-0 w-full">
         
         <!-- LiveSub -->
-        <div data-release-repo="R-Dilipkumar/LiveSub-Offline-Translator" class="glass-panel reveal-left delay-100 lg:col-span-7 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonPink/40 min-w-0 w-full">
+        <div data-release-repo="R-Dilipkumar/LiveSub-Offline-Translator" class="glass-panel reveal-left delay-100 lg:col-span-7 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
           <div>
             <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">LiveSub</h3>
-              <span class="tag tag-pink">On-Device • No Cloud</span>
+              <span class="tag tag-cyan">On-Device • No Cloud</span>
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Live subtitles for anything your phone plays.</p>
-            <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Edge AI • Sherpa-ONNX • ML Kit • Jetpack Compose</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed">
+            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Edge AI • Sherpa-ONNX • ML Kit • Jetpack Compose</p>
+            <p class="text-gray-300 font-normal text-base sm:text-lg mb-8 leading-relaxed">
               A private, offline speech-to-subtitle translator for Android. It listens to a video, stream, game or call, turns speech into text, translates it, and shows the result in a floating subtitle window over any app. Speech recognition and translation both run on the phone: no account, no API key, no audio uploaded.
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+            <details class="how mb-8">
+              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Two-Speed Speech Recognition</strong>
                 <em>Instant</em> mode streams words as they are spoken. <em>About 1 second</em> mode uses a Silero voice detector to cut phrases and decodes each one whole with SenseVoice, Moonshine, Parakeet, GigaAM or Whisper, with punctuation.
@@ -512,8 +587,9 @@
                 Compose UI in a system overlay with Roll-up, Movie and Live subtitle styles, a Quick Settings tile, and on-phone history in Room.
               </div>
             </div>
+            </details>
             <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
-              <span class="tag tag-pink">99 Languages</span>
+              <span class="tag tag-cyan">99 Languages</span>
               <span class="tag">Android 10+</span>
               <span class="tag">Open Source • MIT</span>
             </div>
@@ -521,10 +597,10 @@
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
             <span data-release-info class="font-mono text-xs text-gray-400">Latest release on GitHub</span>
             <div class="flex items-center gap-3 flex-wrap">
-              <a href="https://github.com/R-Dilipkumar/LiveSub-Offline-Translator" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonPink border border-neonPink/40 bg-neonPink/5 hover:bg-neonPink hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,0,127,0.5)]">
+              <a href="https://github.com/R-Dilipkumar/LiveSub-Offline-Translator" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-3 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
                 GitHub ↗
               </a>
-              <a data-release-download href="https://github.com/R-Dilipkumar/LiveSub-Offline-Translator/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonPink border border-neonPink px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,127,0.6)]">
+              <a data-release-download href="https://github.com/R-Dilipkumar/LiveSub-Offline-Translator/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonCyan border border-neonCyan px-5 py-3 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
                 Download APK ↓
               </a>
             </div>
@@ -534,16 +610,23 @@
         <!-- Net One Tap -->
         <div data-release-repo="R-Dilipkumar/one-tap-network-reset" class="glass-panel reveal-right delay-200 lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
           <div>
-            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+            <div class="flex flex-col gap-6 mb-8">
+              <div class="min-w-0 flex-1">
+              <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Net One Tap</h3>
               <span class="tag tag-cyan">No Airplane Mode</span>
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Mobile internet stuck? Fix it in one tap.</p>
             <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Android • Kotlin • Shizuku / Root • Telephony</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed">
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
               Restarts only the mobile radio, the same fix as toggling airplane mode, while Wi-Fi, Bluetooth and mobile data stay untouched. Also shows a per-SIM 5G status notification.
             </p>
-            <div class="flex flex-col gap-6 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+              </div>
+              <img src="media/shots/net-one-tap.webp" width="960" height="504" alt="Net One Tap research page banner: one tap restarts the mobile radio, with a 5G status card" loading="lazy" decoding="async" class="shot w-full">
+            </div>
+            <details class="how mb-8">
+              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+              <div class="flex flex-col gap-6 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Privileged Radio Control</strong>
                 Calls the hidden <code>ITelephony.setRadioForSubscriber</code> through Shizuku or root, with a soft-refresh fallback. Skips the reset during calls and always brings the radio back.
@@ -553,6 +636,7 @@
                 Reads hidden NR state and frequency from <code>ServiceState</code> (the same values as the <code>*#*#4636#*#*</code> screen) with dual-SIM support and no location permission.
               </div>
             </div>
+            </details>
             <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
               <span class="tag tag-cyan">Quick Settings Tile</span>
               <span class="tag">Dual SIM</span>
@@ -562,13 +646,13 @@
           <div class="pt-6 border-t border-gray-800/80 flex flex-col gap-4 min-w-0">
             <span data-release-info class="font-mono text-xs text-gray-400">Latest release on GitHub</span>
             <div class="flex items-center gap-3 flex-wrap">
-              <a href="https://r-dilipkumar.github.io/one-tap-network-reset/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
+              <a href="https://r-dilipkumar.github.io/one-tap-network-reset/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-3 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
                 Research Page ↗
               </a>
-              <a href="https://github.com/R-Dilipkumar/one-tap-network-reset" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
+              <a href="https://github.com/R-Dilipkumar/one-tap-network-reset" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-3 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
                 GitHub ↗
               </a>
-              <a data-release-download href="https://github.com/R-Dilipkumar/one-tap-network-reset/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonCyan border border-neonCyan px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
+              <a data-release-download href="https://github.com/R-Dilipkumar/one-tap-network-reset/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonCyan border border-neonCyan px-5 py-3 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
                 Download APK ↓
               </a>
             </div>
@@ -576,18 +660,25 @@
         </div>
 
         <!-- Offline Reel Captions -->
-        <div data-release-repo="R-Dilipkumar/offline-reel-captions" class="glass-panel reveal-left delay-100 lg:col-span-7 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonAmber/40 min-w-0 w-full">
+        <div data-release-repo="R-Dilipkumar/offline-reel-captions" class="glass-panel reveal-left delay-100 lg:col-span-7 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
           <div>
-            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+            <div class="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-6 sm:gap-8 mb-8">
+              <div class="min-w-0 flex-1">
+              <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Offline Reel Captions</h3>
-              <span class="tag tag-amber">Offline • Indian Languages</span>
+              <span class="tag tag-cyan">Offline • Indian Languages</span>
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Auto subtitles for Tamil, Tanglish and more, made on the phone.</p>
-            <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Whisper • IndicTrans2 • ONNX Runtime • Media3</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed">
+            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Whisper • IndicTrans2 • ONNX Runtime • Media3</p>
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
               Pick a video and a language, and the app writes the captions: in the original script, in English letters by sound ("vanakkam nanbargale"), or translated. Fix and style every caption, then export an MP4 with the captions burned in, or an <code>.srt</code> file. Built for South Indian creators. The video never leaves the phone.
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+              </div>
+              <img src="media/shots/reel-captions.webp" width="320" height="711" alt="Offline Reel Captions caption editor with English and Tamil captions on a video" loading="lazy" decoding="async" class="shot shot-phone self-center sm:self-start lg:self-center xl:self-start">
+            </div>
+            <details class="how mb-8">
+              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Speech Models per Language</strong>
                 Whisper fine-tunes for Tamil, Telugu, Kannada, Malayalam, Hindi and English via Sherpa-ONNX, plus a Tanglish model that keeps English words in English. Silero VAD cuts the audio at pauses.
@@ -605,8 +696,9 @@
                 Karaoke-style word timing, motion, 16 fonts with matching Tamil looks, a full edit history, and MP4 export on the phone's video hardware (Media3 Transformer).
               </div>
             </div>
+            </details>
             <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
-              <span class="tag tag-amber">7 Languages + Tanglish</span>
+              <span class="tag tag-cyan">7 Languages + Tanglish</span>
               <span class="tag">Android 10+</span>
               <span class="tag">Open Source • MIT</span>
             </div>
@@ -614,10 +706,10 @@
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
             <span data-release-info class="font-mono text-xs text-gray-400">Latest release on GitHub</span>
             <div class="flex items-center gap-3 flex-wrap">
-              <a href="https://github.com/R-Dilipkumar/offline-reel-captions" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonAmber border border-neonAmber/40 bg-neonAmber/5 hover:bg-neonAmber hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,170,0,0.5)]">
+              <a href="https://github.com/R-Dilipkumar/offline-reel-captions" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-3 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
                 GitHub ↗
               </a>
-              <a data-release-download href="https://github.com/R-Dilipkumar/offline-reel-captions/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonAmber border border-neonAmber px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,170,0,0.6)]">
+              <a data-release-download href="https://github.com/R-Dilipkumar/offline-reel-captions/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonCyan border border-neonCyan px-5 py-3 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
                 Download APK ↓
               </a>
             </div>
@@ -625,18 +717,25 @@
         </div>
 
         <!-- Artisan NPR Studio -->
-        <div data-release-repo="R-Dilipkumar/photo-art-filters-android" class="glass-panel reveal-right delay-200 lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonPink/40 min-w-0 w-full">
+        <div data-release-repo="R-Dilipkumar/photo-art-filters-android" class="glass-panel reveal-right delay-200 lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
           <div>
-            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+            <div class="flex flex-col sm:flex-row lg:flex-col gap-6 sm:gap-8 mb-8">
+              <div class="min-w-0 flex-1">
+              <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Artisan NPR Studio</h3>
-              <span class="tag tag-pink">No AI • No Internet</span>
+              <span class="tag tag-cyan">No AI • No Internet</span>
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Turn any photo into a sketch, painting or comic.</p>
-            <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Kotlin • Compose • OpenGL ES 3.0 • GLSL</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed">
+            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Kotlin • Compose • OpenGL ES 3.0 • GLSL</p>
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
               134 art styles in 12 groups: pencil sketch, oil paint, watercolour, halftone, pixel art, film and glitch looks. Each style has its own controls, and a high-resolution export looks just like the preview. The APK is about 2 MB and asks for no permissions.
             </p>
-            <div class="flex flex-col gap-6 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+              </div>
+              <img src="media/shots/artisan-npr.webp" width="320" height="656" alt="Artisan NPR Studio turning a photo into a ballpoint pen sketch, with style controls" loading="lazy" decoding="async" class="shot shot-phone self-center sm:self-start lg:self-center">
+            </div>
+            <details class="how mb-8">
+              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+              <div class="flex flex-col gap-6 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">One Shader per Style</strong>
                 Each style is a GPU fragment shader built on known image-art methods: XDoG ink, Kuwahara painting, line integral convolution brush strokes, CMYK halftone screens, dithering and Voronoi mosaics.
@@ -646,8 +745,9 @@
                 A 1280 px preview renders in 13 ms on average. Wide effects read from pre-blurred copies of the photo, so a 3200 px export matches the preview.
               </div>
             </div>
+            </details>
             <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
-              <span class="tag tag-pink">134 Styles</span>
+              <span class="tag tag-cyan">134 Styles</span>
               <span class="tag">~2 MB APK</span>
               <span class="tag">MIT</span>
             </div>
@@ -655,10 +755,10 @@
           <div class="pt-6 border-t border-gray-800/80 flex flex-col gap-4 min-w-0">
             <span data-release-info class="font-mono text-xs text-gray-400">Latest release on GitHub</span>
             <div class="flex items-center gap-3 flex-wrap">
-              <a href="https://github.com/R-Dilipkumar/photo-art-filters-android" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonPink border border-neonPink/40 bg-neonPink/5 hover:bg-neonPink hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,0,127,0.5)]">
+              <a href="https://github.com/R-Dilipkumar/photo-art-filters-android" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-3 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
                 GitHub ↗
               </a>
-              <a data-release-download href="https://github.com/R-Dilipkumar/photo-art-filters-android/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonPink border border-neonPink px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,127,0.6)]">
+              <a data-release-download href="https://github.com/R-Dilipkumar/photo-art-filters-android/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonCyan border border-neonCyan px-5 py-3 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
                 Download APK ↓
               </a>
             </div>
@@ -666,18 +766,25 @@
         </div>
 
         <!-- Live Wallpaper Maker -->
-        <div data-release-repo="R-Dilipkumar/live-wallpaper-maker-android" class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonAmber/40 min-w-0 w-full">
+        <div data-release-repo="R-Dilipkumar/live-wallpaper-maker-android" class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
           <div>
-            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+            <div class="flex flex-col sm:flex-row gap-6 sm:gap-10 mb-8">
+              <div class="min-w-0 flex-1">
+              <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Live Wallpaper Maker</h3>
-              <span class="tag tag-amber">Light on Battery</span>
+              <span class="tag tag-cyan">Light on Battery</span>
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Design your own live wallpaper: layers, tilt parallax and 3D scene transitions.</p>
-            <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Kotlin • Compose • OpenGL ES 3.0 • MediaCodec</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed max-w-5xl">
+            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Kotlin • Compose • OpenGL ES 3.0 • MediaCodec</p>
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
               Stack videos, GIFs, photos, gradients, particles and a live clock, give each layer its own tilt and swipe depth, add looks and keyframe animation, and switch between scenes on a timer, on unlock, on double-tap or by time of day, with crossfade, 3D flip and cube transitions. Version 1.1 adds one-tap 3D photos (on-phone subject cut-out with ML Kit, the clock tucked behind the subject), water-ripple tap effects, separate lock-screen scenes, motion photos, animated stickers, and sharing as video or GIF.
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+              </div>
+              <img src="media/shots/live-wallpaper.webp" width="320" height="711" alt="Live Wallpaper Maker editor with a gradient wallpaper and a clock layer" loading="lazy" decoding="async" class="shot shot-phone self-center sm:self-start">
+            </div>
+            <details class="how mb-8">
+              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Heavy Work Once, at Import</strong>
                 Videos and GIFs are trimmed and baked into seamless-loop MP4s on the GPU and the phone's encoder (decoder → OpenGL → encoder surface), with the crossfade or ping-pong built in. HDR clips are tone-mapped and rotated phone videos come out upright.
@@ -687,8 +794,9 @@
                 The engine draws only while visible and only when something moves, plays loops gaplessly with the hardware decoder, and uses 0% CPU when hidden. It runs in its own process at about 70 MB with two videos.
               </div>
             </div>
+            </details>
             <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
-              <span class="tag tag-amber">13 Transitions</span>
+              <span class="tag tag-cyan">13 Transitions</span>
               <span class="tag">~4 MB APK</span>
               <span class="tag">Android 10+</span>
               <span class="tag">MIT</span>
@@ -697,10 +805,10 @@
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
             <span data-release-info class="font-mono text-xs text-gray-400">Latest release on GitHub</span>
             <div class="flex items-center gap-3 flex-wrap">
-              <a href="https://github.com/R-Dilipkumar/live-wallpaper-maker-android" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonAmber border border-neonAmber/40 bg-neonAmber/5 hover:bg-neonAmber hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,170,0,0.5)]">
+              <a href="https://github.com/R-Dilipkumar/live-wallpaper-maker-android" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-3 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
                 GitHub ↗
               </a>
-              <a data-release-download href="https://github.com/R-Dilipkumar/live-wallpaper-maker-android/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonAmber border border-neonAmber px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,170,0,0.6)]">
+              <a data-release-download href="https://github.com/R-Dilipkumar/live-wallpaper-maker-android/releases/latest" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonCyan border border-neonCyan px-5 py-3 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
                 Download APK ↓
               </a>
             </div>
@@ -708,18 +816,25 @@
         </div>
 
         <!-- ASIAN MOBA 5v5 Tournament -->
-        <div class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
+        <div class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonAmber/40 min-w-0 w-full">
           <div>
-            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+            <div class="flex flex-col lg:flex-row gap-6 lg:gap-10 mb-8">
+              <div class="min-w-0 flex-1">
+              <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">ASIAN MOBA 5v5 Tournament</h3>
-              <span class="tag tag-cyan">Web App • Live</span>
+              <span class="tag tag-amber">Web App • Live</span>
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Sign-ups, teams and brackets for a Mobile Legends tournament, in one phone-friendly web app.</p>
-            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">React • TypeScript • Firebase • Gemini Vision</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed max-w-5xl">
+            <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">React • TypeScript • Firebase • Gemini Vision</p>
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
               Players sign in with an email link, confirm their game ID, upload three stats screenshots and pay the entry fee by UPI. They form 5-player teams with a 6-digit code, then play through a seeded bracket, shown as a tree with colour-coded best-of rounds, and report each result with screenshots. On match day each team's page shows the next opponent and start time, players check in, and winners get confetti until their next match. Admins handle payments, reviews, refunds, brackets, disputes and emergency substitutes from one dashboard, and every admin change is logged. The look is red, matte black and gold, with a shimmering gold lion logo.
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+              </div>
+              <img src="media/shots/asian-moba.webp" width="960" height="504" alt="ASIAN MOBA 5v5 Tournament banner with its gold lion logo" loading="lazy" decoding="async" class="shot w-full lg:w-[42%] lg:max-w-[34rem] self-start">
+            </div>
+            <details class="how mb-8">
+              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Screenshots Read by Gemini</strong>
                 Gemini 3 Flash on Vertex AI reads each stats screenshot right after upload. The app checks the numbers and the in-game name against the player's profile (even names written in decorative fonts) and either says how to fix it ("set the mode to Ranked") or flags it for an admin.
@@ -737,8 +852,9 @@
                 Team, payment, result and admin changes go through Cloud Functions in Firestore transactions, behind Firestore and Storage security rules. 266 tests run against the Firebase emulators.
               </div>
             </div>
+            </details>
             <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
-              <span class="tag tag-cyan">Up to 50 Teams</span>
+              <span class="tag tag-amber">Up to 50 Teams</span>
               <span class="tag">Mobile-First</span>
               <span class="tag">Firebase + Vertex AI</span>
             </div>
@@ -746,7 +862,7 @@
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
             <span class="font-mono text-xs text-gray-400">Live on Firebase Hosting</span>
             <div class="flex items-center gap-3 flex-wrap">
-              <a href="https://sea-moba-tournament.web.app" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonCyan border border-neonCyan px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
+              <a href="https://sea-moba-tournament.web.app" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonAmber border border-neonAmber px-5 py-3 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,170,0,0.6)]">
                 Open App ↗
               </a>
             </div>
@@ -762,10 +878,12 @@
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Makes AI coding agents research before they build, and learn from every bug.</p>
             <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Agent Skills (SKILL.md) • Claude Code • Codex • Gemini CLI</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed max-w-5xl">
+            <p class="text-gray-300 font-normal text-base sm:text-lg mb-8 leading-relaxed max-w-5xl">
               A reusable skill for AI coding tools. Before the agent picks a library, API, SDK version or AI model, it checks the official docs for deprecation, device support and licence. After every snag, it saves one short "before doing X, check Y" lesson that it reads on the next project, so the same mistake doesn't happen twice. My own copy started with lessons from the snags in all my apps above.
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+            <details class="how mb-8">
+              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Lessons, Not a Bug Log</strong>
                 Each lesson is a general rule or a dated fact. Repeats merge into one rule, files stay short, and facts older than six months get checked again before the agent trusts them.
@@ -775,6 +893,7 @@
                 Plain Markdown in the open Agent Skills format, so the same folder works in Claude Code, Codex, Gemini CLI, GitHub Copilot and Cursor. Also keeps a <code>session.md</code> per project so any new session can pick up the work.
               </div>
             </div>
+            </details>
             <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
               <span class="tag tag-pink">Self-Updating</span>
               <span class="tag">Markdown Only</span>
@@ -784,10 +903,10 @@
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
             <span class="font-mono text-xs text-gray-400">Latest release on GitHub</span>
             <div class="flex items-center gap-3 flex-wrap">
-              <a href="https://github.com/R-Dilipkumar/preflight-agent-skill" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonPink border border-neonPink/40 bg-neonPink/5 hover:bg-neonPink hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,0,127,0.5)]">
+              <a href="https://github.com/R-Dilipkumar/preflight-agent-skill" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonPink border border-neonPink/40 bg-neonPink/5 hover:bg-neonPink hover:text-void px-5 py-3 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,0,127,0.5)]">
                 GitHub ↗
               </a>
-              <a href="https://github.com/R-Dilipkumar/preflight-agent-skill/releases/latest/download/preflight.skill" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonPink border border-neonPink px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,127,0.6)]">
+              <a href="https://github.com/R-Dilipkumar/preflight-agent-skill/releases/latest/download/preflight.skill" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonPink border border-neonPink px-5 py-3 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,127,0.6)]">
                 Download Skill ↓
               </a>
             </div>
@@ -795,18 +914,25 @@
         </div>
 
         <!-- DriveMate -->
-        <div class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
+        <div class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonAmber/40 min-w-0 w-full">
           <div>
-            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+            <div class="flex flex-col lg:flex-row gap-6 lg:gap-10 mb-8">
+              <div class="min-w-0 flex-1">
+              <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">DriveMate</h3>
-              <span class="tag tag-cyan">Personal Project</span>
+              <span class="tag tag-amber">Personal Project</span>
             </div>
             <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">A Windows tool for setting up simulated factory devices, with device plugins and an offline manual helper.</p>
-            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">C# • WPF • .NET 10 • Modbus TCP</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg mb-8 leading-relaxed max-w-5xl">
+            <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">C# • WPF • .NET 10 • Modbus TCP</p>
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
               A personal learning project with no real hardware: I built a simulated servo drive and remote I/O module, and the app talks to them over real Modbus TCP. Each device type is a plugin loaded at runtime, so adding the second one needed no change to the main app. It checks and reads back every setting it writes, draws a live graph, saves setups, and keeps a fault log in SQLite.
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mb-8 min-w-0">
+              </div>
+              <img src="media/shots/drivemate.webp" width="1240" height="700" alt="DriveMate showing a live graph of motor current from a simulated servo drive" loading="lazy" decoding="async" class="shot w-full lg:w-[42%] lg:max-w-[34rem] self-start">
+            </div>
+            <details class="how mb-8">
+              <summary><span class="how-closed">How it works</span><span class="how-open">Hide details</span></summary>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Offline Helper That Can Refuse</strong>
                 Answers from a device's PDF manual with the page number, using a small AI model on the PC. Code decides whether the manual covers a question before the model runs. On 43 questions held back for a fair test, it got 23 of 27 answerable ones right and refused all 16 the manual didn't cover. I wrote the manuals and questions myself.
@@ -816,8 +942,9 @@
                 265 automated tests run on every push with GitHub Actions, including checks against the Modbus standard and a second Modbus library. It has never been tested on real hardware, and the README says so first.
               </div>
             </div>
+            </details>
             <div class="flex gap-2 sm:gap-2.5 flex-wrap mb-8">
-              <span class="tag tag-cyan">Plugin Architecture</span>
+              <span class="tag tag-amber">Plugin Architecture</span>
               <span class="tag">SQLite</span>
               <span class="tag">Open Source • MIT</span>
             </div>
@@ -825,13 +952,13 @@
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
             <span class="font-mono text-xs text-gray-400">Windows download on GitHub</span>
             <div class="flex items-center gap-3 flex-wrap">
-              <a href="https://github.com/R-Dilipkumar/drivemate-modbus" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
+              <a href="https://github.com/R-Dilipkumar/drivemate-modbus" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonAmber border border-neonAmber/40 bg-neonAmber/5 hover:bg-neonAmber hover:text-void px-5 py-3 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,170,0,0.5)]">
                 GitHub ↗
               </a>
-              <a href="https://r-dilipkumar.github.io/drivemate-modbus/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
+              <a href="https://r-dilipkumar.github.io/drivemate-modbus/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonAmber border border-neonAmber/40 bg-neonAmber/5 hover:bg-neonAmber hover:text-void px-5 py-3 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,170,0,0.5)]">
                 Watch Demo ↗
               </a>
-              <a href="https://github.com/R-Dilipkumar/drivemate-modbus/releases/latest/download/DriveMate-win-x64.zip" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonCyan border border-neonCyan px-5 py-2.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
+              <a href="https://github.com/R-Dilipkumar/drivemate-modbus/releases/latest/download/DriveMate-win-x64.zip" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonAmber border border-neonAmber px-5 py-3 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,170,0,0.6)]">
                 Download Zip ↓
               </a>
             </div>
@@ -839,16 +966,16 @@
         </div>
 
         <!-- Mobile AI -->
-        <div class="glass-panel reveal-left delay-100 lg:col-span-4 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-white/20 min-w-0 w-full">
+        <div class="glass-panel reveal-left delay-100 lg:col-span-4 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonPink/40 min-w-0 w-full">
           <div>
             <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Local Mobile AI</h3>
-            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6">Personal Project • Termux • Obsidian</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-8">
+            <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mb-6">Personal Project • Termux • Obsidian</p>
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed mb-8">
               A personal AI assistant running on my phone in Termux, with long-term memory kept in an Obsidian Markdown vault. Notes and their links form a knowledge graph the assistant retrieves from (graph-based RAG), so context carries across sessions.
             </p>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex gap-2 sm:gap-2.5 flex-wrap min-w-0">
-            <span class="tag tag-cyan">Graph RAG</span>
+            <span class="tag tag-pink">Graph RAG</span>
             <span class="tag">Termux</span>
             <span class="tag">Obsidian</span>
           </div>
@@ -859,7 +986,7 @@
           <div>
             <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">IN-THRUST Robot</h3>
             <p class="font-mono text-gray-400 text-xs sm:text-sm tracking-widest uppercase mb-6">Mechatronics Capstone • 2023</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-6">
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed mb-6">
               A remote-controlled wall-climbing robot that cleans cobwebs off high walls. Dual high-RPM BLDC thrust fans create a low-pressure zone that holds it to vertical surfaces.
             </p>
             <button type="button" data-video-open="0" aria-label="Watch the IN-THRUST prototype videos" class="vthumb group relative block w-full aspect-video rounded-xl overflow-hidden border border-neonAmber/30 mb-8 text-left">
@@ -881,16 +1008,16 @@
         </div>
 
         <!-- IoT AC -->
-        <div class="glass-panel reveal-right delay-300 lg:col-span-4 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-white/20 min-w-0 w-full">
+        <div class="glass-panel reveal-right delay-300 lg:col-span-4 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonAmber/40 min-w-0 w-full">
           <div>
             <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Smart AC Telemetry</h3>
             <p class="font-mono text-gray-400 text-xs sm:text-sm tracking-widest uppercase mb-6">ESP32 • Python • IoT</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-8">
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed mb-8">
               Developed an IoT predictive maintenance system calculating dust accumulation rates on air filters. Transmitted telemetry to ThingSpeak, reducing scheduled servicing overhead by 25%.
             </p>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex gap-2 sm:gap-2.5 flex-wrap min-w-0">
-            <span class="tag">ESP32</span>
+            <span class="tag tag-amber">ESP32</span>
             <span class="tag">ThingSpeak</span>
           </div>
         </div>
@@ -904,7 +1031,7 @@
         <div>
           <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase tracking-wide leading-none break-words">Learn by <br><span class="text-transparent" style="-webkit-text-stroke: 1px #ff007f;">Building.</span></h2>
         </div>
-        <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mt-4 md:mt-0">Module 02 — Research & Self-Learning</p>
+        <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mt-4 md:mt-0">Research & Self-Learning</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 min-w-0 w-full">
@@ -912,11 +1039,11 @@
           <div>
             <span class="font-mono text-neonCyan text-xs tracking-widest uppercase block mb-3">01 — Research before code</span>
             <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Why does airplane mode fix slow data?</h3>
-            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-6">
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed mb-6">
               Net One Tap started as a research write-up: what the toggle really resets, what Android allows an app to do, which hidden APIs work on which versions, and where the phone's 5G status values come from. The app came after the answers.
             </p>
           </div>
-          <a href="https://r-dilipkumar.github.io/one-tap-network-reset/" target="_blank" rel="noopener" class="self-start inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
+          <a href="https://r-dilipkumar.github.io/one-tap-network-reset/" target="_blank" rel="noopener" class="self-start inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-3 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
             Read the Research ↗
           </a>
         </div>
@@ -924,7 +1051,7 @@
         <div class="glass-panel reveal-right delay-200 p-6 sm:p-8 md:p-10 border-t-2 border-t-neonPink/40 min-w-0 w-full">
           <span class="font-mono text-neonPink text-xs tracking-widest uppercase block mb-3">02 — Compare, then choose</span>
           <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Picking the right model, not the famous one</h3>
-          <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed">
+          <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
             For LiveSub I compared speech models (SenseVoice, Moonshine, Parakeet, GigaAM, Whisper and streaming models) by language, speed, size and license, then matched each one to the job: streaming for instant text, whole-phrase models for accuracy.
           </p>
         </div>
@@ -933,11 +1060,11 @@
           <div>
             <span class="font-mono text-neonAmber text-xs tracking-widest uppercase block mb-3">03 — Methods from papers</span>
             <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Agent workflows as folders</h3>
-            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-6">
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed mb-6">
               I run my AI-agent work with ICM (Interpretable Context Methodology): numbered folders and Markdown files act as the pipeline, so every step's context is visible, editable and reusable, instead of hidden inside framework code.
             </p>
           </div>
-          <a href="https://arxiv.org/abs/2603.16021" target="_blank" rel="noopener" class="self-start inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonAmber border border-neonAmber/40 bg-neonAmber/5 hover:bg-neonAmber hover:text-void px-5 py-2.5 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,170,0,0.5)]">
+          <a href="https://arxiv.org/abs/2603.16021" target="_blank" rel="noopener" class="self-start inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonAmber border border-neonAmber/40 bg-neonAmber/5 hover:bg-neonAmber hover:text-void px-5 py-3 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,170,0,0.5)]">
             The ICM Paper ↗
           </a>
         </div>
@@ -945,7 +1072,7 @@
         <div class="glass-panel reveal-right delay-400 p-6 sm:p-8 md:p-10 border-t-2 border-t-white/20 min-w-0 w-full">
           <span class="font-mono text-gray-400 text-xs tracking-widest uppercase block mb-3">04 — Self-taught beyond the degree</span>
           <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">Mechatronics by degree, software by choice</h3>
-          <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed">
+          <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
             Android, Kotlin, on-device AI and LLM tooling were not in my syllabus. I learned them from documentation, open-source code and papers, and proved it the only way that counts: released apps people can download.
           </p>
         </div>
@@ -956,9 +1083,9 @@
     <section id="experience" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto flex flex-col justify-center min-w-0 w-full">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 reveal min-w-0">
         <div>
-          <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase tracking-wide leading-none break-words">Enterprise <br><span class="text-transparent" style="-webkit-text-stroke: 1px #00f3ff;">Architecture.</span></h2>
+          <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase tracking-wide leading-none break-words">Work <br><span class="text-transparent" style="-webkit-text-stroke: 1px #00f3ff;">Experience.</span></h2>
         </div>
-        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 md:mt-0">Module 03 — Data Pipelines</p>
+        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 md:mt-0">Jobs & Internships</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 min-w-0 w-full">
@@ -968,13 +1095,12 @@
             <div>
               <span class="font-mono text-neonCyan text-xs tracking-widest uppercase block mb-3">Sep 2025 – Jun 2026 • Chennai (Hybrid)</span>
               <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-sans break-words">Zenardy Technologies</h3>
-              <p class="text-gray-300 mt-2 font-mono text-sm sm:text-base">Associate Developer / NetSuite Consultant <span class="text-gray-500">• Jan 2026 – Jun 2026</span></p>
-              <p class="text-gray-500 mt-1 font-mono text-xs sm:text-sm">Promoted from Technical Intern • Sep 2025 – Jan 2026</p>
+              <p class="text-gray-300 mt-2 font-mono text-sm sm:text-base">Associate Developer / NetSuite Consultant <span class="text-gray-400">• Jan 2026 – Jun 2026</span></p>
+              <p class="text-gray-400 mt-1 font-mono text-xs sm:text-sm">Promoted from Technical Intern • Sep 2025 – Jan 2026</p>
             </div>
-            <span class="tag tag-cyan self-start">ID: ZenIN00125</span>
           </div>
           
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 text-gray-300 font-light text-base sm:text-lg leading-relaxed min-w-0">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 text-gray-300 font-normal text-base sm:text-lg leading-relaxed min-w-0">
             <div class="reveal-left delay-100 min-w-0">
               <h4 class="font-mono text-neonCyan mb-6 uppercase text-sm font-bold tracking-widest border-l-4 border-neonCyan pl-4">1. Crunchyroll Procurement</h4>
               <ul class="space-y-6">
@@ -1051,7 +1177,7 @@
             <span class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase block mb-3">Apr 2024 – Jun 2024</span>
             <h3 class="text-3xl sm:text-4xl font-bold text-white mb-4 break-words">Titan Engineering & Automation Limited (TEAL)</h3>
             <p class="text-neonCyan font-mono text-sm sm:text-base mb-6 sm:mb-8">Mechatronics Engineering Intern | Hosur, India</p>
-            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-8">
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed mb-8">
               Assisted with mechanical calibration, end-effector testing, and cell operations on FANUC industrial robots. Implemented C programming and PLC ladder logic for machine diagnostics.
             </p>
           </div>
@@ -1063,10 +1189,10 @@
 
         <!-- Kongu Coordinator -->
         <div class="glass-panel reveal-right delay-200 flex flex-col justify-center p-6 sm:p-8 md:p-12 min-w-0 w-full">
-          <span class="font-mono text-gray-500 text-xs sm:text-sm tracking-widest uppercase block mb-3">Aug 2022 – Mar 2024</span>
+          <span class="font-mono text-gray-400 text-xs sm:text-sm tracking-widest uppercase block mb-3">Aug 2022 – Mar 2024</span>
           <h3 class="text-3xl sm:text-4xl font-bold text-white mb-4 break-words">Kongu Engineering College</h3>
           <p class="text-neonCyan font-mono text-sm sm:text-base mb-6 sm:mb-8">Coding Coordinator & Campus Leader</p>
-          <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-8">
+          <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed mb-8">
             Coordinated competitive coding challenges and infrastructure for campus symposiums Nexus (2022) and Throb (2023). Mentored 20+ peer students in foundational C programming, Python, and data structures.
           </p>
           <div class="mt-auto flex gap-3 sm:gap-4 flex-wrap">
@@ -1082,7 +1208,7 @@
     <section id="academics" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center min-w-0 w-full">
       <div class="reveal mb-12 sm:mb-16 min-w-0">
         <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase tracking-wide leading-none break-words">Academics.</h2>
-        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 sm:mt-6">Module 04 — Educational Metrics</p>
+        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 sm:mt-6">Degree & School</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 min-w-0 w-full">
@@ -1132,10 +1258,10 @@
     </section>
 
     <!-- TAXONOMY & HONORS -->
-    <section id="taxonomy" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center min-w-0 w-full">
+    <section id="skills" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center min-w-0 w-full">
       <div class="reveal mb-12 sm:mb-16 min-w-0">
-        <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-transparent uppercase tracking-wide leading-none break-words" style="-webkit-text-stroke: 1px #fff;">Taxonomy.</h2>
-        <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mt-4 sm:mt-6">Module 05 — Skills & Honors</p>
+        <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-transparent uppercase tracking-wide leading-none break-words" style="-webkit-text-stroke: 1px #fff;">Skills.</h2>
+        <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mt-4 sm:mt-6">Tools, Honors & Certificates</p>
       </div>
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 min-w-0 w-full">
@@ -1143,38 +1269,38 @@
         <div class="lg:col-span-6 flex flex-col gap-6 sm:gap-8 min-w-0 w-full">
           <div class="glass-panel reveal-left delay-100 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonPink mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">AI & LLM Engineering</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">LLM APIs with structured prompts and outputs (Python), agentic workflows with ICM (Interpretable Context Methodology: folders and Markdown files as the agent pipeline), AI-assisted development with coding agents (Claude Code), reusable agent skills in the open SKILL.md format, Gemini vision on Vertex AI (reading screenshots into structured data), graph-based RAG over Markdown knowledge bases, local LLMs with LLamaSharp and llama.cpp, retrieval with SQLite FTS5, PDF text extraction with PdfPig, Generative AI, Hugging Face.</p>
+            <p class="text-gray-300 leading-relaxed font-normal text-base sm:text-lg">LLM APIs with structured prompts and outputs (Python), agentic workflows with ICM (Interpretable Context Methodology: folders and Markdown files as the agent pipeline), AI-assisted development with coding agents (Claude Code), reusable agent skills in the open SKILL.md format, Gemini vision on Vertex AI (reading screenshots into structured data), graph-based RAG over Markdown knowledge bases, local LLMs with LLamaSharp and llama.cpp, retrieval with SQLite FTS5, PDF text extraction with PdfPig, Generative AI, Hugging Face.</p>
           </div>
           <div class="glass-panel reveal-left delay-200 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonAmber mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">On-Device AI & Android</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Sherpa-ONNX speech recognition (streaming and whole-phrase), Whisper, Silero VAD, ONNX Runtime, IndicTrans2 and Google ML Kit translation, Kotlin, Jetpack Compose, Coroutines, Room, DataStore, Media3, MediaCodec / MediaMuxer video pipelines, OpenGL ES 3.0 / GLSL shaders, live wallpapers (WallpaperService), motion sensors, foreground services, overlays, Shizuku and hidden Android APIs.</p>
+            <p class="text-gray-300 leading-relaxed font-normal text-base sm:text-lg">Sherpa-ONNX speech recognition (streaming and whole-phrase), Whisper, Silero VAD, ONNX Runtime, IndicTrans2 and Google ML Kit translation, Kotlin, Jetpack Compose, Coroutines, Room, DataStore, Media3, MediaCodec / MediaMuxer video pipelines, OpenGL ES 3.0 / GLSL shaders, live wallpapers (WallpaperService), motion sensors, foreground services, overlays, Shizuku and hidden Android APIs.</p>
           </div>
           <div class="glass-panel reveal-left delay-300 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonCyan mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Web & Cloud</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">React, TypeScript, Vite, Tailwind CSS, Firebase (Hosting, email-link Auth, Firestore, Cloud Storage, Cloud Functions), Firestore and Storage security rules, Cloud Scheduler, Google Cloud / Vertex AI, Firebase Emulator Suite, Zod, Vitest.</p>
+            <p class="text-gray-300 leading-relaxed font-normal text-base sm:text-lg">React, TypeScript, Vite, Tailwind CSS, Firebase (Hosting, email-link Auth, Firestore, Cloud Storage, Cloud Functions), Firestore and Storage security rules, Cloud Scheduler, Google Cloud / Vertex AI, Firebase Emulator Suite, Zod, Vitest.</p>
           </div>
           <div class="glass-panel reveal-left delay-300 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonPink mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Enterprise ERP & Backend</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">SuiteScript 2.1, SuiteAnalytics, SuiteFlow, Saved Searches, RESTlets, Suitelets, Coupa, Filevine, Zapier, OAuth 2.0 / TBA, Google Apps Script.</p>
+            <p class="text-gray-300 leading-relaxed font-normal text-base sm:text-lg">SuiteScript 2.1, SuiteAnalytics, SuiteFlow, Saved Searches, RESTlets, Suitelets, Coupa, Filevine, Zapier, OAuth 2.0 / TBA, Google Apps Script.</p>
           </div>
           <div class="glass-panel reveal-left delay-400 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-white mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Robotics, IoT & Embedded</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">FANUC Robotics, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB Design.</p>
+            <p class="text-gray-300 leading-relaxed font-normal text-base sm:text-lg">FANUC Robotics, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB Design.</p>
           </div>
           <div class="glass-panel reveal-left delay-400 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonCyan mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Desktop & Industrial Software</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">C#, .NET 10, WPF, MVVM, plugin loading (AssemblyLoadContext), Modbus TCP (NModbus), SQLite, ASP.NET Core minimal APIs, xUnit, GitHub Actions.</p>
+            <p class="text-gray-300 leading-relaxed font-normal text-base sm:text-lg">C#, .NET 10, WPF, MVVM, plugin loading (AssemblyLoadContext), Modbus TCP (NModbus), SQLite, ASP.NET Core minimal APIs, xUnit, GitHub Actions.</p>
           </div>
           <div class="glass-panel reveal-left delay-400 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-gray-400 mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Languages & Tools</h4>
-            <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">Python, Kotlin, TypeScript, JavaScript, Java, C#, C, Embedded C, SQL, Gradle, ADB, Linux / WSL2, Git, GitHub.</p>
+            <p class="text-gray-300 leading-relaxed font-normal text-base sm:text-lg">Python, Kotlin, TypeScript, JavaScript, Java, C#, C, Embedded C, SQL, Gradle, ADB, Linux / WSL2, Git, GitHub.</p>
           </div>
         </div>
 
         <div class="lg:col-span-6 reveal-right delay-200 min-w-0 w-full">
           <div class="glass-panel p-6 sm:p-8 md:p-10 h-full flex flex-col min-w-0 w-full">
             <h3 class="font-anton text-3xl sm:text-4xl text-white mb-6 sm:mb-10 uppercase tracking-wide border-b border-gray-800 pb-4 sm:pb-6 break-words">Honors & Certs</h3>
-            <ul class="space-y-6 sm:space-y-8 text-gray-300 font-light text-base sm:text-lg flex-grow min-w-0">
+            <ul class="space-y-6 sm:space-y-8 text-gray-300 font-normal text-base sm:text-lg flex-grow min-w-0">
               <li class="flex items-start gap-4 sm:gap-5">
                 <span class="text-neonPink font-bold mt-1 text-xl sm:text-2xl flex-shrink-0">✦</span>
                 <span><strong class="text-white">1st Prize (Xion-2023, SRM IST):</strong> National Paper Presentation on "Utilization of 2D Gahnite Nanosheets as Highly Conductive Front Contact for Silicon Solar Cells".</span>
@@ -1209,7 +1335,7 @@
     <section id="pursuits" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center min-w-0 w-full">
       <div class="reveal mb-12 sm:mb-16 min-w-0">
         <h2 class="font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase tracking-wide leading-none break-words">Off-Screen <br><span class="text-transparent" style="-webkit-text-stroke: 1px #00f3ff;">Pursuits.</span></h2>
-        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 sm:mt-6">Module 06 — Focus & Discipline</p>
+        <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mt-4 sm:mt-6">Focus & Discipline</p>
       </div>
 
       <div class="grid grid-cols-1 gap-8 md:gap-10 min-w-0 w-full max-w-3xl">
@@ -1221,7 +1347,7 @@
               <span class="tag tag-pink">Precision Gaming</span>
             </div>
             <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 break-words">Precision Gaming</h3>
-            <p class="text-gray-300 font-light text-base sm:text-lg leading-relaxed mb-6">
+            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed mb-6">
               Developing hyper-focused spatial awareness, sub-frame reactions, and discipline through punishing mechanical combat designs:
             </p>
             <div class="space-y-4">
@@ -1247,9 +1373,9 @@
     <!-- CONTACT SECTION -->
     <section id="contact" class="py-20 md:py-28 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-900/50 flex flex-col justify-center min-w-0 w-full">
       <div class="glass-panel reveal text-center max-w-4xl mx-auto p-6 sm:p-8 md:p-12 border-t-4 border-t-neonCyan min-w-0 w-full">
-        <span class="font-mono text-neonCyan text-xs tracking-widest uppercase mb-4 block">Signal Terminal</span>
+        <span class="font-mono text-neonCyan text-xs tracking-widest uppercase mb-4 block">Contact</span>
         <h2 class="font-anton text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white uppercase tracking-wide mb-6 break-words">Let's Connect.</h2>
-        <p class="text-gray-300 font-light text-base sm:text-lg md:text-xl leading-relaxed mb-8 max-w-2xl mx-auto">
+        <p class="text-gray-300 font-normal text-base sm:text-lg md:text-xl leading-relaxed mb-8 max-w-2xl mx-auto">
           Currently open to new roles, while building new projects. Happy to talk about software development, AI engineering, agent workflows, enterprise automation and on-device AI.
         </p>
         <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-5 min-w-0">
@@ -1259,10 +1385,10 @@
           <button type="button" data-contact-open aria-haspopup="dialog" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-white border border-gray-700 hover:border-neonCyan hover:text-neonCyan px-5 sm:px-6 py-3 rounded-full transition-all">
             +91 75388 79358
           </button>
-          <a href="https://linkedin.com/in/r-dilipkumar" target="_blank" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-gray-300 hover:text-neonPink transition-colors flex items-center gap-2">
+          <a href="https://linkedin.com/in/r-dilipkumar" target="_blank" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-gray-300 hover:text-neonPink transition-colors flex items-center gap-2 py-3">
             LinkedIn <span class="text-neonPink">↗</span>
           </a>
-          <a href="https://github.com/R-Dilipkumar" target="_blank" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-gray-300 hover:text-neonAmber transition-colors flex items-center gap-2">
+          <a href="https://github.com/R-Dilipkumar" target="_blank" class="font-mono text-xs sm:text-sm uppercase tracking-widest text-gray-300 hover:text-neonAmber transition-colors flex items-center gap-2 py-3">
             GitHub <span class="text-neonAmber">↗</span>
           </a>
         </div>
@@ -1277,7 +1403,7 @@
           <div>
             <p class="font-mono text-neonCyan text-[11px] tracking-widest uppercase mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-neonCyan animate-pulse"></span>Open to new roles</p>
             <h3 id="cs-title" class="font-anton text-4xl text-white uppercase tracking-wide leading-none">Let's talk.</h3>
-            <p class="text-gray-400 font-light mt-2">Pick whatever is easiest for you.</p>
+            <p class="text-gray-400 font-normal mt-2">Pick whatever is easiest for you.</p>
           </div>
           <button type="button" class="vm-close" data-contact-close aria-label="Close">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -1347,9 +1473,9 @@
     </div>
 
     <!-- FOOTER -->
-    <footer class="py-8 border-t border-gray-900/50 text-center font-mono text-xs text-gray-500 uppercase tracking-widest relative z-10">
+    <footer class="py-8 border-t border-gray-900/50 text-center font-mono text-xs text-gray-300 uppercase tracking-widest relative z-10">
       <p class="mb-3">Dilipkumar Ravichandran — AI & Software Developer</p>
-      <p class="text-gray-600">Komarapalayam, Tamil Nadu, India • +91 75388 79358</p>
+      <p class="text-gray-400">Komarapalayam, Tamil Nadu, India • +91 75388 79358</p>
     </footer>
 
   </div>
@@ -1418,8 +1544,13 @@
     // --- Mobile Menu Toggle ---
     function toggleMobileMenu() {
       const menu = document.getElementById('mobile-menu');
-      if (menu) menu.classList.toggle('hidden');
+      if (!menu) return;
+      const open = menu.classList.toggle('hidden') === false;
+      document.getElementById('menu-button').setAttribute('aria-expanded', String(open));
     }
+
+    // Visitors who turn on "reduce motion" get a still background and no typing effect
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // --- Dynamic Role Typing Effect ---
     const roles = ["AI & SOFTWARE DEVELOPER", "LLM & AGENT WORKFLOWS", "ENTERPRISE AUTOMATION", "SELF-DRIVEN LEARNER", "MECHATRONICS ENGINEER"];
@@ -1451,7 +1582,12 @@
       }
       setTimeout(typeEffect, typeSpeed);
     }
-    setTimeout(typeEffect, 1000);
+    if (reduceMotion) {
+      dynamicTextElement.innerText = roles[0];
+      dynamicTextElement.classList.remove('typing-cursor');
+    } else {
+      setTimeout(typeEffect, 1000);
+    }
 
     // --- Scroll Reveal Observer ---
     const observer = new IntersectionObserver((entries) => {
@@ -1618,8 +1754,10 @@
     
     const canvas = document.getElementById('engine-canvas');
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: "high-performance" });
+    // Phones draw at most 1.5x pixels: the same look, much less GPU work and battery
+    const pixelRatio = () => Math.min(window.devicePixelRatio, window.innerWidth < 768 ? 1.5 : 2);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(pixelRatio());
 
     const scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0x030305, 0.001);
@@ -1645,8 +1783,9 @@
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setPixelRatio(pixelRatio());
       maxScroll = Math.max(1, document.documentElement.scrollHeight - height);
+      if (reduceMotion) step();
     }
 
     window.addEventListener('resize', () => {
@@ -1835,6 +1974,12 @@
 
     function animate() {
       requestAnimationFrame(animate);
+      // Skip drawing while the contact panel or video covers the page
+      if (!contactSheet.hidden || !vm.hidden) return;
+      step();
+    }
+
+    function step() {
       const time = clock.getElapsedTime();
       const dt = clock.getDelta();
 
@@ -2010,7 +2155,15 @@
       renderer.render(scene, camera);
     }
 
-    animate();
+    if (reduceMotion) {
+      // One still frame with everything already in place
+      introProgress = 1;
+      camera.position.z = 800;
+      coreGroup.position.z = 0;
+      step();
+    } else {
+      animate();
+    }
   </script>
 </body>
 </html>

@@ -10,4 +10,6 @@ Me.md
 !inthrust.html
 !media/
 !media/*
+!media/shots/
+!media/shots/*
 !.gitignore

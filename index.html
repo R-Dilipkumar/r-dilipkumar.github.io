@@ -596,7 +596,7 @@
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">Offline Reel Captions</strong> offline captions for Tamil, Tanglish and other Indian languages</span></li>
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">Artisan NPR Studio</strong> turns photos into art with 134 GPU styles</span></li>
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">Live Wallpaper Maker</strong> layered live wallpapers with tilt parallax and 3D transitions</span></li>
-            <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">Net One Tap</strong> fixes stuck mobile internet in one tap</span></li>
+            <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">Net One Tap</strong> shows when your SIM is on 5G Unlimited and fixes stuck mobile data in one tap</span></li>
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonAmber flex-shrink-0"></span><span><strong class="text-white font-semibold">ASIAN MOBA 5v5 Tournament</strong> sign-ups, teams and brackets on Firebase; Gemini reads players' stats screenshots</span></li>
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonPink flex-shrink-0"></span><span><strong class="text-white font-semibold">Preflight Agent Skill</strong> makes AI coding agents research before they build and learn from every bug</span></li>
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonAmber flex-shrink-0"></span><span><strong class="text-white font-semibold">DriveMate</strong> (personal project): Windows tool for simulated devices over Modbus TCP, with an offline AI helper (Phi-4-mini) that answers from the PDF manual</span></li>
@@ -632,39 +632,36 @@
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">LiveSub</h3>
               <span class="tag tag-cyan">On-Device • No Cloud</span>
             </div>
-            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Live subtitles for anything your phone plays.</p>
-            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Edge AI • Sherpa-ONNX • ML Kit • Jetpack Compose</p>
-            <div class="proj-body">
-            <div class="proj-desc">
-            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
-              A private, offline speech-to-subtitle translator for Android. It listens to a video, stream, game or call, turns speech into text, translates it, and shows the result in a floating subtitle window over any app. Speech recognition and translation both run on the phone: no account, no API key, no audio uploaded.
-            </p>
-            </div>
-            <div class="proj-gallery gal" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="Run on the Android emulator: an English cooking video, Tamil subtitles">
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-6 sm:mb-8 max-w-4xl">Understand any video, stream or call in a language you don’t speak: live subtitles in your language float over any app, and nothing leaves the phone.</p>
+            <div class="gal mb-8" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="Run on the Android emulator">
               <div class="gal-track" tabindex="0">
                 <figure class="gal-slide phone">
                   <button type="button" class="gal-zoom" aria-label="Enlarge: LiveSub set to English speech and Tamil subtitles"><img src="media/shots/livesub/01.webp" width="405" height="900" alt="LiveSub set to English speech and Tamil subtitles" loading="lazy" decoding="async"></button>
-                  <figcaption><b>1</b>Pick what you will hear and the subtitle language. Here: English speech, Tamil subtitles.</figcaption>
+                  <figcaption><b>1</b><strong class="text-white font-semibold">Set it up.</strong> Pick what you’ll hear and the subtitle language. Here: English speech, Tamil subtitles.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: LiveSub model list with the English model installed"><img src="media/shots/livesub/02.webp" width="405" height="900" alt="LiveSub model list with the English model installed" loading="lazy" decoding="async"></button>
-                  <figcaption><b>2</b>Download a speech model once (54 MB here). It runs on the phone, so no audio is uploaded.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: LiveSub speech model list"><img src="media/shots/livesub/02.webp" width="405" height="900" alt="LiveSub speech model list" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b><strong class="text-white font-semibold">Get a model.</strong> Download a speech model once (54 MB). It runs on the phone, so no audio is uploaded.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Android screen-share prompt for LiveSub"><img src="media/shots/livesub/03.webp" width="405" height="900" alt="Android screen-share prompt for LiveSub" loading="lazy" decoding="async"></button>
-                  <figcaption><b>3</b>Android asks to share the screen. That is how the app can hear the sound of other apps.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Tamil subtitle window over a cooking video"><img src="media/shots/livesub/03.webp" width="405" height="900" alt="Tamil subtitle window over a cooking video" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b><strong class="text-white font-semibold">Roll-up subtitles.</strong> A cooking video plays. The floating window shows what was heard (small) and the Tamil subtitle (big).</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: LiveSub floating window showing a Tamil subtitle over a cooking video"><img src="media/shots/livesub/04.webp" width="405" height="900" alt="LiveSub floating window showing a Tamil subtitle over a cooking video" loading="lazy" decoding="async"></button>
-                  <figcaption><b>4</b>A cooking video plays. The floating window shows what was heard (small) and the Tamil subtitle (big).</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Japanese movie-style subtitles at the bottom of a playing video"><img src="media/shots/livesub/04.webp" width="405" height="900" alt="Japanese movie-style subtitles at the bottom of a playing video" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b><strong class="text-white font-semibold">Movie style, another language.</strong> Switched to Japanese and Movie style, dragged to the bottom with its controls hidden, like film subtitles.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: LiveSub floating window with another translated sentence"><img src="media/shots/livesub/05.webp" width="405" height="900" alt="LiveSub floating window with another translated sentence" loading="lazy" decoding="async"></button>
-                  <figcaption><b>5</b>Each sentence is translated as soon as it ends, while the video keeps playing.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: LiveSub app listing English lines with Tamil translations"><img src="media/shots/livesub/05.webp" width="405" height="900" alt="LiveSub app listing English lines with Tamil translations" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b><strong class="text-white font-semibold">In the app.</strong> While it listens, every line appears with its translation and the detected language (EN → TA).</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: LiveSub app listing English lines with Tamil translations"><img src="media/shots/livesub/06.webp" width="405" height="900" alt="LiveSub app listing English lines with Tamil translations" loading="lazy" decoding="async"></button>
-                  <figcaption><b>6</b>Back in the app, every line is kept with its translation, ready to copy.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Transcript history with copy and delete"><img src="media/shots/livesub/06.webp" width="405" height="900" alt="Transcript history with copy and delete" loading="lazy" decoding="async"></button>
+                  <figcaption><b>6</b><strong class="text-white font-semibold">History.</strong> Every session is kept on the phone. Copy or delete any line later.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Subtitle style settings"><img src="media/shots/livesub/07.webp" width="405" height="900" alt="Subtitle style settings" loading="lazy" decoding="async"></button>
+                  <figcaption><b>7</b><strong class="text-white font-semibold">Make it yours.</strong> Choose Roll-up, Movie or Live style, how long lines stay, the background and the text size.</figcaption>
                 </figure>
               </div>
               <div class="gal-ctrl">
@@ -673,11 +670,13 @@
                 <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
                 <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
               </div>
-              <p class="gal-hint">Run on the Android emulator: an English cooking video, Tamil subtitles · tap a picture to enlarge</p>
+              <p class="gal-hint">Run on the Android emulator · tap a picture to enlarge</p>
             </div>
-            <div class="proj-more">
-            <details class="how mb-6">
-              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
+            <div class="proj-detail">
+              <h4 class="font-mono text-xs sm:text-sm uppercase tracking-widest font-bold mb-3 text-neonCyan">How it works</h4>
+              <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
+              A private, offline speech-to-subtitle translator for Android. It listens to a video, stream, game or call, turns speech into text, translates it, and shows the result in a floating subtitle window over any app. Speech recognition and translation both run on the phone: no account, no API key, no audio uploaded.
+            </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Two-Speed Speech Recognition</strong>
@@ -696,13 +695,12 @@
                 Compose UI in a system overlay with Roll-up, Movie and Live subtitle styles, a Quick Settings tile, and on-phone history in Room.
               </div>
             </div>
-            </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
+              <p class="mt-6 font-mono text-xs sm:text-sm uppercase tracking-wider text-gray-300"><span class="text-gray-400">Built with:</span> Edge AI • Sherpa-ONNX • ML Kit • Jetpack Compose</p>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mt-8">
               <span class="tag tag-cyan">99 Languages</span>
               <span class="tag">Android 10+</span>
               <span class="tag">Open Source • MIT</span>
-            </div>
-            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
@@ -725,35 +723,36 @@
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Net One Tap</h3>
               <span class="tag tag-cyan">No Airplane Mode</span>
             </div>
-            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Mobile internet stuck? Fix it in one tap.</p>
-            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Android • Kotlin • Shizuku / Root • Telephony</p>
-            <div class="proj-body">
-            <div class="proj-desc">
-            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
-              Restarts only the mobile radio, the same fix as toggling airplane mode, while Wi-Fi, Bluetooth and mobile data stay untouched. Also shows a per-SIM 5G status notification.
-            </p>
-            </div>
-            <div class="proj-gallery gal" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="Run on the Android emulator with Shizuku">
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-6 sm:mb-8 max-w-4xl">Know at a glance when your SIM is really on 5G Unlimited, and fix stuck mobile data with one tap instead of toggling airplane mode.</p>
+            <div class="gal mb-8" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="Run on the Android emulator with Shizuku and a simulated 5G network">
               <div class="gal-track" tabindex="0">
                 <figure class="gal-slide phone">
                   <button type="button" class="gal-zoom" aria-label="Enlarge: Shizuku permission prompt for Net One Tap"><img src="media/shots/net-one-tap/01.webp" width="405" height="900" alt="Shizuku permission prompt for Net One Tap" loading="lazy" decoding="async"></button>
-                  <figcaption><b>1</b>First tap: the app asks Shizuku for access. That is what lets it restart the radio without root.</figcaption>
+                  <figcaption><b>1</b><strong class="text-white font-semibold">One-time setup.</strong> The first tap asks Shizuku for access. That lets the app restart the radio without root.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Quick Settings before the reset, mobile data on 5G"><img src="media/shots/net-one-tap/02.webp" width="405" height="900" alt="Quick Settings before the reset, mobile data on 5G" loading="lazy" decoding="async"></button>
-                  <figcaption><b>2</b>Before: mobile data is on 5G, Wi-Fi is on.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Notification: SIM 1 5G Unlimited activated, with Reset network"><img src="media/shots/net-one-tap/02.webp" width="405" height="900" alt="Notification: SIM 1 5G Unlimited activated, with Reset network" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b><strong class="text-white font-semibold">5G Unlimited is on.</strong> The main feature: a silent notification says “SIM 1: 5G Unlimited activated”, with a Reset network button.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Quick Settings during the reset showing No service and the resetting message"><img src="media/shots/net-one-tap/03.webp" width="405" height="900" alt="Quick Settings during the reset showing No service and the resetting message" loading="lazy" decoding="async"></button>
-                  <figcaption><b>3</b>Tap the Net Reset tile: the mobile radio turns off (No service). Wi-Fi and Bluetooth stay on.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Notification: 5G Unlimited not active"><img src="media/shots/net-one-tap/03.webp" width="405" height="900" alt="Notification: 5G Unlimited not active" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b><strong class="text-white font-semibold">…and when it isn’t.</strong> The 5G band drops from high to low, and the notification changes to “5G Unlimited: not active” by itself.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Quick Settings after the reset, back on 5G, with the reset done message"><img src="media/shots/net-one-tap/04.webp" width="405" height="900" alt="Quick Settings after the reset, back on 5G, with the reset done message" loading="lazy" decoding="async"></button>
-                  <figcaption><b>4</b>A few seconds later the radio is back on 5G: “Mobile network reset ✓”.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Reset skipped during an ongoing call"><img src="media/shots/net-one-tap/04.webp" width="405" height="900" alt="Reset skipped during an ongoing call" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b><strong class="text-white font-semibold">Safe during calls.</strong> A reset during a phone call is skipped, so a call is never cut.</figcaption>
                 </figure>
-                <figure class="gal-slide wide">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Net One Tap research page banner"><img src="media/shots/net-one-tap/05.webp" width="1200" height="630" alt="Net One Tap research page banner" loading="lazy" decoding="async"></button>
-                  <figcaption><b>5</b>It started as a research write-up on what the airplane-mode toggle really resets.</figcaption>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Mobile data shows No service while Wi-Fi stays on"><img src="media/shots/net-one-tap/05.webp" width="405" height="900" alt="Mobile data shows No service while Wi-Fi stays on" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b><strong class="text-white font-semibold">One tap reset.</strong> Reset from the notification: only the mobile radio goes off (No service). Wi-Fi and Bluetooth stay on.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Back on 5G with reset done message"><img src="media/shots/net-one-tap/06.webp" width="405" height="900" alt="Back on 5G with reset done message" loading="lazy" decoding="async"></button>
+                  <figcaption><b>6</b><strong class="text-white font-semibold">Back in seconds.</strong> The radio is back on 5G, “Mobile network reset ✓”, and 5G Unlimited is active again.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Research page section on the 5G values"><img src="media/shots/net-one-tap/07.webp" width="416" height="900" alt="Research page section on the 5G values" loading="lazy" decoding="async"></button>
+                  <figcaption><b>7</b><strong class="text-white font-semibold">Research first.</strong> The research page shows where the phone’s hidden 5G values come from and the rule the app uses.</figcaption>
                 </figure>
               </div>
               <div class="gal-ctrl">
@@ -762,12 +761,14 @@
                 <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
                 <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
               </div>
-              <p class="gal-hint">Run on the Android emulator with Shizuku · tap a picture to enlarge</p>
+              <p class="gal-hint">Run on the Android emulator with Shizuku and a simulated 5G network · tap a picture to enlarge</p>
             </div>
-            <div class="proj-more">
-            <details class="how mb-6">
-              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
-              <div class="flex flex-col gap-6 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
+            <div class="proj-detail">
+              <h4 class="font-mono text-xs sm:text-sm uppercase tracking-widest font-bold mb-3 text-neonCyan">How it works</h4>
+              <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
+              A silent notification watches each SIM and says “5G Unlimited activated” only when the phone is really on it: NR state (NSA) = connected and NR frequency = high band, the same values as Android’s hidden *#*#4636#*#* screen. It updates by itself when the network changes. Its Reset network button, the app icon and a Quick Settings tile restart only the mobile radio, the same fix as toggling airplane mode, while Wi-Fi, Bluetooth and mobile data stay untouched.
+            </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Privileged Radio Control</strong>
                 Calls the hidden <code>ITelephony.setRadioForSubscriber</code> through Shizuku or root, with a soft-refresh fallback. Skips the reset during calls and always brings the radio back.
@@ -777,13 +778,12 @@
                 Reads hidden NR state and frequency from <code>ServiceState</code> (the same values as the <code>*#*#4636#*#*</code> screen) with dual-SIM support and no location permission.
               </div>
             </div>
-            </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
+              <p class="mt-6 font-mono text-xs sm:text-sm uppercase tracking-wider text-gray-300"><span class="text-gray-400">Built with:</span> Android • Kotlin • Shizuku / Root • Telephony</p>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mt-8">
               <span class="tag tag-cyan">Quick Settings Tile</span>
               <span class="tag">Dual SIM</span>
               <span class="tag">MIT</span>
-            </div>
-            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex flex-col gap-4 min-w-0">
@@ -809,35 +809,40 @@
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Offline Reel Captions</h3>
               <span class="tag tag-cyan">Offline • Indian Languages</span>
             </div>
-            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Auto subtitles for Tamil, Tanglish and more, made on the phone.</p>
-            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Whisper • IndicTrans2 • ONNX Runtime • Media3</p>
-            <div class="proj-body">
-            <div class="proj-desc">
-            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
-              Pick a video and a language, and the app writes the captions: in the original script, in English letters by sound ("vanakkam nanbargale"), or translated. Fix and style every caption, then export an MP4 with the captions burned in, or an <code>.srt</code> file. Built for South Indian creators. The video never leaves the phone.
-            </p>
-            </div>
-            <div class="proj-gallery gal" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="Screenshots from the app">
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-6 sm:mb-8 max-w-4xl">Give Tamil and other South Indian creators ready-to-post captioned Reels, made fully on the phone, in the script or English letters their audience reads.</p>
+            <div class="gal mb-8" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="A Tamil clip run through the app on the Android emulator">
               <div class="gal-track" tabindex="0">
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Caption type choices"><img src="media/shots/reel-captions/01.webp" width="405" height="900" alt="Caption type choices" loading="lazy" decoding="async"></button>
-                  <figcaption><b>1</b>Choose how the captions read: as it sounds in English letters, translated, or in Tamil script.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Setup: spoken language and caption type"><img src="media/shots/reel-captions/01.webp" width="405" height="900" alt="Setup: spoken language and caption type" loading="lazy" decoding="async"></button>
+                  <figcaption><b>1</b><strong class="text-white font-semibold">Choose the captions.</strong> Tamil speech, shown as it sounds in English letters, with the Tamil script as a second line.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Caption size choices"><img src="media/shots/reel-captions/02.webp" width="405" height="900" alt="Caption size choices" loading="lazy" decoding="async"></button>
-                  <figcaption><b>2</b>Pick the caption size: one word at a time, short bites, a line or full sentences.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Caption size and look with live preview"><img src="media/shots/reel-captions/02.webp" width="405" height="900" alt="Caption size and look with live preview" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b><strong class="text-white font-semibold">Size and look.</strong> Pick 2–3 words at a time for Reels and a ready-made look. The preview updates live.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Caption editor with captions on a video"><img src="media/shots/reel-captions/03.webp" width="405" height="900" alt="Caption editor with captions on a video" loading="lazy" decoding="async"></button>
-                  <figcaption><b>3</b>The captions play on the video with word timing. Tap any caption to fix it.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Making your subtitles progress with Tamil text heard so far"><img src="media/shots/reel-captions/03.webp" width="405" height="900" alt="Making your subtitles progress with Tamil text heard so far" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b><strong class="text-white font-semibold">Made on the phone.</strong> It reads the sound, finds where people speak, writes the words, then the English letters. No internet.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Font choices with Tamil looks"><img src="media/shots/reel-captions/04.webp" width="405" height="900" alt="Font choices with Tamil looks" loading="lazy" decoding="async"></button>
-                  <figcaption><b>4</b>16 fonts, each with a matching Tamil look, plus bold and capitals.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Caption editor playing the video"><img src="media/shots/reel-captions/04.webp" width="405" height="900" alt="Caption editor playing the video" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b><strong class="text-white font-semibold">Edit with the video.</strong> Captions play with the video. Tap any caption on the timeline or in the list to fix it.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Edit history list"><img src="media/shots/reel-captions/05.webp" width="405" height="900" alt="Edit history list" loading="lazy" decoding="async"></button>
-                  <figcaption><b>5</b>Every change is saved as a step, so you can go back to any earlier version.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Motion options with karaoke sweep"><img src="media/shots/reel-captions/05.webp" width="405" height="900" alt="Motion options with karaoke sweep" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b><strong class="text-white font-semibold">Motion.</strong> Make words pop in one by one or sweep like karaoke as they’re spoken.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Font choices with Tamil looks"><img src="media/shots/reel-captions/06.webp" width="405" height="900" alt="Font choices with Tamil looks" loading="lazy" decoding="async"></button>
+                  <figcaption><b>6</b><strong class="text-white font-semibold">Fonts.</strong> 16 fonts, each with a matching Tamil look.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Export options: video or subtitle file"><img src="media/shots/reel-captions/07.webp" width="405" height="900" alt="Export options: video or subtitle file" loading="lazy" decoding="async"></button>
+                  <figcaption><b>7</b><strong class="text-white font-semibold">Export.</strong> Burn the captions into an MP4, or save an .srt, .vtt or .ass file for other editors.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Exported video with Tamil captions playing in Photos"><img src="media/shots/reel-captions/08.webp" width="405" height="900" alt="Exported video with Tamil captions playing in Photos" loading="lazy" decoding="async"></button>
+                  <figcaption><b>8</b><strong class="text-white font-semibold">Ready to post.</strong> The exported MP4 in Photos, with the captions burned in.</figcaption>
                 </figure>
               </div>
               <div class="gal-ctrl">
@@ -846,11 +851,13 @@
                 <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
                 <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
               </div>
-              <p class="gal-hint">Screenshots from the app · tap a picture to enlarge</p>
+              <p class="gal-hint">A Tamil clip run through the app on the Android emulator · tap a picture to enlarge</p>
             </div>
-            <div class="proj-more">
-            <details class="how mb-6">
-              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
+            <div class="proj-detail">
+              <h4 class="font-mono text-xs sm:text-sm uppercase tracking-widest font-bold mb-3 text-neonCyan">How it works</h4>
+              <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
+              Pick a video and a language, and the app writes the captions: in the original script, in English letters by sound ("vanakkam nanbargale"), or translated. Fix and style every caption, then export an MP4 with the captions burned in, or an <code>.srt</code> file. Built for South Indian creators. The video never leaves the phone.
+            </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Speech Models per Language</strong>
@@ -869,13 +876,12 @@
                 Karaoke-style word timing, motion, 16 fonts with matching Tamil looks, a full edit history, and MP4 export on the phone's video hardware (Media3 Transformer).
               </div>
             </div>
-            </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
+              <p class="mt-6 font-mono text-xs sm:text-sm uppercase tracking-wider text-gray-300"><span class="text-gray-400">Built with:</span> Whisper • IndicTrans2 • ONNX Runtime • Media3</p>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mt-8">
               <span class="tag tag-cyan">7 Languages + Tanglish</span>
               <span class="tag">Android 10+</span>
               <span class="tag">Open Source • MIT</span>
-            </div>
-            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
@@ -898,39 +904,44 @@
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Artisan NPR Studio</h3>
               <span class="tag tag-cyan">No AI • No Internet</span>
             </div>
-            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Turn any photo into a sketch, painting or comic.</p>
-            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Kotlin • Compose • OpenGL ES 3.0 • GLSL</p>
-            <div class="proj-body">
-            <div class="proj-desc">
-            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
-              134 art styles in 12 groups: pencil sketch, oil paint, watercolour, halftone, pixel art, film and glitch looks. Each style has its own controls, and a high-resolution export looks just like the preview. The APK is about 2 MB and asks for no permissions.
-            </p>
-            </div>
-            <div class="proj-gallery gal" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="Run on the Android emulator: one photo, five style groups">
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-6 sm:mb-8 max-w-4xl">Turn any photo into real-looking art (sketch, paint, comic, retro and more) with no internet and no AI, and export it at full size exactly as previewed.</p>
+            <div class="gal mb-8" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="Run on the Android emulator, with my own robot photo">
               <div class="gal-track" tabindex="0">
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Ballpoint pen sketch style"><img src="media/shots/artisan/01.webp" width="405" height="900" alt="Ballpoint pen sketch style" loading="lazy" decoding="async"></button>
-                  <figcaption><b>1</b>Sketch › Ballpoint Pen: biro hatching that builds up in the shadows. The sliders change it live.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Ballpoint pen style with sliders and style dial"><img src="media/shots/artisan/01.webp" width="405" height="900" alt="Ballpoint pen style with sliders and style dial" loading="lazy" decoding="async"></button>
+                  <figcaption><b>1</b><strong class="text-white font-semibold">Pick a style.</strong> Turn the dial to a group, pick a style, and tune it with its own sliders. Here: Ballpoint Pen.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Acrylic paint style"><img src="media/shots/artisan/02.webp" width="405" height="900" alt="Acrylic paint style" loading="lazy" decoding="async"></button>
-                  <figcaption><b>2</b>Paint › Acrylic: the same photo as bright, crisp brush strokes.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Robot photo as a blueprint drawing"><img src="media/shots/artisan/02.webp" width="405" height="900" alt="Robot photo as a blueprint drawing" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b><strong class="text-white font-semibold">Your own photo.</strong> My IN-THRUST robot photo as a Blueprint drawing.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Dry brush watercolour style"><img src="media/shots/artisan/03.webp" width="405" height="900" alt="Dry brush watercolour style" loading="lazy" decoding="async"></button>
-                  <figcaption><b>3</b>Watercolour › Dry Brush: streaky strokes that skip across the paper.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Finish tab with half strength"><img src="media/shots/artisan/03.webp" width="405" height="900" alt="Finish tab with half strength" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b><strong class="text-white font-semibold">Finish.</strong> Strength blends the style with the original photo; brightness and contrast finish it.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Anime scenery style"><img src="media/shots/artisan/04.webp" width="405" height="900" alt="Anime scenery style" loading="lazy" decoding="async"></button>
-                  <figcaption><b>4</b>Comic &amp; Pop › Anime Scenery: soft cel shading and glowing light.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Acrylic paint style"><img src="media/shots/artisan/04.webp" width="405" height="900" alt="Acrylic paint style" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b><strong class="text-white font-semibold">Paint.</strong> Acrylic: bright, crisp brush strokes.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: 1-bit dither style"><img src="media/shots/artisan/05.webp" width="405" height="900" alt="1-bit dither style" loading="lazy" decoding="async"></button>
-                  <figcaption><b>5</b>Retro › 1-Bit Dither: just two colours and a dot pattern, like an early Mac.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Anime scenery style"><img src="media/shots/artisan/05.webp" width="405" height="900" alt="Anime scenery style" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b><strong class="text-white font-semibold">Comic &amp; Pop.</strong> Anime Scenery: soft cel shading and glowing light.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Grid of sketch styles"><img src="media/shots/artisan/06.webp" width="866" height="900" alt="Grid of sketch styles" loading="lazy" decoding="async"></button>
-                  <figcaption><b>6</b>One sheet of the 134 styles. Each one is its own GPU shader.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: 1-bit dither style"><img src="media/shots/artisan/06.webp" width="405" height="900" alt="1-bit dither style" loading="lazy" decoding="async"></button>
+                  <figcaption><b>6</b><strong class="text-white font-semibold">Retro.</strong> 1-Bit Dither: two colours and a dot pattern, like an early Mac.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Robot photo as a daguerreotype"><img src="media/shots/artisan/07.webp" width="405" height="900" alt="Robot photo as a daguerreotype" loading="lazy" decoding="async"></button>
+                  <figcaption><b>7</b><strong class="text-white font-semibold">Film.</strong> Daguerreotype: an 1840s silver-plate photo of a 2023 robot.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Exported art open in Photos"><img src="media/shots/artisan/08.webp" width="405" height="900" alt="Exported art open in Photos" loading="lazy" decoding="async"></button>
+                  <figcaption><b>8</b><strong class="text-white font-semibold">Export.</strong> Saved in full size to the gallery, matching the preview.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Grid of sketch styles"><img src="media/shots/artisan/09.webp" width="866" height="900" alt="Grid of sketch styles" loading="lazy" decoding="async"></button>
+                  <figcaption><b>9</b><strong class="text-white font-semibold">134 styles.</strong> One sheet of the styles. Each one is its own GPU shader.</figcaption>
                 </figure>
               </div>
               <div class="gal-ctrl">
@@ -939,12 +950,14 @@
                 <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
                 <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
               </div>
-              <p class="gal-hint">Run on the Android emulator: one photo, five style groups · tap a picture to enlarge</p>
+              <p class="gal-hint">Run on the Android emulator, with my own robot photo · tap a picture to enlarge</p>
             </div>
-            <div class="proj-more">
-            <details class="how mb-6">
-              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
-              <div class="flex flex-col gap-6 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
+            <div class="proj-detail">
+              <h4 class="font-mono text-xs sm:text-sm uppercase tracking-widest font-bold mb-3 text-neonCyan">How it works</h4>
+              <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
+              134 art styles in 12 groups: pencil sketch, oil paint, watercolour, halftone, pixel art, film and glitch looks. Each style has its own controls, and a high-resolution export looks just like the preview. The APK is about 2 MB and asks for no permissions.
+            </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">One Shader per Style</strong>
                 Each style is a GPU fragment shader built on known image-art methods: XDoG ink, Kuwahara painting, line integral convolution brush strokes, CMYK halftone screens, dithering and Voronoi mosaics.
@@ -954,13 +967,12 @@
                 A 1280 px preview renders in 13 ms on average. Wide effects read from pre-blurred copies of the photo, so a 3200 px export matches the preview.
               </div>
             </div>
-            </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
+              <p class="mt-6 font-mono text-xs sm:text-sm uppercase tracking-wider text-gray-300"><span class="text-gray-400">Built with:</span> Kotlin • Compose • OpenGL ES 3.0 • GLSL</p>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mt-8">
               <span class="tag tag-cyan">134 Styles</span>
               <span class="tag">~2 MB APK</span>
               <span class="tag">MIT</span>
-            </div>
-            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex flex-col gap-4 min-w-0">
@@ -983,43 +995,48 @@
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Live Wallpaper Maker</h3>
               <span class="tag tag-cyan">Light on Battery</span>
             </div>
-            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Design your own live wallpaper: layers, tilt parallax and 3D scene transitions.</p>
-            <p class="font-mono text-neonCyan text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Kotlin • Compose • OpenGL ES 3.0 • MediaCodec</p>
-            <div class="proj-body">
-            <div class="proj-desc">
-            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
-              Stack videos, GIFs, photos, gradients, particles and a live clock, give each layer its own tilt and swipe depth, add looks and keyframe animation, and switch between scenes on a timer, on unlock, on double-tap or by time of day, with crossfade, 3D flip and cube transitions. Version 1.1 adds one-tap 3D photos (on-phone subject cut-out with ML Kit, the clock tucked behind the subject), water-ripple tap effects, separate lock-screen scenes, motion photos, animated stickers, and sharing as video or GIF.
-            </p>
-            </div>
-            <div class="proj-gallery gal" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="Screenshots from the app">
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-6 sm:mb-8 max-w-4xl">Let anyone design their own moving, 3D-feeling wallpaper from their own videos and photos, without draining the battery.</p>
+            <div class="gal mb-8" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="A wallpaper built from my robot video on the Android emulator">
               <div class="gal-track" tabindex="0">
                 <figure class="gal-slide phone">
                   <button type="button" class="gal-zoom" aria-label="Enlarge: Wallpaper list and templates"><img src="media/shots/live-wallpaper/01.webp" width="405" height="900" alt="Wallpaper list and templates" loading="lazy" decoding="async"></button>
-                  <figcaption><b>1</b>Start from a template or one of your wallpapers. Each can hold several scenes.</figcaption>
+                  <figcaption><b>1</b><strong class="text-white font-semibold">Start.</strong> Begin from a template or one of your saved wallpapers.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Wallpaper editor with a clock layer"><img src="media/shots/live-wallpaper/02.webp" width="405" height="900" alt="Wallpaper editor with a clock layer" loading="lazy" decoding="async"></button>
-                  <figcaption><b>2</b>The editor: layers such as a gradient and a live clock, previewed as you change them.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Add video sheet with trim and zoom dissolve loop"><img src="media/shots/live-wallpaper/02.webp" width="405" height="900" alt="Add video sheet with trim and zoom dissolve loop" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b><strong class="text-white font-semibold">Add a video.</strong> My IN-THRUST robot clip: trim it and pick a seamless loop (here a zoom dissolve).</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Colour and look controls"><img src="media/shots/live-wallpaper/03.webp" width="405" height="900" alt="Colour and look controls" loading="lazy" decoding="async"></button>
-                  <figcaption><b>3</b>Looks and colour controls for each layer: brightness, contrast, saturation and hue.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Cinematic look and colour sliders"><img src="media/shots/live-wallpaper/03.webp" width="405" height="900" alt="Cinematic look and colour sliders" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b><strong class="text-white font-semibold">Give it a look.</strong> Cinematic look, darker and punchier, so the clock and fireflies stand out.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Add video sheet with trim and loop options"><img src="media/shots/live-wallpaper/04.webp" width="405" height="900" alt="Add video sheet with trim and loop options" loading="lazy" decoding="async"></button>
-                  <figcaption><b>4</b>Add a video or GIF: trim it and choose how it loops, for example with a crossfade.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Depth sliders with the preview tilted"><img src="media/shots/live-wallpaper/04.webp" width="405" height="900" alt="Depth sliders with the preview tilted" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b><strong class="text-white font-semibold">Set the depth.</strong> Each layer gets its own depth: the clock in front, fireflies in the middle, the video at the back.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: 3D cube transition between scenes"><img src="media/shots/live-wallpaper/05.webp" width="828" height="900" alt="3D cube transition between scenes" loading="lazy" decoding="async"></button>
-                  <figcaption><b>5</b>Scenes switch with 3D transitions, like this cube turn.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Home screen wallpaper tilted left"><img src="media/shots/live-wallpaper/05.webp" width="405" height="900" alt="Home screen wallpaper tilted left" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b><strong class="text-white font-semibold">Tilt left….</strong> On the home screen, tilting the phone moves each layer by a different amount.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Water ripple after a tap"><img src="media/shots/live-wallpaper/06.webp" width="414" height="900" alt="Water ripple after a tap" loading="lazy" decoding="async"></button>
-                  <figcaption><b>6</b>Tap the home screen and the wallpaper ripples like water.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Home screen wallpaper tilted right"><img src="media/shots/live-wallpaper/06.webp" width="405" height="900" alt="Home screen wallpaper tilted right" loading="lazy" decoding="async"></button>
+                  <figcaption><b>6</b><strong class="text-white font-semibold">…tilt right.</strong> Same moment, tilted the other way: the giant clock slides across the robot video. That is the 3D feel.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Share as video or GIF sheet"><img src="media/shots/live-wallpaper/07.webp" width="405" height="900" alt="Share as video or GIF sheet" loading="lazy" decoding="async"></button>
-                  <figcaption><b>7</b>Share any wallpaper as a video or a GIF.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: 3D photo as a floating card"><img src="media/shots/live-wallpaper/07.webp" width="405" height="900" alt="3D photo as a floating card" loading="lazy" decoding="async"></button>
+                  <figcaption><b>7</b><strong class="text-white font-semibold">3D photo.</strong> One tap turns a photo into a 3D scene. Here the cut-out model couldn’t download, so it made a floating 3D card instead.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Cube transition between scenes"><img src="media/shots/live-wallpaper/08.webp" width="828" height="900" alt="Cube transition between scenes" loading="lazy" decoding="async"></button>
+                  <figcaption><b>8</b><strong class="text-white font-semibold">Scenes.</strong> Switch between scenes with 3D transitions, like this cube turn.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Water ripple after a tap"><img src="media/shots/live-wallpaper/09.webp" width="414" height="900" alt="Water ripple after a tap" loading="lazy" decoding="async"></button>
+                  <figcaption><b>9</b><strong class="text-white font-semibold">Tap effects.</strong> Tap the home screen and the wallpaper ripples like water.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Share as video or GIF sheet"><img src="media/shots/live-wallpaper/10.webp" width="405" height="900" alt="Share as video or GIF sheet" loading="lazy" decoding="async"></button>
+                  <figcaption><b>10</b><strong class="text-white font-semibold">Share it.</strong> Export the wallpaper as a video or GIF, with the 3D depth gently swaying.</figcaption>
                 </figure>
               </div>
               <div class="gal-ctrl">
@@ -1028,11 +1045,13 @@
                 <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
                 <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
               </div>
-              <p class="gal-hint">Screenshots from the app · tap a picture to enlarge</p>
+              <p class="gal-hint">A wallpaper built from my robot video on the Android emulator · tap a picture to enlarge</p>
             </div>
-            <div class="proj-more">
-            <details class="how mb-6">
-              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
+            <div class="proj-detail">
+              <h4 class="font-mono text-xs sm:text-sm uppercase tracking-widest font-bold mb-3 text-neonCyan">How it works</h4>
+              <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
+              Stack videos, GIFs, photos, gradients, particles and a live clock, give each layer its own tilt and swipe depth, add looks and keyframe animation, and switch between scenes on a timer, on unlock, on double-tap or by time of day, with crossfade, 3D flip and cube transitions. Version 1.1 adds one-tap 3D photos (on-phone subject cut-out with ML Kit, the clock tucked behind the subject), water-ripple tap effects, separate lock-screen scenes, motion photos, animated stickers, and sharing as video or GIF.
+            </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Heavy Work Once, at Import</strong>
@@ -1043,14 +1062,13 @@
                 The engine draws only while visible and only when something moves, plays loops gaplessly with the hardware decoder, and uses 0% CPU when hidden. It runs in its own process at about 70 MB with two videos.
               </div>
             </div>
-            </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
+              <p class="mt-6 font-mono text-xs sm:text-sm uppercase tracking-wider text-gray-300"><span class="text-gray-400">Built with:</span> Kotlin • Compose • OpenGL ES 3.0 • MediaCodec</p>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mt-8">
               <span class="tag tag-cyan">13 Transitions</span>
               <span class="tag">~4 MB APK</span>
               <span class="tag">Android 10+</span>
               <span class="tag">MIT</span>
-            </div>
-            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
@@ -1073,39 +1091,44 @@
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">ASIAN MOBA 5v5 Tournament</h3>
               <span class="tag tag-amber">Web App • Live</span>
             </div>
-            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Sign-ups, teams and brackets for a Mobile Legends tournament, in one phone-friendly web app.</p>
-            <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">React • TypeScript • Firebase • Gemini Vision</p>
-            <div class="proj-body">
-            <div class="proj-desc">
-            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
-              Players sign in with an email link, confirm their game ID, upload three stats screenshots and pay the entry fee by UPI. They form 5-player teams with a 6-digit code, then play through a seeded bracket, shown as a tree with colour-coded best-of rounds, and report each result with screenshots. On match day each team's page shows the next opponent and start time, players check in, and winners get confetti until their next match. Admins handle payments, reviews, refunds, brackets, disputes and emergency substitutes from one dashboard, and every admin change is logged. The look is red, matte black and gold, with a shimmering gold lion logo.
-            </p>
-            </div>
-            <div class="proj-gallery gal" data-gallery style="--acc:#ffaa00" role="region" aria-roledescription="carousel" aria-label="Run locally on the Firebase emulators with test players and teams">
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-6 sm:mb-8 max-w-4xl">Run a whole Mobile Legends tournament from one phone-friendly site: sign-ups, stat checks, payments, teams, brackets and results, with far less manual work for the admins.</p>
+            <div class="gal mb-8" data-gallery style="--acc:#ffaa00" role="region" aria-roledescription="carousel" aria-label="Run locally on the Firebase emulators with test players and teams">
               <div class="gal-track" tabindex="0">
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Tournament home page with registration open"><img src="media/shots/asian-moba/01.webp" width="416" height="900" alt="Tournament home page with registration open" loading="lazy" decoding="async"></button>
-                  <figcaption><b>1</b>Players see the open tournament, the entry fee and the Register button.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Tournament home with registration open"><img src="media/shots/asian-moba/01.webp" width="416" height="900" alt="Tournament home with registration open" loading="lazy" decoding="async"></button>
+                  <figcaption><b>1</b><strong class="text-white font-semibold">Open for sign-ups.</strong> Players see the tournament, the entry fee and the Register button.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Screenshot upload step with a numbered sample"><img src="media/shots/asian-moba/02.webp" width="416" height="900" alt="Screenshot upload step with a numbered sample" loading="lazy" decoding="async"></button>
-                  <figcaption><b>2</b>Sign-up step 3: upload three stats screenshots. Numbered samples show which screen to take.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Screenshot step with a numbered sample"><img src="media/shots/asian-moba/02.webp" width="416" height="900" alt="Screenshot step with a numbered sample" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b><strong class="text-white font-semibold">Upload stats.</strong> Three screenshots from the game. Numbered samples show exactly which screen to take.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Admin stats review comparing typed and read values"><img src="media/shots/asian-moba/03.webp" width="416" height="900" alt="Admin stats review comparing typed and read values" loading="lazy" decoding="async"></button>
-                  <figcaption><b>3</b>Admin review: what was read from each screenshot next to what the player typed. Differences are flagged.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Check what we read table of stats"><img src="media/shots/asian-moba/03.webp" width="416" height="900" alt="Check what we read table of stats" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b><strong class="text-white font-semibold">Read for you.</strong> The numbers are read from the screenshots (Gemini on the live site) and the player confirms them.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Admin payment check with transaction ID"><img src="media/shots/asian-moba/04.webp" width="416" height="900" alt="Admin payment check with transaction ID" loading="lazy" decoding="async"></button>
-                  <figcaption><b>4</b>Payments: match each UPI transaction ID with the money received, then approve or send it back.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Admin review comparing typed and read values"><img src="media/shots/asian-moba/04.webp" width="416" height="900" alt="Admin review comparing typed and read values" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b><strong class="text-white font-semibold">Admin check.</strong> Admins see what was read next to what the player typed. Differences are flagged.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Bracket picture with quarterfinal scores"><img src="media/shots/asian-moba/05.webp" width="416" height="900" alt="Bracket picture with quarterfinal scores" loading="lazy" decoding="async"></button>
-                  <figcaption><b>5</b>The bracket picture: seeded so the strongest teams meet late. Played matches show their scores.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: You are in page with player stats"><img src="media/shots/asian-moba/05.webp" width="416" height="900" alt="You are in page with player stats" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b><strong class="text-white font-semibold">You’re in.</strong> After the payment is approved, the player gets their stats card and can join a team.</figcaption>
                 </figure>
                 <figure class="gal-slide phone">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Team page with You won banner and next match"><img src="media/shots/asian-moba/06.webp" width="416" height="900" alt="Team page with You won banner and next match" loading="lazy" decoding="async"></button>
-                  <figcaption><b>6</b>A team’s page on match day: their result, the next opponent and the start time, with confetti for the win.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Team room with code and five players ready"><img src="media/shots/asian-moba/06.webp" width="416" height="900" alt="Team room with code and five players ready" loading="lazy" decoding="async"></button>
+                  <figcaption><b>6</b><strong class="text-white font-semibold">Team room.</strong> The captain shares a 6-digit code. Five players join, mark ready, and the team is submitted.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Bracket picture with scores"><img src="media/shots/asian-moba/07.webp" width="416" height="900" alt="Bracket picture with scores" loading="lazy" decoding="async"></button>
+                  <figcaption><b>7</b><strong class="text-white font-semibold">The bracket.</strong> Seeded by team power, so the strongest teams meet late. Played matches show their scores.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Check-in and result report form"><img src="media/shots/asian-moba/08.webp" width="416" height="900" alt="Check-in and result report form" loading="lazy" decoding="async"></button>
+                  <figcaption><b>8</b><strong class="text-white font-semibold">Match day.</strong> Captains check in, play, then report the score with a screenshot per game; the other captain confirms.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Team page with You won banner"><img src="media/shots/asian-moba/09.webp" width="416" height="900" alt="Team page with You won banner" loading="lazy" decoding="async"></button>
+                  <figcaption><b>9</b><strong class="text-white font-semibold">Winners.</strong> The winning team sees their result, their next opponent and start time, with confetti.</figcaption>
                 </figure>
               </div>
               <div class="gal-ctrl">
@@ -1116,9 +1139,11 @@
               </div>
               <p class="gal-hint">Run locally on the Firebase emulators with test players and teams · tap a picture to enlarge</p>
             </div>
-            <div class="proj-more">
-            <details class="how mb-6">
-              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
+            <div class="proj-detail">
+              <h4 class="font-mono text-xs sm:text-sm uppercase tracking-widest font-bold mb-3 text-neonAmber">How it works</h4>
+              <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
+              Players sign in with an email link, confirm their game ID, upload three stats screenshots and pay the entry fee by UPI. They form 5-player teams with a 6-digit code, then play through a seeded bracket, shown as a tree with colour-coded best-of rounds, and report each result with screenshots. On match day each team's page shows the next opponent and start time, players check in, and winners get confetti until their next match. Admins handle payments, reviews, refunds, brackets, disputes and emergency substitutes from one dashboard, and every admin change is logged. The look is red, matte black and gold, with a shimmering gold lion logo.
+            </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Screenshots Read by Gemini</strong>
@@ -1137,13 +1162,12 @@
                 Team, payment, result and admin changes go through Cloud Functions in Firestore transactions, behind Firestore and Storage security rules. 266 tests run against the Firebase emulators.
               </div>
             </div>
-            </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
+              <p class="mt-6 font-mono text-xs sm:text-sm uppercase tracking-wider text-gray-300"><span class="text-gray-400">Built with:</span> React • TypeScript • Firebase • Gemini Vision</p>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mt-8">
               <span class="tag tag-amber">Up to 50 Teams</span>
               <span class="tag">Mobile-First</span>
               <span class="tag">Firebase + Vertex AI</span>
-            </div>
-            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
@@ -1163,39 +1187,32 @@
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Preflight Agent Skill</h3>
               <span class="tag tag-pink">AI Coding Agents</span>
             </div>
-            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">Makes AI coding agents research before they build, and learn from every bug.</p>
-            <p class="font-mono text-neonPink text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">Agent Skills (SKILL.md) • Claude Code • Codex • Gemini CLI</p>
-            <div class="proj-body">
-            <div class="proj-desc">
-            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
-              A reusable skill for AI coding tools. Before the agent picks a library, API, SDK version or AI model, it checks the official docs for deprecation, device support and licence. After every snag, it saves one short "before doing X, check Y" lesson that it reads on the next project, so the same mistake doesn't happen twice. My own copy started with lessons from the snags in all my apps above.
-            </p>
-            </div>
-            <div class="proj-gallery gal" data-gallery style="--acc:#ff007f" role="region" aria-roledescription="carousel" aria-label="The skill’s real files and lessons">
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-6 sm:mb-8 max-w-4xl">Stop AI coding agents from repeating mistakes: they check facts before they build, and every bug becomes a lesson for the next project.</p>
+            <div class="gal mb-8" data-gallery style="--acc:#ff007f" role="region" aria-roledescription="carousel" aria-label="The skill’s real files and lessons">
               <div class="gal-track" tabindex="0">
                 <figure class="gal-slide wide">
                   <button type="button" class="gal-zoom" aria-label="Enlarge: Preflight skill folder"><img src="media/shots/preflight/01.webp" width="1280" height="800" alt="Preflight skill folder" loading="lazy" decoding="async"></button>
-                  <figcaption><b>1</b>The whole skill is a folder of Markdown files, so any coding agent can read it.</figcaption>
+                  <figcaption><b>1</b><strong class="text-white font-semibold">A folder of Markdown.</strong> The whole skill is plain Markdown files, so any coding agent can read it.</figcaption>
                 </figure>
                 <figure class="gal-slide wide">
                   <button type="button" class="gal-zoom" aria-label="Enlarge: SKILL.md before-building steps"><img src="media/shots/preflight/02.webp" width="1280" height="800" alt="SKILL.md before-building steps" loading="lazy" decoding="async"></button>
-                  <figcaption><b>2</b>Before building: read the lessons, list the risky choices, research them, and note what was checked.</figcaption>
+                  <figcaption><b>2</b><strong class="text-white font-semibold">Before building.</strong> Read the lessons, list the risky choices, research them, and note what was checked.</figcaption>
                 </figure>
                 <figure class="gal-slide wide">
                   <button type="button" class="gal-zoom" aria-label="Enlarge: Research checklist"><img src="media/shots/preflight/03.webp" width="1280" height="800" alt="Research checklist" loading="lazy" decoding="async"></button>
-                  <figcaption><b>3</b>The research checklist: version, deprecation, device support, licence and known issues.</figcaption>
+                  <figcaption><b>3</b><strong class="text-white font-semibold">Research routine.</strong> Version, deprecation, device support, licence and known issues, from official sources first.</figcaption>
                 </figure>
                 <figure class="gal-slide wide">
                   <button type="button" class="gal-zoom" aria-label="Enlarge: Saved lessons"><img src="media/shots/preflight/04.webp" width="1280" height="800" alt="Saved lessons" loading="lazy" decoding="async"></button>
-                  <figcaption><b>4</b>Real lessons saved after real bugs, each one written as “before doing X, check Y”.</figcaption>
+                  <figcaption><b>4</b><strong class="text-white font-semibold">Lessons.</strong> Real lessons saved after real bugs, each one written as “before doing X, check Y”.</figcaption>
                 </figure>
                 <figure class="gal-slide wide">
                   <button type="button" class="gal-zoom" aria-label="Enlarge: session.md template"><img src="media/shots/preflight/05.webp" width="1280" height="800" alt="session.md template" loading="lazy" decoding="async"></button>
-                  <figcaption><b>5</b>Each project keeps a session.md, so a new session can pick up where the last one stopped.</figcaption>
+                  <figcaption><b>5</b><strong class="text-white font-semibold">session.md.</strong> Each project keeps one, so a new session can pick up where the last one stopped.</figcaption>
                 </figure>
                 <figure class="gal-slide wide">
                   <button type="button" class="gal-zoom" aria-label="Enlarge: End-of-work reminder hook"><img src="media/shots/preflight/06.webp" width="1280" height="800" alt="End-of-work reminder hook" loading="lazy" decoding="async"></button>
-                  <figcaption><b>6</b>An optional reminder at the end of the work makes sure the lesson and session.md get saved.</figcaption>
+                  <figcaption><b>6</b><strong class="text-white font-semibold">End-of-work reminder.</strong> An optional hook reminds the agent to save the lesson and update session.md.</figcaption>
                 </figure>
               </div>
               <div class="gal-ctrl">
@@ -1206,9 +1223,11 @@
               </div>
               <p class="gal-hint">The skill’s real files and lessons · tap a picture to enlarge</p>
             </div>
-            <div class="proj-more">
-            <details class="how mb-6">
-              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
+            <div class="proj-detail">
+              <h4 class="font-mono text-xs sm:text-sm uppercase tracking-widest font-bold mb-3 text-neonPink">How it works</h4>
+              <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
+              A reusable skill for AI coding tools. Before the agent picks a library, API, SDK version or AI model, it checks the official docs for deprecation, device support and licence. After every snag, it saves one short "before doing X, check Y" lesson that it reads on the next project, so the same mistake doesn't happen twice. My own copy started with lessons from the snags in all my apps above.
+            </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Lessons, Not a Bug Log</strong>
@@ -1219,13 +1238,12 @@
                 Plain Markdown in the open Agent Skills format, so the same folder works in Claude Code, Codex, Gemini CLI, GitHub Copilot and Cursor. Also keeps a <code>session.md</code> per project so any new session can pick up the work.
               </div>
             </div>
-            </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
+              <p class="mt-6 font-mono text-xs sm:text-sm uppercase tracking-wider text-gray-300"><span class="text-gray-400">Built with:</span> Agent Skills (SKILL.md) • Claude Code • Codex • Gemini CLI</p>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mt-8">
               <span class="tag tag-pink">Self-Updating</span>
               <span class="tag">Markdown Only</span>
               <span class="tag">Open Source • MIT</span>
-            </div>
-            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
@@ -1248,40 +1266,44 @@
               <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">DriveMate</h3>
               <span class="tag tag-amber">Personal Project</span>
             </div>
-            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-4">A Windows tool for setting up simulated factory devices, with device plugins and an offline AI helper that answers from the manual.</p>
-            <p class="font-mono text-neonAmber text-xs sm:text-sm tracking-widest uppercase mb-6 sm:mb-8">C# • WPF • .NET 10 • Modbus TCP • Local AI (Phi-4-mini)</p>
-            <div class="proj-body">
-            <div class="proj-desc">
-            <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed">
-              A personal learning project with no real hardware: I built a simulated servo drive and remote I/O module, and the app talks to them over real Modbus TCP. Each device type is a plugin loaded at runtime, so adding the second one needed no change to the main app. It checks and reads back every setting it writes, draws a live graph, saves setups, and keeps a fault log in SQLite.
-              <span class="block mt-4">It also has an <strong class="text-white font-semibold">offline AI helper</strong>: ask a question and it answers from the device's PDF manual, with the page it came from. A search finds the matching parts of the manual, plain code refuses questions the manual doesn't cover, and only then does a small AI model (Phi-4-mini, run on the PC through LLamaSharp) write the answer. Nothing goes to the internet.</span>
-            </p>
-            </div>
-            <div class="proj-gallery gal" data-gallery style="--acc:#ffaa00" role="region" aria-roledescription="carousel" aria-label="Screenshots from the app, talking to its simulated devices">
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-6 sm:mb-8 max-w-4xl">Practise setting up factory devices safely: configure simulated drives over real Modbus, see faults like the real thing, and get answers from the manual from an offline AI helper.</p>
+            <div class="gal mb-8" data-gallery style="--acc:#ffaa00" role="region" aria-roledescription="carousel" aria-label="Screenshots from the app, talking to its simulated devices">
               <div class="gal-track" tabindex="0">
                 <figure class="gal-slide wide">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: DriveMate settings tab"><img src="media/shots/drivemate/01.webp" width="1240" height="700" alt="DriveMate settings tab" loading="lazy" decoding="async"></button>
-                  <figcaption><b>1</b>Settings: every value with its allowed range. Each write is read back and confirmed.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Settings tab with written and confirmed values"><img src="media/shots/drivemate/01.webp" width="1240" height="700" alt="Settings tab with written and confirmed values" loading="lazy" decoding="async"></button>
+                  <figcaption><b>1</b><strong class="text-white font-semibold">Change settings.</strong> Each value shows its allowed range. Every write is read back and confirmed.</figcaption>
                 </figure>
                 <figure class="gal-slide wide">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Live motor current graph"><img src="media/shots/drivemate/02.webp" width="1240" height="700" alt="Live motor current graph" loading="lazy" decoding="async"></button>
-                  <figcaption><b>2</b>A live graph of motor current from the simulated servo drive.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Target speed refused as out of range"><img src="media/shots/drivemate/02.webp" width="1240" height="700" alt="Target speed refused as out of range" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b><strong class="text-white font-semibold">Bad values refused.</strong> A speed of 5000 is outside −3000 to 3000 rpm, so it never reaches the device.</figcaption>
                 </figure>
                 <figure class="gal-slide wide">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Servo drive plugin screen"><img src="media/shots/drivemate/03.webp" width="1240" height="700" alt="Servo drive plugin screen" loading="lazy" decoding="async"></button>
-                  <figcaption><b>3</b>Each device type is a plugin with its own screen. Here, the servo drive’s overview.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Live graph of motor current"><img src="media/shots/drivemate/03.webp" width="1240" height="700" alt="Live graph of motor current" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b><strong class="text-white font-semibold">Live graph.</strong> Motor current spikes each time the motor speeds up, then settles.</figcaption>
                 </figure>
                 <figure class="gal-slide wide">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Fault F004 shown on the drive"><img src="media/shots/drivemate/04.webp" width="1240" height="700" alt="Fault F004 shown on the drive" loading="lazy" decoding="async"></button>
-                  <figcaption><b>4</b>Too short an acceleration time trips fault F004 (overcurrent), like a real drive would.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Fault F004 overcurrent"><img src="media/shots/drivemate/04.webp" width="1240" height="700" alt="Fault F004 overcurrent" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b><strong class="text-white font-semibold">A real-looking fault.</strong> Too short an acceleration time draws too much current and trips F004, and the plugin says what to do.</figcaption>
                 </figure>
                 <figure class="gal-slide wide">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: AI helper answer citing page 7"><img src="media/shots/drivemate/05.webp" width="1240" height="700" alt="AI helper answer citing page 7" loading="lazy" decoding="async"></button>
-                  <figcaption><b>5</b>The offline AI helper: asked how to fix F004, it answers from the PDF manual and shows page 7.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: I/O module plugin screen"><img src="media/shots/drivemate/05.webp" width="1240" height="700" alt="I/O module plugin screen" loading="lazy" decoding="async"></button>
+                  <figcaption><b>5</b><strong class="text-white font-semibold">Second plugin.</strong> The SR-8 I/O module brings its own screen, loaded at runtime without changing the app.</figcaption>
                 </figure>
                 <figure class="gal-slide wide">
-                  <button type="button" class="gal-zoom" aria-label="Enlarge: Helper refusing a question about F099"><img src="media/shots/drivemate/06.webp" width="1240" height="700" alt="Helper refusing a question about F099" loading="lazy" decoding="async"></button>
-                  <figcaption><b>6</b>Asked about F099, which the manual never mentions: plain code refuses before the AI even runs.</figcaption>
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Setup confirm dialog"><img src="media/shots/drivemate/06.webp" width="330" height="166" alt="Setup confirm dialog" loading="lazy" decoding="async"></button>
+                  <figcaption><b>6</b><strong class="text-white font-semibold">Load a setup.</strong> Before loading a saved setup, the app lists what will change and asks first.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: AI helper answer citing page 7"><img src="media/shots/drivemate/07.webp" width="1240" height="700" alt="AI helper answer citing page 7" loading="lazy" decoding="async"></button>
+                  <figcaption><b>7</b><strong class="text-white font-semibold">Ask the manual (AI).</strong> The offline AI helper answers how to fix F004 from the PDF manual, with page 7 shown underneath.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Question about F099 refused by code"><img src="media/shots/drivemate/08.webp" width="1240" height="700" alt="Question about F099 refused by code" loading="lazy" decoding="async"></button>
+                  <figcaption><b>8</b><strong class="text-white font-semibold">Refused by code.</strong> F099 isn’t in the manual, so plain code refuses before the AI even runs.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Question about motor cable refused by the model"><img src="media/shots/drivemate/09.webp" width="1240" height="700" alt="Question about motor cable refused by the model" loading="lazy" decoding="async"></button>
+                  <figcaption><b>9</b><strong class="text-white font-semibold">Refused by the AI.</strong> When the search can’t rule a question out, the model itself says the manual doesn’t cover it.</figcaption>
                 </figure>
               </div>
               <div class="gal-ctrl">
@@ -1292,9 +1314,12 @@
               </div>
               <p class="gal-hint">Screenshots from the app, talking to its simulated devices · tap a picture to enlarge</p>
             </div>
-            <div class="proj-more">
-            <details class="how mb-6">
-              <summary><span class="how-closed">Technical details</span><span class="how-open">Hide details</span></summary>
+            <div class="proj-detail">
+              <h4 class="font-mono text-xs sm:text-sm uppercase tracking-widest font-bold mb-3 text-neonAmber">How it works</h4>
+              <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
+              A personal learning project with no real hardware: I built a simulated servo drive and remote I/O module, and the app talks to them over real Modbus TCP. Each device type is a plugin loaded at runtime, so adding the second one needed no change to the main app. It checks and reads back every setting it writes, draws a live graph, saves setups, and keeps a fault log in SQLite.
+              <span class="block mt-4">It also has an <strong class="text-white font-semibold">offline AI helper</strong>: ask a question and it answers from the device's PDF manual, with the page it came from. A search finds the matching parts of the manual, plain code refuses questions the manual doesn't cover, and only then does a small AI model (Phi-4-mini, run on the PC through LLamaSharp) write the answer. Nothing goes to the internet.</span>
+            </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
               <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
                 <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Offline Helper That Can Refuse</strong>
@@ -1305,14 +1330,13 @@
                 265 automated tests run on every push with GitHub Actions, including checks against the Modbus standard and a second Modbus library. It has never been tested on real hardware, and the README says so first.
               </div>
             </div>
-            </details>
-            <div class="flex gap-2 sm:gap-2.5 flex-wrap">
+              <p class="mt-6 font-mono text-xs sm:text-sm uppercase tracking-wider text-gray-300"><span class="text-gray-400">Built with:</span> C# • WPF • .NET 10 • Modbus TCP • Local AI (Phi-4-mini)</p>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mt-8">
               <span class="tag tag-amber">Offline AI</span>
               <span class="tag">Plugin Architecture</span>
               <span class="tag">SQLite</span>
               <span class="tag">Open Source • MIT</span>
-            </div>
-            </div>
             </div>
           </div>
           <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">

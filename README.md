@@ -10,7 +10,7 @@ Source of my portfolio website: **https://r-dilipkumar.github.io/**
 
 ## About Me
 
-I'm a software developer who builds with AI. I research a problem first, then ship the fix: LLM and agent workflows, enterprise automation, and apps for phone, web and desktop. My degree is mechatronics (B.E., 8.29 CGPA); Android, on-device AI and LLM tooling I taught myself from documentation, open-source code and research papers.
+I'm a software developer who builds with AI. I research a problem first, then ship the fix: LLM and agent workflows, enterprise automation, and apps for phone and web. My degree is mechatronics (B.E., 8.29 CGPA); Android, on-device AI and LLM tooling I taught myself from documentation, open-source code and research papers.
 
 ---
 
@@ -32,12 +32,6 @@ All five are open source (MIT) and run on Android 10+. Net One Tap started as a 
 |---|---|---|
 | **ASIAN MOBA 5v5 Tournament** | Sign-ups, team forming and brackets for a Mobile Legends (MLBB) 5v5 tournament, in one phone-friendly web app. Players upload stats screenshots that Gemini 3 Flash (Vertex AI) reads and checks, pay by UPI, form teams with a 6-digit code, check in for matches and report results with screenshots. Admins run payments, reviews, refunds, seeded brackets (shown as a tree), disputes, match-day alerts and emergency substitutes. Built with React, TypeScript and Firebase (Auth, Firestore, Storage, Cloud Functions). | [Open app](https://sea-moba-tournament.web.app) |
 
-## Desktop App
-
-| App | What it does | Links |
-|---|---|---|
-| **DriveMate** | Personal learning project: a Windows tool for setting up simulated factory devices over Modbus TCP. Each device type is a plugin loaded at runtime. It has an offline AI helper (Phi-4-mini through LLamaSharp) that answers from a device's PDF manual with the page number, and refuses what the manual doesn't cover. Built with C#, WPF and .NET 10, with 265 automated tests. It has never been tested on real hardware. | [GitHub](https://github.com/R-Dilipkumar/drivemate-modbus) · [Watch demo](https://r-dilipkumar.github.io/drivemate-modbus/) · [Download zip](https://github.com/R-Dilipkumar/drivemate-modbus/releases/latest/download/DriveMate-win-x64.zip) |
-
 ## AI Agent Skill
 
 | Skill | What it does | Links |
@@ -56,12 +50,11 @@ All five are open source (MIT) and run on Android 10+. Net One Tap started as a 
 
 ## Skills
 
-- **AI & LLMs:** LLM APIs with structured prompts (Python), agentic workflows with ICM (Interpretable Context Methodology), AI-assisted development with coding agents, reusable agent skills (SKILL.md), Gemini vision for reading screenshots into structured data, graph-based RAG over Markdown knowledge bases, local LLMs with LLamaSharp and llama.cpp, retrieval with SQLite FTS5, PDF text extraction with PdfPig, Hugging Face.
+- **AI & LLMs:** LLM APIs with structured prompts (Python), agentic workflows with ICM (Interpretable Context Methodology), AI-assisted development with coding agents, reusable agent skills (SKILL.md), Gemini vision for reading screenshots into structured data, graph-based RAG over Markdown knowledge bases, local LLMs with llama.cpp, Hugging Face.
 - **On-device AI & Android:** Sherpa-ONNX, Whisper, Silero VAD, ONNX Runtime, IndicTrans2, Google ML Kit, Kotlin, Jetpack Compose, Room, Media3, MediaCodec, OpenGL ES / GLSL, WallpaperService, Shizuku.
 - **Web & cloud:** React, TypeScript, Vite, Tailwind CSS, Firebase (Hosting, Auth, Firestore, Cloud Storage, Cloud Functions), security rules, Cloud Scheduler, Vertex AI (Gemini vision), Firebase Emulator Suite, Zod, Vitest.
 - **Enterprise ERP:** SuiteScript 2.1, SuiteFlow, SuiteAnalytics, RESTlets, Suitelets, Coupa, Filevine, Zapier, OAuth 2.0.
 - **Robotics & embedded:** FANUC, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB design.
-- **Desktop & industrial software:** C#, .NET 10, WPF, MVVM, plugin loading (AssemblyLoadContext), Modbus TCP (NModbus), SQLite, ASP.NET Core minimal APIs, xUnit, GitHub Actions.
 - **Languages:** Python, Kotlin, TypeScript, JavaScript, Java, C#, C, Embedded C, SQL.
 
 ---
@@ -81,8 +74,8 @@ Currently open to new roles (on-site, hybrid or remote), while building new proj
 
 A single `index.html` built with Tailwind CSS (CDN) and a Three.js animated background. No build step. The resume PDF lives at `media/Dilipkumar_Ravichandran_Resume.pdf`; replace that file to update every "Download Curated Resume" button.
 
-- **Project cards:** each card shows what the project is for (its end goal), then a gallery of screenshots of it working, one step per picture with a caption, then a "How it works" section with the details and what it's built with. The gallery moves on by itself while it's on screen; visitors can swipe, drag, use the arrows or dots, pause it, or tap a picture to see it full size. Card colour shows the kind of project (cyan: Android apps, pink: AI tools, amber: web, desktop and hardware).
-- **Screenshots:** WebP files in `media/shots/<project>/`, all from the projects actually running: LiveSub, Net One Tap (with Shizuku and a simulated 5G network), Offline Reel Captions, Artisan NPR and Live Wallpaper Maker on the Android emulator; ASIAN MOBA on the local Firebase emulators with test players; Preflight rendered from the skill's own files; DriveMate from its repo's screenshots of the app.
+- **Project cards:** each card shows what the project is for (its end goal), then a gallery of screenshots of it working, one step per picture with a caption, then a "How it works" section with the details and what it's built with. The gallery moves on by itself while it's on screen; visitors can swipe, drag, use the arrows or dots, pause it, or tap a picture to see it full size. Card colour shows the kind of project (cyan: Android apps, pink: AI tools, amber: web and hardware).
+- **Screenshots:** WebP files in `media/shots/<project>/`, all from the projects actually running: LiveSub, Net One Tap (with Shizuku and a simulated 5G network), Offline Reel Captions, Artisan NPR and Live Wallpaper Maker on the Android emulator; ASIAN MOBA on the local Firebase emulators with test players; Preflight rendered from the skill's own files.
 - **Motion:** visitors whose system asks for reduced motion (on Windows: Settings › Accessibility › Visual effects › Animation effects off) get no scroll-in or typing animations; the 3D background keeps moving for everyone. On phones the background draws at a lower resolution to save battery, and it pauses while the contact panel or video player is open.
 
 To run it locally:

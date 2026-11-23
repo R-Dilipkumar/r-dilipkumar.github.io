@@ -589,7 +589,7 @@
             <span class="font-mono text-xs uppercase tracking-widest text-neonCyan font-bold">Summary</span>
           </div>
           <p class="text-gray-200 text-base sm:text-lg md:text-xl leading-relaxed max-w-4xl mb-5">
-            Software developer who builds with AI. I've released five Android apps, a live web app and an open-source AI agent skill:
+            Software developer who builds with AI. I've released five Android apps, a live web app and an open-source AI agent skill, and I'm building a Windows app that sets up any mouse:
           </p>
           <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3 text-gray-300 text-base sm:text-lg leading-snug mb-6 max-w-5xl">
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">LiveSub</strong> live subtitles and translation over any app, fully on the phone</span></li>
@@ -599,6 +599,7 @@
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">Net One Tap</strong> shows when your SIM is on 5G Unlimited and fixes stuck mobile data in one tap</span></li>
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonAmber flex-shrink-0"></span><span><strong class="text-white font-semibold">ASIAN MOBA 5v5 Tournament</strong> sign-ups, teams and brackets on Firebase; Gemini reads players' stats screenshots</span></li>
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonPink flex-shrink-0"></span><span><strong class="text-white font-semibold">Preflight Agent Skill</strong> makes AI coding agents research before they build and learn from every bug</span></li>
+            <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonAmber flex-shrink-0"></span><span><strong class="text-white font-semibold">Mouse Config</strong> saves buttons, DPI and lighting inside a mouse that came with no software (in progress)</span></li>
           </ul>
           <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-4xl">
             I work with LLMs every day, from API calls with structured prompts to file-based agent workflows (ICM), backed by enterprise NetSuite automation experience (SuiteScript 2.1, Coupa, Filevine, Litify) and a hands-on robotics and embedded background. Most of what I use today I taught myself, from docs, source code and research papers.
@@ -1258,6 +1259,77 @@
           </div>
         </div>
 
+        <!-- Mouse Config -->
+        <div class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonAmber/40 min-w-0 w-full">
+          <div>
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+              <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Mouse Config</h3>
+              <span class="tag tag-amber">Windows • USB HID</span>
+            </div>
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-6 sm:mb-8 max-w-4xl">Set up any mouse on Windows, then close the app: buttons, DPI and lighting are saved inside the mouse itself, even for a budget mouse that came with no software.</p>
+            <div class="gal mb-8" data-gallery style="--acc:#ffaa00" role="region" aria-roledescription="carousel" aria-label="The Windows app, run on my own mouse">
+              <div class="gal-track" tabindex="0">
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Mouse Config overview of a detected mouse"><img src="media/shots/mouse-config/01.webp" width="1164" height="752" alt="Mouse Config overview of a detected mouse" loading="lazy" decoding="async"></button>
+                  <figcaption><b>1</b><strong class="text-white font-semibold">Finds any mouse.</strong> Who made it (by USB ID), its buttons and wheel, and how that kind of mouse is normally set up.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Button slots stored inside the mouse"><img src="media/shots/mouse-config/02.webp" width="1164" height="752" alt="Button slots stored inside the mouse" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b><strong class="text-white font-semibold">Buttons in the mouse.</strong> Give any button any click, media key or keyboard shortcut; press it once to record it.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: DPI steps and lighting effects"><img src="media/shots/mouse-config/03.webp" width="1164" height="752" alt="DPI steps and lighting effects" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b><strong class="text-white font-semibold">DPI and lighting.</strong> Pick the DPI step and the lighting effect and speed, then save: the app reads the mouse back to check.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Live button test"><img src="media/shots/mouse-config/04.webp" width="1164" height="752" alt="Live button test" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b><strong class="text-white font-semibold">Button test.</strong> Every press lights up and shows what the mouse really sent; it also measures the report rate.</figcaption>
+                </figure>
+              </div>
+              <div class="gal-ctrl">
+                <button type="button" class="gal-btn gal-prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                <div class="gal-dots"></div>
+                <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
+                <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+              </div>
+              <p class="gal-hint">The Windows app, run on my own mouse · tap a picture to enlarge</p>
+            </div>
+            <div class="proj-detail">
+              <h4 class="font-mono text-xs sm:text-sm uppercase tracking-widest font-bold mb-3 text-neonAmber">How it works</h4>
+              <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
+              My Redgear mouse came with no software and its maker's site was down. I traced its chip from the USB ID (Sunplus 1BCF:08A0), found its settings channel among the HID channels, and wrote the settings protocol in C# from an open-source Linux tool's notes. The app reads the mouse's 255-byte settings block, saves a backup, and writes only the button, DPI and lighting areas, then reads everything back to confirm. For any other mouse it still finds it, tests every button, measures the report rate, and changes Windows' pointer and scroll settings.
+            </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Safe by Design</strong>
+                It checks the mouse's identity first and never sends guessed commands. Before every save it checks the settings checksums and asks Yes or No, and a backup can put the original settings back.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Researched for Every Mouse</strong>
+                Mouse makers each use their own commands, so I mapped how Logitech, Razer, SteelSeries, Corsair and the budget chips are configured. The app names the maker of 33 known USB IDs and points to the right tool.
+              </div>
+            </div>
+              <p class="mt-6 font-mono text-xs sm:text-sm uppercase tracking-wider text-gray-300"><span class="text-gray-400">Built with:</span> C# • .NET 10 • WPF • Windows Raw Input • USB HID • xUnit</p>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mt-8">
+              <span class="tag tag-amber">In Progress</span>
+              <span class="tag">127 Tests</span>
+              <span class="tag">Open Source • MIT</span>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
+            <span class="font-mono text-xs text-gray-400">Source and research on GitHub · no download yet</span>
+            <div class="flex items-center gap-3 flex-wrap">
+              <a href="https://r-dilipkumar.github.io/universal-mouse-config/research.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonAmber border border-neonAmber/40 bg-neonAmber/5 hover:bg-neonAmber hover:text-void px-5 py-3 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,170,0,0.5)]">
+                Research ↗
+              </a>
+              <a href="https://github.com/R-Dilipkumar/universal-mouse-config" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonAmber border border-neonAmber px-5 py-3 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(255,170,0,0.6)]">
+                GitHub ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
         <!-- Offline Voice Companion (grew from Local Mobile AI) -->
         <div class="glass-panel reveal-left delay-100 lg:col-span-4 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonPink/40 min-w-0 w-full">
           <div>
@@ -1578,11 +1650,11 @@
           </div>
           <div class="glass-panel reveal-left delay-400 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-white mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Robotics, IoT & Embedded</h4>
-            <p class="text-gray-300 leading-relaxed font-normal text-base sm:text-lg">FANUC Robotics, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB Design.</p>
+            <p class="text-gray-300 leading-relaxed font-normal text-base sm:text-lg">FANUC Robotics, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB Design, USB HID protocols (Windows Raw Input, HID feature reports).</p>
           </div>
           <div class="glass-panel reveal-left delay-400 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-gray-400 mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Languages & Tools</h4>
-            <p class="text-gray-300 leading-relaxed font-normal text-base sm:text-lg">Python, Kotlin, TypeScript, JavaScript, Java, C#, C, Embedded C, SQL, Gradle, ADB, Linux / WSL2, Git, GitHub.</p>
+            <p class="text-gray-300 leading-relaxed font-normal text-base sm:text-lg">Python, Kotlin, TypeScript, JavaScript, Java, C# (.NET 10, WPF), C, Embedded C, SQL, Gradle, ADB, Linux / WSL2, Git, GitHub.</p>
           </div>
         </div>
 

@@ -40,6 +40,12 @@ All five are open source (MIT) and run on Android 10+. Net One Tap started as a 
 
 ---
 
+## Windows App (in progress)
+
+| App | What it does | Links |
+|---|---|---|
+| **Mouse Config** | Set up any mouse on Windows, then close the app. It finds the mouse, names its maker from the USB ID, tests every button and measures the report rate, and changes Windows' pointer and scroll settings. For mice with a plugin (first: Sunplus `1BCF:08A0`, sold as Redgear) it saves buttons (any click, media key or shortcut), DPI and lighting inside the mouse, with a backup and a read-back check. Built with C#, .NET 10 and WPF, using Windows Raw Input and USB HID feature reports. | [GitHub](https://github.com/R-Dilipkumar/universal-mouse-config) · [Research page](https://r-dilipkumar.github.io/universal-mouse-config/research.html) |
+
 ## Experience
 
 - **Zenardy Technologies**, Associate Developer / NetSuite Consultant (Jan 2026 – Jun 2026), promoted from Technical Intern (Sep 2025 – Jan 2026): SuiteScript 2.1 automation for procurement and billing, Coupa invoice and payment sync, Filevine / Litify / Zapier to NetSuite pipelines, OAuth 2.0 data extraction, and client ledger systems for law firms.
@@ -54,8 +60,8 @@ All five are open source (MIT) and run on Android 10+. Net One Tap started as a 
 - **On-device AI & Android:** Sherpa-ONNX, Whisper, Silero VAD, ONNX Runtime, IndicTrans2, Google ML Kit, Kotlin, Jetpack Compose, Room, Media3, MediaCodec, OpenGL ES / GLSL, WallpaperService, Shizuku.
 - **Web & cloud:** React, TypeScript, Vite, Tailwind CSS, Firebase (Hosting, Auth, Firestore, Cloud Storage, Cloud Functions), security rules, Cloud Scheduler, Vertex AI (Gemini vision), Firebase Emulator Suite, Zod, Vitest.
 - **Enterprise ERP:** SuiteScript 2.1, SuiteFlow, SuiteAnalytics, RESTlets, Suitelets, Coupa, Filevine, Zapier, OAuth 2.0.
-- **Robotics & embedded:** FANUC, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB design.
-- **Languages:** Python, Kotlin, TypeScript, JavaScript, Java, C#, C, Embedded C, SQL.
+- **Robotics & embedded:** FANUC, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB design, USB HID protocols (Windows Raw Input, HID feature reports).
+- **Languages:** Python, Kotlin, TypeScript, JavaScript, Java, C# (.NET 10, WPF), C, Embedded C, SQL.
 
 ---
 

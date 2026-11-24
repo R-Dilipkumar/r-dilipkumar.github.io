@@ -40,6 +40,14 @@ All five are open source (MIT) and run on Android 10+. Net One Tap started as a 
 
 ---
 
+## Chrome Extension
+
+| Extension | What it does | Links |
+|---|---|---|
+| **Job Form Autofill** | Fill in a job application once, and the next ones fill themselves from answers saved only on your computer. It reads each field's label, fills text boxes, dropdowns (including Greenhouse and Workday-style ones), radio buttons and place boxes, lists new questions in the popup to answer once, and saves your answers when you press Submit or Next. Never submits, never fills passwords, ID numbers or consent boxes. No AI, no server. Tested on 10 live forms (Greenhouse, Lever, Ashby, Workable, Teamtailor). Plain JavaScript, Manifest V3. | [GitHub](https://github.com/R-Dilipkumar/job-form-autofill) · [Download](https://github.com/R-Dilipkumar/job-form-autofill/releases/latest) · [Privacy](https://r-dilipkumar.github.io/job-form-autofill/privacy.html) |
+
+---
+
 ## Windows App (in progress)
 
 | App | What it does | Links |
@@ -58,7 +66,7 @@ All five are open source (MIT) and run on Android 10+. Net One Tap started as a 
 
 - **AI & LLMs:** LLM APIs with structured prompts (Python), agentic workflows with ICM (Interpretable Context Methodology), AI-assisted development with coding agents, reusable agent skills (SKILL.md), Gemini vision for reading screenshots into structured data, graph-based RAG over Markdown knowledge bases, local LLMs with llama.cpp, Hugging Face.
 - **On-device AI & Android:** Sherpa-ONNX, Whisper, Silero VAD, ONNX Runtime, IndicTrans2, Google ML Kit, Kotlin, Jetpack Compose, Room, Media3, MediaCodec, OpenGL ES / GLSL, WallpaperService, Shizuku.
-- **Web & cloud:** React, TypeScript, Vite, Tailwind CSS, Firebase (Hosting, Auth, Firestore, Cloud Storage, Cloud Functions), security rules, Cloud Scheduler, Vertex AI (Gemini vision), Firebase Emulator Suite, Zod, Vitest.
+- **Web & cloud:** React, TypeScript, Vite, Tailwind CSS, Firebase (Hosting, Auth, Firestore, Cloud Storage, Cloud Functions), security rules, Cloud Scheduler, Vertex AI (Gemini vision), Firebase Emulator Suite, Zod, Vitest, Chrome Extensions (Manifest V3), Chrome DevTools Protocol, WCAG accessibility checks.
 - **Enterprise ERP:** SuiteScript 2.1, SuiteFlow, SuiteAnalytics, RESTlets, Suitelets, Coupa, Filevine, Zapier, OAuth 2.0.
 - **Robotics & embedded:** FANUC, Allen-Bradley PLCs, SolidWorks, ESP32, Arduino, LabVIEW, PCB design, USB HID protocols (Windows Raw Input, HID feature reports).
 - **Languages:** Python, Kotlin, TypeScript, JavaScript, Java, C# (.NET 10, WPF), C, Embedded C, SQL.

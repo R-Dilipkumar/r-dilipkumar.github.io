@@ -589,7 +589,7 @@
             <span class="font-mono text-xs uppercase tracking-widest text-neonCyan font-bold">Summary</span>
           </div>
           <p class="text-gray-200 text-base sm:text-lg md:text-xl leading-relaxed max-w-4xl mb-5">
-            Software developer who builds with AI. I've released five Android apps, a live web app and an open-source AI agent skill, and I'm building a Windows app that sets up any mouse:
+            Software developer who builds with AI. I've released five Android apps, a live web app, a Chrome extension and an open-source AI agent skill, and I'm building a Windows app that sets up any mouse:
           </p>
           <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3 text-gray-300 text-base sm:text-lg leading-snug mb-6 max-w-5xl">
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">LiveSub</strong> live subtitles and translation over any app, fully on the phone</span></li>
@@ -599,6 +599,7 @@
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">Net One Tap</strong> shows when your SIM is on 5G Unlimited and fixes stuck mobile data in one tap</span></li>
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonAmber flex-shrink-0"></span><span><strong class="text-white font-semibold">ASIAN MOBA 5v5 Tournament</strong> sign-ups, teams and brackets on Firebase; Gemini reads players' stats screenshots</span></li>
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonPink flex-shrink-0"></span><span><strong class="text-white font-semibold">Preflight Agent Skill</strong> makes AI coding agents research before they build and learn from every bug</span></li>
+            <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonCyan flex-shrink-0"></span><span><strong class="text-white font-semibold">Job Form Autofill</strong> a Chrome extension that fills job applications from answers kept on my own computer</span></li>
             <li class="flex gap-3"><span class="mt-[0.55em] w-2 h-2 rounded-full bg-neonAmber flex-shrink-0"></span><span><strong class="text-white font-semibold">Mouse Config</strong> saves buttons, DPI and lighting inside a mouse that came with no software (in progress)</span></li>
           </ul>
           <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-4xl">
@@ -1330,6 +1331,77 @@
           </div>
         </div>
 
+        <!-- Job Form Autofill -->
+        <div class="glass-panel reveal delay-100 lg:col-span-12 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonCyan/40 min-w-0 w-full">
+          <div>
+            <div class="flex flex-wrap justify-between items-start mb-3 gap-3 sm:gap-4 min-w-0">
+              <h3 class="text-3xl sm:text-4xl font-bold text-white break-words">Job Form Autofill</h3>
+              <span class="tag tag-cyan">Chrome Extension • JavaScript</span>
+            </div>
+            <p class="text-white/90 text-lg sm:text-xl font-semibold mb-6 sm:mb-8 max-w-4xl">Fill in a job application once, and every one after that fills itself from answers saved only on my own computer. It never submits for me.</p>
+            <div class="gal mb-8" data-gallery style="--acc:#00f3ff" role="region" aria-roledescription="carousel" aria-label="The Chrome extension, shown with test data">
+              <div class="gal-track" tabindex="0">
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: A job form filled by the extension"><img src="media/shots/job-form-autofill/01.webp" width="1164" height="728" alt="A job form filled by the extension, with the popup open" loading="lazy" decoding="async"></button>
+                  <figcaption><b>1</b><strong class="text-white font-semibold">Fills the form.</strong> Reads each question and fills my saved answer. Solid green: filled. Dashed yellow: a guess to check. Dotted red: do it by hand.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Fill summary and new questions"><img src="media/shots/job-form-autofill/02.webp" width="380" height="838" alt="The popup with a fill summary and new questions" loading="lazy" decoding="async"></button>
+                  <figcaption><b>2</b><strong class="text-white font-semibold">Answer once.</strong> A summary of every fill; new questions wait here, and short choices are one tap.</figcaption>
+                </figure>
+                <figure class="gal-slide wide">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: Manage answers page"><img src="media/shots/job-form-autofill/03.webp" width="1164" height="728" alt="The Manage answers page with grouped answers" loading="lazy" decoding="async"></button>
+                  <figcaption><b>3</b><strong class="text-white font-semibold">Manage answers.</strong> Grouped into About you, Work, Education and more, with search, quick edit and a backup file.</figcaption>
+                </figure>
+                <figure class="gal-slide phone">
+                  <button type="button" class="gal-zoom" aria-label="Enlarge: The popup in dark mode"><img src="media/shots/job-form-autofill/04.webp" width="380" height="838" alt="The popup in dark mode" loading="lazy" decoding="async"></button>
+                  <figcaption><b>4</b><strong class="text-white font-semibold">Light and dark.</strong> Follows the system theme; every colour passes WCAG AA contrast.</figcaption>
+                </figure>
+              </div>
+              <div class="gal-ctrl">
+                <button type="button" class="gal-btn gal-prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                <div class="gal-dots"></div>
+                <button type="button" class="gal-btn gal-play" aria-label="Pause slideshow"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path class="gal-icon-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="gal-icon-play" d="M8 5.5v13l11-6.5z" style="display:none"/></svg></button>
+                <button type="button" class="gal-btn gal-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+              </div>
+              <p class="gal-hint">Shown with test data · tap a picture to enlarge</p>
+            </div>
+            <div class="proj-detail">
+              <h4 class="font-mono text-xs sm:text-sm uppercase tracking-widest font-bold mb-3 text-neonCyan">How it works</h4>
+              <p class="text-gray-300 font-normal text-base sm:text-lg leading-relaxed max-w-5xl">
+              Filling applications with an AI browser agent used up my daily credits, so I built a plain-JavaScript Chrome extension that does it with no AI at all. It reads each field's label (or the text next to it) and matches it to my saved answers: by meaning for common fields such as name, phone, notice period and CTC, and by wording for the rest. It fills the way modern job sites accept, opening custom dropdowns and picking from them, and turns "Immediate joiner" into 0 for a "notice period in days" box. When I press Submit or Next it saves what I typed, keeping my own wording when a dropdown shows the site's version. I tested it on 10 live applications on Greenhouse, Lever, Ashby, Workable and Teamtailor, without submitting, and fixed what each one exposed.
+            </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-sm sm:text-base text-gray-400 mt-6 min-w-0">
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Private by Design</strong>
+                Answers stay in Chrome's local storage: no account, no server, no analytics. It only runs when I press Fill, never submits, and never fills passwords, ID numbers, bank details, consent boxes or CAPTCHAs.
+              </div>
+              <div class="border-l-2 border-gray-700 pl-4 sm:pl-6 min-w-0">
+                <strong class="text-white block mb-2 sm:mb-3 text-base sm:text-lg">Tested in Real Chrome</strong>
+                An automated test loads it into headless Chrome through the DevTools protocol and fills Greenhouse-, Lever- and Workday-style forms, with 45 checks including accessibility. A second script drives a visible Chrome window on real career sites.
+              </div>
+            </div>
+              <p class="mt-6 font-mono text-xs sm:text-sm uppercase tracking-wider text-gray-300"><span class="text-gray-400">Built with:</span> JavaScript • Chrome Extensions (Manifest V3) • Chrome DevTools Protocol • Node.js test runner • GitHub Pages</p>
+            </div>
+            <div class="flex gap-2 sm:gap-2.5 flex-wrap mt-8">
+              <span class="tag tag-cyan">Released v0.1.0</span>
+              <span class="tag">45 Checks</span>
+              <span class="tag">Open Source • MIT</span>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-gray-800/80 flex items-center justify-between flex-wrap gap-4 min-w-0">
+            <span class="font-mono text-xs text-gray-400">Install: unzip, then Load unpacked in Chrome · Web Store soon</span>
+            <div class="flex items-center gap-3 flex-wrap">
+              <a href="https://github.com/R-Dilipkumar/job-form-autofill" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-neonCyan border border-neonCyan/40 bg-neonCyan/5 hover:bg-neonCyan hover:text-void px-5 py-3 rounded-full transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
+                GitHub ↗
+              </a>
+              <a href="https://github.com/R-Dilipkumar/job-form-autofill/releases/latest" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-void bg-neonCyan border border-neonCyan px-5 py-3 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
+                Download ↓
+              </a>
+            </div>
+          </div>
+        </div>
+
         <!-- Offline Voice Companion (grew from Local Mobile AI) -->
         <div class="glass-panel reveal-left delay-100 lg:col-span-4 flex flex-col justify-between p-6 sm:p-8 md:p-10 border-t-2 border-t-neonPink/40 min-w-0 w-full">
           <div>
@@ -1642,7 +1714,7 @@
           </div>
           <div class="glass-panel reveal-left delay-300 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonCyan mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Web & Cloud</h4>
-            <p class="text-gray-300 leading-relaxed font-normal text-base sm:text-lg">React, TypeScript, Vite, Tailwind CSS, Firebase (Hosting, email-link Auth, Firestore, Cloud Storage, Cloud Functions), Firestore and Storage security rules, Cloud Scheduler, Google Cloud / Vertex AI, Firebase Emulator Suite, Zod, Vitest.</p>
+            <p class="text-gray-300 leading-relaxed font-normal text-base sm:text-lg">React, TypeScript, Vite, Tailwind CSS, Firebase (Hosting, email-link Auth, Firestore, Cloud Storage, Cloud Functions), Firestore and Storage security rules, Cloud Scheduler, Google Cloud / Vertex AI, Firebase Emulator Suite, Zod, Vitest, Chrome Extensions (Manifest V3), Chrome DevTools Protocol, WCAG accessibility checks.</p>
           </div>
           <div class="glass-panel reveal-left delay-300 p-6 sm:p-8 md:p-10 min-w-0 w-full">
             <h4 class="font-mono text-neonPink mb-4 sm:mb-6 uppercase text-xs sm:text-sm font-bold tracking-widest">Enterprise ERP & Backend</h4>
